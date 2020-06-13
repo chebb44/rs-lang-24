@@ -1,4 +1,4 @@
-[![GitHub Actions](https://github.com/chebb44/rs-lang-24/workflows/Main/badge.svg)](https://github.com/chebb44/rs-lang-24/actions)
+[![GitHub Actions](https://github.com/chebb44/rs-lang-24/workflows/CI/badge.svg)](https://github.com/chebb44/rs-lang-24/actions)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
