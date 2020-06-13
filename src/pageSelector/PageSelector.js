@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { selectorPageSelector } from './pageSelectorReducer';
 
 export const PageSelector = () => {
-  const {page} = useSelector(selectorPageSelector);
+  const { page } = useSelector(selectorPageSelector);
   return (
     <div className="root-app-container">
       <RenderSwitch page={page} />

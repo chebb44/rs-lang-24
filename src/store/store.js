@@ -7,5 +7,5 @@ import thunk from 'redux-thunk';
 export const saga = createSagaMiddleware();
 export const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(thunk, saga))
+  composeWithDevTools(applyMiddleware(thunk, saga)),
 );

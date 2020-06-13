@@ -4,17 +4,17 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { store, saga } from './store/store';
-import {sagaWatcher} from './store/sagaWatcher';
+import { sagaWatcher } from './store/sagaWatcher';
 import { PageSelector } from './pageSelector/PageSelector';
 
 const render = () => {
   return ReactDOM.render(
     <React.StrictMode>
-      <Provider store= { store }>
+      <Provider store={store}>
         <PageSelector />
       </Provider>
     </React.StrictMode>,
-    document.getElementById('root')
+    document.getElementById('root'),
   );
 };
 
