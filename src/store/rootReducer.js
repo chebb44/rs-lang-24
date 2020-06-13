@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import pageSelector from '../pageSelector/pageSelectorReducer';
+import { testReducer } from './../reducers/testReducer';
 
 export const rootReducer = combineReducers({
-  pageSelector,
+  testReducer,
 });
