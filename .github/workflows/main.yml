@@ -20,7 +20,7 @@ jobs:
       # Check-out repository under GitHub workspace
       # https://github.com/actions/checkout
       - uses: actions/checkout@v2
-        # Step's name
+      # Step's name
       - name: Use Node.js ${{ matrix.node-version }}
         # Configures the node version used on GitHub-hosted runners
         # https://github.com/actions/setup-node
@@ -39,3 +39,7 @@ jobs:
         # Run Linter
         run: |
           npm run lint
+      - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@0.0.2
