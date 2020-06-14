@@ -22,3 +22,8 @@ export const actionSetUserLoginData = ({ email, password }) => ({
   type: SET_USER_LOGIN_DATA,
   payload: { email, password },
 });
+
+export const LOG_OUT_USER = 'LOG_OUT_USER';
+export const actionLogOutUser = () => ({
+  type: LOG_OUT_USER,
+});
