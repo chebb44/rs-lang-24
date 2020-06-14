@@ -3,14 +3,14 @@ import { Switch, Route, useRouteMatch, Redirect } from 'react-router-dom';
 import { DictionaryPage } from './../pages/DictionaryPage/DictionaryPage';
 import { useSelector } from 'react-redux';
 import { currentUserSelector } from './../reducers/currentUser/currentUserReducer';
+import { PageHeader } from './PageHeader';
 
 export const App = () => {
   let { path } = useRouteMatch();
   const { token } = useSelector(currentUserSelector);
-  console.log("App -> token", token)
   return token ? (
     <div className="app-container">
-      <header>Page Header </header>
+      <PageHeader />
       <Switch>
         <Route path={`${path}dictionary`} component={DictionaryPage} />
         <Route exact path={path}>

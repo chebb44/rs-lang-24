@@ -6,6 +6,7 @@ import {
   actionSetUserLoginData,
 } from '../reducers/currentUser/currentUserActions';
 import { actionSetAlertMessage } from '../reducers/appState/appStateActions';
+import { TOKEN, USER_ID } from './constants';
 
 export function* signUpWorker(action) {
   const userRegResponse = yield call(() => createUser(action.payload));
@@ -32,8 +33,8 @@ export function* signInWorker(action) {
       userSignInResponse.payload,
     );
     const { token, userId } = userSignInResponse.payload;
-    yield localStorage.setItem('token', token);
-    yield localStorage.setItem('userId', userId);
+    yield localStorage.setItem(TOKEN, token);
+    yield localStorage.setItem(USER_ID, userId);
 
     yield put(actionSetTokenAndId({ token, id: userId }));
 
