@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import { testReducer } from './../reducers/testReducer';
+import { appState } from '../reducers/appState/appStateReducer';
+import { currentUser } from '../reducers/currentUser/currentUserReducer';
 
 export const rootReducer = combineReducers({
-  testReducer,
+  appState,
+  currentUser,
 });
