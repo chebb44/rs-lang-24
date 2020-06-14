@@ -32,12 +32,13 @@ export function* signInWorker(action) {
       userSignInResponse.payload,
     );
     const { token, userId } = userSignInResponse.payload;
+    yield localStorage.setItem('token', token);
+    yield localStorage.setItem('userId', userId);
 
     yield put(actionSetTokenAndId({ token, id: userId }));
 
     const { email, password } = action.payload;
     yield put(actionSetUserLoginData({ email, password }));
-
     yield action.history.push('/app'); /// redirecting!!!!
   } else {
     console.log(

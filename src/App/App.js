@@ -1,12 +1,14 @@
 import React from 'react';
-import { Switch, Route, useRouteMatch } from 'react-router-dom';
+import { Switch, Route, useRouteMatch, Redirect } from 'react-router-dom';
 import { DictionaryPage } from './../pages/DictionaryPage/DictionaryPage';
+import { useSelector } from 'react-redux';
+import { currentUserSelector } from './../reducers/currentUser/currentUserReducer';
 
 export const App = () => {
-  let { path, url } = useRouteMatch();
-  console.log('App -> url', url);
-  console.log('App -> path', path);
-  return (
+  let { path } = useRouteMatch();
+  const { token } = useSelector(currentUserSelector);
+  console.log("App -> token", token)
+  return token ? (
     <div className="app-container">
       <header>Page Header </header>
       <Switch>
@@ -19,5 +21,7 @@ export const App = () => {
         </Route>
       </Switch>
     </div>
+  ) : (
+    <Redirect to="/" />
   );
 };

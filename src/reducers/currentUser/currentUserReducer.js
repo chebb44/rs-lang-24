@@ -9,8 +9,8 @@ const defaultData = {
     email: '',
     password: '',
   },
-  token: '',
-  id: '',
+  token: localStorage.getItem('token') || '',
+  id: localStorage.getItem('userId') || '',
 };
 
 export const currentUserSelector = (state) => state.currentUser;
