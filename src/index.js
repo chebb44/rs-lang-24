@@ -5,13 +5,13 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { store, saga } from './store/store';
 import { sagaWatcher } from './store/sagaWatcher';
-import { App } from './App/App';
+import { LoginRouter } from './App/LoginRouter';
 
 const render = () => {
   return ReactDOM.render(
     <React.StrictMode>
       <Provider store={store}>
-        <App />
+        <LoginRouter />
       </Provider>
     </React.StrictMode>,
     document.getElementById('root'),
