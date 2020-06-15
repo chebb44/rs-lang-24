@@ -31,7 +31,7 @@ export const LoginPage = function () {
   return (
     <>
       <Alert message={alertMessage} />
-      <div className="login-screen d-flex justify-content-center align-items-center">
+      <div className="login-screen d-flex justify-content-center align-items-center flex-grow-1">
         <LoginForm onSignUp={signUpHandler} onSignIn={signInHandler} />
       </div>
     </>

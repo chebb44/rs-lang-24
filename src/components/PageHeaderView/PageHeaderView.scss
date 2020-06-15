@@ -1,0 +1,15 @@
+.app-burger{
+  margin-right: 10px;
+  transition-duration: 500ms;
+  background: url(./assets/open-menu.svg);
+  background-position: center;
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  z-index: 10;
+  cursor: pointer;
+}
+.rotate-burger{
+  transform: rotate(90deg);
+  transition-duration: 500ms;
+}
