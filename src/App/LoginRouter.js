@@ -6,7 +6,7 @@ import { App } from './App';
 
 export const LoginRouter = () => {
   return (
-    <div className="root-container">
+    <div className="root-container flex-grow-1">
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={LoginPage} />
