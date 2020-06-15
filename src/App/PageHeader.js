@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { actionLogOutUser } from '../reducers/currentUser/currentUserActions';
 import { actionToggleSideBar } from '../reducers/appState/appStateActions';
 import { appStateSelector } from './../reducers/appState/appStateReducer';
+import { routes } from './constants/routes';
 
 export const PageHeader = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ export const PageHeader = () => {
   return (
     <PageHeaderView
       isSidebarShow={isSideBarShow}
-      logoLink="/app"
+      logoLink={routes.mainApp}
       logOut={logoutCallback}
       burgerClickHandler={burgerClickHandler}
     />

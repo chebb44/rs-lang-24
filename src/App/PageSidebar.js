@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageSideBarView } from '../components/PageSideBarView/PageSideBarView';
-import { sideBarLinksList } from './sideBarLinksList';
+import { sideBarLinksList } from './constants/sideBarLinksList';
 
 export const PageSideBar = () => {
-  return <PageSideBarView linkList={sideBarLinksList} />;
+  return <PageSideBarView sideBarLinksList={sideBarLinksList} />;
 };
