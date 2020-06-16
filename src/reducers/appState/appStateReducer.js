@@ -4,6 +4,8 @@ import {
   TOGGLE_SIDEBAR,
   SHOW_STATISTIC_MODAL,
   HIDE_STATISTIC_MODAL,
+  SHOW_MAX_CARDS_MODAL,
+  HIDE_MAX_CARDS_MODAL,
 } from './appStateActions';
 
 const defaultState = {
@@ -11,6 +13,7 @@ const defaultState = {
   isSideBarShow: true,
   initDone: false,
   visibleStatisticModal: false,
+  visibleMaxCardsModal: false,
 };
 
 export const appStateSelector = (state) => state.appState;
@@ -36,6 +39,16 @@ export const appState = (state = defaultState, action) => {
       return {
         ...state,
         visibleStatisticModal: false,
+      };
+    case SHOW_MAX_CARDS_MODAL:
+      return {
+        ...state,
+        visibleMaxCardsModal: true,
+      };
+    case HIDE_MAX_CARDS_MODAL:
+      return {
+        ...state,
+        visibleMaxCardsModal: false,
       };
     case SET_INIT_DONE:
       return {

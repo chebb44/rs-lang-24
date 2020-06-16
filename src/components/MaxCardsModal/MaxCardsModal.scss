@@ -1,0 +1,14 @@
+@import "src/scss/vars";
+@import "src/scss/mixins";
+
+.modal_max-cards {
+  background-color: $accent-color;
+}
+
+.button_settings {
+  @include std_button;
+  margin: 0 auto;
+  background-color: $warning-color;
+  width: 185px;
+  margin-bottom: 10px;
+}

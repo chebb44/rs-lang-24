@@ -19,6 +19,16 @@ export const actionHideStatisticModal = () => ({
   type: HIDE_STATISTIC_MODAL,
 });
 
+export const SHOW_MAX_CARDS_MODAL = 'SHOW_MAX_CARDS_MODAL';
+export const actionShowMaxCardsModal = () => ({
+  type: SHOW_MAX_CARDS_MODAL,
+});
+
+export const HIDE_MAX_CARDS_MODAL = 'HIDE_MAX_CARDS_MODAL';
+export const actionHideMaxCardsModal = () => ({
+  type: HIDE_MAX_CARDS_MODAL,
+});
+
 export const SET_INIT_DONE = 'SET_INIT_DONE';
 export const actionSetInitDone = () => ({
   type: SET_INIT_DONE,
