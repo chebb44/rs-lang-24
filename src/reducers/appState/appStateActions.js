@@ -8,3 +8,8 @@ export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
 export const actionToggleSideBar = () => ({
   type: TOGGLE_SIDEBAR,
 });
+
+export const SET_INIT_DONE = 'SET_INIT_DONE';
+export const actionSetInitDone = () => ({
+  type: SET_INIT_DONE,
+});
