@@ -6,8 +6,10 @@
   }
 
   &:focus {
-    outline-style: none;
-    outline-width: 0px !important;
+    //outline: none !important;
+    //outline-style: none;
+    //outline-width: 0 !important;
     outline-color: none !important;
   }
+
 }
