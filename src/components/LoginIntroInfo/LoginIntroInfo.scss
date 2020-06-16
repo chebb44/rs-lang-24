@@ -1,0 +1,26 @@
+@import "src/scss/vars";
+
+.login-intro__wrapper {
+  position: relative;
+  width: 320px;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+
+  h2 {
+    color: $neutral-inactive;
+  }
+  p {
+    color: $neutral-inactive;
+  }
+
+  svg {
+    position: absolute;
+    top: 90px;
+    left: 0;
+    z-index: -3;
+    fill: #FFD6BA;
+    transform: scale(1.7, 1.5) translate(85px, -133px);
+  }
+}

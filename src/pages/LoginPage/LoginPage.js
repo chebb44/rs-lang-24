@@ -9,6 +9,10 @@ import { LoginForm } from './../../components/LoginForm/LoginForm';
 import { appStateSelector } from './../../reducers/appState/appStateReducer';
 import { useHistory } from 'react-router-dom';
 import { LoginIntroInfo } from '../../components/LoginIntroInfo/LoginIntroInfo';
+import { PromoView } from '../../components/PromoView/PromoView';
+import './LoginPage.scss';
+import { LogoView } from '../../components/LogoView/LogoView';
+import london from './../../assets/img/england_PNG723.png';
 
 export const LoginPage = function () {
   const { alertMessage } = useSelector(appStateSelector);
@@ -32,9 +36,16 @@ export const LoginPage = function () {
   return (
     <>
       <Alert message={alertMessage} />
-      <div className="login-screen d-flex justify-content-center align-items-center flex-grow-1">
-        <LoginIntroInfo />
-        <LoginForm onSignUp={signUpHandler} onSignIn={signInHandler} />
+      <div className="container login-screen">
+        <div className="login-page__wrapper">
+          <div className="login-page__logo">
+            <LogoView />
+          </div>
+          <LoginIntroInfo />
+          <LoginForm onSignUp={signUpHandler} onSignIn={signInHandler} />
+          <img className={'london-image'} src={london} alt="london" />
+        </div>
+        <PromoView />
       </div>
     </>
   );
