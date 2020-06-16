@@ -1,7 +1,7 @@
 import React from 'react';
 import './LoginIntroInfo.scss';
 
-export const LoginIntroInfo = function() {
+export const LoginIntroInfo = function () {
   return (
     <div className="container">
       <h2>Lorem ipsum dolor.</h2>
