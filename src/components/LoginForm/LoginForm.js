@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './LoginForm.css';
+import './LoginForm.scss';
 
 export const LoginForm = function ({ onSignIn, onSignUp }) {
   const [inputEmail, setInputEmail] = useState('hello@user.com');
@@ -36,14 +36,14 @@ export const LoginForm = function ({ onSignIn, onSignUp }) {
         </div>
         <button
           type="button"
-          className="btn btn-primary"
+          className="btn button__sign-in"
           onClick={() => onSignIn({ email: inputEmail, password: inputPass })}
         >
           Sign In
         </button>
         <button
           type="button"
-          className="btn btn-warning ml-2"
+          className="btn ml-2 button__sign-up"
           onClick={() => onSignUp({ email: inputEmail, password: inputPass })}
         >
           Sign Up

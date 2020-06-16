@@ -1,0 +1,17 @@
+@import "src/scss/vars";
+@import "src/scss/mixins";
+
+.sign-up-screen {
+  max-width: 320px;
+}
+
+.button__sign-in {
+  @include std_button;
+  background-color: $primary-color;
+}
+
+.button__sign-up {
+  @include std_button;
+  background-color: $accent-color;
+
+}

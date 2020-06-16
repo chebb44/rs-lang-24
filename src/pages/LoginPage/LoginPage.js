@@ -8,6 +8,7 @@ import { Alert } from './../../components/Alert/Alert';
 import { LoginForm } from './../../components/LoginForm/LoginForm';
 import { appStateSelector } from './../../reducers/appState/appStateReducer';
 import { useHistory } from 'react-router-dom';
+import { LoginIntroInfo } from '../../components/LoginIntroInfo/LoginIntroInfo';
 
 export const LoginPage = function () {
   const { alertMessage } = useSelector(appStateSelector);
@@ -32,6 +33,7 @@ export const LoginPage = function () {
     <>
       <Alert message={alertMessage} />
       <div className="login-screen d-flex justify-content-center align-items-center flex-grow-1">
+        <LoginIntroInfo />
         <LoginForm onSignUp={signUpHandler} onSignIn={signInHandler} />
       </div>
     </>
