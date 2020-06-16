@@ -1,7 +1,14 @@
-import { SET_ALERT_MESSAGE, TOGGLE_SIDEBAR } from './appStateActions';
+import {
+  SET_ALERT_MESSAGE,
+  TOGGLE_SIDEBAR,
+  SHOW_MODAL,
+  HIDE_MODAL,
+} from './appStateActions';
+
 const defaultState = {
   alertMessage: '',
   isSideBarShow: true,
+  visibleModal: false,
 };
 
 export const appStateSelector = (state) => state.appState;
@@ -17,6 +24,16 @@ export const appState = (state = defaultState, action) => {
       return {
         ...state,
         isSideBarShow: !state.isSideBarShow,
+      };
+    case SHOW_MODAL:
+      return {
+        ...state,
+        visibleModal: true,
+      };
+    case HIDE_MODAL:
+      return {
+        ...state,
+        visibleModal: false,
       };
     default:
       return state;

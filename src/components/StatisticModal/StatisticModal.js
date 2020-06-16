@@ -1,12 +1,23 @@
 import React from 'react';
+import { connect, useDispatch } from 'react-redux';
+import {
+  actionShowStatisticModal,
+  actionHideStatisticModal,
+} from '../../reducers/appState/appStateActions';
 
-export const StatisticModal = ({ statistic }) => {
+const StatisticModal = ({ visibleModal, statistic }) => {
+  const dispatch = useDispatch();
+
   const {
     endCards,
     correctAnswer,
     newWords,
     longestSeriesCorrectAnswer,
   } = statistic;
+
+  if (visibleModal === false) {
+    return null;
+  }
 
   return (
     <div className="modal-dialog modal-dialog-centered">
@@ -18,6 +29,7 @@ export const StatisticModal = ({ statistic }) => {
             className="close"
             data-dismiss="modal"
             aria-label="Close"
+            onClick={() => dispatch(actionHideStatisticModal())}
           >
             <span aria-hidden="true">&times;</span>
           </button>
@@ -41,3 +53,16 @@ export const StatisticModal = ({ statistic }) => {
     </div>
   );
 };
+
+const getStateToProps = (state) => {
+  return {
+    visibleModal: state.appState.visibleModal,
+    statistic: state.appState.statistic,
+  };
+};
+
+const mapDistatchToProps = {
+  actionShowStatisticModal,
+};
+
+export default connect(getStateToProps, mapDistatchToProps)(StatisticModal);
