@@ -7,7 +7,6 @@ export const LoginForm = function ({ onSignIn, onSignUp }) {
 
   return (
     <div className="container sign-up-screen">
-
       <form className="" onSubmit={(e) => e.preventDefault()}>
         <div className="form-group">
           <label htmlFor="inputEmail">Email address</label>
