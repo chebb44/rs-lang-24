@@ -1,0 +1,13 @@
+@mixin std_button {
+  color: $neutral-inactive;
+
+  &:hover {
+    color: $neutral-active;
+  }
+
+  &:focus {
+    outline-style: none;
+    outline-width: 0px !important;
+    outline-color: none !important;
+  }
+}
