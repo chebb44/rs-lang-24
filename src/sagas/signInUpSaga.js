@@ -1,6 +1,6 @@
 import { put, call } from 'redux-saga/effects';
 
-import { createUser, loginUser } from './../utilities/network/userSignInUp';
+import { createUser, loginUser } from './../utilities/network/userAPI';
 import {
   actionSetTokenAndId,
   actionSetUserLoginData,
