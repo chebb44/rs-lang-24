@@ -5,7 +5,7 @@ import {
   actionHideStatisticModal,
 } from '../../reducers/appState/appStateActions';
 
-const StatisticModal = ({ visibleModal, statistic }) => {
+const StatisticModal = ({ visibleStatisticModal, statistic }) => {
   const dispatch = useDispatch();
 
   const {
@@ -15,7 +15,7 @@ const StatisticModal = ({ visibleModal, statistic }) => {
     longestSeriesCorrectAnswer,
   } = statistic;
 
-  if (visibleModal === false) {
+  if (visibleStatisticModal === false) {
     return null;
   }
 
@@ -56,7 +56,7 @@ const StatisticModal = ({ visibleModal, statistic }) => {
 
 const getStateToProps = (state) => {
   return {
-    visibleModal: state.appState.visibleModal,
+    visibleStatisticModal: state.appState.visibleStatisticModal,
     statistic: state.appState.statistic,
   };
 };

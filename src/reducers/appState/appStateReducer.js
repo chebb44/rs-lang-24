@@ -2,15 +2,15 @@ import {
   SET_ALERT_MESSAGE,
   SET_INIT_DONE,
   TOGGLE_SIDEBAR,
-  SHOW_MODAL,
-  HIDE_MODAL,
+  SHOW_STATISTIC_MODAL,
+  HIDE_STATISTIC_MODAL,
 } from './appStateActions';
 
 const defaultState = {
   alertMessage: '',
   isSideBarShow: true,
   initDone: false,
-  visibleModal: false,
+  visibleStatisticModal: false,
 };
 
 export const appStateSelector = (state) => state.appState;
@@ -27,15 +27,15 @@ export const appState = (state = defaultState, action) => {
         ...state,
         isSideBarShow: !state.isSideBarShow,
       };
-    case SHOW_MODAL:
+    case SHOW_STATISTIC_MODAL:
       return {
         ...state,
-        visibleModal: true,
+        visibleStatisticModal: true,
       };
-    case HIDE_MODAL:
+    case HIDE_STATISTIC_MODAL:
       return {
         ...state,
-        visibleModal: false,
+        visibleStatisticModal: false,
       };
     case SET_INIT_DONE:
       return {
