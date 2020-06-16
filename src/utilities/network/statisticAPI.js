@@ -13,7 +13,7 @@ export const getUserStatistic = async ({ userId, token }) => {
     );
     const content = await rawResponse.json();
 
-    console.log('get: ', content); // {id: "5ede95c1f566156e205342d0", learnedWords: 1}
+    console.log('get statistic: ', content); // {id: "5ede95c1f566156e205342d0", learnedWords: 1}
     return content;
   } catch (error) {
     console.log('Failed get statistic for this user');

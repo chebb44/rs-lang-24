@@ -20,6 +20,7 @@ export const actionHideStatisticModal = () => ({
 });
 
 export const SET_INIT_DONE = 'SET_INIT_DONE';
-export const actionSetInitDone = () => ({
+export const actionSetInitDone = (data) => ({
   type: SET_INIT_DONE,
+  payload: data,
 });

@@ -40,7 +40,7 @@ export const appState = (state = defaultState, action) => {
     case SET_INIT_DONE:
       return {
         ...state,
-        initDone: true,
+        initDone: action.payload,
       };
     default:
       return state;

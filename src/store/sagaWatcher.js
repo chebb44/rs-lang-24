@@ -18,7 +18,7 @@ export function* sagaWatcher() {
   yield takeLatest(SIGN_IN_USER, signInWorker);
   yield takeEvery(LOG_OUT_USER, logOutWorker);
 
-  yield takeEvery(INIT_APP, initAppWorker);
+  yield takeLatest(INIT_APP, initAppWorker);
 
   yield takeLatest(SET_WORDS_PER_DAY, sendSettingsToBackendWorker);
 

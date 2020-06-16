@@ -9,8 +9,6 @@ import { actionSetAlertMessage } from '../reducers/appState/appStateActions';
 import { TOKEN, USER_ID } from './constants';
 import { showPopUpNotification } from './../utilities/notification';
 import { routes } from './../App/constants/routes';
-import { initSettingsSaga } from './initSettingsSaga';
-import { initStatisticSaga } from './initStatisticSaga';
 
 export function* signUpWorker(action) {
   const userRegResponse = yield call(createUser, action.payload);
@@ -38,11 +36,6 @@ export function* signInWorker(action) {
 
     const { email, password } = action.payload;
     yield put(actionSetUserLoginData({ email, password }));
-
-    yield initSettingsSaga();
-
-    yield initStatisticSaga();
-
     yield action.history.push(routes.mainApp); /// redirecting to main page
   } else {
     yield showPopUpNotification(userSignInResponse.payload);
