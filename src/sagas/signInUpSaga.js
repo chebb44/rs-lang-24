@@ -7,6 +7,7 @@ import {
 } from '../reducers/currentUser/currentUserActions';
 import { actionSetAlertMessage } from '../reducers/appState/appStateActions';
 import { TOKEN, USER_ID } from './constants';
+import { showPopUpNotification } from './../utilities/notification';
 
 export function* signUpWorker(action) {
   const userRegResponse = yield call(() => createUser(action.payload));
@@ -15,13 +16,7 @@ export function* signUpWorker(action) {
     yield delay(3000);
     yield put(actionSetAlertMessage(''));
   } else {
-    console.log(
-      'function*signUpWorker -> userRegResponse.payload',
-      userRegResponse.payload,
-    );
-    yield put(actionSetAlertMessage(userRegResponse.payload));
-    yield delay(3000);
-    yield put(actionSetAlertMessage(''));
+    yield showPopUpNotification(userRegResponse.payload);
   }
 }
 
@@ -42,13 +37,7 @@ export function* signInWorker(action) {
     yield put(actionSetUserLoginData({ email, password }));
     yield action.history.push('/app'); /// redirecting!!!!
   } else {
-    console.log(
-      'function*signInWorker -> userSignInResponse',
-      userSignInResponse,
-    );
-    yield put(actionSetAlertMessage(userSignInResponse.payload));
-    yield delay(3000);
-    yield put(actionSetAlertMessage(''));
+    yield showPopUpNotification(userSignInResponse.payload);
   }
 }
 
