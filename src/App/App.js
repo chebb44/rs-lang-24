@@ -27,6 +27,7 @@ export const App = () => {
         {initDone ? (
           <div className="content-wrap flex-grow-1">
             <Switch>
+              <Route path={routes.learn} component={LearnPage} />
               <Route path={`${path}dictionary`} component={DictionaryPage} />
               <Route exact path={path}>
                 <h1>Main Page</h1>
