@@ -18,3 +18,8 @@ export const HIDE_MODAL = 'HIDE_MODAL';
 export const actionHideStatisticModal = () => ({
   type: HIDE_MODAL,
 });
+
+export const SET_INIT_DONE = 'SET_INIT_DONE';
+export const actionSetInitDone = () => ({
+  type: SET_INIT_DONE,
+});

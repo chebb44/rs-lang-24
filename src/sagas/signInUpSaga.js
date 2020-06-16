@@ -1,32 +1,30 @@
 import { put, call } from 'redux-saga/effects';
 
-import { createUser, loginUser } from './../utilities/network/userSignInUp';
+import { createUser, loginUser } from './../utilities/network/userAPI';
 import {
   actionSetTokenAndId,
   actionSetUserLoginData,
 } from '../reducers/currentUser/currentUserActions';
 import { actionSetAlertMessage } from '../reducers/appState/appStateActions';
 import { TOKEN, USER_ID } from './constants';
+import { showPopUpNotification } from './../utilities/notification';
+import { routes } from './../App/constants/routes';
+import { initSettingsSaga } from './initSettingsSaga';
+import { initStatisticSaga } from './initStatisticSaga';
 
 export function* signUpWorker(action) {
-  const userRegResponse = yield call(() => createUser(action.payload));
+  const userRegResponse = yield call(createUser, action.payload);
   if (userRegResponse.success) {
     yield put(actionSetAlertMessage('Registration successful, please SignIn'));
     yield delay(3000);
     yield put(actionSetAlertMessage(''));
   } else {
-    console.log(
-      'function*signUpWorker -> userRegResponse.payload',
-      userRegResponse.payload,
-    );
-    yield put(actionSetAlertMessage(userRegResponse.payload));
-    yield delay(3000);
-    yield put(actionSetAlertMessage(''));
+    yield showPopUpNotification(userRegResponse.payload);
   }
 }
 
 export function* signInWorker(action) {
-  const userSignInResponse = yield call(() => loginUser(action.payload));
+  const userSignInResponse = yield call(loginUser, action.payload);
   if (userSignInResponse.success) {
     console.log(
       'function*signInWorker ->  userSignInResponse.payload',
@@ -40,15 +38,14 @@ export function* signInWorker(action) {
 
     const { email, password } = action.payload;
     yield put(actionSetUserLoginData({ email, password }));
-    yield action.history.push('/app'); /// redirecting!!!!
+
+    yield initSettingsSaga();
+
+    yield initStatisticSaga();
+
+    yield action.history.push(routes.mainApp); /// redirecting to main page
   } else {
-    console.log(
-      'function*signInWorker -> userSignInResponse',
-      userSignInResponse,
-    );
-    yield put(actionSetAlertMessage(userSignInResponse.payload));
-    yield delay(3000);
-    yield put(actionSetAlertMessage(''));
+    yield showPopUpNotification(userSignInResponse.payload);
   }
 }
 

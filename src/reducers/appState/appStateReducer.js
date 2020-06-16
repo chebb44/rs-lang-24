@@ -1,5 +1,6 @@
 import {
   SET_ALERT_MESSAGE,
+  SET_INIT_DONE,
   TOGGLE_SIDEBAR,
   SHOW_MODAL,
   HIDE_MODAL,
@@ -8,6 +9,7 @@ import {
 const defaultState = {
   alertMessage: '',
   isSideBarShow: true,
+  initDone: false,
   visibleModal: false,
 };
 
@@ -34,6 +36,11 @@ export const appState = (state = defaultState, action) => {
       return {
         ...state,
         visibleModal: false,
+      };
+    case SET_INIT_DONE:
+      return {
+        ...state,
+        initDone: true,
       };
     default:
       return state;
