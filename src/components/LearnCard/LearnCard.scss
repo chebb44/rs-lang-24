@@ -1,10 +1,11 @@
 .form-control {
-  padding: 0;
-  padding-left: 2px;
+  height: 30px;
+  padding: 2px;
   border-top: 0;
   border-right: 0;
   border-left: 0;
   border-radius: 0;
+  font-size: 24px;
 
   &:focus {
     box-shadow: none;
