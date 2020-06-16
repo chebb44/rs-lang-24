@@ -4,6 +4,8 @@ import {
   actionShowStatisticModal,
   actionHideStatisticModal,
 } from '../../reducers/appState/appStateActions';
+import { SuccessSvg } from './success.js';
+import './StatisticModal.scss';
 
 const StatisticModal = ({ visibleStatisticModal, statistic }) => {
   const dispatch = useDispatch();
@@ -21,18 +23,12 @@ const StatisticModal = ({ visibleStatisticModal, statistic }) => {
 
   return (
     <div className="modal-dialog modal-dialog-centered">
-      <div className="modal-content">
-        <div className="modal-header">
-          <h5 className="modal-title">Серия завершена</h5>
-          <button
-            type="button"
-            className="close"
-            data-dismiss="modal"
-            aria-label="Close"
-            onClick={() => dispatch(actionHideStatisticModal())}
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
+      <div className="modal-content modal_color">
+        <div className="modal-header modal-header__statistic d-block">
+          <div>
+            <SuccessSvg />
+          </div>
+          <h5 className="modal-title text-center">Серия завершена</h5>
         </div>
         <div className="modal-body text-left">
           <p className="border-bottom d-flex justify-content-between">
@@ -49,6 +45,13 @@ const StatisticModal = ({ visibleStatisticModal, statistic }) => {
             <span>{longestSeriesCorrectAnswer}</span>
           </p>
         </div>
+        <button
+          type="button"
+          className="btn button_continue"
+          onClick={() => dispatch(actionHideStatisticModal())}
+        >
+          Продолжить
+        </button>
       </div>
     </div>
   );
