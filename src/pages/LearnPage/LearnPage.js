@@ -11,7 +11,10 @@ export const LearnPage = () => {
 
   return (
     <div className="learn-page">
-      <LearnCard learnCardData={learnCard} learnCardSettingsData={learnCardSettings} />
+      <LearnCard
+        learnCardData={learnCard}
+        learnCardSettingsData={learnCardSettings}
+      />
     </div>
   );
 };
