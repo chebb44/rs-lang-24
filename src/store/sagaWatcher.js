@@ -6,9 +6,13 @@ import {
 } from './../reducers/currentUser/currentUserActions';
 import { signUpWorker, signInWorker } from '../sagas/signInUpSaga';
 import { logOutWorker } from '../sagas/logoutSaga';
+import { SET_WORDS_PER_DAY } from './../reducers/settingsReducer/settingsActions';
+import { sendSettingsToBackendWorker } from '../sagas/sendSettingsToBackend';
 
 export function* sagaWatcher() {
   yield takeLatest(SIGN_UP_USER, signUpWorker);
   yield takeLatest(SIGN_IN_USER, signInWorker);
   yield takeEvery(LOG_OUT_USER, logOutWorker);
+
+  yield takeLatest(SET_WORDS_PER_DAY, sendSettingsToBackendWorker);
 }

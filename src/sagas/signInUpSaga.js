@@ -8,9 +8,12 @@ import {
 import { actionSetAlertMessage } from '../reducers/appState/appStateActions';
 import { TOKEN, USER_ID } from './constants';
 import { showPopUpNotification } from './../utilities/notification';
+import { getUserSettings } from './../utilities/network/settingsAPI';
+import { actionSetAllSettings } from '../reducers/settingsReducer/settingsActions';
+import { routes } from './../App/constants/routes';
 
 export function* signUpWorker(action) {
-  const userRegResponse = yield call(() => createUser(action.payload));
+  const userRegResponse = yield call(createUser, action.payload);
   if (userRegResponse.success) {
     yield put(actionSetAlertMessage('Registration successful, please SignIn'));
     yield delay(3000);
@@ -21,7 +24,7 @@ export function* signUpWorker(action) {
 }
 
 export function* signInWorker(action) {
-  const userSignInResponse = yield call(() => loginUser(action.payload));
+  const userSignInResponse = yield call(loginUser, action.payload);
   if (userSignInResponse.success) {
     console.log(
       'function*signInWorker ->  userSignInResponse.payload',
@@ -35,7 +38,10 @@ export function* signInWorker(action) {
 
     const { email, password } = action.payload;
     yield put(actionSetUserLoginData({ email, password }));
-    yield action.history.push('/app'); /// redirecting!!!!
+
+    const settings = yield call(getUserSettings, { token, userId }); //get settings from API
+    if (settings) yield put(actionSetAllSettings(settings)); // set settings to store if they are
+    yield action.history.push(routes.mainApp); /// redirecting to main page
   } else {
     yield showPopUpNotification(userSignInResponse.payload);
   }
