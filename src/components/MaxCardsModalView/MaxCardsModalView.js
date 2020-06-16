@@ -1,18 +1,7 @@
 import React from 'react';
-import { connect, useDispatch } from 'react-redux';
-import {
-  actionShowMaxCardsModal,
-  actionHideMaxCardsModal,
-} from '../../reducers/appState/appStateActions';
-import './MaxCardsModal.scss';
+import './MaxCardsModalView.scss';
 
-const MaxCardsModal = ({ visibleMaxCardsModal }) => {
-  const dispatch = useDispatch();
-
-  if (visibleMaxCardsModal === false) {
-    return null;
-  }
-
+const MaxCardsModal = ({ hideStatisticModal }) => {
   return (
     <div className="modal-dialog modal-dialog-centered">
       <div className="modal-content modal_max-cards">
@@ -23,7 +12,7 @@ const MaxCardsModal = ({ visibleMaxCardsModal }) => {
             className="close"
             data-dismiss="modal"
             aria-label="Close"
-            onClick={() => dispatch(actionHideMaxCardsModal())}
+            onClick={hideStatisticModal}
           >
             <span aria-hidden="true">&times;</span>
           </button>
@@ -43,7 +32,7 @@ const MaxCardsModal = ({ visibleMaxCardsModal }) => {
         <button
           type="button"
           className="btn button_settings"
-          onClick={() => dispatch(actionHideMaxCardsModal())}
+          onClick={hideStatisticModal}
         >
           Перейти в настройки
         </button>
@@ -52,15 +41,4 @@ const MaxCardsModal = ({ visibleMaxCardsModal }) => {
   );
 };
 
-const getStateToProps = (state) => {
-  return {
-    visibleMaxCardsModal: state.appState.visibleMaxCardsModal,
-  };
-};
-
-const mapDistatchToProps = {
-  actionShowMaxCardsModal,
-  actionHideMaxCardsModal,
-};
-
-export default connect(getStateToProps, mapDistatchToProps)(MaxCardsModal);
+export default MaxCardsModal;

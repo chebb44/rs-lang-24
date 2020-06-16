@@ -2,10 +2,8 @@ import {
   SET_ALERT_MESSAGE,
   SET_INIT_DONE,
   TOGGLE_SIDEBAR,
-  SHOW_STATISTIC_MODAL,
-  HIDE_STATISTIC_MODAL,
-  SHOW_MAX_CARDS_MODAL,
-  HIDE_MAX_CARDS_MODAL,
+  SET_STATISTIC_MODAL,
+  SET_MAX_CARDS_MODAL,
 } from './appStateActions';
 
 const defaultState = {
@@ -30,25 +28,15 @@ export const appState = (state = defaultState, action) => {
         ...state,
         isSideBarShow: !state.isSideBarShow,
       };
-    case SHOW_STATISTIC_MODAL:
+    case SET_STATISTIC_MODAL:
       return {
         ...state,
-        visibleStatisticModal: true,
+        visibleStatisticModal: action.payload,
       };
-    case HIDE_STATISTIC_MODAL:
+    case SET_MAX_CARDS_MODAL:
       return {
         ...state,
-        visibleStatisticModal: false,
-      };
-    case SHOW_MAX_CARDS_MODAL:
-      return {
-        ...state,
-        visibleMaxCardsModal: true,
-      };
-    case HIDE_MAX_CARDS_MODAL:
-      return {
-        ...state,
-        visibleMaxCardsModal: false,
+        visibleMaxCardsModal: action.payload,
       };
     case SET_INIT_DONE:
       return {

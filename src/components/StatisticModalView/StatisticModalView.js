@@ -1,25 +1,14 @@
 import React from 'react';
-import { connect, useDispatch } from 'react-redux';
-import {
-  actionShowStatisticModal,
-  actionHideStatisticModal,
-} from '../../reducers/appState/appStateActions';
-import { SuccessSvg } from './success.js';
+import { SuccessSvg } from './assets/success.js';
 import './StatisticModal.scss';
 
-const StatisticModal = ({ visibleStatisticModal, statistic }) => {
-  const dispatch = useDispatch();
-
+const StatisticModal = ({ statistic, hideStatisticModal }) => {
   const {
     endCards,
     correctAnswer,
     newWords,
     longestSeriesCorrectAnswer,
   } = statistic;
-
-  if (visibleStatisticModal === false) {
-    return null;
-  }
 
   return (
     <div className="modal-dialog modal-dialog-centered">
@@ -48,7 +37,7 @@ const StatisticModal = ({ visibleStatisticModal, statistic }) => {
         <button
           type="button"
           className="btn button_continue"
-          onClick={() => dispatch(actionHideStatisticModal())}
+          onClick={hideStatisticModal}
         >
           Продолжить
         </button>
@@ -57,15 +46,4 @@ const StatisticModal = ({ visibleStatisticModal, statistic }) => {
   );
 };
 
-const getStateToProps = (state) => {
-  return {
-    visibleStatisticModal: state.appState.visibleStatisticModal,
-    statistic: state.appState.statistic,
-  };
-};
-
-const mapDistatchToProps = {
-  actionShowStatisticModal,
-};
-
-export default connect(getStateToProps, mapDistatchToProps)(StatisticModal);
+export default StatisticModal;
