@@ -3,13 +3,18 @@ import './LoginIntroInfo.scss';
 
 export const LoginIntroInfo = function () {
   return (
-    <div className="container">
-      <h2>Lorem ipsum dolor.</h2>
+    <div className="container login-intro__wrapper">
+      <h2>RS Lang</h2>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
-        debitis deleniti dicta, error, iste minima modi natus neque nihil nisi
-        nostrum placeat quisquam sint soluta tempora! Ab ea nesciunt ratione.
+        Приложение для изучения иностранных слов с методикой интервального
+        повторения, отслеживанием индивидуального прогресса и мини-играми.
       </p>
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M38.1,-49.9C47.3,-37.7,51.2,-23.7,53.8,-9.4C56.4,4.8,57.6,19.4,52.6,32.6C47.6,45.8,36.4,57.6,21.1,67.1C5.8,76.6,-13.7,83.9,-28.9,78.7C-44.1,73.5,-55,55.8,-62.2,38.3C-69.3,20.9,-72.7,3.7,-68.4,-10.6C-64.2,-24.9,-52.2,-36.4,-39.5,-48.1C-26.8,-59.7,-13.4,-71.4,0.5,-72C14.5,-72.6,28.9,-62.2,38.1,-49.9Z"
+          transform="translate(100 100)"
+        />
+      </svg>
     </div>
   );
 };
