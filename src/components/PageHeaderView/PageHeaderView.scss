@@ -1,4 +1,36 @@
-.app-burger{
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+.app-header {
+  a {
+    text-decoration: none;
+  }
+}
+.header-logo {
+  font-family: Montserrat, sans-serif;
+  font-weight: 100;
+  color: $dark-color;
+  letter-spacing: -2px;
+  margin: auto;
+  font-size: 2rem;
+  @media screen and (max-width: 767px) {
+    font-size: 1.3rem;
+  }
+}
+.button__log-out {
+  @include std_button;
+  background-color: $neutral-disabled;
+}
+
+.app-header {
+  background-color: $default-color;
+  color: $neutral-inactive;
+  -webkit-box-shadow: 0px 0px 25px 6px rgba(85, 91, 110, 0.38);
+  -moz-box-shadow: 0px 0px 25px 6px rgba(85, 91, 110, 0.38);
+  box-shadow: 0px 0px 25px 6px rgba(85, 91, 110, 0.38);
+  border-radius: 0 0 10px 10px;
+}
+
+.app-burger {
   margin-right: 10px;
   transition-duration: 500ms;
   background: url(./assets/open-menu.svg);
@@ -9,7 +41,7 @@
   z-index: 10;
   cursor: pointer;
 }
-.rotate-burger{
+.rotate-burger {
   transform: rotate(90deg);
   transition-duration: 500ms;
 }

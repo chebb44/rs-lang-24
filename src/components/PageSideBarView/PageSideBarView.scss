@@ -1,10 +1,32 @@
-.app-sidebar{
-  width: 320px;
-  position: relative;
+@import 'src/scss/vars';
+
+.app-sidebar {
+  box-sizing: border-box;
+  width: 220px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  height: 600px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: $default-color;
+  color: $neutral-inactive;
+  -webkit-box-shadow: 0px 0px 25px 6px rgba(85,91,110,0.38);
+  -moz-box-shadow: 0px 0px 25px 6px rgba(85,91,110,0.38);
+  box-shadow: 0px 0px 25px 6px rgba(85,91,110,0.38);
+  border-radius: 0 25px 25px 0;
 }
-
-
-
+.sidebar-link-list {
+  padding: 5px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  margin-bottom: 0;
+}
 
 /* appear - on page load */
 .fade-appear {
@@ -12,8 +34,8 @@
   z-index: 1;
 }
 .fade-appear.fade-appear-active {
-opacity: 1;
-transition: opacity 1000ms linear;
+  opacity: 1;
+  transition: opacity 1000ms linear;
 }
 
 // /* enter */
