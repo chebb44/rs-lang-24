@@ -7,7 +7,7 @@ export const CheckWordButton = ({ onCheckButtonClick }) => {
       className="btn ml-2"
       onClick={() => onCheckButtonClick()}
     >
-      Check
+      Проверить
     </button>
   );
 };

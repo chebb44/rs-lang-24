@@ -1,27 +1,42 @@
 import React, { useState, useEffect } from 'react';
+import { LearnCardImg } from '../LearnCardImg/LearnCardImg';
+import { LearnCardInput } from '../LearnCardInput/LearnCardInput';
+import { LearnCardTranscription } from '../LearnCardTranscription/LearnCardTranscription';
+import { LearnCardTranslation } from '../LearnCardTranslation/LearnCardTranslation';
+import { LearnCardExample } from '../LearnCardExample/LearnCardExample';
+import { LearnCardMeaning } from '../LearnCardMeaning/LearnCardMeaning';
+import { LearnCardAudio } from '../LearnCardAudio/LearnCardAudio';
 import { formatLearnCardText } from '../../utilities/learnCard/formatLearnCardText';
 import { obtainAudiosToPlay } from '../../utilities/learnCard/obtainAudiosToPlay';
+//import { checkWord } from '../../utilities/learnCard/checkWord';
 import './LearnCard.scss';
 
 export const LearnCard = ({
   learnCardData,
   learnCardSettingsData,
-  isWordSubmitted,
-  onAudiosEnd,
+  isCheckButtonClicked,
+  handleCheckButtonClick,
 }) => {
-  const [inputWord, setInputWord] = useState('');
   const [learnCardFormatted, setLearnCardFormatted] = useState(null);
   const [audiosToPlay, setAudiosToPlay] = useState([]);
   const [currentAudio, setCurrentAudio] = useState(null);
+  const [isWordSubmitted, setIsWordSubmitted] = useState(false);
   const learnCardSettings = learnCardSettingsData.learnCardSettings;
 
-  const onAudioEndHandler = () => {
+  const handleAudioEnd = () => {
     const currentAudioIndex = audiosToPlay.indexOf(currentAudio);
     if (currentAudioIndex === audiosToPlay.length - 1) {
-      onAudiosEnd();
+      setIsWordSubmitted(!isWordSubmitted);
+      if (isCheckButtonClicked) {
+        handleCheckButtonClick();
+      }
     } else {
       setCurrentAudio(audiosToPlay[currentAudioIndex + 1]);
     }
+  };
+
+  const handleEnterPress = (event) => {
+    if (event.key === 'Enter') setIsWordSubmitted(!isWordSubmitted);
   };
 
   useEffect(() => {
@@ -34,8 +49,16 @@ export const LearnCard = ({
   }, [learnCardData]);
 
   useEffect(() => {
+    if (isCheckButtonClicked) {
+      setIsWordSubmitted(!isWordSubmitted);
+    }
+  }, [isCheckButtonClicked]);
+
+  useEffect(() => {
     if (isWordSubmitted) {
       setCurrentAudio(audiosToPlay[0]);
+      /* const wordCheck = checkWord(inputWord, learnCardFormatted.word);
+      console.log(wordCheck); */
     }
   }, [isWordSubmitted]);
 
@@ -43,71 +66,47 @@ export const LearnCard = ({
   return (
     learnCardFormatted && (
       <>
-        <div className="card m-3" style={{ maxWidth: '540px' }}>
+        <div
+          className="card m-3"
+          style={{ maxWidth: '540px' }}
+          onKeyPress={handleEnterPress}
+        >
           <div className="row no-gutters">
             <div className="col-md-12">
               <div className="card-body">
-                {learnCardSettings.isImageOn && (
-                  <img
-                    src={`https://raw.githubusercontent.com/veronika-martinovich/rslang-data/master/${learnCardFormatted.image}`}
-                    className="card-img h-100 ml-2 mb-4"
-                    alt="Word association"
-                  />
-                )}
-                <p className="card-text">
-                  <input
-                    className="form-control m-auto"
-                    type="text"
-                    style={{
-                      width: `calc(4px + 12.5px * ${learnCardFormatted.word.length})`,
-                    }}
-                    autoFocus
-                    value={inputWord}
-                    onChange={(event) => setInputWord(event.target.value)}
-                  />
-                </p>
-                {learnCardSettings.isTranscriptionOn && (
-                  <p className="card-text">
-                    {learnCardFormatted.transcription}
-                  </p>
-                )}
-                {learnCardSettings.isTranslationOn && isWordSubmitted && (
-                  <p className="card-text">
-                    {learnCardFormatted.wordTranslate}
-                  </p>
-                )}
-                {learnCardSettings.isExampleOn && (
-                  <p className="card-text">{learnCardFormatted.textExample}</p>
-                )}
-                {learnCardSettings.isExampleOn &&
-                  learnCardSettings.isTranslationOn &&
-                  isWordSubmitted && (
-                    <p className="card-text">
-                      {learnCardFormatted.textExampleTranslate}
-                    </p>
-                  )}
-                {learnCardSettings.isMeaningOn && (
-                  <p className="card-text">{learnCardFormatted.textMeaning}</p>
-                )}
-                {learnCardSettings.isMeaningOn &&
-                  learnCardSettings.isTranslationOn &&
-                  isWordSubmitted && (
-                    <p className="card-text">
-                      {learnCardFormatted.textMeaningTranslate}
-                    </p>
-                  )}
+                <LearnCardImg
+                  isImageOn={learnCardSettings.isImageOn}
+                  imageSrc={learnCardFormatted.image}
+                />
+                <LearnCardInput wordLength={learnCardFormatted.word.length} />
+                <LearnCardTranscription
+                  isTranscriptionOn={learnCardSettings.isTranscriptionOn}
+                  transcription={learnCardFormatted.transcription}
+                />
+                <LearnCardTranslation
+                  isTranslationOn={learnCardSettings.isTranslationOn}
+                  translation={learnCardFormatted.wordTranslate}
+                  isWordSubmitted={isWordSubmitted}
+                />
+                <LearnCardExample
+                  isExampleOn={learnCardSettings.isExampleOn}
+                  isTranslationOn={learnCardSettings.isTranslationOn}
+                  example={learnCardFormatted.textExample}
+                  exampleTranslation={learnCardFormatted.textExampleTranslate}
+                  isWordSubmitted={isWordSubmitted}
+                />
+                <LearnCardMeaning
+                  isMeaningOn={learnCardSettings.isMeaningOn}
+                  isTranslationOn={learnCardSettings.isTranslationOn}
+                  meaning={learnCardFormatted.textMeaning}
+                  meaningTranslation={learnCardFormatted.textMeaningTranslate}
+                  isWordSubmitted={isWordSubmitted}
+                />
               </div>
             </div>
           </div>
         </div>
-        <audio
-          autoPlay
-          src={
-            currentAudio &&
-            `https://raw.githubusercontent.com/veronika-martinovich/rslang-data/master/${currentAudio}`
-          }
-          onEnded={onAudioEndHandler}
-        />
+        <LearnCardAudio currentAudio={currentAudio} onEnded={handleAudioEnd} />
       </>
     )
   );

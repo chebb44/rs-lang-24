@@ -7,23 +7,23 @@ import { CheckWordButton } from '../../components/CheckWordButton/CheckWordButto
 import './LearnPage.scss';
 
 export const LearnPage = () => {
-  const [isWordSubmitted, setIsWordSubmitted] = useState(false);
+  const [isCheckButtonClicked, setIsCheckButtonClicked] = useState(false);
   const learnCard = useSelector(learnCardSelector);
   const { learnCardSettings } = useSelector(learnSettingsSelector);
 
-  const wordSubmissionHandler = useCallback(() => {
-    setIsWordSubmitted(!isWordSubmitted);
-  }, [isWordSubmitted]);
+  const handleCheckButtonClick = () => {
+    setIsCheckButtonClicked(!isCheckButtonClicked);
+  };
 
   return (
     <div className="learn-page">
       <LearnCard
         learnCardData={learnCard}
         learnCardSettingsData={learnCardSettings}
-        isWordSubmitted={isWordSubmitted}
-        onAudiosEnd={wordSubmissionHandler}
+        isCheckButtonClicked={isCheckButtonClicked}
+        handleCheckButtonClick={handleCheckButtonClick}
       />
-      <CheckWordButton onCheckButtonClick={wordSubmissionHandler} />
+      <CheckWordButton onCheckButtonClick={handleCheckButtonClick} />
     </div>
   );
 };
