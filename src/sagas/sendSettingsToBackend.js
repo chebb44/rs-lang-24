@@ -4,8 +4,15 @@ import { putUserSettings } from '../utilities/network/settingsAPI';
 
 export function* sendSettingsToBackendWorker() {
   const state = store.getState();
-  const settings = state.settingsState;
-  delete settings.id;
+  const { wordsPerDay, learnCardSettings } = state.learnSettings;
+  const optional = {
+    learnCardSettings: JSON.stringify(learnCardSettings),
+  };
+  const complexSettings = {
+    wordsPerDay,
+    optional,
+  };
+
   const { id: userId, token } = state.currentUser;
-  yield call(putUserSettings, { userId, token, data: settings });
+  yield call(putUserSettings, { userId, token, data: complexSettings });
 }

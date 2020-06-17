@@ -6,5 +6,5 @@ import { actionSetInitDone } from '../reducers/appState/appStateActions';
 export function* initAppWorker() {
   yield initSettingsSaga();
   yield initStatisticSaga();
-  yield put(actionSetInitDone());
+  yield put(actionSetInitDone(true));
 }
