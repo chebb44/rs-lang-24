@@ -10,6 +10,7 @@ import './App.scss';
 import { appStateSelector } from './../reducers/appState/appStateReducer';
 import { routes } from './constants/routes';
 import { actionInitApp } from '../store/actionsForSaga';
+import { Page404 } from '../pages/Page404/Page404';
 
 export const App = () => {
   let { path } = useRouteMatch();
@@ -33,7 +34,7 @@ export const App = () => {
                 <h1>Main Page</h1>
               </Route>
               <Route path="/">
-                <h3>Page not found</h3>
+                <Page404 />
               </Route>
             </Switch>
           </div>
