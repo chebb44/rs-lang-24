@@ -10,6 +10,7 @@ import './App.scss';
 import { appStateSelector } from './../reducers/appState/appStateReducer';
 import { routes } from './constants/routes';
 import { actionInitApp } from '../store/actionsForSaga';
+import { CSSTransition } from 'react-transition-group';
 
 export const App = () => {
   let { path } = useRouteMatch();
@@ -23,7 +24,9 @@ export const App = () => {
     <div className="app-container">
       <PageHeader />
       <div className="main-container d-flex">
-        {isSideBarShow && <PageSideBar />}
+        <CSSTransition in={isSideBarShow} timeout={300} classNames="slide-left">
+          <PageSideBar />
+        </CSSTransition>
         {initDone ? (
           <div className="content-wrap flex-grow-1">
             <Switch>

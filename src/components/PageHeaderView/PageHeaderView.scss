@@ -22,6 +22,7 @@
 }
 
 .app-header {
+  user-select: none;
   background-color: $default-color;
   color: $neutral-inactive;
   -webkit-box-shadow: 0px 0px 25px 6px rgba(85, 91, 110, 0.38);
@@ -43,5 +44,5 @@
 }
 .rotate-burger {
   transform: rotate(90deg);
-  transition-duration: 500ms;
+  transition-duration: 300ms;
 }
