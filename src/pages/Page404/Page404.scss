@@ -1,0 +1,54 @@
+@import "src/scss/vars";
+
+.page {
+  position: relative;
+  max-width: 1140px;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  overflow: hidden;
+  flex-wrap: wrap;
+
+  &-wrapper {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 95%;
+
+    &__text {
+      margin: 5px;
+      max-width: 400px;
+      min-width: 310px;
+      color: $neutral-inactive;
+      z-index: -5;
+    }
+
+    &__icons {
+      position: relative;
+      min-width: 200px;
+      display: block;
+      z-index: -10;
+      &-four {
+        width: 65px;
+      }
+      &-zero {
+        width: 65px;
+      }
+    }
+  }
+  &__london-image {
+    width: 100%;
+    z-index: -15;
+  }
+}
+
+svg {
+  position: absolute;
+  width: 230px;
+  left: -143px;
+  top: 126px;
+  z-index: -10;
+  fill: #FFD6BA;
+  transform: scale(1.7, 1.5) translate(85px, -133px);
+}
