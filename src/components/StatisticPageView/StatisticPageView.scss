@@ -1,3 +1,29 @@
-.statistic-wrapper {
-  height: 100%;
+@import "src/scss/vars";
+
+.statistic {
+  &-today {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 45%;
+    margin: 10px auto;
+    background-color: $default-color;
+    border: 1px solid $neutral-active;
+    border-radius: 10px;
+    box-shadow: 0 0 0.125rem 0 rgba(143,115,96,.12), 0 0.125rem 0.25rem 0 rgba(143,115,96,.12);
+    &__title {
+      width: 100%;
+      text-align: left;
+      margin: 10px 0 10px 20px;
+      color: $neutral-active;
+    }
+  }
+  &-full {
+    margin: 10px auto;
+    width: 45%;
+    border: 1px solid $neutral-active;
+    background-color: $default-color;
+    border-radius: 10px;
+    box-shadow: 0 0 0.125rem 0 rgba(143,115,96,.12), 0 0.125rem 0.25rem 0 rgba(143,115,96,.12);
+  }
 }
