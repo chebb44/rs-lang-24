@@ -1,30 +1,43 @@
 @import "../../scss/vars.scss";
 
+.arrow-wrapper {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .arrow-icon {
   width: 40px;
   height: 40px;
   border: 5px solid transparent;
-  border-radius: 3px;
+  border-radius: 2px;
   transform: rotate(45deg);
+  transition: all 0.3s ease;
   cursor: pointer;
+
+  &:hover {
+    transform: rotate(45deg) scale(1.2);
+  }
 }
 
 .arrow-icon_previous {
+  border-bottom-color: $primary-darker-color;
+  border-left-color: $primary-darker-color;
+}
+
+.arrow-icon_disabled-previous {
   border-bottom-color: $primary-color;
   border-left-color: $primary-color;
-
-  &:hover {
-    border-bottom-color: $primary-darker-color;
-    border-left-color: $primary-darker-color;
-  }
 }
 
 .arrow-icon_next {
+  border-top-color: $primary-darker-color;
+  border-right-color: $primary-darker-color;
+}
+
+.arrow-icon_disabled-next {
   border-top-color: $primary-color;
   border-right-color: $primary-color;
-
-  &:hover {
-    border-top-color: $primary-darker-color;
-    border-right-color: $primary-darker-color;
-  }
 }

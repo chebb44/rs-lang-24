@@ -11,7 +11,7 @@ import { obtainAudiosToPlay } from '../../utilities/learnCard/obtainAudiosToPlay
 import './LearnCard.scss';
 
 export const LearnCard = ({
-  learnCardData,
+  learnCard,
   learnCardSettingsData,
   isCheckButtonClicked,
   handleCheckButtonClick,
@@ -39,13 +39,10 @@ export const LearnCard = ({
   };
 
   useEffect(() => {
-    setLearnCardFormatted(formatLearnCardText(learnCardData.learnCard));
-    const audiosToPlay = obtainAudiosToPlay(
-      learnCardData.learnCard,
-      learnCardSettings,
-    );
+    setLearnCardFormatted(formatLearnCardText(learnCard));
+    const audiosToPlay = obtainAudiosToPlay(learnCard, learnCardSettings);
     setAudiosToPlay(audiosToPlay);
-  }, [learnCardData, learnCardSettings]);
+  }, [learnCard, learnCardSettings]);
 
   const changeIsWordSubmitted = () => {
     if (isCheckButtonClicked) {

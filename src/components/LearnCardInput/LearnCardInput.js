@@ -24,7 +24,7 @@ export const LearnCardInput = ({ word, isWordSubmitted }) => {
         className="form-control m-auto entered-word"
         type="text"
         style={{
-          width: `calc(4px + 12.5px * ${word.length})`,
+          width: `calc(4px + 12px * ${word.length})`,
           display: `${isCheckedWordShown ? 'none' : 'inline'}`,
         }}
         autoFocus
