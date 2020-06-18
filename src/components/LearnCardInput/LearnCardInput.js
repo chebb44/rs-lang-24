@@ -6,11 +6,13 @@ export const LearnCardInput = ({ word, isWordSubmitted }) => {
   const [inputWord, setInputWord] = useState('');
   const [isCheckedWordShown, setIsCheckedWordShown] = useState(false);
 
-  useEffect(() => {
+  const changeIsCheckWordShown = () => {
     if (isWordSubmitted) {
       setIsCheckedWordShown(!isCheckedWordShown);
     }
-  }, [isWordSubmitted]);
+  };
+
+  useEffect(changeIsCheckWordShown, [isWordSubmitted]);
 
   const handleCheckedWordClick = () => {
     setIsCheckedWordShown(!isCheckedWordShown);
