@@ -16,6 +16,8 @@ const defaultData = {
 };
 
 export const learnSettingsSelector = (state) => state.learnSettings;
+export const learnCardSettingsSelector = (state) =>
+  state.learnSettings.learnCardSettings;
 
 export const learnSettings = (state = defaultData, action) => {
   switch (action.type) {
