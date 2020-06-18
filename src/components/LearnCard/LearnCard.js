@@ -8,6 +8,7 @@ import { LearnCardMeaning } from '../LearnCardMeaning/LearnCardMeaning';
 import { LearnCardAudio } from '../LearnCardAudio/LearnCardAudio';
 import { formatLearnCardText } from '../../utilities/learnCard/formatLearnCardText';
 import { obtainAudiosToPlay } from '../../utilities/learnCard/obtainAudiosToPlay';
+import './LearnCard.scss';
 
 export const LearnCard = ({
   learnCardData,
@@ -63,7 +64,7 @@ export const LearnCard = ({
     learnCardFormatted && (
       <>
         <div
-          className="card m-3"
+          className="card m-3 learn-card"
           style={{ maxWidth: '540px' }}
           onKeyPress={handleEnterPress}
         >
