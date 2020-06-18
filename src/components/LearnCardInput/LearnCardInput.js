@@ -14,7 +14,7 @@ export const LearnCardInput = ({ word, isWordSubmitted }) => {
 
   const handleCheckedWordClick = () => {
     setIsCheckedWordShown(!isCheckedWordShown);
-  }
+  };
 
   return (
     <p className="card-text">
