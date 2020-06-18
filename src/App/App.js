@@ -6,6 +6,7 @@ import { currentUserSelector } from './../reducers/currentUser/currentUserReduce
 import { PageHeader } from './PageHeader';
 import { PageSideBar } from './PageSidebar';
 import { LearnPage } from '../pages/LearnPage/LearnPage';
+import { Page404 } from '../pages/Page404/Page404';
 import './App.scss';
 import { appStateSelector } from './../reducers/appState/appStateReducer';
 import { routes } from './constants/routes';
@@ -49,7 +50,7 @@ export const App = () => {
                 <h1>Main Page</h1>
               </Route>
               <Route path="/">
-                <h3>Page not found</h3>
+                <Page404 />
               </Route>
             </Switch>
           </div>
