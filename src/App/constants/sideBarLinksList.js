@@ -17,7 +17,7 @@ export const sideBarLinksList = [
     head: 'Словарь',
     headLink: null,
     items: [
-      { name: 'Изучаемые', link: routes.dictionaryLearn },
+      { name: 'Изученные', link: routes.dictionaryLearn },
       { name: 'Сложные', link: routes.dictionaryHard },
       { name: 'Удаленные', link: routes.dictionaryDeleted },
     ],
