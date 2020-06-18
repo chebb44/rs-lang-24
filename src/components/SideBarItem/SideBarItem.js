@@ -7,10 +7,10 @@ import { SidebarItemLinks } from '../SidebarItemLinks/SidebarItemLinks';
 export const SideBarItem = ({ item }) => {
   const { head, headLink, items } = item;
   return (
-    <li className="">
+    <li className="sidebar-parts">
       {headLink ? (
         <Link to={headLink}>
-          <span className="part-header">{head}</span>
+          <button className="btn part-header-btn">{head}</button>
         </Link>
       ) : (
         <span className="part-header">{head}</span>

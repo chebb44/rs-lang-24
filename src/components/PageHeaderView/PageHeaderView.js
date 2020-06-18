@@ -14,14 +14,14 @@ export const PageHeaderView = ({
     'rotate-burger': isSidebarShow,
   });
   return (
-    <header className="d-flex justify-content-between align-items-center bg-primary text-white p-3">
+    <header className="app-header d-flex justify-content-between align-items-center p-3">
       <div className="d-flex justify-content-between align-items-center">
         <div className={burgerStyles} onClick={burgerClickHandler}></div>
         <Link to={logoLink}>
-          <span className="navbar-brand text-white">RS Lang</span>
+          <h2 className="header-logo">RS Lang</h2>
         </Link>
       </div>
-      <button className="btn btn-secondary" onClick={logOut}>
+      <button className="btn button__log-out" onClick={logOut}>
         Log Out
       </button>
     </header>

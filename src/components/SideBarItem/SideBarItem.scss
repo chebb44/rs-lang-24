@@ -1,0 +1,25 @@
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+
+.sidebar-parts {
+  box-sizing: border-box;
+  width: 75%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  }
+}
+.part-header {
+  font-size: 1.2rem;
+}
+.part-header-btn {
+  @include std_button;
+  font-size: 1.2rem;
+  margin: 2px;
+  border-radius: 10px;
+  transition: all 400ms ease-in-out;
+  &:hover {
+    background-color: $primary-color;
+  }
+}

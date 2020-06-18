@@ -1,0 +1,21 @@
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+
+.sidebar-sub-list-link {
+  padding: 5px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sub-links-btn {
+  @include std_button;
+  margin: 2px;
+  border-radius: 10px;
+  transition: all 400ms ease-in-out;
+  &:hover {
+    background-color: $primary-color;
+  }
+}

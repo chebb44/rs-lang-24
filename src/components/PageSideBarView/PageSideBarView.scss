@@ -1,39 +1,52 @@
-.app-sidebar{
-  width: 320px;
-  position: relative;
+@import 'src/scss/vars';
+
+.app-sidebar {
+  user-select: none;
+  box-sizing: border-box;
+  width: 220px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  height: 600px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: $default-color;
+  color: $neutral-inactive;
+  -webkit-box-shadow: 0px 0px 25px 6px rgba(85,91,110,0.38);
+  -moz-box-shadow: 0px 0px 25px 6px rgba(85,91,110,0.38);
+  box-shadow: 0px 0px 25px 6px rgba(85,91,110,0.38);
+  border-radius: 0 25px 25px 0;
+}
+.sidebar-link-list {
+  padding: 5px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  margin-bottom: 0;
 }
 
-
-
-
-/* appear - on page load */
-.fade-appear {
-  opacity: 0;
-  z-index: 1;
+/* enter */
+.slide-left-enter {
+  left: -220px;
+z-index: 1;
 }
-.fade-appear.fade-appear-active {
-opacity: 1;
-transition: opacity 1000ms linear;
+.slide-left-enter.slide-left-enter-active {
+  left: 0px;
+  transition: all 300ms ease-out;
 }
 
-// /* enter */
-// .fade-enter {
-// opacity: 0;
-// z-index: 1;
-// }
-// .fade-enter.fade-enter-active {
-//   opacity: 1;
-//   transition: opacity 500ms linear 500ms;
-// }
-
-// /* exit */
-// .fade-exit {
-//   opacity: 1;
-// }
-// .fade-exit.fade-exit-active {
-//   opacity: 0;
-//   transition: opacity 500ms linear;
-// }
-// .fade-exit-done {
-// opacity: 0;
-// }
+/* exit */
+.slide-left-exit {
+  left: 0px;
+}
+.slide-left-exit.slide-left-exit-active {
+  left: -220px;
+  transition: all 300ms ease-out;
+}
+.slide-left-exit-done {
+  left: -220px;
+}
