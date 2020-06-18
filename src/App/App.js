@@ -11,15 +11,36 @@ import { appStateSelector } from './../reducers/appState/appStateReducer';
 import { routes } from './constants/routes';
 import { actionInitApp } from '../store/actionsForSaga';
 import { CSSTransition } from 'react-transition-group';
+// import {
+//   getAllUserWords,
+//   getWordById,
+//   updateUserWord,
+//   getWordsByPageAndGroup,
+// } from '../utilities/network/wordsAPI';
+// import {
+//   createUserWord,
+//   getUserWordById,
+//   deleteUserWord,
+// } from './../utilities/network/wordsAPI';
+// import { HARD_WORD } from '../sagas/constants';
+// import { LEARNED_WORD, DELETED_WORD } from './../sagas/constants';
 
 export const App = () => {
   let { path } = useRouteMatch();
-  const { token } = useSelector(currentUserSelector);
+  const { token, id: userId } = useSelector(currentUserSelector);
   const { isSideBarShow, initDone } = useSelector(appStateSelector);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(actionInitApp());
-  }, [dispatch]);
+    // dispatch(
+    //   actionMarkWord({
+    //     wordId: '5e9f5ee35eb9e72bc21af97d',
+    //     wordType: DELETED_WORD,
+    //   }),
+    // );
+    // getWordsByPageAndGroup({ page: 2, group: 2 });
+    // getAllUserWords({ userId, token });
+  }, [dispatch, token, userId]);
   return token ? (
     <div className="app-container">
       <PageHeader />

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './LoginForm.scss';
 
 export const LoginForm = function ({ onSignIn, onSignUp }) {
-  const [inputEmail, setInputEmail] = useState('hello@user.com');
+  const [inputEmail, setInputEmail] = useState('qqhello@user.com');
   const [inputPass, setInputPass] = useState('Gfhjkm_123');
 
   return (
