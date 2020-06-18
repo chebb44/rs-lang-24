@@ -7,6 +7,7 @@ import { PageHeader } from './PageHeader';
 import { PageSideBar } from './PageSidebar';
 import { LearnPage } from '../pages/LearnPage/LearnPage';
 import { Page404 } from '../pages/Page404/Page404';
+import { StatisticPage } from '../pages/StatisticPage/StatisticPage';
 import './App.scss';
 import { appStateSelector } from './../reducers/appState/appStateReducer';
 import { routes } from './constants/routes';
@@ -46,6 +47,7 @@ export const App = () => {
             <Switch>
               <Route path={routes.learn} component={LearnPage} />
               <Route path={routes.dictionary} component={DictionaryPage} />
+              <Route path={routes.stats} component={StatisticPage} />
               <Route exact path={path}>
                 <h1>Main Page</h1>
               </Route>
