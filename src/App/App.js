@@ -40,7 +40,12 @@ export const App = () => {
     <div className="app-container">
       <PageHeader />
       <div className="main-container d-flex">
-        <CSSTransition in={isSideBarShow} timeout={300} classNames="slide-left">
+        <CSSTransition
+          unmountOnExit={true}
+          in={isSideBarShow}
+          timeout={300}
+          classNames="slide-left"
+        >
           <PageSideBar />
         </CSSTransition>
         {initDone ? (
