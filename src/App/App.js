@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Switch, Route, useRouteMatch, Redirect } from 'react-router-dom';
 import { DictionaryPage } from './../pages/DictionaryPage/DictionaryPage';
 import { useSelector, useDispatch } from 'react-redux';
@@ -32,14 +32,6 @@ export const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(actionInitApp());
-    // dispatch(
-    //   actionMarkWord({
-    //     wordId: '5e9f5ee35eb9e72bc21af97d',
-    //     wordType: DELETED_WORD,
-    //   }),
-    // );
-    // getWordsByPageAndGroup({ page: 2, group: 2 });
-    // getAllUserWords({ userId, token });
   }, [dispatch, token, userId]);
   return token ? (
     <div className="app-container">
@@ -52,7 +44,7 @@ export const App = () => {
           <div className="content-wrap flex-grow-1">
             <Switch>
               <Route path={routes.learn} component={LearnPage} />
-              <Route path={`${path}dictionary`} component={DictionaryPage} />
+              <Route path={routes.dictionary} component={DictionaryPage} />
               <Route exact path={path}>
                 <h1>Main Page</h1>
               </Route>
