@@ -1,7 +1,7 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { learnCardSelector } from './../../reducers/learnCard/learnCardReducer';
-import { learnSettingsSelector } from '../../reducers/learnSettings/learnSettingsReducer';
+import { learnCardSettingsSelector } from '../../reducers/learnSettings/learnSettingsReducer';
 import { LearnCard } from '../../components/LearnCard/LearnCard';
 import { CheckWordButton } from '../../components/CheckWordButton/CheckWordButton';
 import './LearnPage.scss';
@@ -9,7 +9,7 @@ import './LearnPage.scss';
 export const LearnPage = () => {
   const [isCheckButtonClicked, setIsCheckButtonClicked] = useState(false);
   const learnCard = useSelector(learnCardSelector);
-  const { learnCardSettings } = useSelector(learnSettingsSelector);
+  const learnCardSettings = useSelector(learnCardSettingsSelector);
 
   const handleCheckButtonClick = () => {
     setIsCheckButtonClicked(!isCheckButtonClicked);

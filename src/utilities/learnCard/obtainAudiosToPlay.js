@@ -1,5 +1,4 @@
 export const obtainAudiosToPlay = (card, settings) => {
-  console.log(card, settings);
   const audios = [];
   audios.push(card.audio);
   if (settings.isExampleOn) {

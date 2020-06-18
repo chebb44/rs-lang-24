@@ -8,7 +8,6 @@ import { LearnCardMeaning } from '../LearnCardMeaning/LearnCardMeaning';
 import { LearnCardAudio } from '../LearnCardAudio/LearnCardAudio';
 import { formatLearnCardText } from '../../utilities/learnCard/formatLearnCardText';
 import { obtainAudiosToPlay } from '../../utilities/learnCard/obtainAudiosToPlay';
-//import { checkWord } from '../../utilities/learnCard/checkWord';
 import './LearnCard.scss';
 
 export const LearnCard = ({
@@ -21,7 +20,7 @@ export const LearnCard = ({
   const [audiosToPlay, setAudiosToPlay] = useState([]);
   const [currentAudio, setCurrentAudio] = useState(null);
   const [isWordSubmitted, setIsWordSubmitted] = useState(false);
-  const learnCardSettings = learnCardSettingsData.learnCardSettings;
+  const learnCardSettings = learnCardSettingsData;
 
   const handleAudioEnd = () => {
     const currentAudioIndex = audiosToPlay.indexOf(currentAudio);
@@ -43,10 +42,10 @@ export const LearnCard = ({
     setLearnCardFormatted(formatLearnCardText(learnCardData.learnCard));
     const audiosToPlay = obtainAudiosToPlay(
       learnCardData.learnCard,
-      learnCardSettingsData.learnCardSettings,
+      learnCardSettings,
     );
     setAudiosToPlay(audiosToPlay);
-  }, [learnCardData]);
+  }, [learnCardData, learnCardSettings]);
 
   useEffect(() => {
     if (isCheckButtonClicked) {
@@ -57,8 +56,6 @@ export const LearnCard = ({
   useEffect(() => {
     if (isWordSubmitted) {
       setCurrentAudio(audiosToPlay[0]);
-      /* const wordCheck = checkWord(inputWord, learnCardFormatted.word);
-      console.log(wordCheck); */
     }
   }, [isWordSubmitted]);
 
