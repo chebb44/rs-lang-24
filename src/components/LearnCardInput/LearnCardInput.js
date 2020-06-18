@@ -1,18 +1,26 @@
 import React, { useState, useEffect } from 'react';
+import { usePrevious } from '../../hooks/usePrevious';
 import { createCheckedWordMarkup } from '../../utilities/learnCard/createCheckedWordMarkup';
 import './LearnCardInput.scss';
 
 export const LearnCardInput = ({ word, isWordSubmitted }) => {
   const [inputWord, setInputWord] = useState('');
   const [isCheckedWordShown, setIsCheckedWordShown] = useState(false);
+  const prevWord = usePrevious(word);
 
   const changeIsCheckWordShown = () => {
     if (isWordSubmitted) {
       setIsCheckedWordShown(!isCheckedWordShown);
     }
   };
-
   useEffect(changeIsCheckWordShown, [isWordSubmitted]);
+
+  useEffect(() => {
+    if (prevWord !== word) {
+      setInputWord('');
+      setIsCheckedWordShown(false);
+    }
+  }, [prevWord, word]);
 
   const handleCheckedWordClick = () => {
     setIsCheckedWordShown(!isCheckedWordShown);

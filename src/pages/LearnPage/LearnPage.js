@@ -41,10 +41,7 @@ export const LearnPage = () => {
   return (
     <div className="learn-page">
       <div className="learn-page__flipping-container">
-        <LearnCardArrowPrevious
-          onPreviousArrowClick={handleArrowClick}
-          currentCardIndex={currentCardIndex}
-        />
+        <LearnCardArrowPrevious onPreviousArrowClick={handleArrowClick} />
         <LearnCard
           learnCard={learnCard}
           learnCardSettingsData={learnCardSettings}
