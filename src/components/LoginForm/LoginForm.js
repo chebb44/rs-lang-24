@@ -9,7 +9,7 @@ export const LoginForm = function ({ onSignIn, onSignUp }) {
     <div className="container sign-up-screen">
       <form className="" onSubmit={(e) => e.preventDefault()}>
         <div className="form-group">
-          <label htmlFor="inputEmail">Email address</label>
+          <label htmlFor="inputEmail">Эл. Почта</label>
           <input
             type="email"
             className="form-control"
@@ -22,7 +22,7 @@ export const LoginForm = function ({ onSignIn, onSignUp }) {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="inputPass">Password</label>
+          <label htmlFor="inputPass">Пароль</label>
           <input
             type="password"
             className="form-control"
@@ -39,14 +39,14 @@ export const LoginForm = function ({ onSignIn, onSignUp }) {
           className="btn button__sign-in"
           onClick={() => onSignIn({ email: inputEmail, password: inputPass })}
         >
-          Sign In
+          Войти
         </button>
         <button
           type="button"
           className="btn ml-2 button__sign-up"
           onClick={() => onSignUp({ email: inputEmail, password: inputPass })}
         >
-          Sign Up
+          Регистрация
         </button>
       </form>
     </div>
