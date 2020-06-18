@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route, useRouteMatch, Redirect } from 'react-router-dom';
 import { DictionaryPage } from './../pages/DictionaryPage/DictionaryPage';
 import { useSelector, useDispatch } from 'react-redux';
