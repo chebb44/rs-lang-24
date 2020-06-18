@@ -64,7 +64,7 @@ export const LearnCard = ({
     learnCardFormatted && (
       <>
         <div
-          className="card m-3"
+          className="card m-3 learn-card"
           style={{ maxWidth: '540px' }}
           onKeyPress={handleEnterPress}
         >
@@ -75,7 +75,10 @@ export const LearnCard = ({
                   isImageOn={learnCardSettings.isImageOn}
                   imageSrc={learnCardFormatted.image}
                 />
-                <LearnCardInput wordLength={learnCardFormatted.word.length} />
+                <LearnCardInput
+                  word={learnCardFormatted.word}
+                  isWordSubmitted={isWordSubmitted}
+                />
                 <LearnCardTranscription
                   isTranscriptionOn={learnCardSettings.isTranscriptionOn}
                   transcription={learnCardFormatted.transcription}

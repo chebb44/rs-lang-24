@@ -1,21 +1,5 @@
-.form-control {
-  height: 30px;
-  padding: 2px;
-  border-top: 0;
-  border-right: 0;
-  border-left: 0;
-  border-radius: 0;
-  font-size: 24px;
+@import "../../scss/vars.scss";
 
-  &:focus {
-    box-shadow: none;
-  }
-}
-
-.error-letter {
-  color: red;
-}
-
-.success-letter {
-  color: green;
+.learn-card {
+  box-shadow: $box-shadow;
 }
