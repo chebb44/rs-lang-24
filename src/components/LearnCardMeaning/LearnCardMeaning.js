@@ -7,9 +7,19 @@ export const LearnCardMeaning = ({
   meaningTranslation,
   isWordSubmitted,
 }) => {
+  const createMeaningMarkup = () => {
+    return {
+      __html: meaning,
+    };
+  };
   return (
     <>
-      {isMeaningOn && <p className="card-text">{meaning}</p>}
+      {isMeaningOn && (
+        <p
+          className="card-text"
+          dangerouslySetInnerHTML={createMeaningMarkup()}
+        ></p>
+      )}
       {isMeaningOn && isTranslationOn && isWordSubmitted && (
         <p className="card-text">{meaningTranslation}</p>
       )}

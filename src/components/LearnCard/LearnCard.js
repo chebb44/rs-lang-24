@@ -8,7 +8,6 @@ import { LearnCardMeaning } from '../LearnCardMeaning/LearnCardMeaning';
 import { LearnCardAudio } from '../LearnCardAudio/LearnCardAudio';
 import { formatLearnCardText } from '../../utilities/learnCard/formatLearnCardText';
 import { obtainAudiosToPlay } from '../../utilities/learnCard/obtainAudiosToPlay';
-import './LearnCard.scss';
 
 export const LearnCard = ({
   learnCardData,
@@ -75,7 +74,10 @@ export const LearnCard = ({
                   isImageOn={learnCardSettings.isImageOn}
                   imageSrc={learnCardFormatted.image}
                 />
-                <LearnCardInput wordLength={learnCardFormatted.word.length} />
+                <LearnCardInput
+                  word={learnCardFormatted.word}
+                  isWordSubmitted={isWordSubmitted}
+                />
                 <LearnCardTranscription
                   isTranscriptionOn={learnCardSettings.isTranscriptionOn}
                   transcription={learnCardFormatted.transcription}
