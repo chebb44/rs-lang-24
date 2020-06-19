@@ -10,6 +10,9 @@ import { LearnCard } from '../../components/LearnCard/LearnCard';
 import { LearnCardArrowNext } from '../../components/LearnCardArrows/LearnCardArrowNext';
 import { LearnCardArrowPrevious } from '../../components/LearnCardArrows/LearnCardArrowPrevious';
 import { CheckWordButton } from '../../components/CheckWordButton/CheckWordButton';
+import { ShowAnswerButton } from '../../components/ShowAnswerButton/ShowAnswerButton';
+import { DeleteWordButton } from '../../components/DeleteWordButton/DeleteWordButton';
+import { HardWordButton } from '../../components/HardWordButton/HardWordButton';
 import './LearnPage.scss';
 
 export const LearnPage = () => {
@@ -17,6 +20,9 @@ export const LearnPage = () => {
   const learnCardSettings = useSelector(learnCardSettingsSelector);
   const learnedWordsAmount = useSelector(learnedWordsAmountSelector);
   const [isCheckButtonClicked, setIsCheckButtonClicked] = useState(false);
+  const [isShowAnswerButtonClicked, setIsShowAnswerButtonClicked] = useState(
+    false,
+  );
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const learnCard = learnCards[currentCardIndex];
   const cardsSetLength = learnCards.length;
@@ -26,8 +32,23 @@ export const LearnPage = () => {
     setIsCheckButtonClicked(!isCheckButtonClicked);
   };
 
-  const handleWordCheck = (bool) => {
-    if (bool === true)
+  const handleShowAnswerButtonClick = () => {
+    setIsShowAnswerButtonClicked(!isShowAnswerButtonClicked);
+    /* dispatch(actionUpdateDictionaryLearnedWords(learnCard)); */
+    dispatch(actionUpdateLearnedWordsAmount(learnedWordsAmount + 1));
+  };
+
+  const handleDeleteButtonClick = () => {
+    /* dispatch(actionUpdateDictionaryDeletedWords(learnCard)); */
+  };
+
+  const handleHardButtonClick = () => {
+    /* dispatch(actionUpdateDictionaryHardWords(learnCard)); */
+  };
+
+  const handleWordCheck = (isWordCorrect) => {
+    if (isWordCorrect === true)
+      /* dispatch(actionUpdateDictionaryLearnedWords(learnCard)); */
       dispatch(actionUpdateLearnedWordsAmount(learnedWordsAmount + 1));
   };
 
@@ -39,6 +60,7 @@ export const LearnPage = () => {
       )
         return;
       setCurrentCardIndex(currentCardIndex + 1);
+      setIsShowAnswerButtonClicked(false);
     } else {
       if (currentCardIndex === 0) return;
       setCurrentCardIndex(currentCardIndex - 1);
@@ -56,6 +78,7 @@ export const LearnPage = () => {
           learnCard={learnCard}
           learnCardSettingsData={learnCardSettings}
           isCheckButtonClicked={isCheckButtonClicked}
+          isShowAnswerButtonClicked={isShowAnswerButtonClicked}
           handleCheckButtonClick={handleCheckButtonClick}
           handleWordCheck={handleWordCheck}
         />
@@ -66,7 +89,16 @@ export const LearnPage = () => {
           learnedWordsAmount={learnedWordsAmount}
         />
       </div>
-      <CheckWordButton onCheckButtonClick={handleCheckButtonClick} />
+      <div>
+        <CheckWordButton onCheckButtonClick={handleCheckButtonClick} />
+        <ShowAnswerButton
+          onShowAnswerButtonClick={handleShowAnswerButtonClick}
+        />
+      </div>
+      <div>
+        <DeleteWordButton onDeleteButtonClick={handleDeleteButtonClick} />
+        <HardWordButton onHardButtonClick={handleHardButtonClick} />
+      </div>
     </div>
   );
 };

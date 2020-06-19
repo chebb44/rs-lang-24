@@ -5,7 +5,7 @@ export const CheckWordButton = ({ onCheckButtonClick }) => {
   return (
     <button
       type="button"
-      className="btn ml-2 button_check"
+      className="btn ml-2 mb-2 button_check"
       onClick={() => onCheckButtonClick()}
     >
       Проверить

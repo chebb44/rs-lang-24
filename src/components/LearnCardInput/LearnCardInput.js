@@ -6,18 +6,19 @@ import './LearnCardInput.scss';
 export const LearnCardInput = ({
   originalWord,
   enteredWord,
-  isWordSubmitted,
+  isCheckButtonClicked,
+  isShowAnswerButtonClicked,
   onInputChange,
 }) => {
   const [isCheckedWordDisplayed, setIsCheckedWordDisplayed] = useState(false);
   const prevWord = usePrevious(originalWord);
 
   const changeIsCheckWordDisplayed = () => {
-    if (isWordSubmitted) {
+    if (isCheckButtonClicked) {
       setIsCheckedWordDisplayed(!isCheckedWordDisplayed);
     }
   };
-  useEffect(changeIsCheckWordDisplayed, [isWordSubmitted]);
+  useEffect(changeIsCheckWordDisplayed, [isCheckButtonClicked]);
 
   useEffect(() => {
     if (prevWord !== originalWord) {
@@ -40,7 +41,7 @@ export const LearnCardInput = ({
             width: `calc(4px + 12.5px * ${originalWord.length})`,
           }}
           autoFocus
-          value={enteredWord}
+          value={isShowAnswerButtonClicked ? originalWord : enteredWord}
           onChange={(event) => onInputChange(event.target.value)}
         />
       )}
