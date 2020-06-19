@@ -9,17 +9,18 @@ import { logOutWorker } from '../sagas/logoutSaga';
 import { sendSettingsToBackendWorker } from '../sagas/sendSettingsToBackend';
 import { sendStatisticToBackendWorker } from '../sagas/sendStatisticToBackend';
 import { SET_LEARNED_WORDS } from './../reducers/statisticReducer/statisticActions';
-import { INIT_APP, MARK_WORD } from './actionsForSaga';
+import { INIT_APP, MARK_WORD, INIT_CARD_SET } from './actionsForSaga';
 import { initAppWorker } from '../sagas/initAppSaga';
 import { SET_WORDS_PER_DAY } from '../reducers/learnSettings/learnSettingsActions';
 import { markWordsWorker } from '../sagas/markUserWords';
-
+import { initWordsForLearnWorker } from '../sagas/initWordsForLearnSaga';
 export function* sagaWatcher() {
   yield takeLatest(SIGN_UP_USER, signUpWorker);
   yield takeLatest(SIGN_IN_USER, signInWorker);
   yield takeEvery(LOG_OUT_USER, logOutWorker);
 
   yield takeLatest(INIT_APP, initAppWorker);
+  yield takeLatest(INIT_CARD_SET, initWordsForLearnWorker);
 
   yield takeLatest(SET_WORDS_PER_DAY, sendSettingsToBackendWorker);
 

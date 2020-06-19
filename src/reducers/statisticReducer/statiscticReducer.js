@@ -1,7 +1,7 @@
 import { SET_LEARNED_WORDS, SET_ALL_STATISTIC } from './statisticActions';
 
 const defaultSettings = {
-  learnedWords: 30,
+  learnedWords: 0,
   optional: {
     test: 'xxx',
     test2: 'yyy',

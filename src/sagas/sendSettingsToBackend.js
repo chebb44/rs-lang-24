@@ -12,7 +12,6 @@ export function* sendSettingsToBackendWorker() {
     wordsPerDay,
     optional,
   };
-
   const { id: userId, token } = state.currentUser;
   yield call(putUserSettings, { userId, token, data: complexSettings });
 }

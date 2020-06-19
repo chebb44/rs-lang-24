@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  currentLearnCardSelector,
-  cardsSetLengthSelector,
-} from '../../reducers/learnCards/learnCardsReducer';
+import { cardsSetLengthSelector } from '../../reducers/learnCards/learnCardsReducer';
 import { learnCardSettingsSelector } from '../../reducers/learnSettings/learnSettingsReducer';
-import { actionUpdateLearnCard } from '../../reducers/learnCards/learnCardsActions';
+// import { actionUpdateLearnCard } from '../../reducers/learnCards/learnCardsActions';
 import { LearnCard } from '../../components/LearnCard/LearnCard';
 import { LearnCardArrowNext } from '../../components/LearnCardArrows/LearnCardArrowNext';
 import { LearnCardArrowPrevious } from '../../components/LearnCardArrows/LearnCardArrowPrevious';
 import { CheckWordButton } from '../../components/CheckWordButton/CheckWordButton';
 import './LearnPage.scss';
+import { learnCardsSelector } from './../../reducers/learnCards/learnCardsReducer';
 
 export const LearnPage = () => {
   const [isCheckButtonClicked, setIsCheckButtonClicked] = useState(false);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
-  const learnCard = useSelector(currentLearnCardSelector);
+  const learnCards = useSelector(learnCardsSelector);
+  const learnCard = learnCards[0];
   const learnCardSettings = useSelector(learnCardSettingsSelector);
-  const cardsSetLength = useSelector(cardsSetLengthSelector);
+  const cardsSetLength = learnCards.length;
   const dispatch = useDispatch();
 
   const handleCheckButtonClick = () => {
@@ -34,9 +33,9 @@ export const LearnPage = () => {
     }
   };
 
-  useEffect(() => {
-    dispatch(actionUpdateLearnCard(currentCardIndex));
-  }, [dispatch, currentCardIndex]);
+  // useEffect(() => {
+  //   dispatch(actionUpdateLearnCard(currentCardIndex));
+  // }, [dispatch, currentCardIndex]);
 
   return (
     <div className="learn-page">

@@ -5,7 +5,6 @@ import {
 import { TOKEN, USER_ID } from '../../sagas/constants';
 
 const defaultData = {
-  mode: 'train',
   user: {
     email: '',
     password: '',

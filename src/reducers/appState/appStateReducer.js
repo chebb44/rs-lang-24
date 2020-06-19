@@ -5,18 +5,11 @@ import {
   SET_STATISTIC_MODAL,
   SET_MAX_CARDS_MODAL,
 } from './appStateActions';
-
-const defaultState = {
-  alertMessage: '',
-  isSideBarShow: true,
-  initDone: false,
-  visibleStatisticModal: false,
-  visibleMaxCardsModal: false,
-};
+import { defaultAppState } from '../../store/defaultAppSettings';
 
 export const appStateSelector = (state) => state.appState;
 
-export const appState = (state = defaultState, action) => {
+export const appState = (state = defaultAppState, action) => {
   switch (action.type) {
     case SET_ALERT_MESSAGE:
       return {
