@@ -18,17 +18,21 @@
 }
 .button__log-out {
   @include std_button;
-  background-color: $neutral-disabled;
+  background-color: $warning-color;
 }
 
 .app-header {
   user-select: none;
   background-color: $default-color;
   color: $neutral-inactive;
-  -webkit-box-shadow: 0px 0px 25px 6px rgba(85, 91, 110, 0.38);
-  -moz-box-shadow: 0px 0px 25px 6px rgba(85, 91, 110, 0.38);
-  box-shadow: 0px 0px 25px 6px rgba(85, 91, 110, 0.38);
+  -webkit-box-shadow: 0px 0px 5px 2px rgba(85, 91, 110, 0.38);
+  -moz-box-shadow: 0px 0px 5px 2px rgba(85, 91, 110, 0.38);
+  box-shadow: 0px 0px 5px 2px rgba(85, 91, 110, 0.38);
   border-radius: 0 0 10px 10px;
+  -webkit-border-radius: 0 0 10px 10px;
+  -moz-border-radius: 0 0 10px 10px;
+  -ms-border-radius: 0 0 10px 10px;
+  -o-border-radius: 0 0 10px 10px;
 }
 
 .app-burger {
