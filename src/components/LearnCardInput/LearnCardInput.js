@@ -27,26 +27,26 @@ export const LearnCardInput = ({ word, isWordSubmitted }) => {
   };
 
   return (
-    <p className="card-text">
-      <input
-        className="form-control m-auto entered-word"
-        type="text"
-        style={{
-          width: `calc(4px + 12px * ${word.length})`,
-          display: `${isCheckedWordShown ? 'none' : 'inline'}`,
-        }}
-        autoFocus
-        value={inputWord}
-        onChange={(event) => setInputWord(event.target.value)}
-      />
-      <p
-        className="checked-word"
-        style={{
-          display: `${isCheckedWordShown ? 'block' : 'none'}`,
-        }}
-        dangerouslySetInnerHTML={createCheckedWordMarkup(inputWord, word)}
-        onClick={handleCheckedWordClick}
-      ></p>
-    </p>
+    <div className="card-text">
+      {!isCheckedWordShown && (
+        <input
+          className="form-control m-auto entered-word"
+          type="text"
+          style={{
+            width: `calc(4px + 12px * ${word.length})`,
+          }}
+          autoFocus
+          value={inputWord}
+          onChange={(event) => setInputWord(event.target.value)}
+        />
+      )}
+      {isCheckedWordShown && (
+        <p
+          className="checked-word"
+          dangerouslySetInnerHTML={createCheckedWordMarkup(inputWord, word)}
+          onClick={handleCheckedWordClick}
+        ></p>
+      )}
+    </div>
   );
 };

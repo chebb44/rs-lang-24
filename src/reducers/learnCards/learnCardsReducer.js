@@ -70,7 +70,7 @@ const defaultData = {
   ],
 };
 
-export const learnCardsSelector = (state) => state.learnCards;
+export const learnCardsSelector = (state) => state.learnCards.cards;
 
 export const learnCards = (state = defaultData, action) => {
   switch (action.type) {

@@ -1,23 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { cardsSetLengthSelector } from '../../reducers/learnCards/learnCardsReducer';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { learnCardsSelector } from '../../reducers/learnCards/learnCardsReducer';
 import { learnCardSettingsSelector } from '../../reducers/learnSettings/learnSettingsReducer';
-// import { actionUpdateLearnCard } from '../../reducers/learnCards/learnCardsActions';
 import { LearnCard } from '../../components/LearnCard/LearnCard';
 import { LearnCardArrowNext } from '../../components/LearnCardArrows/LearnCardArrowNext';
 import { LearnCardArrowPrevious } from '../../components/LearnCardArrows/LearnCardArrowPrevious';
 import { CheckWordButton } from '../../components/CheckWordButton/CheckWordButton';
 import './LearnPage.scss';
-import { learnCardsSelector } from './../../reducers/learnCards/learnCardsReducer';
 
 export const LearnPage = () => {
+  const learnCards = useSelector(learnCardsSelector);
+  const learnCardSettings = useSelector(learnCardSettingsSelector);
   const [isCheckButtonClicked, setIsCheckButtonClicked] = useState(false);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
-  const learnCards = useSelector(learnCardsSelector);
-  const learnCard = learnCards[0];
-  const learnCardSettings = useSelector(learnCardSettingsSelector);
+  const learnCard = learnCards[currentCardIndex];
   const cardsSetLength = learnCards.length;
-  const dispatch = useDispatch();
 
   const handleCheckButtonClick = () => {
     setIsCheckButtonClicked(!isCheckButtonClicked);
@@ -33,14 +30,13 @@ export const LearnPage = () => {
     }
   };
 
-  // useEffect(() => {
-  //   dispatch(actionUpdateLearnCard(currentCardIndex));
-  // }, [dispatch, currentCardIndex]);
-
   return (
     <div className="learn-page">
       <div className="learn-page__flipping-container">
-        <LearnCardArrowPrevious onPreviousArrowClick={handleArrowClick} />
+        <LearnCardArrowPrevious
+          onPreviousArrowClick={handleArrowClick}
+          currentCardIndex={currentCardIndex}
+        />
         <LearnCard
           learnCard={learnCard}
           learnCardSettingsData={learnCardSettings}
