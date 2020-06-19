@@ -1,7 +1,7 @@
-import { UPDATE_CURRENT_LEARN_CARD } from './learnCardsActions';
+import { SET_LEARN_CARDS, ADD_LEARN_CARDS } from './learnCardsActions';
 
 const defaultData = {
-  learnCardsSet: [
+  cards: [
     {
       id: '5e9f5ee35eb9e72bc21af4c8',
       group: 0,
@@ -68,36 +68,23 @@ const defaultData = {
       id: 3,
     },
   ],
-  currentLearnCard: {
-    id: '5e9f5ee35eb9e72bc21af4c8',
-    group: 0,
-    page: 2,
-    word: 'alien',
-    image: 'files/03_0041.jpg',
-    audio: 'files/03_0041.mp3',
-    audioMeaning: 'files/03_0041_meaning.mp3',
-    audioExample: 'files/03_0041_example.mp3',
-    textMeaning: 'An <i>alien</i> is a creature from a different world.',
-    textExample: 'The <b>alien</b> came in peace.',
-    transcription: '[éiljən]',
-    textExampleTranslate: 'пришелец пришел с миром',
-    textMeaningTranslate: 'Инопланетянин - это существо из другого мира',
-    wordTranslate: 'инопланетянин',
-    wordsPerExampleSentence: 5,
-  },
 };
 
-export const currentLearnCardSelector = (state) =>
-  state.learnCards.currentLearnCard;
-export const cardsSetLengthSelector = (state) =>
-  state.learnCards.learnCardsSet.length;
+export const learnCardsSelector = (state) => state.learnCards;
 
 export const learnCards = (state = defaultData, action) => {
   switch (action.type) {
-    case UPDATE_CURRENT_LEARN_CARD:
+    case SET_LEARN_CARDS:
       return {
         ...state,
-        currentLearnCard: state.learnCardsSet[action.index],
+        cards: action.cards,
+      };
+    case ADD_LEARN_CARDS:
+      const stateCards = state.cards.slice();
+      const newStateCards = [...stateCards, ...action.cards];
+      return {
+        ...state,
+        cards: newStateCards,
       };
     default:
       return state;
