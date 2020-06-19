@@ -1,16 +1,26 @@
 import React, { useState, useEffect } from 'react';
+import { usePrevious } from '../../hooks/usePrevious';
 import { createCheckedWordMarkup } from '../../utilities/learnCard/createCheckedWordMarkup';
 import './LearnCardInput.scss';
 
 export const LearnCardInput = ({ word, isWordSubmitted }) => {
   const [inputWord, setInputWord] = useState('');
   const [isCheckedWordShown, setIsCheckedWordShown] = useState(false);
+  const prevWord = usePrevious(word);
 
-  useEffect(() => {
+  const changeIsCheckWordShown = () => {
     if (isWordSubmitted) {
       setIsCheckedWordShown(!isCheckedWordShown);
     }
-  }, [isWordSubmitted]);
+  };
+  useEffect(changeIsCheckWordShown, [isWordSubmitted]);
+
+  useEffect(() => {
+    if (prevWord !== word) {
+      setInputWord('');
+      setIsCheckedWordShown(false);
+    }
+  }, [prevWord, word]);
 
   const handleCheckedWordClick = () => {
     setIsCheckedWordShown(!isCheckedWordShown);
@@ -22,7 +32,7 @@ export const LearnCardInput = ({ word, isWordSubmitted }) => {
         className="form-control m-auto entered-word"
         type="text"
         style={{
-          width: `calc(4px + 12.5px * ${word.length})`,
+          width: `calc(4px + 12px * ${word.length})`,
           display: `${isCheckedWordShown ? 'none' : 'inline'}`,
         }}
         autoFocus
