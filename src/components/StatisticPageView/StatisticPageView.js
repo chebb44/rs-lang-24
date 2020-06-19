@@ -1,6 +1,7 @@
 import React from 'react';
 import StatisticTextItem from '../StatisticTextItem/StatisticTextItem';
 import './StatisticPageView.scss';
+import london from './../../assets/img/england_PNG72.png';
 
 export const StatisticPageView = ({ statisticItemList }) => {
   return (
@@ -16,6 +17,11 @@ export const StatisticPageView = ({ statisticItemList }) => {
       <div className="statistic-full">
         <h5 className="statistic-today__title">За всё время</h5>
       </div>
+      <img
+        className="statistic-today__london-image"
+        src={london}
+        alt="london"
+      />
     </div>
   );
 };
