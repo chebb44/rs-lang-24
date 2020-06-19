@@ -15,12 +15,18 @@ export const LearnCard = ({
   learnCardSettingsData,
   isCheckButtonClicked,
   handleCheckButtonClick,
+  handleWordCheck,
 }) => {
   const [learnCardFormatted, setLearnCardFormatted] = useState(null);
   const [audiosToPlay, setAudiosToPlay] = useState([]);
   const [currentAudio, setCurrentAudio] = useState(null);
   const [isWordSubmitted, setIsWordSubmitted] = useState(false);
+  const [enteredWord, setEnteredWord] = useState('');
   const learnCardSettings = learnCardSettingsData;
+
+  const handleInputChange = (input) => {
+    setEnteredWord(input);
+  };
 
   const handleAudioEnd = () => {
     const currentAudioIndex = audiosToPlay.indexOf(currentAudio);
@@ -36,12 +42,19 @@ export const LearnCard = ({
 
   const handleEnterPress = (event) => {
     if (event.key === 'Enter') setIsWordSubmitted(!isWordSubmitted);
+    if (enteredWord.toLowerCase() === learnCard.word.toLowerCase()) {
+      handleWordCheck(true);
+    } else {
+      handleWordCheck(false);
+    }
   };
 
   useEffect(() => {
-    setLearnCardFormatted(formatLearnCardText(learnCard));
-    const audiosToPlay = obtainAudiosToPlay(learnCard, learnCardSettings);
-    setAudiosToPlay(audiosToPlay);
+    if (learnCard) {
+      setLearnCardFormatted(formatLearnCardText(learnCard));
+      const audiosToPlay = obtainAudiosToPlay(learnCard, learnCardSettings);
+      setAudiosToPlay(audiosToPlay);
+    }
   }, [learnCard, learnCardSettings]);
 
   const changeIsWordSubmitted = () => {
@@ -75,8 +88,10 @@ export const LearnCard = ({
                   imageSrc={learnCardFormatted.image}
                 />
                 <LearnCardInput
-                  word={learnCardFormatted.word}
+                  originalWord={learnCardFormatted.word}
+                  enteredWord={enteredWord}
                   isWordSubmitted={isWordSubmitted}
+                  onInputChange={handleInputChange}
                 />
                 <LearnCardTranscription
                   isTranscriptionOn={learnCardSettings.isTranscriptionOn}

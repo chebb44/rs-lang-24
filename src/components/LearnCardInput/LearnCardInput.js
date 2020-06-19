@@ -3,47 +3,54 @@ import { usePrevious } from '../../hooks/usePrevious';
 import { createCheckedWordMarkup } from '../../utilities/learnCard/createCheckedWordMarkup';
 import './LearnCardInput.scss';
 
-export const LearnCardInput = ({ word, isWordSubmitted }) => {
-  const [inputWord, setInputWord] = useState('');
-  const [isCheckedWordShown, setIsCheckedWordShown] = useState(false);
-  const prevWord = usePrevious(word);
+export const LearnCardInput = ({
+  originalWord,
+  enteredWord,
+  isWordSubmitted,
+  onInputChange,
+}) => {
+  const [isCheckedWordDisplayed, setIsCheckedWordDisplayed] = useState(false);
+  const prevWord = usePrevious(originalWord);
 
-  const changeIsCheckWordShown = () => {
+  const changeIsCheckWordDisplayed = () => {
     if (isWordSubmitted) {
-      setIsCheckedWordShown(!isCheckedWordShown);
+      setIsCheckedWordDisplayed(!isCheckedWordDisplayed);
     }
   };
-  useEffect(changeIsCheckWordShown, [isWordSubmitted]);
+  useEffect(changeIsCheckWordDisplayed, [isWordSubmitted]);
 
   useEffect(() => {
-    if (prevWord !== word) {
-      setInputWord('');
-      setIsCheckedWordShown(false);
+    if (prevWord !== originalWord) {
+      onInputChange('');
+      setIsCheckedWordDisplayed(false);
     }
-  }, [prevWord, word]);
+  }, [prevWord, originalWord]);
 
   const handleCheckedWordClick = () => {
-    setIsCheckedWordShown(!isCheckedWordShown);
+    setIsCheckedWordDisplayed(!isCheckedWordDisplayed);
   };
 
   return (
     <div className="card-text">
-      {!isCheckedWordShown && (
+      {!isCheckedWordDisplayed && (
         <input
           className="form-control m-auto entered-word"
           type="text"
           style={{
-            width: `calc(4px + 12px * ${word.length})`,
+            width: `calc(4px + 12.5px * ${originalWord.length})`,
           }}
           autoFocus
-          value={inputWord}
-          onChange={(event) => setInputWord(event.target.value)}
+          value={enteredWord}
+          onChange={(event) => onInputChange(event.target.value)}
         />
       )}
-      {isCheckedWordShown && (
+      {isCheckedWordDisplayed && (
         <p
           className="checked-word"
-          dangerouslySetInnerHTML={createCheckedWordMarkup(inputWord, word)}
+          dangerouslySetInnerHTML={createCheckedWordMarkup(
+            enteredWord,
+            originalWord,
+          )}
           onClick={handleCheckedWordClick}
         ></p>
       )}
