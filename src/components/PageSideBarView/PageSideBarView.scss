@@ -9,7 +9,7 @@
   bottom: 0;
   left: 0;
   height: 600px;
-  margin-top: auto;
+  margin-top: 20px;
   margin-bottom: auto;
   background-color: $default-color;
   color: $neutral-inactive;
@@ -17,6 +17,7 @@
   -moz-box-shadow: 0px 0px 25px 6px rgba(85,91,110,0.38);
   box-shadow: 0px 0px 25px 6px rgba(85,91,110,0.38);
   border-radius: 0 25px 25px 0;
+  z-index: 20;
 }
 .sidebar-link-list {
   padding: 5px;
