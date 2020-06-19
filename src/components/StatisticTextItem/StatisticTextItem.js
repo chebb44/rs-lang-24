@@ -1,7 +1,8 @@
 import React from 'react';
 import './StatisticTextItem.scss';
 
-const StatisticTextItem = ({ text, value, icon }) => {
+const StatisticTextItem = ({ item }) => {
+  const { text, value, icon } = item;
   return (
     <div className="statistic-item-wrapper">
       <p className="statistic-item">
