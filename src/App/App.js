@@ -12,6 +12,7 @@ import { appStateSelector } from './../reducers/appState/appStateReducer';
 import { routes } from './constants/routes';
 import { actionInitApp } from '../store/actionsForSaga';
 import { CSSTransition } from 'react-transition-group';
+import { Spinner } from '../components/Spinner/Spinner';
 // import {
 //   getAllUserWords,
 //   getWordById,
@@ -55,7 +56,7 @@ export const App = () => {
             </Switch>
           </div>
         ) : (
-          <h1>Loading</h1>
+          <Spinner />
         )}
       </div>
     </div>
