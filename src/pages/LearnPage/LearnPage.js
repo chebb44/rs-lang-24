@@ -23,6 +23,7 @@ export const LearnPage = () => {
   const [isShowAnswerButtonClicked, setIsShowAnswerButtonClicked] = useState(
     false,
   );
+  const [isNextArrowClicked, setIsNextArrowClicked] = useState(false);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const learnCard = learnCards[currentCardIndex];
   const cardsSetLength = learnCards.length;
@@ -34,7 +35,6 @@ export const LearnPage = () => {
 
   const handleShowAnswerButtonClick = () => {
     setIsShowAnswerButtonClicked(!isShowAnswerButtonClicked);
-    /* dispatch(actionUpdateDictionaryLearnedWords(learnCard)); */
     dispatch(actionUpdateLearnedWordsAmount(learnedWordsAmount + 1));
   };
 
@@ -46,14 +46,19 @@ export const LearnPage = () => {
     /* dispatch(actionUpdateDictionaryHardWords(learnCard)); */
   };
 
-  const handleWordCheck = (isWordCorrect) => {
+  const handleNextArrowClick = () => {
+    setIsNextArrowClicked(!isNextArrowClicked);
+    /* dispatch(actionUpdateDictionaryLearnedWords(learnCard)); */
+  };
+
+  const updateLearnedWordsAmount = (isWordCorrect) => {
     if (isWordCorrect === true)
-      /* dispatch(actionUpdateDictionaryLearnedWords(learnCard)); */
       dispatch(actionUpdateLearnedWordsAmount(learnedWordsAmount + 1));
   };
 
   const handleArrowClick = (direction) => {
     if (direction === 'next') {
+      setIsNextArrowClicked(!isNextArrowClicked);
       if (
         currentCardIndex === cardsSetLength - 1 ||
         learnedWordsAmount <= currentCardIndex
@@ -79,8 +84,10 @@ export const LearnPage = () => {
           learnCardSettingsData={learnCardSettings}
           isCheckButtonClicked={isCheckButtonClicked}
           isShowAnswerButtonClicked={isShowAnswerButtonClicked}
+          isNextArrowClicked={isNextArrowClicked}
           handleCheckButtonClick={handleCheckButtonClick}
-          handleWordCheck={handleWordCheck}
+          updateLearnedWordsAmount={updateLearnedWordsAmount}
+          handleNextArrowClick={handleNextArrowClick}
         />
         <LearnCardArrowNext
           onNextArrowClick={handleArrowClick}

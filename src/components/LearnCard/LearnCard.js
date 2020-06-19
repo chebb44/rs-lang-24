@@ -15,8 +15,10 @@ export const LearnCard = ({
   learnCardSettingsData,
   isCheckButtonClicked,
   isShowAnswerButtonClicked,
+  isNextArrowClicked,
   handleCheckButtonClick,
-  handleWordCheck,
+  updateLearnedWordsAmount,
+  handleNextArrowClick,
 }) => {
   const [learnCardFormatted, setLearnCardFormatted] = useState(null);
   const [audiosToPlay, setAudiosToPlay] = useState([]);
@@ -42,9 +44,9 @@ export const LearnCard = ({
   const handleEnterPress = (event) => {
     if (event.key === 'Enter') handleCheckButtonClick();
     if (enteredWord.toLowerCase() === learnCard.word.toLowerCase()) {
-      handleWordCheck(true);
+      updateLearnedWordsAmount(true);
     } else {
-      handleWordCheck(false);
+      updateLearnedWordsAmount(false);
     }
   };
 
@@ -61,7 +63,7 @@ export const LearnCard = ({
       setCurrentAudio(audiosToPlay[0]);
     }
   };
-  useEffect(changeCurrentAudio, [isCheckButtonClicked]);
+  useEffect(changeCurrentAudio, [isCheckButtonClicked, isNextArrowClicked]);
 
   if (!learnCardFormatted) return null;
   return (
@@ -84,7 +86,9 @@ export const LearnCard = ({
                   enteredWord={enteredWord}
                   isCheckButtonClicked={isCheckButtonClicked}
                   isShowAnswerButtonClicked={isShowAnswerButtonClicked}
-                  onInputChange={handleInputChange}
+                  isNextArrowClicked={isNextArrowClicked}
+                  handleInputChange={handleInputChange}
+                  handleNextArrowClick={handleNextArrowClick}
                 />
                 <LearnCardTranscription
                   isTranscriptionOn={learnCardSettings.isTranscriptionOn}
@@ -113,7 +117,10 @@ export const LearnCard = ({
             </div>
           </div>
         </div>
-        <LearnCardAudio currentAudio={currentAudio} onEnded={handleAudioEnd} />
+        <LearnCardAudio
+          currentAudio={currentAudio}
+          handleAudioEnd={handleAudioEnd}
+        />
       </>
     )
   );

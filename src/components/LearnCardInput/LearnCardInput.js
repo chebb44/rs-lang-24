@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { usePrevious } from '../../hooks/usePrevious';
 import { createCheckedWordMarkup } from '../../utilities/learnCard/createCheckedWordMarkup';
 import './LearnCardInput.scss';
 
@@ -8,10 +7,11 @@ export const LearnCardInput = ({
   enteredWord,
   isCheckButtonClicked,
   isShowAnswerButtonClicked,
-  onInputChange,
+  isNextArrowClicked,
+  handleInputChange,
+  handleNextArrowClick,
 }) => {
   const [isCheckedWordDisplayed, setIsCheckedWordDisplayed] = useState(false);
-  const prevWord = usePrevious(originalWord);
 
   const changeIsCheckWordDisplayed = () => {
     if (isCheckButtonClicked) {
@@ -21,11 +21,12 @@ export const LearnCardInput = ({
   useEffect(changeIsCheckWordDisplayed, [isCheckButtonClicked]);
 
   useEffect(() => {
-    if (prevWord !== originalWord) {
-      onInputChange('');
+    if (isNextArrowClicked) {
+      handleInputChange('');
       setIsCheckedWordDisplayed(false);
+      handleNextArrowClick();
     }
-  }, [prevWord, originalWord]);
+  }, [isNextArrowClicked, handleInputChange, handleNextArrowClick]);
 
   const handleCheckedWordClick = () => {
     setIsCheckedWordDisplayed(!isCheckedWordDisplayed);
@@ -42,7 +43,7 @@ export const LearnCardInput = ({
           }}
           autoFocus
           value={isShowAnswerButtonClicked ? originalWord : enteredWord}
-          onChange={(event) => onInputChange(event.target.value)}
+          onChange={(event) => handleInputChange(event.target.value)}
         />
       )}
       {isCheckedWordDisplayed && (
