@@ -1,5 +1,5 @@
 export const getColorSettingsIcon = (value, settingsGreen, settingsRed) => {
-  if (value) {
+  if (!value) {
     return settingsGreen;
   }
   return settingsRed;

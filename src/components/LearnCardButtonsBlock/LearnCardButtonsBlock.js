@@ -16,12 +16,21 @@ import translateRed from './assets/translate-red.svg';
 
 const LearnCardButtonsBlock = ({
   learnCardSettingsData,
+  appState,
   changeAutoAudioPlay,
   changeAutoTranslate,
+  changeVisibleSettingsModal,
 }) => {
   return (
     <div className="buttons-wrapper">
-      <LearnCardButton icon={settingsGreen} />
+      <LearnCardButton
+        icon={getColorSettingsIcon(
+          appState.visibleSettingsModal,
+          settingsGreen,
+          settingsRed,
+        )}
+        func={changeVisibleSettingsModal}
+      />
       <LearnCardButton
         icon={getColorAudioIcon(
           learnCardSettingsData.isAudioOn,
