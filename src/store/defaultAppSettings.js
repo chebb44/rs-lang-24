@@ -6,6 +6,7 @@ export const defaultLearnSettings = {
     isExampleOn: true,
     isTranscriptionOn: true,
     isImageOn: true,
+    isAudioOn: true,
     currentWordsGroup: 0,
     currentWordsPage: 0,
     currentWordOnPage: 3,

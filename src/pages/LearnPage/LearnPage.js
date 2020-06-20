@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   learnCardsSelector,
@@ -14,6 +14,11 @@ import { ShowAnswerButton } from '../../components/ShowAnswerButton/ShowAnswerBu
 import { DeleteWordButton } from '../../components/DeleteWordButton/DeleteWordButton';
 import { HardWordButton } from '../../components/HardWordButton/HardWordButton';
 import './LearnPage.scss';
+import LearnCardButtonsBlock from '../../components/LearnCardButtonsBlock/LearnCardButtonsBlock';
+import {
+  actionSetAutoAudio,
+  actionSetAutoTranslate,
+} from '../../reducers/learnSettings/learnSettingsActions';
 
 export const LearnPage = () => {
   const learnCards = useSelector(learnCardsSelector);
@@ -72,8 +77,25 @@ export const LearnPage = () => {
     }
   };
 
+  // useEffect(() => {
+  //   dispatch(actionUpdateLearnCard(currentCardIndex));
+  // }, [dispatch, currentCardIndex]);
+
+  const changeAutoAudioPlay = useCallback(() => {
+    dispatch(actionSetAutoAudio(!learnCardSettings.isAudioOn));
+  }, [dispatch, learnCardSettings.isAudioOn]);
+
+  const changeAutoTranslate = useCallback(() => {
+    dispatch(actionSetAutoTranslate(!learnCardSettings.isTranslationOn));
+  }, [dispatch, learnCardSettings.isTranslationOn]);
+
   return (
     <div className="learn-page">
+      <LearnCardButtonsBlock
+        learnCardSettingsData={learnCardSettings}
+        changeAutoAudioPlay={changeAutoAudioPlay}
+        changeAutoTranslate={changeAutoTranslate}
+      />
       <div className="learn-page__flipping-container">
         <LearnCardArrowPrevious
           onPreviousArrowClick={handleArrowClick}
