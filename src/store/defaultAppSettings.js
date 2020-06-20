@@ -19,6 +19,7 @@ export const defaultAppState = {
   initDone: false,
   visibleStatisticModal: false,
   visibleMaxCardsModal: false,
+  visibleSettingsModal: false,
 };
 
 const DAILY_NORM = 40;

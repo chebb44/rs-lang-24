@@ -19,6 +19,8 @@ import {
   actionSetAutoAudio,
   actionSetAutoTranslate,
 } from '../../reducers/learnSettings/learnSettingsActions';
+import { appStateSelector } from '../../reducers/appState/appStateReducer';
+import { actionSettingsModal } from '../../reducers/appState/appStateActions';
 
 export const LearnPage = () => {
   const learnCards = useSelector(learnCardsSelector);
@@ -32,6 +34,7 @@ export const LearnPage = () => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const learnCard = learnCards[currentCardIndex];
   const cardsSetLength = learnCards.length;
+  const appState = useSelector(appStateSelector);
   const dispatch = useDispatch();
 
   const handleCheckButtonClick = () => {
@@ -89,12 +92,18 @@ export const LearnPage = () => {
     dispatch(actionSetAutoTranslate(!learnCardSettings.isTranslationOn));
   }, [dispatch, learnCardSettings.isTranslationOn]);
 
+  const changeVisibleSettingsModal = useCallback(() => {
+    dispatch(actionSettingsModal(!appState.visibleSettingsModal));
+  }, [dispatch, appState.visibleSettingsModal]);
+
   return (
     <div className="learn-page">
       <LearnCardButtonsBlock
         learnCardSettingsData={learnCardSettings}
+        appState={appState}
         changeAutoAudioPlay={changeAutoAudioPlay}
         changeAutoTranslate={changeAutoTranslate}
+        changeVisibleSettingsModal={changeVisibleSettingsModal}
       />
       <div className="learn-page__flipping-container">
         <LearnCardArrowPrevious
