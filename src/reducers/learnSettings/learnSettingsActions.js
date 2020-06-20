@@ -15,3 +15,15 @@ export const actionSetLearnSetting = (settings) => ({
   type: SET_LEARN_SETTINGS,
   payload: settings,
 });
+
+export const SET_AUTO_AUDIO = 'SET_AUTO_AUDIO';
+export const actionSetAutoAudio = (audio) => ({
+  type: SET_AUTO_AUDIO,
+  payload: audio,
+});
+
+export const SET_AUTO_TRANSLATE = 'SET_AUTO_TRANSLATE';
+export const actionSetAutoTranslate = (translate) => ({
+  type: SET_AUTO_TRANSLATE,
+  payload: translate,
+});

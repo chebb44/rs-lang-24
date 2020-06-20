@@ -2,6 +2,8 @@ import {
   UPDATE_LEARN_CARD_SETTINGS,
   SET_WORDS_PER_DAY,
   SET_LEARN_SETTINGS,
+  SET_AUTO_AUDIO,
+  SET_AUTO_TRANSLATE,
 } from './learnSettingsActions';
 
 const defaultData = {
@@ -12,6 +14,7 @@ const defaultData = {
     isExampleOn: true,
     isTranscriptionOn: true,
     isImageOn: true,
+    isAudioOn: true,
   },
 };
 
@@ -35,6 +38,22 @@ export const learnSettings = (state = defaultData, action) => {
       return {
         ...state,
         ...action.payload,
+      };
+    case SET_AUTO_AUDIO:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isAudioOn: action.payload,
+        },
+      };
+    case SET_AUTO_TRANSLATE:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isTranslationOn: action.payload,
+        },
       };
     default:
       return state;
