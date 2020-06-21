@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const LearnCardAudio = ({ currentAudio, onEnded }) => {
+export const LearnCardAudio = ({ currentAudio, handleAudioEnd }) => {
   return (
     <audio
       autoPlay
@@ -8,7 +8,7 @@ export const LearnCardAudio = ({ currentAudio, onEnded }) => {
         currentAudio &&
         `https://raw.githubusercontent.com/veronika-martinovich/rslang-data/master/${currentAudio}`
       }
-      onEnded={() => onEnded()}
+      onEnded={() => handleAudioEnd()}
     />
   );
 };

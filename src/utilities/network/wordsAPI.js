@@ -6,7 +6,6 @@ export const getWordsByPageAndGroup = async ({ page, group }) => {
       `https://afternoon-falls-25894.herokuapp.com/words?page=${page}&group=${group}`,
     );
     const content = await rawResponse.json();
-    console.log('getWordsByPageAndGroup -> content', content);
     return content;
   } catch (error) {
     console.log('getWordsByPageAndGroup -> error', error);

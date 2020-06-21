@@ -5,7 +5,7 @@ export const LearnCardMeaning = ({
   isTranslationOn,
   meaning,
   meaningTranslation,
-  isWordSubmitted,
+  isCheckButtonClicked,
 }) => {
   const createMeaningMarkup = () => {
     return {
@@ -20,7 +20,7 @@ export const LearnCardMeaning = ({
           dangerouslySetInnerHTML={createMeaningMarkup()}
         ></p>
       )}
-      {isMeaningOn && isTranslationOn && isWordSubmitted && (
+      {isMeaningOn && isTranslationOn && isCheckButtonClicked && (
         <p className="card-text">{meaningTranslation}</p>
       )}
     </>

@@ -1,6 +1,7 @@
 @import 'src/scss/vars';
 
 .app-sidebar {
+  z-index: 100;
   user-select: none;
   box-sizing: border-box;
   width: 220px;
