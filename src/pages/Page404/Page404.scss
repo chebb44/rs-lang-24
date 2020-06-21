@@ -35,6 +35,15 @@
       &-zero {
         width: 65px;
       }
+      svg {
+        position: absolute;
+        width: 230px;
+        left: -143px;
+        top: 126px;
+        z-index: -10;
+        fill: #FFD6BA;
+        transform: scale(1.7, 1.5) translate(85px, -133px);
+      }
     }
   }
   &__london-image {
@@ -43,12 +52,3 @@
   }
 }
 
-svg {
-  position: absolute;
-  width: 230px;
-  left: -143px;
-  top: 126px;
-  z-index: -10;
-  fill: #FFD6BA;
-  transform: scale(1.7, 1.5) translate(85px, -133px);
-}
