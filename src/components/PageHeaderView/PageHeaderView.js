@@ -22,7 +22,7 @@ export const PageHeaderView = ({
         </Link>
       </div>
       <button className="btn button__log-out" onClick={logOut}>
-        Log Out
+        Выйти
       </button>
     </header>
   );
