@@ -1,52 +1,61 @@
 import React, { useState, useEffect } from 'react';
-import { usePrevious } from '../../hooks/usePrevious';
 import { createCheckedWordMarkup } from '../../utilities/learnCard/createCheckedWordMarkup';
 import './LearnCardInput.scss';
 
-export const LearnCardInput = ({ word, isWordSubmitted }) => {
-  const [inputWord, setInputWord] = useState('');
-  const [isCheckedWordShown, setIsCheckedWordShown] = useState(false);
-  const prevWord = usePrevious(word);
+export const LearnCardInput = ({
+  originalWord,
+  enteredWord,
+  isCheckButtonClicked,
+  isShowAnswerButtonClicked,
+  isNextArrowClicked,
+  handleInputChange,
+  handleNextArrowClick,
+}) => {
+  const [isCheckedWordDisplayed, setIsCheckedWordDisplayed] = useState(false);
 
-  const changeIsCheckWordShown = () => {
-    if (isWordSubmitted) {
-      setIsCheckedWordShown(!isCheckedWordShown);
+  const changeIsCheckWordDisplayed = () => {
+    if (isCheckButtonClicked) {
+      setIsCheckedWordDisplayed(!isCheckedWordDisplayed);
     }
   };
-  useEffect(changeIsCheckWordShown, [isWordSubmitted]);
+  useEffect(changeIsCheckWordDisplayed, [isCheckButtonClicked]);
 
   useEffect(() => {
-    if (prevWord !== word) {
-      setInputWord('');
-      setIsCheckedWordShown(false);
+    if (isNextArrowClicked) {
+      handleInputChange('');
+      setIsCheckedWordDisplayed(false);
+      handleNextArrowClick();
     }
-  }, [prevWord, word]);
+  }, [isNextArrowClicked, handleInputChange, handleNextArrowClick]);
 
   const handleCheckedWordClick = () => {
-    setIsCheckedWordShown(!isCheckedWordShown);
+    setIsCheckedWordDisplayed(!isCheckedWordDisplayed);
   };
 
   return (
-    <p className="card-text">
-      <input
-        className="form-control m-auto entered-word"
-        type="text"
-        style={{
-          width: `calc(4px + 12px * ${word.length})`,
-          display: `${isCheckedWordShown ? 'none' : 'inline'}`,
-        }}
-        autoFocus
-        value={inputWord}
-        onChange={(event) => setInputWord(event.target.value)}
-      />
-      <p
-        className="checked-word"
-        style={{
-          display: `${isCheckedWordShown ? 'block' : 'none'}`,
-        }}
-        dangerouslySetInnerHTML={createCheckedWordMarkup(inputWord, word)}
-        onClick={handleCheckedWordClick}
-      ></p>
-    </p>
+    <div className="card-text">
+      {!isCheckedWordDisplayed && (
+        <input
+          className="form-control m-auto entered-word"
+          type="text"
+          style={{
+            width: `calc(4px + 12.5px * ${originalWord.length})`,
+          }}
+          autoFocus
+          value={isShowAnswerButtonClicked ? originalWord : enteredWord}
+          onChange={(event) => handleInputChange(event.target.value)}
+        />
+      )}
+      {isCheckedWordDisplayed && (
+        <p
+          className="checked-word"
+          dangerouslySetInnerHTML={createCheckedWordMarkup(
+            enteredWord,
+            originalWord,
+          )}
+          onClick={handleCheckedWordClick}
+        ></p>
+      )}
+    </div>
   );
 };

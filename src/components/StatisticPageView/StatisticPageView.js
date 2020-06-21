@@ -1,51 +1,27 @@
 import React from 'react';
 import StatisticTextItem from '../StatisticTextItem/StatisticTextItem';
 import './StatisticPageView.scss';
-// import { dictionaryIcon } from './assets/dictionaryIcon';
-import { headIcon } from './assets/headIcon';
-import { learnIcon } from './assets/learnIcon';
-// import { listenIcon } from './assets/listenIcon';
-import { speackIcon } from './assets/speackIcon';
-import { writeIcon } from './assets/writeIcon';
+import london from './../../assets/img/england_PNG72.png';
 
-export const StatisticPageView = ({ statistic }) => {
-  const {
-    endCards,
-    correctAnswer,
-    newWords,
-    longestSeriesCorrectAnswer,
-  } = statistic;
-
+export const StatisticPageView = ({ statisticItemList }) => {
   return (
     <div className="statistic-wrapper">
       <div>
         <div className="statistic-today">
           <h5 className="statistic-today__title">Сегодня</h5>
-          <StatisticTextItem
-            text="Карточек завершено:"
-            value={endCards}
-            icon={learnIcon}
-          />
-          <StatisticTextItem
-            text="Новых слов:"
-            value={correctAnswer}
-            icon={writeIcon}
-          />
-          <StatisticTextItem
-            text="Правильные ответы:"
-            value={newWords}
-            icon={speackIcon}
-          />
-          <StatisticTextItem
-            text="Самая длинная серия ответов:"
-            value={longestSeriesCorrectAnswer}
-            icon={headIcon}
-          />
+          {statisticItemList.map((item, index) => (
+            <StatisticTextItem item={item} key={index} />
+          ))}
         </div>
       </div>
       <div className="statistic-full">
         <h5 className="statistic-today__title">За всё время</h5>
       </div>
+      <img
+        className="statistic-today__london-image"
+        src={london}
+        alt="london"
+      />
     </div>
   );
 };

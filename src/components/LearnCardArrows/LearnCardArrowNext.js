@@ -6,11 +6,14 @@ export const LearnCardArrowNext = ({
   onNextArrowClick,
   currentCardIndex,
   cardsSetLength,
+  learnedWordsAmount,
 }) => {
   const classes = classNames({
     'arrow-icon': true,
     'arrow-icon_next': true,
-    'arrow-icon_disabled-next': currentCardIndex === cardsSetLength - 1,
+    'arrow-icon_disabled-next':
+      currentCardIndex === cardsSetLength - 1 ||
+      learnedWordsAmount <= currentCardIndex,
   });
 
   return (

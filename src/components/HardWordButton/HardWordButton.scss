@@ -1,0 +1,7 @@
+@import "../../scss/vars.scss";
+@import "../../scss/mixins.scss";
+
+.button_hard {
+  @include std_button;
+  background-color: $primary-color;
+}
