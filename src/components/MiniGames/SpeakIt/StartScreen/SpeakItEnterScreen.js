@@ -15,13 +15,26 @@ export const SpeakItEnterScreen = function ({ setSpeakItScreen }) {
       <li>
         <ul>
           <p className="enter-screen__description">
+<<<<<<< HEAD
             Для тренировки нажмите на слово чтобы услышать его произношение.
+=======
+            Для тренировки нажмите на слово чтобы услышать его произношение
+>>>>>>> fbec8b1d76dfeb505b68657e8217ee21bdf3795d
           </p>
         </ul>
         <ul>
           <p className="enter-screen__description">
+<<<<<<< HEAD
             Для перехода в режим игры нажмите кнопку SPEAKIT и говорите в
             микрофон.
+=======
+            Для перехода в режим игры нажмите кнопку SPEAKIT и говорите в микрофон
+          </p>
+        </ul>
+        <ul>
+          <p className="enter-screen__description">
+            Выберете количество слов и нажмите СТАРТ
+>>>>>>> fbec8b1d76dfeb505b68657e8217ee21bdf3795d
           </p>
         </ul>
       </li>
@@ -29,7 +42,11 @@ export const SpeakItEnterScreen = function ({ setSpeakItScreen }) {
         className="btn enter-screen__button"
         onClick={() => setSpeakItScreen('gamePage')}
       >
+<<<<<<< HEAD
         Start
+=======
+        Старт
+>>>>>>> fbec8b1d76dfeb505b68657e8217ee21bdf3795d
       </button>
       <img className="footer_image" src={london} alt="london" />
     </div>
