@@ -1,5 +1,6 @@
 @mixin std_button {
   color: $neutral-inactive;
+  transition: .3s ease;
 
   &:hover {
     color: $neutral-active;

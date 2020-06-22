@@ -14,6 +14,7 @@ import { routes } from './constants/routes';
 import { actionInitApp } from '../store/actionsForSaga';
 import { CSSTransition } from 'react-transition-group';
 import { Spinner } from '../components/Spinner/Spinner';
+import { SpeakItMainPage } from '../components/MiniGames/SpeakIt/SpeakItPage/SpeakItMainPage';
 
 export const App = () => {
   let { path } = useRouteMatch();
@@ -41,6 +42,7 @@ export const App = () => {
               <Route path={routes.learn} component={LearnPage} />
               <Route path={routes.dictionary} component={DictionaryPage} />
               <Route path={routes.stats} component={StatisticPage} />
+              <Route path={routes.speakIt} component={SpeakItMainPage} />
               <Route exact path={path}>
                 <h1>Main Page</h1>
               </Route>
