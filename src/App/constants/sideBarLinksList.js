@@ -9,7 +9,7 @@ export const sideBarLinksList = [
     head: 'Мини игры',
     headLink: null,
     items: [
-      { name: 'Speak It', link: routes.speakit },
+      { name: 'Speak It', link: routes.speakIt },
       { name: 'Саванна', link: routes.savanna },
     ],
   },
