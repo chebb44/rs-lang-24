@@ -18,11 +18,11 @@ export const defaultLearnSettings = {
     prevWordsGroup: 0,
     prevWordsPage: 0,
     prevWordOnPage: 0,
+    isAudioOn: true,
     currentWordsGroup: 0,
     currentWordsPage: 0,
     currentWordOnPage: 0,
     learnMode: STANDARD_MODE,
-    isAudioOn: true,
   },
 };
 
