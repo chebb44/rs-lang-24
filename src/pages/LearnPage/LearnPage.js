@@ -6,6 +6,8 @@ import {
 } from '../../reducers/learnCards/learnCardsReducer';
 import { learnCardSettingsSelector } from '../../reducers/learnSettings/learnSettingsReducer';
 import { actionUpdateLearnedWordsAmount } from '../../reducers/learnCards/learnCardsActions';
+import { actionMarkWord } from '../../store/actionsForSaga';
+import { LEARNED_WORD, HARD_WORD, DELETED_WORD } from '../../sagas/constants';
 import { LearnCard } from '../../components/LearnCard/LearnCard';
 import { LearnCardArrowNext } from '../../components/LearnCardArrows/LearnCardArrowNext';
 import { LearnCardArrowPrevious } from '../../components/LearnCardArrows/LearnCardArrowPrevious';
@@ -47,16 +49,16 @@ export const LearnPage = () => {
   };
 
   const handleDeleteButtonClick = () => {
-    /* dispatch(actionUpdateDictionaryDeletedWords(learnCard)); */
+    dispatch(actionMarkWord(learnCard.id, DELETED_WORD));
   };
 
   const handleHardButtonClick = () => {
-    /* dispatch(actionUpdateDictionaryHardWords(learnCard)); */
+    dispatch(actionMarkWord(learnCard.id, HARD_WORD));
   };
 
   const handleNextArrowClick = () => {
     setIsNextArrowClicked(!isNextArrowClicked);
-    /* dispatch(actionUpdateDictionaryLearnedWords(learnCard)); */
+    dispatch(actionMarkWord(learnCard.id, LEARNED_WORD));
   };
 
   const updateLearnedWordsAmount = (isWordCorrect) => {
@@ -79,10 +81,6 @@ export const LearnPage = () => {
       setCurrentCardIndex(currentCardIndex - 1);
     }
   };
-
-  // useEffect(() => {
-  //   dispatch(actionUpdateLearnCard(currentCardIndex));
-  // }, [dispatch, currentCardIndex]);
 
   const changeAutoAudioPlay = useCallback(() => {
     dispatch(actionSetAutoAudio(!learnCardSettings.isAudioOn));
