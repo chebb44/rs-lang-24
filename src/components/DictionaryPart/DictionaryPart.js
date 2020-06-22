@@ -1,6 +1,7 @@
 import React from 'react';
 import './DictionaryPart.scss';
 import { DictionaryWord } from './../DictionaryWord/DictionaryWord';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 export const DictionaryPart = ({
   words,
@@ -14,20 +15,29 @@ export const DictionaryPart = ({
       <h3 className="mt-3 mb-3"> {header}</h3>
       {words.length > 0 ? (
         <div className="words-container">
-          {words.map((word) => (
-            <DictionaryWord
-              key={word.id}
-              wordId={word.id}
-              word={word}
-              learnCardSettings={learnCardSettings}
-              header={header}
-              buttonText={buttonText}
-              buttonCallback={buttonCallback}
-            />
-          ))}
+          <TransitionGroup className="word-list">
+            {words.map((word) => (
+              <CSSTransition
+                appear={true}
+                key={word.id}
+                classNames="slide"
+                timeout={800}
+              >
+                <DictionaryWord
+                  // key={word.id}
+                  wordId={word.id}
+                  word={word}
+                  learnCardSettings={learnCardSettings}
+                  header={header}
+                  buttonText={buttonText}
+                  buttonCallback={buttonCallback}
+                />
+              </CSSTransition>
+            ))}
+          </TransitionGroup>
         </div>
       ) : (
-        <h3>'Слов пока не записано =('</h3>
+        <p>Слова отсутствуют</p>
       )}
     </div>
   );

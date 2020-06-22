@@ -1,6 +1,40 @@
-@import "src/scss/vars";
-@import "src/scss/mixins";
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
 
-.dictionary-block{
+.dictionary-block {
   color: $neutral-active;
+}
+
+.slide-appear.slide-appear-active {
+  left: 0;
+  opacity: 1;
+  transition: all 400ms ease-in-out;
+}
+
+.slide-enter,
+.slide-appear {
+  opacity: 0;
+  z-index: 1;
+  left: -100%
+}
+
+.slide-enter.slide-enter-active {
+  left: 0;
+  opacity: 1;
+  transition: all 400ms ease-in-out 400ms;
+}
+
+/* slide exit */
+.slide-exit {
+  opacity: 1;
+  left: 0;
+}
+.slide-exit.slide-exit-active {
+  left: -100%;
+  opacity: 0;
+  transition: all 400ms ease-in-out;
+}
+.slide-exit-done {
+  opacity: 0;
+  left: -100%;
 }
