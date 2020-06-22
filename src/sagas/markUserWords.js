@@ -4,6 +4,7 @@ import {
   updateUserWord,
 } from './../utilities/network/wordsAPI';
 import { WORD_EXIST } from './../utilities/network/networkConstants';
+import { initDictionarySaga } from './initDictionarySaga';
 
 export function* markWordsWorker(action) {
   const { wordId, wordType } = action.payload;
@@ -20,5 +21,9 @@ export function* markWordsWorker(action) {
   });
   if (createStatus === WORD_EXIST) {
     yield updateUserWord({ userId, token, wordId, data });
+    console.log('word update successfully');
+  } else {
+    console.log('word create successfully');
   }
+  yield initDictionarySaga();
 }

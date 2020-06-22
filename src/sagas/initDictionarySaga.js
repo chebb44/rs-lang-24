@@ -6,6 +6,7 @@ import { put, select } from 'redux-saga/effects';
 import { currentUserSelector } from './../reducers/currentUser/currentUserReducer';
 
 export function* initDictionarySaga() {
+  console.log('init dict');
   const { token, id: userId } = yield select(currentUserSelector);
   const dictionaryData = yield getAllUserWords({ token, userId });
   if (dictionaryData) {

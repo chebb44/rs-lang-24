@@ -8,35 +8,32 @@ import { learnCardSettingsSelector } from '../../reducers/learnSettings/learnSet
 
 export const DictionaryPage = () => {
   const learnCardSettings = useSelector(learnCardSettingsSelector);
-
   const { learnedWords, hardWords, deletedWords } = useSelector(
     dictionaryStateStateSelector,
   );
   return (
-    <div className="dictionary-block">
-      <Switch>
-        <Route path={routes.dictionaryLearn}>
-          <DictionaryPart
-            words={learnedWords}
-            learnCardSettings={learnCardSettings}
-            header="Изученные"
-          />
-        </Route>
-        <Route path={routes.dictionaryHard}>
-          <DictionaryPart
-            words={hardWords}
-            learnCardSettings={learnCardSettings}
-            header="Сложные"
-          />
-        </Route>
-        <Route path={routes.dictionaryDeleted}>
-          <DictionaryPart
-            words={deletedWords}
-            learnCardSettings={learnCardSettings}
-            header="Удаленные"
-          />
-        </Route>
-      </Switch>
-    </div>
+    <Switch>
+      <Route path={routes.dictionaryLearn}>
+        <DictionaryPart
+          words={learnedWords}
+          learnCardSettings={learnCardSettings}
+          header="Изученные"
+        />
+      </Route>
+      <Route path={routes.dictionaryHard}>
+        <DictionaryPart
+          words={hardWords}
+          learnCardSettings={learnCardSettings}
+          header="Сложные"
+        />
+      </Route>
+      <Route path={routes.dictionaryDeleted}>
+        <DictionaryPart
+          words={deletedWords}
+          learnCardSettings={learnCardSettings}
+          header="Удаленные"
+        />
+      </Route>
+    </Switch>
   );
 };

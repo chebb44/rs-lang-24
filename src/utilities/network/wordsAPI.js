@@ -41,10 +41,10 @@ export const createUserWord = async ({ userId, wordId, data, token }) => {
     );
     if (rawResponse.status === 417) {
       console.log(`Error: Word exist! id: ${wordId}`);
-      console.log('Word create successfully', wordId);
       return WORD_EXIST;
     }
     if (rawResponse.status === 200) {
+      console.log('Word create successfully', wordId);
       return WORD_CREATED_SUCCESSFULLY;
     }
   } catch (error) {
@@ -77,9 +77,7 @@ export const updateUserWord = async ({ userId, wordId, data, token }) => {
         body: JSON.stringify(data),
       },
     );
-    const content = await rawResponse.json();
-    console.log('updateUserWord -> content', content);
-    return true;
+    if (rawResponse.ok) return true;
   } catch (error) {
     console.log('createUserWord -> error', error);
     return null;
