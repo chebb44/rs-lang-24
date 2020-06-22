@@ -36,6 +36,21 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
         ...state,
         ...action.payload,
       };
+    // case SET_CURRENT_WORDS_PAGE:
+    //   return {
+    //     ...state,
+    //     currentWordsPage: action.page,
+    //   };
+    // case SET_CURRENT_WORDS_GROUP:
+    //   return {
+    //     ...state,
+    //     currentWordsGroup: action.group,
+    //   };
+    // case SET_CURRENT_WORD_ON_PAGE:
+    //   return {
+    //     ...state,
+    //     currentWordOnPage: action.wordNumber,
+    //   };
     case SET_PAGE_GROUP_WORD_NUMBER:
       const { page, group, wordInPage } = action.data;
       return {
