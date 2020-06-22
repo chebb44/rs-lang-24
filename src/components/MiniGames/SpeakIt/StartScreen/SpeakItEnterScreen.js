@@ -20,8 +20,7 @@ export const SpeakItEnterScreen = function ({ setSpeakItScreen }) {
         </ul>
         <ul>
           <p className="enter-screen__description">
-            Для перехода в режим игры нажмите кнопку SPEAKIT и говорите в
-            микрофон
+            Для перехода в режим игры нажмите кнопку SPEAKIT и говорите в микрофон
           </p>
         </ul>
         <ul>
