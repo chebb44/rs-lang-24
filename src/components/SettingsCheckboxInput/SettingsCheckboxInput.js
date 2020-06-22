@@ -1,8 +1,8 @@
 import React from 'react';
 
 const SettingsCheckboxInput = ({ item }) => {
-  const { id, value, defaultChecked } = item;
-  if (defaultChecked) {
+  const { id, value, defaultChecked, func } = item;
+  if (defaultChecked && func) {
     return (
       <div className="custom-control custom-checkbox text-left ml-5">
         <input
@@ -10,6 +10,7 @@ const SettingsCheckboxInput = ({ item }) => {
           className="custom-control-input"
           id={id}
           defaultChecked
+          onChange={func}
         ></input>
         <label className="custom-control-label font-italic" htmlFor={id}>
           {value}
@@ -23,7 +24,7 @@ const SettingsCheckboxInput = ({ item }) => {
         type="checkbox"
         className="custom-control-input"
         id={id}
-        defaultChecked
+        onChange={func}
       ></input>
       <label className="custom-control-label font-italic" htmlFor={id}>
         {value}

@@ -6,6 +6,10 @@ import {
   SET_PAGE_GROUP_WORD_NUMBER,
   SET_LEARN_MODE,
   UPDATE_PREV_PAGE_GROUP_WORD_NUMBER,
+  SET_MEANING_WORD,
+  SET_EXAMPLE_WORD,
+  SET_TRANSCRIPTION_WORD,
+  SET_IMAGE,
 } from './learnSettingsActions';
 import {
   SET_WORDS_PER_DAY,
@@ -94,6 +98,38 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
         learnCardSettings: {
           ...state.learnCardSettings,
           learnMode: action.payload,
+        },
+      };
+    case SET_MEANING_WORD:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isMeaningOn: action.payload,
+        },
+      };
+    case SET_EXAMPLE_WORD:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isExampleOn: action.payload,
+        },
+      };
+    case SET_TRANSCRIPTION_WORD:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isTranscriptionOn: action.payload,
+        },
+      };
+    case SET_IMAGE:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isImageOn: action.payload,
         },
       };
     default:

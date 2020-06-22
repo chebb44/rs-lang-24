@@ -63,3 +63,27 @@ export const actionSetLearnMode = (mode) => ({
   type: SET_LEARN_MODE,
   payload: mode,
 });
+
+export const SET_MEANING_WORD = 'SET_MEANING_WORD';
+export const actionSetMeaningWord = (meaning) => ({
+  type: SET_MEANING_WORD,
+  payload: meaning,
+});
+
+export const SET_EXAMPLE_WORD = 'SET_EXAMPLE_WORD';
+export const actionSetExampleWord = (example) => ({
+  type: SET_EXAMPLE_WORD,
+  payload: example,
+});
+
+export const SET_TRANSCRIPTION_WORD = 'SET_TRANSCRIPTION_WORD';
+export const actionSetTranscriptionWord = (translate) => ({
+  type: SET_TRANSCRIPTION_WORD,
+  payload: translate,
+});
+
+export const SET_IMAGE = 'SET_IMAGE';
+export const actionSetImage = (image) => ({
+  type: SET_IMAGE,
+  payload: image,
+});

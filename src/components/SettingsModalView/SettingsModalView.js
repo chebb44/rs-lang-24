@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import './SettingsModalView.scss';
 import SettingsRadioInput from '../SettingsRadioInput/SettingsRadioInput';
 import SettingsCheckboxInput from '../SettingsCheckboxInput/SettingsCheckboxInput';
@@ -6,24 +6,22 @@ import {
   question1,
   question2,
   question3,
-  question4,
+  // question4,
   question5,
 } from '../../App/constants/SettingsList';
 
-const SettingsModalView = () => {
-  // const SettingsModalView = ({ hideSettingsModal }) => {
+const SettingsModalView = ({ question4, hideSettingsModal }) => {
   return (
     <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable settings-modal">
       <div className="modal-content modal-content_settings">
         <div className="modal-header text-center">
-          <h5 className="ml-25%">Настройки обучения:</h5>
+          <h5 className="modal__title">Настройки обучения:</h5>
           <button
             type="button"
-            // className="close btn-modal_close"
             className="close btn-modal_close"
             data-dismiss="modal"
             aria-label="Close"
-            // onClick={hideSettingsModal}
+            onClick={hideSettingsModal}
           >
             <span aria-hidden="true">&times;</span>
           </button>

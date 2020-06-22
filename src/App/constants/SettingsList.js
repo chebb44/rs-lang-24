@@ -80,39 +80,6 @@ export const question3 = [
   },
 ];
 
-export const question4 = [
-  {
-    id: 'customCheck1',
-    value: 'Перевод',
-    defaultChecked: 'true',
-  },
-  {
-    id: 'customCheck2',
-    value: 'Объяснение слова',
-    defaultChecked: 'true',
-  },
-  {
-    id: 'customCheck3',
-    value: 'Пример использования  слова',
-    defaultChecked: 'true',
-  },
-  {
-    id: 'customCheck4',
-    value: 'Транскрипция',
-    defaultChecked: 'true',
-  },
-  {
-    id: 'customCheck5',
-    value: 'Картинка-ассоциация',
-    defaultChecked: 'true',
-  },
-  {
-    id: 'customCheck7',
-    value: 'Аудио',
-    defaultChecked: 'true',
-  },
-];
-
 export const question5 = [
   {
     id: 'customCheck8',
