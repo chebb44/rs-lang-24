@@ -59,6 +59,9 @@ export const LearnPage = () => {
   const handleNextArrowClick = () => {
     setIsNextArrowClicked(!isNextArrowClicked);
     dispatch(actionMarkWord(learnCard.id, LEARNED_WORD));
+    if (isCheckButtonClicked) {
+      handleCheckButtonClick();
+    }
   };
 
   const updateLearnedWordsAmount = (isWordCorrect) => {

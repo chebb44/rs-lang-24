@@ -53,17 +53,20 @@ export const LearnCard = ({
   useEffect(() => {
     if (learnCard) {
       setLearnCardFormatted(formatLearnCardText(learnCard));
-      const audiosToPlay = obtainAudiosToPlay(learnCard, learnCardSettings);
-      setAudiosToPlay(audiosToPlay);
     }
-  }, [learnCard, learnCardSettings]);
+  }, [learnCard]);
 
   const changeCurrentAudio = () => {
     if (isCheckButtonClicked) {
+      const audiosToPlay = obtainAudiosToPlay(learnCard, learnCardSettings);
+      setAudiosToPlay(audiosToPlay);
       setCurrentAudio(audiosToPlay[0]);
+    } else {
+      setAudiosToPlay([]);
+      setCurrentAudio(null);
     }
   };
-  useEffect(changeCurrentAudio, [isCheckButtonClicked, isNextArrowClicked]);
+  useEffect(changeCurrentAudio, [isCheckButtonClicked]);
 
   if (!learnCardFormatted) return null;
   return (
