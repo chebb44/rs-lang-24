@@ -1,11 +1,11 @@
 import { getUserSettings } from '../utilities/network/settingsAPI';
-import { call, put } from 'redux-saga/effects';
-import { store } from '../store/store';
+import { call, put, select } from 'redux-saga/effects';
 import { sendSettingsToBackendWorker } from './sendSettingsToBackend';
 import { actionSetLearnSetting } from '../reducers/learnSettings/learnSettingsActions';
+import { currentUserSelector } from './../reducers/currentUser/currentUserReducer';
 
 export function* initSettingsSaga() {
-  const { token, id: userId } = store.getState().currentUser;
+  const { token, id: userId } = select(currentUserSelector);
   const settings = yield call(getUserSettings, { token, userId }); //get settings from API
   if (settings) {
     const { wordsPerDay, optional } = settings;

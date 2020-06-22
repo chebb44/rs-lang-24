@@ -77,7 +77,6 @@ export function* getNewWordsForLearn() {
         currentWordsPage,
         currentWordOnPage,
       } = yield select(learnCardSettingsSelector);
-      console.log("function*getNewWordsForLearn -> currentWordsGroup", currentWordsGroup)
       const {
         cardsForLearn,
         page,

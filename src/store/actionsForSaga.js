@@ -13,4 +13,3 @@ export const actionMarkWord = ({ wordId, wordType }) => ({
   type: MARK_WORD,
   payload: { wordId, wordType },
 });
-
