@@ -22,10 +22,13 @@
     .london-image {
       position: absolute;
       bottom: 0;
-      left: 0;
+      left: auto;
+      right: auto;
       width: 100%;
       z-index: -3;
-      opacity: .7;
+      opacity: .5;
+      max-height: 200px;
+      max-width: 600px;
     }
   }
 }
