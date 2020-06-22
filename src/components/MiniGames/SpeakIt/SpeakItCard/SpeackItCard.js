@@ -1,7 +1,7 @@
 import React from 'react';
 import './SpeackItCard.scss';
 
-export const SpeakItCard = function() {
+export const SpeakItCard = function () {
   return (
     <div>
       <span className="result-card__audio-icon">
