@@ -51,3 +51,15 @@ export const actionSetAutoTranslate = (translate) => ({
   type: SET_AUTO_TRANSLATE,
   payload: translate,
 });
+
+export const UPDATE_PREV_PAGE_GROUP_WORD_NUMBER =
+  'UPDATE_PREV_PAGE_GROUP_WORD_NUMBER';
+export const actionUpdatePrevPageGroupWordNumber = () => ({
+  type: UPDATE_PREV_PAGE_GROUP_WORD_NUMBER,
+});
+
+export const SET_LEARN_MODE = 'SET_LEARN_MODE';
+export const actionSetLearnMode = (mode) => ({
+  type: SET_LEARN_MODE,
+  payload: mode,
+});

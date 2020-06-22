@@ -4,6 +4,8 @@ import {
   // SET_CURRENT_WORDS_GROUP,
   // SET_CURRENT_WORD_ON_PAGE,
   SET_PAGE_GROUP_WORD_NUMBER,
+  SET_LEARN_MODE,
+  UPDATE_PREV_PAGE_GROUP_WORD_NUMBER,
 } from './learnSettingsActions';
 import {
   SET_WORDS_PER_DAY,
@@ -60,6 +62,16 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
           currentWordOnPage: wordInPage,
         },
       };
+    case UPDATE_PREV_PAGE_GROUP_WORD_NUMBER:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          prevWordsGroup: state.learnCardSettings.currentWordsGroup,
+          prevWordsPage: state.learnCardSettings.currentWordsPage,
+          prevWordOnPage: state.learnCardSettings.currentWordOnPage,
+        },
+      };
     case SET_AUTO_AUDIO:
       return {
         ...state,
@@ -74,6 +86,14 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
         learnCardSettings: {
           ...state.learnCardSettings,
           isTranslationOn: action.payload,
+        },
+      };
+    case SET_LEARN_MODE:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          learnMode: action.payload,
         },
       };
     default:

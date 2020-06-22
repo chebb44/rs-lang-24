@@ -14,6 +14,10 @@ import { initAppWorker } from '../sagas/initAppSaga';
 import { SET_WORDS_PER_DAY } from '../reducers/learnSettings/learnSettingsActions';
 import { markWordsWorker } from '../sagas/markUserWords';
 import { initWordsForLearnWorker } from '../sagas/initWordsForLearnSaga';
+import {
+  UPDATE_PREV_PAGE_GROUP_WORD_NUMBER,
+  SET_LEARN_MODE,
+} from './../reducers/learnSettings/learnSettingsActions';
 export function* sagaWatcher() {
   yield takeLatest(SIGN_UP_USER, signUpWorker);
   yield takeLatest(SIGN_IN_USER, signInWorker);
@@ -23,6 +27,11 @@ export function* sagaWatcher() {
   yield takeLatest(INIT_CARD_SET, initWordsForLearnWorker);
 
   yield takeLatest(SET_WORDS_PER_DAY, sendSettingsToBackendWorker);
+  yield takeLatest(
+    UPDATE_PREV_PAGE_GROUP_WORD_NUMBER,
+    sendSettingsToBackendWorker,
+  );
+  yield takeLatest(SET_LEARN_MODE, sendSettingsToBackendWorker);
 
   yield takeLatest(SET_LEARNED_WORDS, sendStatisticToBackendWorker);
 

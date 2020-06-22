@@ -1,13 +1,12 @@
 import { getAllUserWords } from '../utilities/network/wordsAPI';
-import { store } from '../store/store';
 import { LEARNED_WORD, HARD_WORD, DELETED_WORD } from './constants';
 import { convertWordIdToData } from '../utilities/network/convertWordIdToData';
 import { setDictionaryData } from '../reducers/dictionaryReducer/dictionaryAction';
-import { put } from 'redux-saga/effects';
+import { put, select } from 'redux-saga/effects';
+import { currentUserSelector } from './../reducers/currentUser/currentUserReducer';
 
 export function* initDictionarySaga() {
-  console.log('init dict!');
-  const { token, id: userId } = store.getState().currentUser;
+  const { token, id: userId } = yield select(currentUserSelector);
   const dictionaryData = yield getAllUserWords({ token, userId });
   if (dictionaryData) {
     const words = {

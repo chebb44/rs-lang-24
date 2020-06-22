@@ -8,7 +8,7 @@ import { actionInitCardSet } from '../store/actionsForSaga';
 export function* initAppWorker() {
   yield initSettingsSaga();
   yield initStatisticSaga();
-  yield initDictionarySaga();
   yield put(actionInitCardSet());
+  yield initDictionarySaga();
   yield put(actionSetInitDone(true));
 }

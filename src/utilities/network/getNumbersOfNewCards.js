@@ -1,14 +1,14 @@
 import { getWordsByPageAndGroup } from './wordsAPI';
 
 export const getNumbersOfNewCards = async ({
-  currentWordsGroup,
-  currentWordsPage,
-  currentWordOnPage,
+  wordsGroup,
+  wordsPage,
+  wordOnPage,
   numberOfNeed,
 }) => {
-  let page = currentWordsPage;
-  let group = currentWordsGroup;
-  let wordInPage = currentWordOnPage;
+  let page = wordsPage;
+  let group = wordsGroup;
+  let wordInPage = wordOnPage;
   const cardsForLearn = [];
   let newCardsFromApi = await getWordsByPageAndGroup({ page, group });
   newCardsFromApi = newCardsFromApi.slice(wordInPage);

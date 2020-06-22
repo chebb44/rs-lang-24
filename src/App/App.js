@@ -14,28 +14,15 @@ import { routes } from './constants/routes';
 import { actionInitApp } from '../store/actionsForSaga';
 import { CSSTransition } from 'react-transition-group';
 import { Spinner } from '../components/Spinner/Spinner';
-// import {
-//   getAllUserWords,
-//   getWordById,
-//   updateUserWord,
-//   getWordsByPageAndGroup,
-// } from '../utilities/network/wordsAPI';
-// import {
-//   createUserWord,
-//   getUserWordById,
-//   deleteUserWord,
-// } from './../utilities/network/wordsAPI';
-// import { HARD_WORD } from '../sagas/constants';
-// import { LEARNED_WORD, DELETED_WORD } from './../sagas/constants';
 
 export const App = () => {
   let { path } = useRouteMatch();
-  const { token, id: userId } = useSelector(currentUserSelector);
+  const { token } = useSelector(currentUserSelector);
   const { isSideBarShow, initDone } = useSelector(appStateSelector);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(actionInitApp());
-  }, [dispatch, token, userId]);
+  }, [dispatch]);
   return token ? (
     <div className="app-container">
       <PageHeader />
