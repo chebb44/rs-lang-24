@@ -4,7 +4,7 @@ import { SpeakItEnterScreen } from '../StartScreen/SpeakItEnterScreen';
 import { SpeakItGameScreen } from '../GamePage/SpeakItGamePage';
 
 export const SpeakItMainPage = function () {
-  const [speakItScreen, setSpeakItScreen] = useState('');
+  const [speakItScreen, setSpeakItScreen] = useState('start');
   return (
     <div>
       {speakItScreen === 'gamePage' ? (
