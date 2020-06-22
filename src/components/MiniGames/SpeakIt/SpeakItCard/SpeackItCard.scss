@@ -1,0 +1,49 @@
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1.4;
+  min-width: 200px;
+  min-height: 70px;
+  margin: 7px 5px;
+  border: 1px solid rgb(206, 212, 218);
+  border-radius: 5px;
+  background-color: #fff;
+  transition: .3s;
+
+  &:hover {
+    background-color: #E3FDFD;
+  }
+  &.active {
+    background-color: #609EB8;
+    color: white;
+  }
+}
+
+.card__audio-icon {
+  position: absolute;
+  top: calc(50% - 17px);
+  left: 10px;
+  width: 34px;
+  height: 34px;
+
+  svg {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+.card__word {
+  font-size: 18px;
+  padding-left: 25px;
+}
+
+.card__transcription {
+  font-size: 16px;
+  font-weight: 400;
+  padding-left: 25px;
+}
