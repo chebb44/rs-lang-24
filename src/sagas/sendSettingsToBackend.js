@@ -7,10 +7,7 @@ export function* sendSettingsToBackendWorker() {
   const { wordsPerDay, learnCardSettings } = yield select(
     learnSettingsSelector,
   );
-  console.log(
-    'function*sendSettingsToBackendWorker -> learnCardSettings',
-    learnCardSettings,
-  );
+
   const optional = {
     learnCardSettings: yield JSON.stringify(learnCardSettings),
   };
