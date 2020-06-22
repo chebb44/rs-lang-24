@@ -8,16 +8,18 @@ import {
   question3,
   question4,
   question5,
-  question6,
 } from '../../App/constants/SettingsList';
 
 const SettingsModalView = () => {
+  // const SettingsModalView = ({ hideSettingsModal }) => {
   return (
-    <div className="" id="exampleModal">
-      <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div className="modal-content settings-modal">
+    <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable settings-modal">
+      <div className="modal-content modal-content_settings">
+        <div className="modal-header text-center">
+          <h5 className="ml-25%">Настройки обучения:</h5>
           <button
             type="button"
+            // className="close btn-modal_close"
             className="close btn-modal_close"
             data-dismiss="modal"
             aria-label="Close"
@@ -25,51 +27,37 @@ const SettingsModalView = () => {
           >
             <span aria-hidden="true">&times;</span>
           </button>
-          <div className="modal-body">
-            <form className="ml-3">
-              <h5 className="text-left mt-1">Обучение:</h5>
-              {/* /question 1 */}
-              <p className="text-left ml-4 font-italic">
-                Количество новых слов, которые планируете изучать в день:
-              </p>
-              {question1.map((item, index) => (
-                <SettingsRadioInput item={item} key={index} />
-              ))}
-              {/* /question 2 */}
-              <p className="text-left ml-4 font-italic">
-                Максимальное количество карточек для изучения в день:
-              </p>
-              {question2.map((item, index) => (
-                <SettingsRadioInput item={item} key={index} />
-              ))}
-              {/* /question 3 */}
-              <p className="text-left ml-4 font-italic">Слова для изучения:</p>
+        </div>
+        <div className="modal-body">
+          <form className="ml-2">
+            <h6 className="text-left ml-3">Количество новых слов в день:</h6>
+            {question1.map((item, index) => (
+              <SettingsRadioInput item={item} key={index} />
+            ))}
+
+            <h6 className="text-left ml-3">Количество карточек в день:</h6>
+            {question2.map((item, index) => (
+              <SettingsRadioInput item={item} key={index} />
+            ))}
+
+            <h6 className="text-left ml-3">Что изучать:</h6>
+            <div className="text-left ml-5">
               {question3.map((item, index) => (
                 <SettingsRadioInput item={item} key={index} />
               ))}
-              {/* Карточка */}
-              <h5 className="text-left mt-1">Карточка:</h5>
-              <p className="text-left ml-4 font-italic">
-                Какую информацию добавить на карточку?
-              </p>
-              {/* Хотя бы один пункт из первых 3 должен быть отмечен.*/}
-              {question4.map((item, index) => (
-                <SettingsCheckboxInput item={item} key={index} />
-              ))}
-              {/* кнопки  на карточке */}
-              <p className="text-left ml-4 font-italic">
-                Какие кнопки добавить на карточку?
-              </p>
-              {question5.map((item, index) => (
-                <SettingsCheckboxInput item={item} key={index} />
-              ))}
-              {/* пользовательские */}
-              <h5 className="text-left mt-1">Пользовательские настройки:</h5>
-              {question6.map((item, index) => (
-                <SettingsCheckboxInput item={item} key={index} />
-              ))}
-            </form>
-          </div>
+            </div>
+
+            <h6 className="text-left ml-3">Что включить в карточку:</h6>
+            {/* Хотя бы один пункт из первых 3 должен быть отмечен.*/}
+            {question4.map((item, index) => (
+              <SettingsCheckboxInput item={item} key={index} />
+            ))}
+
+            <h6 className="text-left ml-3">Действия с карточкой:</h6>
+            {question5.map((item, index) => (
+              <SettingsCheckboxInput item={item} key={index} />
+            ))}
+          </form>
         </div>
       </div>
     </div>

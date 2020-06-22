@@ -2,19 +2,21 @@
 @import "src/scss/mixins";
 
 .settings-modal {
-  margin: 0 auto;
-  padding: 15px 5px;
-  min-width: 650px;
-  // min-width: 310px;
-  // height: 70%;
+  position: absolute;
+  left: auto;
+  right: auto;
+  top: 0px;
+}
+
+.modal-content_settings {
   background-color: $default-color;
-  border: 1px solid $neutral-disabled;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   box-shadow: $box-shadow;
+  z-index: 15;
 }
 
 .custom-control-input:checked~.custom-control-label::before{

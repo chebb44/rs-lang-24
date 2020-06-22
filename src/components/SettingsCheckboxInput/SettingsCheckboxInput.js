@@ -11,7 +11,7 @@ const SettingsCheckboxInput = ({ item }) => {
           id={id}
           defaultChecked
         ></input>
-        <label className="custom-control-label" htmlFor={id}>
+        <label className="custom-control-label font-italic" htmlFor={id}>
           {value}
         </label>
       </div>
@@ -25,7 +25,7 @@ const SettingsCheckboxInput = ({ item }) => {
         id={id}
         defaultChecked
       ></input>
-      <label className="custom-control-label" htmlFor={id}>
+      <label className="custom-control-label font-italic" htmlFor={id}>
         {value}
       </label>
     </div>

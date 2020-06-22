@@ -12,7 +12,7 @@ const SettingsRadioInput = ({ item }) => {
           className="custom-control-input"
           defaultChecked
         ></input>
-        <label className="custom-control-label" htmlFor={id}>
+        <label className="custom-control-label font-italic" htmlFor={id}>
           {value}
         </label>
       </div>
@@ -26,7 +26,7 @@ const SettingsRadioInput = ({ item }) => {
         name={name}
         className="custom-control-input"
       ></input>
-      <label className="custom-control-label" htmlFor={id}>
+      <label className="custom-control-label font-italic" htmlFor={id}>
         {value}
       </label>
     </div>

@@ -60,18 +60,23 @@ export const question3 = [
   {
     id: 'customRadioInline3-1',
     name: 'customRadioInline3',
-    value: 'Новые',
+    value: 'Только новые слова',
   },
   {
     id: 'customRadioInline3-2',
     name: 'customRadioInline3',
-    value: 'Те, которые нужно повторить',
+    value: 'Только изученные слова',
   },
   {
     id: 'customRadioInline3-3',
     name: 'customRadioInline3',
-    value: 'Перемешать',
+    value: 'Новые и изученные слова',
     defaultChecked: 'true',
+  },
+  {
+    id: 'customRadioInline3-4',
+    name: 'customRadioInline3',
+    value: 'Только сложные слова',
   },
 ];
 
@@ -83,58 +88,50 @@ export const question4 = [
   },
   {
     id: 'customCheck2',
-    value: 'Предложение с объяснением',
+    value: 'Объяснение слова',
     defaultChecked: 'true',
   },
   {
     id: 'customCheck3',
-    value: 'Предложение с примером',
+    value: 'Пример использования  слова',
     defaultChecked: 'true',
   },
   {
     id: 'customCheck4',
-    value: 'Картинку-ассоциацию',
+    value: 'Транскрипция',
     defaultChecked: 'true',
   },
   {
     id: 'customCheck5',
-    value: 'Транскрипцию',
+    value: 'Картинка-ассоциация',
+    defaultChecked: 'true',
+  },
+  {
+    id: 'customCheck7',
+    value: 'Аудио',
     defaultChecked: 'true',
   },
 ];
 
 export const question5 = [
   {
-    id: 'customCheck6',
+    id: 'customCheck8',
     value: `"Показать ответ"`,
     defaultChecked: 'true',
   },
   {
-    id: 'customCheck7',
+    id: 'customCheck9',
     value: `"Удалить"`,
     defaultChecked: 'true',
   },
   {
-    id: 'customCheck8',
+    id: 'customCheck10',
     value: `"Сложные"`,
     defaultChecked: 'true',
   },
   {
-    id: 'customCheck9',
-    value: `"Снова", "Трудно", "Хорошо", "Легко"`,
-    defaultChecked: 'true',
-  },
-];
-
-export const question6 = [
-  {
-    id: 'customCheck10',
-    value: 'Автоматическое воспроизведение изучаемого слова',
-    defaultChecked: 'true',
-  },
-  {
     id: 'customCheck11',
-    value: 'Показывать перевод изучаемого слова, а также предложения-примера / предложения-описания',
+    value: `"Снова", "Трудно", "Хорошо", "Легко"`,
     defaultChecked: 'true',
   },
 ];

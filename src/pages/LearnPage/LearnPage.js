@@ -26,6 +26,7 @@ import { appStateSelector } from '../../reducers/appState/appStateReducer';
 import { actionSettingsModal } from '../../reducers/appState/appStateActions';
 import { learnCardParametersSelector } from '../../reducers/learnCard/learnCardReducer';
 import { ProgressBar } from './../../components/ProgressBar/ProgressBar';
+import SettingsModal from '../SettingsModal/SettingsModal';
 
 export const LearnPage = () => {
   const learnCards = useSelector(learnCardsSelector);
@@ -79,6 +80,7 @@ export const LearnPage = () => {
 
   return (
     <div className="learn-page">
+      <SettingsModal />
       <LearnCardButtonsBlock
         learnCardSettingsData={learnCardSettings}
         appState={appState}
