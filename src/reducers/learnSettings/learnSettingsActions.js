@@ -40,14 +40,14 @@ export const actionSetPageGroupWordNumber = (data) => ({
   data,
 });
 
-export const UPDATE_PREV_PAGE_GROUP_WORD_NUMBER =
-  'UPDATE_PREV_PAGE_GROUP_WORD_NUMBER';
-export const actionUpdatePrevPageGroupWordNumber = () => ({
-  type: UPDATE_PREV_PAGE_GROUP_WORD_NUMBER,
+export const SET_AUTO_AUDIO = 'SET_AUTO_AUDIO';
+export const actionSetAutoAudio = (audio) => ({
+  type: SET_AUTO_AUDIO,
+  payload: audio,
 });
 
-export const SET_LEARN_MODE = 'SET_LEARN_MODE';
-export const actionSetLearnMode = (mode) => ({
-  type: SET_LEARN_MODE,
-  payload: mode,
+export const SET_AUTO_TRANSLATE = 'SET_AUTO_TRANSLATE';
+export const actionSetAutoTranslate = (translate) => ({
+  type: SET_AUTO_TRANSLATE,
+  payload: translate,
 });

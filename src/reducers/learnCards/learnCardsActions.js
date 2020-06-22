@@ -9,3 +9,9 @@ export const actionAddLearnCards = (cards) => ({
   type: ADD_LEARN_CARDS,
   cards,
 });
+
+export const UPDATE_LEARNED_WORDS_AMOUNT = 'UPDATE_LEARNED_WORDS_AMOUNT';
+export const actionUpdateLearnedWordsAmount = (amount) => ({
+  type: UPDATE_LEARNED_WORDS_AMOUNT,
+  amount,
+});

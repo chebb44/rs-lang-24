@@ -9,6 +9,7 @@ export function* initAppWorker() {
   yield initSettingsSaga();
   yield initStatisticSaga();
   yield initDictionarySaga();
+  yield put(actionInitCardSet());
   yield put(actionSetInitDone(true));
   yield put(actionInitCardSet());
 }

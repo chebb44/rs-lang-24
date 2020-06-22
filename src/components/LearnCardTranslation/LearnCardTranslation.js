@@ -3,10 +3,10 @@ import React from 'react';
 export const LearnCardTranslation = ({
   isTranslationOn,
   translation,
-  isWordSubmitted,
+  isCheckButtonClicked,
 }) => {
   return (
     isTranslationOn &&
-    isWordSubmitted && <p className="card-text">{translation}</p>
+    isCheckButtonClicked && <p className="card-text">{translation}</p>
   );
 };

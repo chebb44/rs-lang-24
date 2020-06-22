@@ -1,0 +1,14 @@
+@import 'src/scss/vars';
+
+.buttons-wrapper {
+  padding: 2px;
+  margin-left: 230px;
+  margin-top: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 5px;
+  box-shadow: $box-shadow;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}

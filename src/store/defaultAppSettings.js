@@ -22,6 +22,7 @@ export const defaultLearnSettings = {
     currentWordsPage: 0,
     currentWordOnPage: 0,
     learnMode: STANDARD_MODE,
+    isAudioOn: true,
   },
 };
 
@@ -31,4 +32,5 @@ export const defaultAppState = {
   initDone: false,
   visibleStatisticModal: false,
   visibleMaxCardsModal: false,
+  visibleSettingsModal: false,
 };
