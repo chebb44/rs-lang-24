@@ -6,6 +6,7 @@ export const defaultLearnSettings = {
     isExampleOn: true,
     isTranscriptionOn: true,
     isImageOn: true,
+    isAudioOn: true,
     currentWordsGroup: 0,
     currentWordsPage: 0,
     currentWordOnPage: 3,
@@ -18,6 +19,7 @@ export const defaultAppState = {
   initDone: false,
   visibleStatisticModal: false,
   visibleMaxCardsModal: false,
+  visibleSettingsModal: false,
 };
 
 const DAILY_NORM = 40;

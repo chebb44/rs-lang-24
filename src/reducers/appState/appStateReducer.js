@@ -4,6 +4,7 @@ import {
   TOGGLE_SIDEBAR,
   SET_STATISTIC_MODAL,
   SET_MAX_CARDS_MODAL,
+  SET_SETTINGS_MODAL,
 } from './appStateActions';
 import { defaultAppState } from '../../store/defaultAppSettings';
 
@@ -30,6 +31,11 @@ export const appState = (state = defaultAppState, action) => {
       return {
         ...state,
         visibleMaxCardsModal: action.payload,
+      };
+    case SET_SETTINGS_MODAL:
+      return {
+        ...state,
+        visibleSettingsModal: action.payload,
       };
     case SET_INIT_DONE:
       return {

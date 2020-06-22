@@ -21,6 +21,12 @@ export const actionMaxCardsModal = (text) => ({
   payload: text,
 });
 
+export const SET_SETTINGS_MODAL = 'SET_SETTINGS_MODAL';
+export const actionSettingsModal = (settings) => ({
+  type: SET_SETTINGS_MODAL,
+  payload: settings,
+});
+
 export const SET_INIT_DONE = 'SET_INIT_DONE';
 export const actionSetInitDone = (data) => ({
   type: SET_INIT_DONE,

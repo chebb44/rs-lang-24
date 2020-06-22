@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   learnCardsSelector,
@@ -14,6 +14,13 @@ import { ShowAnswerButton } from '../../components/ShowAnswerButton/ShowAnswerBu
 import { DeleteWordButton } from '../../components/DeleteWordButton/DeleteWordButton';
 import { HardWordButton } from '../../components/HardWordButton/HardWordButton';
 import './LearnPage.scss';
+import LearnCardButtonsBlock from '../../components/LearnCardButtonsBlock/LearnCardButtonsBlock';
+import {
+  actionSetAutoAudio,
+  actionSetAutoTranslate,
+} from '../../reducers/learnSettings/learnSettingsActions';
+import { appStateSelector } from '../../reducers/appState/appStateReducer';
+import { actionSettingsModal } from '../../reducers/appState/appStateActions';
 
 export const LearnPage = () => {
   const learnCards = useSelector(learnCardsSelector);
@@ -27,6 +34,7 @@ export const LearnPage = () => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const learnCard = learnCards[currentCardIndex];
   const cardsSetLength = learnCards.length;
+  const appState = useSelector(appStateSelector);
   const dispatch = useDispatch();
 
   const handleCheckButtonClick = () => {
@@ -72,8 +80,31 @@ export const LearnPage = () => {
     }
   };
 
+  // useEffect(() => {
+  //   dispatch(actionUpdateLearnCard(currentCardIndex));
+  // }, [dispatch, currentCardIndex]);
+
+  const changeAutoAudioPlay = useCallback(() => {
+    dispatch(actionSetAutoAudio(!learnCardSettings.isAudioOn));
+  }, [dispatch, learnCardSettings.isAudioOn]);
+
+  const changeAutoTranslate = useCallback(() => {
+    dispatch(actionSetAutoTranslate(!learnCardSettings.isTranslationOn));
+  }, [dispatch, learnCardSettings.isTranslationOn]);
+
+  const changeVisibleSettingsModal = useCallback(() => {
+    dispatch(actionSettingsModal(!appState.visibleSettingsModal));
+  }, [dispatch, appState.visibleSettingsModal]);
+
   return (
     <div className="learn-page">
+      <LearnCardButtonsBlock
+        learnCardSettingsData={learnCardSettings}
+        appState={appState}
+        changeAutoAudioPlay={changeAutoAudioPlay}
+        changeAutoTranslate={changeAutoTranslate}
+        changeVisibleSettingsModal={changeVisibleSettingsModal}
+      />
       <div className="learn-page__flipping-container">
         <LearnCardArrowPrevious
           onPreviousArrowClick={handleArrowClick}
