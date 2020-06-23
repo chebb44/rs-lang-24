@@ -13,9 +13,9 @@ export const LearnCardInput = ({
   isWordSubmitted,
   isAnswerShown,
 }) => {
-  const enteredWord = useSelector(learnCardParametersSelector).enteredWord;
-  const isCheckDisplayed = useSelector(learnCardParametersSelector)
-    .isCheckDisplayed;
+  const { enteredWord, isCheckDisplayed } = useSelector(
+    learnCardParametersSelector,
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {

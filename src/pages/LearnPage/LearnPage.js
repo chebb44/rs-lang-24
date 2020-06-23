@@ -29,11 +29,11 @@ import { learnCardParametersSelector } from '../../reducers/learnCard/learnCardR
 export const LearnPage = () => {
   const learnCards = useSelector(learnCardsSelector);
   const learnCardSettings = useSelector(learnCardSettingsSelector);
-  const isWordCorrect = useSelector(learnCardParametersSelector).isWordCorrect;
-  const currentLearnCardIndex = useSelector(learnCardParametersSelector)
-    .currentLearnCardIndex;
-  const lastCorrectWordIndex = useSelector(learnCardParametersSelector)
-    .lastCorrectWordIndex;
+  const {
+    isWordCorrect,
+    currentLearnCardIndex,
+    lastCorrectWordIndex,
+  } = useSelector(learnCardParametersSelector);
   const learnCard = learnCards[currentLearnCardIndex];
   const appState = useSelector(appStateSelector);
   const dispatch = useDispatch();
@@ -94,6 +94,7 @@ export const LearnPage = () => {
         <LearnCard
           learnCard={learnCard}
           learnCardSettings={learnCardSettings}
+          learnCardsLength={learnCards.length}
         />
         <LearnCardArrow
           direction={flippingCardDirections.next}

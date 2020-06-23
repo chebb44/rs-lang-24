@@ -6,6 +6,7 @@ export const LearnCardExample = ({
   example,
   exampleTranslation,
   isWordSubmitted,
+  isWordCorrect,
 }) => {
   const createExampleMarkup = () => {
     return {
