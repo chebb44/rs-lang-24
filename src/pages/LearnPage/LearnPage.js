@@ -104,7 +104,10 @@ export const LearnPage = () => {
           isWordCorrect={isWordCorrect}
         />
       </div>
-      <LearnCardButtonsContainer learnCard={learnCard} />
+      <LearnCardButtonsContainer
+        learnCard={learnCard}
+        isWordCorrect={isWordCorrect}
+      />
     </div>
   );
 };

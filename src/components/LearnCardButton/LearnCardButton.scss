@@ -1,7 +1,14 @@
 @import "../../scss/vars.scss";
 @import "../../scss/mixins.scss";
 
-.learn-card-buttons__button {
+.card-buttons__button {
   @include std_button;
+}
+
+.card-buttons__button_action {
   background-color: $primary-color;
+}
+
+.card-buttons__button_mark {
+  background-color: $warning-color;
 }

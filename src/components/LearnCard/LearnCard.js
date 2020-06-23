@@ -76,7 +76,9 @@ export const LearnCard = ({
   const submitWord = () => {
     if (enteredWord.toLowerCase() === learnCard.word.toLowerCase()) {
       dispatch(actionUpdateWordCorrectFlag(true));
-      dispatch(actionMarkWord(learnCard.id, LEARNED_WORD));
+      dispatch(
+        actionMarkWord({ wordId: learnCard._id, difficulty: LEARNED_WORD }),
+      );
       if (currentLearnCardIndex === learnCardsLength - 1)
         dispatch(actionUpdatePrevPageGroupWordNumber);
     }
