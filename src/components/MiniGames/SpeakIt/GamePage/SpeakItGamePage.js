@@ -1,5 +1,5 @@
 import React from 'react';
-import './SpeakItEnterScreen.scss';
+import './SpeakItGamePage.scss';
 
 export const SpeakItGameScreen = function () {
   return <div className="enter-screen">GameScreen</div>;
