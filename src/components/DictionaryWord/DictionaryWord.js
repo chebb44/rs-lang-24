@@ -7,7 +7,14 @@ import { LearnCardImg } from './../LearnCardImg/LearnCardImg';
 import { LearnCardMeaning } from './../LearnCardMeaning/LearnCardMeaning';
 import { LearnCardLearnWord } from '../LearnCardLearnWord/LearnCardLearnWord';
 import './DictionaryWord.scss';
-export const DictionaryWord = ({ word, learnCardSettings }) => {
+import { UniversalButton } from './../UniversalButton/UniversalButton';
+export const DictionaryWord = ({
+  word,
+  learnCardSettings,
+  buttonText,
+  buttonCallback,
+  wordId,
+}) => {
   const formattedCardData = formatLearnCardText(word);
   return (
     <div className="word-card card-body border-top">
@@ -18,7 +25,7 @@ export const DictionaryWord = ({ word, learnCardSettings }) => {
           isImageOn={learnCardSettings.isImageOn}
           imageSrc={formattedCardData.image}
         />
-        <div className="description-block ml-5 flex-grow-1">
+        <div className="description-block ml-5 mr-5 flex-grow-1">
           <LearnCardTranslation
             isTranslationOn={learnCardSettings.isTranslationOn}
             translation={formattedCardData.wordTranslate}
@@ -44,6 +51,10 @@ export const DictionaryWord = ({ word, learnCardSettings }) => {
             isWordSubmitted={true}
           />
         </div>
+        <UniversalButton
+          buttonText={buttonText}
+          onClickHandler={buttonCallback(wordId)}
+        />
       </div>
     </div>
   );

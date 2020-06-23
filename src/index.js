@@ -9,11 +9,11 @@ import { LoginRouter } from './App/LoginRouter';
 
 const render = () => {
   return ReactDOM.render(
-    <React.StrictMode>
-      <Provider store={store}>
-        <LoginRouter />
-      </Provider>
-    </React.StrictMode>,
+    // <React.StrictMode>
+    <Provider store={store}>
+      <LoginRouter />
+    </Provider>,
+    // </React.StrictMode>,
     document.getElementById('root'),
   );
 };
