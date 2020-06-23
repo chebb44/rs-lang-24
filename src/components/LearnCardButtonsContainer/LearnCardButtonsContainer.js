@@ -31,9 +31,9 @@ export const LearnCardButtonsContainer = ({ learnCard }) => {
     dispatch(actionMarkWord(learnCard.id, DELETED_WORD));
   };
 
-  const handleAddToHardButtonClick = () => {
+  /* const handleAddToHardButtonClick = () => {
     dispatch(actionMarkWord(learnCard.id, HARD_WORD));
-  };
+  }; */
 
   return (
     <div className="learn-card-buttons">
@@ -46,17 +46,12 @@ export const LearnCardButtonsContainer = ({ learnCard }) => {
           text={buttonText.showAnswer}
           onButtonClick={handleShowAnswerButtonClick}
         />
-      </div>
-      <div>
         <LearnCardButton
           text={buttonText.delete}
           onButtonClick={handleDeleteButtonClick}
         />
-        <LearnCardButton
-          text={buttonText.addToHard}
-          onButtonClick={handleAddToHardButtonClick}
-        />
       </div>
+      <div></div>
     </div>
   );
 };

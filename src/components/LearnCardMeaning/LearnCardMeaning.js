@@ -6,6 +6,7 @@ export const LearnCardMeaning = ({
   meaning,
   meaningTranslation,
   isWordSubmitted,
+  isWordCorrect,
 }) => {
   const createMeaningMarkup = () => {
     return {
