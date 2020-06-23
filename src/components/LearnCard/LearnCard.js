@@ -16,6 +16,7 @@ import {
   actionUpdateAudiosToPlay,
   actionUpdateCurrentAudio,
 } from '../../reducers/learnCard/learnCardActions';
+import { actionUpdatePrevPageGroupWordNumber } from '../../reducers/learnSettings/learnSettingsActions';
 import { actionMarkWord } from '../../store/actionsForSaga';
 import { LEARNED_WORD } from '../../sagas/constants';
 import './LearnCard.scss';
@@ -23,13 +24,14 @@ import './LearnCard.scss';
 export const LearnCard = ({
   learnCard,
   learnCardSettings,
-  isNextArrowClicked,
-  handleNextArrowClick,
+  learnCardsLength,
 }) => {
   const [learnCardFormatted, setLearnCardFormatted] = useState(null);
   const enteredWord = useSelector(learnCardParametersSelector).enteredWord;
   const isWordSubmitted = useSelector(learnCardParametersSelector)
     .isWordSubmitted;
+  const currentLearnCardIndex = useSelector(learnCardParametersSelector)
+    .currentLearnCardIndex;
   const isAnswerShown = useSelector(learnCardParametersSelector).isAnswerShown;
   const audiosToPlay = useSelector(learnCardParametersSelector).audiosToPlay;
   const currentAudio = useSelector(learnCardParametersSelector).currentAudio;
@@ -74,6 +76,8 @@ export const LearnCard = ({
     if (enteredWord.toLowerCase() === learnCard.word.toLowerCase()) {
       dispatch(actionUpdateWordCorrectFlag(true));
       dispatch(actionMarkWord(learnCard.id, LEARNED_WORD));
+      if (currentLearnCardIndex === learnCardsLength - 1)
+        dispatch(actionUpdatePrevPageGroupWordNumber);
     }
     const audiosToPlay = obtainAudiosToPlay(learnCard, learnCardSettings);
     dispatch(actionUpdateAudiosToPlay(audiosToPlay));
