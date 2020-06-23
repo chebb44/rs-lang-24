@@ -1,6 +1,6 @@
 import React from 'react';
 import './LearnCardButtonsBlock.scss';
-import LearnCardButton from '../LearnCardButton/LearnCardButton';
+import LearnCardButton from '../LearnCardIcon/LearnCardButton';
 import {
   getColorSettingsIcon,
   getColorAudioIcon,
