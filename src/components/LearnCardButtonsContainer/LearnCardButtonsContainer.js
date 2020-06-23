@@ -1,10 +1,13 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { LearnCardButton } from '../LearnCardButton/LearnCardButton';
-import { actionSetShowAnswerButtonFlag } from '../../reducers/learnCardButtons/learnCardButtonsActions';
 import { actionMarkWord } from '../../store/actionsForSaga';
 import { HARD_WORD, DELETED_WORD } from '../../sagas/constants';
-import { actionUpdateSubmissionFlag } from '../../reducers/learnCard/learnCardActions';
+import {
+  actionUpdateSubmissionFlag,
+  actionUpdateWordCorrectFlag,
+  actionUpdateAnswerShownFlag,
+} from '../../reducers/learnCard/learnCardActions';
 
 export const LearnCardButtonsContainer = ({ learnCard }) => {
   const dispatch = useDispatch();
@@ -20,7 +23,8 @@ export const LearnCardButtonsContainer = ({ learnCard }) => {
   };
 
   const handleShowAnswerButtonClick = () => {
-    dispatch(actionSetShowAnswerButtonFlag(true));
+    dispatch(actionUpdateAnswerShownFlag(true));
+    dispatch(actionUpdateWordCorrectFlag(true));
   };
 
   const handleDeleteButtonClick = () => {

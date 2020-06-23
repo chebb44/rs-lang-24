@@ -39,3 +39,15 @@ export const actionUpdateSubmissionFlag = (flag) => ({
   type: UPDATE_SUBMISSION_FLAG,
   flag,
 });
+
+export const UPDATE_LAST_CORRECT_WORD_INDEX = 'UPDATE_LAST_CORRECT_WORD_INDEX';
+export const actionUpdateLastCorrectWordIndex = (index) => ({
+  type: UPDATE_LAST_CORRECT_WORD_INDEX,
+  index,
+});
+
+export const UPDATE_ANSWER_SHOWN_FLAG = 'UPDATE_ANSWER_SHOWN_FLAG';
+export const actionUpdateAnswerShownFlag = (flag) => ({
+  type: UPDATE_ANSWER_SHOWN_FLAG,
+  flag,
+});

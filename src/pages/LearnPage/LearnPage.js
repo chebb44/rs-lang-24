@@ -1,12 +1,19 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  learnCardsSelector,
-  learnedWordsAmountSelector,
-} from '../../reducers/learnCards/learnCardsReducer';
+import { learnCardsSelector } from '../../reducers/learnCards/learnCardsReducer';
 import { LearnCardButtonsContainer } from '../../components/LearnCardButtonsContainer/LearnCardButtonsContainer';
 import { learnCardSettingsSelector } from '../../reducers/learnSettings/learnSettingsReducer';
-import { actionUpdateLearnedWordsAmount } from '../../reducers/learnCards/learnCardsActions';
+import {
+  actionUpdateCurrentCardIndex,
+  actionUpdateEnteredWord,
+  actionUpdateSubmissionFlag,
+  actionUpdateWordCorrectFlag,
+  actionUpdateCheckDisplaying,
+  actionUpdateAudiosToPlay,
+  actionUpdateCurrentAudio,
+  actionUpdateLastCorrectWordIndex,
+  actionUpdateAnswerShownFlag,
+} from '../../reducers/learnCard/learnCardActions';
 import { LearnCard } from '../../components/LearnCard/LearnCard';
 import { LearnCardArrow } from '../../components/LearnCardArrow/LearnCardArrow';
 import './LearnPage.scss';
@@ -17,24 +24,17 @@ import {
 } from '../../reducers/learnSettings/learnSettingsActions';
 import { appStateSelector } from '../../reducers/appState/appStateReducer';
 import { actionSettingsModal } from '../../reducers/appState/appStateActions';
-import { actionMarkWord } from '../../store/actionsForSaga';
-import { LEARNED_WORD } from '../../sagas/constants';
-import {
-  actionSetCheckButtonFlag,
-  actionSetShowAnswerButtonFlag,
-} from '../../reducers/learnCardButtons/learnCardButtonsActions';
 import { learnCardParametersSelector } from '../../reducers/learnCard/learnCardReducer';
 
 export const LearnPage = () => {
   const learnCards = useSelector(learnCardsSelector);
   const learnCardSettings = useSelector(learnCardSettingsSelector);
-  const learnedWordsAmount = useSelector(learnedWordsAmountSelector);
-  const isWordSubmitted = useSelector(learnCardParametersSelector)
-    .isWordSubmitted;
-  const [isNextArrowClicked, setIsNextArrowClicked] = useState(false);
-  const [currentCardIndex, setCurrentCardIndex] = useState(0);
-  const learnCard = learnCards[currentCardIndex];
-  const cardsSetLength = learnCards.length;
+  const isWordCorrect = useSelector(learnCardParametersSelector).isWordCorrect;
+  const currentLearnCardIndex = useSelector(learnCardParametersSelector)
+    .currentLearnCardIndex;
+  const lastCorrectWordIndex = useSelector(learnCardParametersSelector)
+    .lastCorrectWordIndex;
+  const learnCard = learnCards[currentLearnCardIndex];
   const appState = useSelector(appStateSelector);
   const dispatch = useDispatch();
   const flippingCardDirections = {
@@ -42,29 +42,26 @@ export const LearnPage = () => {
     previous: 'previous',
   };
 
-  const updateLearnedWordsAmount = (isWordCorrect) => {
-    if (isWordCorrect === true)
-      dispatch(actionUpdateLearnedWordsAmount(learnedWordsAmount + 1));
-  };
-
   const handleArrowClick = (direction) => {
-    if (direction === 'next') {
-      dispatch(actionMarkWord(learnCard.id, LEARNED_WORD));
-      setIsNextArrowClicked(!isNextArrowClicked);
-      if (isWordSubmitted) {
-        dispatch(actionSetCheckButtonFlag(false));
-      }
-      if (
-        currentCardIndex === cardsSetLength - 1 ||
-        learnedWordsAmount <= currentCardIndex
-      )
-        return;
-      setCurrentCardIndex(currentCardIndex + 1);
-      dispatch(actionSetShowAnswerButtonFlag(false));
-    } else {
-      if (currentCardIndex === 0) return;
-      setCurrentCardIndex(currentCardIndex - 1);
+    if (
+      direction === 'next' &&
+      (isWordCorrect || currentLearnCardIndex <= lastCorrectWordIndex) &&
+      currentLearnCardIndex < learnCards.length - 1
+    ) {
+      dispatch(actionUpdateCurrentCardIndex(currentLearnCardIndex + 1));
+      if (isWordCorrect)
+        dispatch(actionUpdateLastCorrectWordIndex(lastCorrectWordIndex + 1));
     }
+    if (direction === 'previous' && currentLearnCardIndex > 0) {
+      dispatch(actionUpdateCurrentCardIndex(currentLearnCardIndex - 1));
+    }
+    dispatch(actionUpdateAnswerShownFlag(false));
+    dispatch(actionUpdateEnteredWord(''));
+    dispatch(actionUpdateSubmissionFlag(false));
+    dispatch(actionUpdateWordCorrectFlag(false));
+    dispatch(actionUpdateCheckDisplaying(false));
+    dispatch(actionUpdateAudiosToPlay([]));
+    dispatch(actionUpdateCurrentAudio(null));
   };
 
   const changeAutoAudioPlay = useCallback(() => {
@@ -92,21 +89,18 @@ export const LearnPage = () => {
         <LearnCardArrow
           direction={flippingCardDirections.previous}
           onArrowClick={handleArrowClick}
-          currentCardIndex={currentCardIndex}
+          currentCardIndex={currentLearnCardIndex}
         />
         <LearnCard
           learnCard={learnCard}
           learnCardSettings={learnCardSettings}
-          isNextArrowClicked={isNextArrowClicked}
-          updateLearnedWordsAmount={updateLearnedWordsAmount}
-          //handleNextArrowClick={handleNextArrowClick}
         />
         <LearnCardArrow
           direction={flippingCardDirections.next}
           onArrowClick={handleArrowClick}
-          currentCardIndex={currentCardIndex}
-          cardsSetLength={cardsSetLength}
-          learnedWordsAmount={learnedWordsAmount}
+          currentCardIndex={currentLearnCardIndex}
+          learnCardsLength={learnCards.length}
+          isWordCorrect={isWordCorrect}
         />
       </div>
       <LearnCardButtonsContainer learnCard={learnCard} />

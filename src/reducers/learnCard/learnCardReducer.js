@@ -6,14 +6,18 @@ import {
   UPDATE_AUDIOS_TO_PLAY,
   UPDATE_CURRENT_AUDIO,
   UPDATE_SUBMISSION_FLAG,
+  UPDATE_LAST_CORRECT_WORD_INDEX,
+  UPDATE_ANSWER_SHOWN_FLAG,
 } from './learnCardActions';
 
 const defaultData = {
   currentLearnCardIndex: 0,
+  lastCorrectWordIndex: -1,
   enteredWord: '',
   isWordSubmitted: false,
   isWordCorrect: false,
   isCheckDisplayed: false,
+  isAnswerShown: false,
   audiosToPlay: [],
   currentAudio: null,
 };
@@ -56,6 +60,16 @@ export const learnCard = (state = defaultData, action) => {
       return {
         ...state,
         currentAudio: action.audio,
+      };
+    case UPDATE_LAST_CORRECT_WORD_INDEX:
+      return {
+        ...state,
+        lastCorrectWordIndex: action.index,
+      };
+    case UPDATE_ANSWER_SHOWN_FLAG:
+      return {
+        ...state,
+        isAnswerShown: action.flag,
       };
     default:
       return state;

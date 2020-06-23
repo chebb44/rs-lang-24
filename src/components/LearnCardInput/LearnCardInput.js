@@ -11,9 +11,7 @@ import './LearnCardInput.scss';
 export const LearnCardInput = ({
   originalWord,
   isWordSubmitted,
-  isShowAnswerButtonClicked,
-  isNextArrowClicked,
-  handleNextArrowClick,
+  isAnswerShown,
 }) => {
   const enteredWord = useSelector(learnCardParametersSelector).enteredWord;
   const isCheckDisplayed = useSelector(learnCardParametersSelector)
@@ -25,14 +23,6 @@ export const LearnCardInput = ({
       dispatch(actionUpdateCheckDisplaying(true));
     }
   }, [isWordSubmitted, dispatch]);
-
-  /* useEffect(() => {
-    if (isNextArrowClicked) {
-      dispatch(actionUpdateEnteredWord(''));
-      setIsCheckedWordDisplayed(false);
-      handleNextArrowClick();
-    }
-  }, [isNextArrowClicked, handleNextArrowClick]); */
 
   const removeCheckDisplaying = () => {
     dispatch(actionUpdateCheckDisplaying(false));
@@ -48,7 +38,7 @@ export const LearnCardInput = ({
             width: `calc(4px + 12.5px * ${originalWord.length})`,
           }}
           autoFocus
-          value={isShowAnswerButtonClicked ? originalWord : enteredWord}
+          value={isAnswerShown ? originalWord : enteredWord}
           onChange={(event) =>
             dispatch(actionUpdateEnteredWord(event.target.value))
           }

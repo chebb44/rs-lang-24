@@ -9,8 +9,6 @@ import { LearnCardMeaning } from '../LearnCardMeaning/LearnCardMeaning';
 import { LearnCardAudio } from '../LearnCardAudio/LearnCardAudio';
 import { formatLearnCardText } from '../../utilities/learnCard/formatLearnCardText';
 import { obtainAudiosToPlay } from '../../utilities/learnCard/obtainAudiosToPlay';
-import { buttonsFlagsSelector } from '../../reducers/learnCardButtons/learnCardButtonsReducer';
-import { actionSetCheckButtonFlag } from '../../reducers/learnCardButtons/learnCardButtonsActions';
 import { learnCardParametersSelector } from '../../reducers/learnCard/learnCardReducer';
 import {
   actionUpdateWordCorrectFlag,
@@ -18,6 +16,8 @@ import {
   actionUpdateAudiosToPlay,
   actionUpdateCurrentAudio,
 } from '../../reducers/learnCard/learnCardActions';
+import { actionMarkWord } from '../../store/actionsForSaga';
+import { LEARNED_WORD } from '../../sagas/constants';
 import './LearnCard.scss';
 
 export const LearnCard = ({
@@ -30,11 +30,16 @@ export const LearnCard = ({
   const enteredWord = useSelector(learnCardParametersSelector).enteredWord;
   const isWordSubmitted = useSelector(learnCardParametersSelector)
     .isWordSubmitted;
+  const isAnswerShown = useSelector(learnCardParametersSelector).isAnswerShown;
   const audiosToPlay = useSelector(learnCardParametersSelector).audiosToPlay;
   const currentAudio = useSelector(learnCardParametersSelector).currentAudio;
-  const isShowAnswerButtonClicked = useSelector(buttonsFlagsSelector)
-    .showAnswerButton;
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (learnCard) {
+      setLearnCardFormatted(formatLearnCardText(learnCard));
+    }
+  }, [learnCard]);
 
   const handleNextAudio = () => {
     const currentAudioIndex = audiosToPlay.indexOf(currentAudio);
@@ -47,38 +52,33 @@ export const LearnCard = ({
     }
   };
 
-  const handleWordSubmit = (event) => {
+  const handleWordSubmitOnEnter = (event) => {
     if (event.key === 'Enter') {
       dispatch(actionUpdateSubmissionFlag(true));
     }
   };
 
-  useEffect(() => {
+  const handleWordSubmitOnClick = () => {
     if (isWordSubmitted) {
       submitWord();
-      dispatch(actionSetCheckButtonFlag(false));
       if (!learnCardSettings.isAudioOn) {
         setTimeout(() => {
           dispatch(actionUpdateSubmissionFlag(false));
         }, 6000);
       }
     }
-  }, [isWordSubmitted]);
+  };
+  useEffect(handleWordSubmitOnClick, [isWordSubmitted, dispatch]);
 
   const submitWord = () => {
     if (enteredWord.toLowerCase() === learnCard.word.toLowerCase()) {
       dispatch(actionUpdateWordCorrectFlag(true));
+      dispatch(actionMarkWord(learnCard.id, LEARNED_WORD));
     }
     const audiosToPlay = obtainAudiosToPlay(learnCard, learnCardSettings);
     dispatch(actionUpdateAudiosToPlay(audiosToPlay));
     dispatch(actionUpdateCurrentAudio(audiosToPlay[0]));
   };
-
-  useEffect(() => {
-    if (learnCard) {
-      setLearnCardFormatted(formatLearnCardText(learnCard));
-    }
-  }, [learnCard]);
 
   if (!learnCardFormatted) return null;
   return (
@@ -87,7 +87,7 @@ export const LearnCard = ({
         <div
           className="card m-3 learn-card"
           style={{ maxWidth: '540px' }}
-          onKeyPress={handleWordSubmit}
+          onKeyPress={handleWordSubmitOnEnter}
         >
           <div className="row no-gutters">
             <div className="col-md-12">
@@ -99,7 +99,7 @@ export const LearnCard = ({
                 <LearnCardInput
                   originalWord={learnCardFormatted.word}
                   isWordSubmitted={isWordSubmitted}
-                  isShowAnswerButtonClicked={isShowAnswerButtonClicked}
+                  isAnswerShown={isAnswerShown}
                   isNextArrowClicked={isNextArrowClicked}
                   handleNextArrowClick={handleNextArrowClick}
                 />

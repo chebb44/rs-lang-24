@@ -6,8 +6,8 @@ export const LearnCardArrow = ({
   direction,
   onArrowClick,
   currentCardIndex,
-  cardsSetLength,
-  learnedWordsAmount,
+  learnCardsLength,
+  isWordCorrect,
 }) => {
   const classes = classNames({
     'arrow-icon': true,
@@ -15,8 +15,7 @@ export const LearnCardArrow = ({
     'arrow-icon_previous': direction === 'previous',
     'arrow-icon_disabled-next':
       direction === 'next' &&
-      (currentCardIndex === cardsSetLength - 1 ||
-        learnedWordsAmount <= currentCardIndex),
+      (currentCardIndex >= learnCardsLength - 1 || !isWordCorrect),
     'arrow-icon_disabled-previous':
       direction === 'previous' && currentCardIndex === 0,
   });
