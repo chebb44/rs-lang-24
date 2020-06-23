@@ -9,7 +9,7 @@ export const ONLY_HARD_WORDS_MODE = 'ONLY_HARD_WORDS_MODE';
 export const STANDARD_MODE = 'STANDARD_MODE';
 
 export const defaultLearnSettings = {
-  wordsPerDay: 50,
+  wordsPerDay: 40,
   learnCardSettings: {
     isTranslationOn: true,
     isMeaningOn: true,
@@ -24,12 +24,13 @@ export const defaultLearnSettings = {
     currentWordsPage: 0,
     currentWordOnPage: 0,
     learnMode: STANDARD_MODE,
+    cardsPerDay: 50,
   },
 };
 
 export const defaultAppState = {
   alertMessage: '',
-  isSideBarShow: true,
+  isSideBarShow: false,
   initDone: false,
   visibleStatisticModal: false,
   visibleMaxCardsModal: false,
