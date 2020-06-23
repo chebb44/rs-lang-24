@@ -6,14 +6,13 @@ export const LearnCardAudio = ({
   isAudioOn,
 }) => {
   return (
-    <audio
-      autoPlay
-      src={
-        currentAudio &&
-        isAudioOn &&
-        `https://raw.githubusercontent.com/veronika-martinovich/rslang-data/master/${currentAudio}`
-      }
-      onEnded={handleNextAudio}
-    />
+    isAudioOn &&
+    currentAudio && (
+      <audio
+        autoPlay
+        src={`https://raw.githubusercontent.com/veronika-martinovich/rslang-data/master/${currentAudio}`}
+        onEnded={handleNextAudio}
+      />
+    )
   );
 };

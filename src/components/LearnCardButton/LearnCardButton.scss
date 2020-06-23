@@ -1,7 +1,0 @@
-@import "../../scss/vars.scss";
-@import "../../scss/mixins.scss";
-
-.learn-card-buttons__button {
-  @include std_button;
-  background-color: $primary-color;
-}
