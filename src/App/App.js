@@ -16,7 +16,7 @@ import { CSSTransition } from 'react-transition-group';
 import { Spinner } from '../components/Spinner/Spinner';
 import { SpeakItMainPage } from '../components/MiniGames/SpeakIt/SpeakItPage/SpeakItMainPage';
 import { actionToggleSideBar } from '../reducers/appState/appStateActions';
-import {SavannaPage} from '../components/MiniGames/Savanna/SavannaPage/SavannaPage'
+import {SavannaPage} from '../components/MiniGames/Savanna/SavannaPage/SavannaPage';
 
 export const App = () => {
   let { path } = useRouteMatch();
