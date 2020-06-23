@@ -2,19 +2,22 @@ import { getUserSettings } from '../utilities/network/settingsAPI';
 import { call, put, select } from 'redux-saga/effects';
 import { actionSetLearnSetting } from '../reducers/learnSettings/learnSettingsActions';
 import { currentUserSelector } from './../reducers/currentUser/currentUserReducer';
+import { TOKEN_OUTDATED } from './constants';
+import { actionLogOutUser } from '../reducers/currentUser/currentUserActions';
 
 export function* initSettingsSaga() {
   const { token, id: userId } = yield select(currentUserSelector);
   const settings = yield call(getUserSettings, { token, userId }); //get settings from API
-  if (settings) {
-    const { wordsPerDay, optional } = settings;
-    const learnSettings = {
-      wordsPerDay,
-      learnCardSettings: JSON.parse(optional.learnCardSettings),
-    };
-    yield put(actionSetLearnSetting(learnSettings));
+  if (settings === TOKEN_OUTDATED) {
+    yield put(actionLogOutUser());
+  } else {
+    if (settings) {
+      const { wordsPerDay, optional } = settings;
+      const learnSettings = {
+        wordsPerDay,
+        learnCardSettings: JSON.parse(optional.learnCardSettings),
+      };
+      yield put(actionSetLearnSetting(learnSettings));
+    }
   }
-  //  else {
-  //   yield call(sendSettingsToBackendWorker); //send defaultSettings
-  // }
 }
