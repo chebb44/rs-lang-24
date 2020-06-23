@@ -1,30 +1,30 @@
 export const buttonParams = {
   check: {
     text: 'Проверить',
-    type: 'action',
+    classes: 'ml-2 mb-2 card-button_action',
   },
   showAnswer: {
     text: 'Показать ответ',
-    type: 'action',
+    classes: 'ml-2 mb-2 card-button_action',
   },
   delete: {
     text: 'Удалить',
-    type: 'action',
+    classes: 'ml-2 mb-2 card-button_action',
   },
   markAsHard: {
     text: 'Сложно',
-    type: 'mark',
+    classes: 'ml-2 mb-2 card-button_mark',
   },
   markAsGood: {
     text: 'Хорошо',
-    type: 'mark',
+    classes: 'ml-2 mb-2 card-button_mark',
   },
   markAsEasy: {
     text: 'Легко',
-    type: 'mark',
+    classes: 'ml-2 mb-2 card-button_mark',
   },
   learnAgain: {
     text: 'Снова',
-    type: 'mark',
+    classes: 'ml-2 mb-2 card-button_mark',
   },
 };

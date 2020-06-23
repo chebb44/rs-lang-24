@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { LearnCardButton } from '../LearnCardButton/LearnCardButton';
+import { UniversalButton } from '../UniversalButton/UniversalButton';
 import { actionMarkWord } from '../../store/actionsForSaga';
 import {
   HARD_WORD,
@@ -47,43 +47,43 @@ export const LearnCardButtonsContainer = ({ learnCard, isWordCorrect }) => {
   return (
     <div className="learn-card-buttons">
       <div>
-        <LearnCardButton
-          text={buttonParams.check.text}
-          onButtonClick={handleCheckButtonClick}
-          type={buttonParams.check.type}
+        <UniversalButton
+          onClickHandler={handleCheckButtonClick}
+          buttonText={buttonParams.check.text}
+          extraClasses={buttonParams.check.classes}
         />
-        <LearnCardButton
-          text={buttonParams.showAnswer.text}
-          onButtonClick={handleShowAnswerButtonClick}
-          type={buttonParams.showAnswer.type}
+        <UniversalButton
+          onClickHandler={handleShowAnswerButtonClick}
+          buttonText={buttonParams.showAnswer.text}
+          extraClasses={buttonParams.showAnswer.classes}
         />
-        <LearnCardButton
-          text={buttonParams.delete.text}
-          onButtonClick={handleDeleteButtonClick}
-          type={buttonParams.delete.type}
+        <UniversalButton
+          onClickHandler={handleDeleteButtonClick}
+          buttonText={buttonParams.delete.text}
+          extraClasses={buttonParams.delete.classes}
         />
       </div>
       {isWordCorrect && (
         <div>
-          <LearnCardButton
-            text={buttonParams.markAsHard.text}
-            onButtonClick={handleMarkAsHardButtonClick}
-            type={buttonParams.markAsHard.type}
+          <UniversalButton
+            onClickHandler={handleMarkAsHardButtonClick}
+            buttonText={buttonParams.markAsHard.text}
+            extraClasses={buttonParams.markAsHard.classes}
           />
-          <LearnCardButton
-            text={buttonParams.markAsGood.text}
-            onButtonClick={handleMarkAsGoodButtonClick}
-            type={buttonParams.markAsGood.type}
+          <UniversalButton
+            onClickHandler={handleMarkAsGoodButtonClick}
+            buttonText={buttonParams.markAsGood.text}
+            extraClasses={buttonParams.markAsGood.classes}
           />
-          <LearnCardButton
-            text={buttonParams.markAsEasy.text}
-            onButtonClick={handleMarkAsEasyButtonClick}
-            type={buttonParams.markAsEasy.type}
+          <UniversalButton
+            onClickHandler={handleMarkAsEasyButtonClick}
+            buttonText={buttonParams.markAsEasy.text}
+            extraClasses={buttonParams.markAsEasy.classes}
           />
-          <LearnCardButton
-            text={buttonParams.learnAgain.text}
-            onButtonClick={handleLearnAgainButtonClick}
-            type={buttonParams.learnAgain.type}
+          <UniversalButton
+            onClickHandler={handleLearnAgainButtonClick}
+            buttonText={buttonParams.learnAgain.text}
+            extraClasses={buttonParams.learnAgain.classes}
           />
         </div>
       )}

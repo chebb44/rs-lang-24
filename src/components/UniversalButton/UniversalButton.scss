@@ -5,3 +5,11 @@
   @include std_button;
   background-color: $primary-color;
 }
+
+.card-button_action {
+  background-color: $primary-color;
+}
+
+.card-button_mark {
+  background-color: $warning-color;
+}
