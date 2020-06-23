@@ -9,7 +9,13 @@ export const actionInitCardSet = () => ({
 });
 
 export const MARK_WORD = 'MARK_WORD';
-export const actionMarkWord = ({ wordId, wordType }) => ({
+export const actionMarkWord = ({ wordId, difficulty }) => ({
   type: MARK_WORD,
-  payload: { wordId, wordType },
+  payload: { wordId, difficulty },
+});
+
+export const MOVE_WORD = 'MOVE_WORD';
+export const actionMoveWord = ({ wordId, difficulty }) => ({
+  type: MOVE_WORD,
+  payload: { wordId, difficulty },
 });

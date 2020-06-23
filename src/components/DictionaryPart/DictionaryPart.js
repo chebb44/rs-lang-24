@@ -19,13 +19,13 @@ export const DictionaryPart = ({
             {words.map((word) => (
               <CSSTransition
                 appear={true}
-                key={word.id}
+                key={word._id}
                 classNames="slide"
                 timeout={800}
               >
                 <DictionaryWord
                   // key={word.id}
-                  wordId={word.id}
+                  wordId={word._id}
                   word={word}
                   learnCardSettings={learnCardSettings}
                   header={header}

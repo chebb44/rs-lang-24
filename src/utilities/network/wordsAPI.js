@@ -151,6 +151,49 @@ export const getUserWordById = async ({ userId, wordId, token }) => {
   }
 };
 
+export const getAggregateUserWordById = async ({ userId, wordId, token }) => {
+  try {
+    const rawResponse = await fetch(
+      `https://afternoon-falls-25894.herokuapp.com/users/${userId}/aggregatedWords/${wordId}`,
+      {
+        method: 'GET',
+        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/json',
+        },
+      },
+    );
+    const [content] = await rawResponse.json();
+    return content;
+  } catch (error) {
+    console.log('getAggregateUserWordById -> error', error);
+    return null;
+  }
+};
+
+export const getAllAggregateUserWords = async ({ userId, token }) => {
+  try {
+    const rawResponse = await fetch(
+      `https://afternoon-falls-25894.herokuapp.com/users/${userId}/aggregatedWords`,
+      {
+        method: 'GET',
+        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/json',
+        },
+      },
+    );
+    const content = await rawResponse.json();
+    console.log('getAllAggregateUserWords -> content', content);
+    return content;
+  } catch (error) {
+    console.log('getAllAggregateUserWords -> error', error);
+    return null;
+  }
+};
+
 // https://afternoon-falls-25894.herokuapp.com/words?page=2&group=0
 // {
 //   "id": "5e9f5ee35eb9e72bc21af4c8",
