@@ -1,9 +1,7 @@
 import React from 'react'; //, { useState, useEffect }
-//import { useSelector, useDispatch } from 'react-redux';
 import london from '../../../../assets/img/england_PNG723.png';
-
 import './SavannaPage.scss';
-
+//import { useSelector, useDispatch } from 'react-redux';
 export const SavannaPage = () => {
   return (
     <div className="play-page">
@@ -14,17 +12,19 @@ export const SavannaPage = () => {
         />
       </svg>
       <div className="play-page__flipping-container">
-      <h1 className ="color-rslang">Savanna
-      </h1>
-      <p className ="color-rslang">
-        приготовьтесь выбирать перевод слова из 4 вариантов на время
-      </p>
-      <button type="button" className="btn btn-lg btn-rslang" 
-        onClick={() => alert('игра началась!')}>
-        СТАРТ
-      </button>
+        <h1 className="color-rslang">Savanna</h1>
+        <p className="color-rslang">
+          приготовьтесь выбирать перевод слова из 4 вариантов на время
+        </p>
+        <button
+          type="button"
+          className="btn btn-lg btn-rslang"
+          onClick={() => alert('игра началась!')}
+        >
+          СТАРТ
+        </button>
+      </div>
+      <img className="footer_image" src={london} alt="london" />
     </div>
-    <img className="footer_image" src={london} alt="london" />
-  </div>
   );
 };
