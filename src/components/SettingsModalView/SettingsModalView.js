@@ -3,14 +3,19 @@ import './SettingsModalView.scss';
 import SettingsRadioInput from '../SettingsRadioInput/SettingsRadioInput';
 import SettingsCheckboxInput from '../SettingsCheckboxInput/SettingsCheckboxInput';
 import {
-  question1,
+  // question1,
   question2,
-  question3,
+  // question3,
   // question4,
   question5,
 } from '../../App/constants/SettingsList';
 
-const SettingsModalView = ({ question4, hideSettingsModal }) => {
+const SettingsModalView = ({
+  question1,
+  question3,
+  question4,
+  hideSettingsModal,
+}) => {
   return (
     <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable settings-modal">
       <div className="modal-content modal-content_settings">
@@ -39,7 +44,7 @@ const SettingsModalView = ({ question4, hideSettingsModal }) => {
             ))}
 
             <h6 className="text-left ml-3">Что изучать:</h6>
-            <div className="text-left ml-5">
+            <div className="text-left ml-5 wrapper_width">
               {question3.map((item, index) => (
                 <SettingsRadioInput item={item} key={index} />
               ))}

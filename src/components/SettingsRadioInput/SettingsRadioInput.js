@@ -1,8 +1,13 @@
 import React from 'react';
 
 const SettingsRadioInput = ({ item }) => {
-  const { id, name, value, defaultChecked } = item;
-  if (defaultChecked) {
+  const { id, name, value, text, defaultStateValue, func } = item;
+
+  const handleChange = (event) => {
+    return func(event.target.value);
+  };
+
+  if (defaultStateValue == value) {
     return (
       <div className="custom-control custom-radio custom-control-inline">
         <input
@@ -10,10 +15,12 @@ const SettingsRadioInput = ({ item }) => {
           id={id}
           name={name}
           className="custom-control-input"
+          value={value}
           defaultChecked
+          onChange={handleChange}
         ></input>
         <label className="custom-control-label font-italic" htmlFor={id}>
-          {value}
+          {text}
         </label>
       </div>
     );
@@ -25,9 +32,11 @@ const SettingsRadioInput = ({ item }) => {
         id={id}
         name={name}
         className="custom-control-input"
+        value={value}
+        onChange={handleChange}
       ></input>
       <label className="custom-control-label font-italic" htmlFor={id}>
-        {value}
+        {text}
       </label>
     </div>
   );

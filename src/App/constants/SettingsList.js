@@ -1,82 +1,34 @@
-export const question1 = [
-  {
-    id: 'customRadioInline1-1',
-    name: 'customRadioInline1',
-    value: '20',
-  },
-  {
-    id: 'customRadioInline1-2',
-    name: 'customRadioInline1',
-    value: '30',
-  },
-  {
-    id: 'customRadioInline1-3',
-    name: 'customRadioInline1',
-    value: '40',
-    defaultChecked: 'true',
-  },
-  {
-    id: 'customRadioInline1-4',
-    name: 'customRadioInline1',
-    value: '50',
-  },
-  {
-    id: 'customRadioInline1-5',
-    name: 'customRadioInline1',
-    value: '60',
-  },
-];
-
 export const question2 = [
   {
     id: 'customRadioInline2-1',
     name: 'customRadioInline2',
     value: '30',
+    text: '30',
   },
   {
     id: 'customRadioInline2-2',
     name: 'customRadioInline2',
     value: '40',
+    text: '40',
   },
   {
     id: 'customRadioInline2-3',
     name: 'customRadioInline2',
     value: '50',
+    text: '50',
     defaultChecked: 'true',
   },
   {
     id: 'customRadioInline2-4',
     name: 'customRadioInline2',
     value: '60',
+    text: '60',
   },
   {
     id: 'customRadioInline2-5',
     name: 'customRadioInline2',
     value: '70',
-  },
-];
-
-export const question3 = [
-  {
-    id: 'customRadioInline3-1',
-    name: 'customRadioInline3',
-    value: 'Только новые слова',
-  },
-  {
-    id: 'customRadioInline3-2',
-    name: 'customRadioInline3',
-    value: 'Только изученные слова',
-  },
-  {
-    id: 'customRadioInline3-3',
-    name: 'customRadioInline3',
-    value: 'Новые и изученные слова',
-    defaultChecked: 'true',
-  },
-  {
-    id: 'customRadioInline3-4',
-    name: 'customRadioInline3',
-    value: 'Только сложные слова',
+    text: '70',
   },
 ];
 
