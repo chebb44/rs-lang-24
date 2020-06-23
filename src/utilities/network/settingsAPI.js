@@ -1,3 +1,4 @@
+import { TOKEN_OUTDATED } from './../../sagas/constants';
 export const getUserSettings = async ({ userId, token }) => {
   try {
     const rawResponse = await fetch(
@@ -11,11 +12,12 @@ export const getUserSettings = async ({ userId, token }) => {
         },
       },
     );
+    if (rawResponse.status === 401) return TOKEN_OUTDATED;
     const content = await rawResponse.json();
     console.log('get settings: ', content); //{id: "5ee846f3e0f08ce8479a2ff7", wordsPerDay: 100}
     return content;
   } catch (error) {
-    console.log('Failed get settings for this user');
+    console.log('Failed get settings for this user', error);
     return null;
   }
 };
