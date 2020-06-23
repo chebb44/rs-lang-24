@@ -1,18 +1,21 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  learnCardsSelector,
-  learnedWordsAmountSelector,
-} from '../../reducers/learnCards/learnCardsReducer';
+import { learnCardsSelector } from '../../reducers/learnCards/learnCardsReducer';
+import { LearnCardButtonsContainer } from '../../components/LearnCardButtonsContainer/LearnCardButtonsContainer';
 import { learnCardSettingsSelector } from '../../reducers/learnSettings/learnSettingsReducer';
-import { actionUpdateLearnedWordsAmount } from '../../reducers/learnCards/learnCardsActions';
+import {
+  actionUpdateCurrentCardIndex,
+  actionUpdateEnteredWord,
+  actionUpdateSubmissionFlag,
+  actionUpdateWordCorrectFlag,
+  actionUpdateCheckDisplaying,
+  actionUpdateAudiosToPlay,
+  actionUpdateCurrentAudio,
+  actionUpdateLastCorrectWordIndex,
+  actionUpdateAnswerShownFlag,
+} from '../../reducers/learnCard/learnCardActions';
 import { LearnCard } from '../../components/LearnCard/LearnCard';
-import { LearnCardArrowNext } from '../../components/LearnCardArrows/LearnCardArrowNext';
-import { LearnCardArrowPrevious } from '../../components/LearnCardArrows/LearnCardArrowPrevious';
-import { CheckWordButton } from '../../components/CheckWordButton/CheckWordButton';
-import { ShowAnswerButton } from '../../components/ShowAnswerButton/ShowAnswerButton';
-import { DeleteWordButton } from '../../components/DeleteWordButton/DeleteWordButton';
-import { HardWordButton } from '../../components/HardWordButton/HardWordButton';
+import { LearnCardArrow } from '../../components/LearnCardArrow/LearnCardArrow';
 import './LearnPage.scss';
 import LearnCardButtonsBlock from '../../components/LearnCardButtonsBlock/LearnCardButtonsBlock';
 import {
@@ -21,68 +24,45 @@ import {
 } from '../../reducers/learnSettings/learnSettingsActions';
 import { appStateSelector } from '../../reducers/appState/appStateReducer';
 import { actionSettingsModal } from '../../reducers/appState/appStateActions';
+import { learnCardParametersSelector } from '../../reducers/learnCard/learnCardReducer';
 
 export const LearnPage = () => {
   const learnCards = useSelector(learnCardsSelector);
   const learnCardSettings = useSelector(learnCardSettingsSelector);
-  const learnedWordsAmount = useSelector(learnedWordsAmountSelector);
-  const [isCheckButtonClicked, setIsCheckButtonClicked] = useState(false);
-  const [isShowAnswerButtonClicked, setIsShowAnswerButtonClicked] = useState(
-    false,
-  );
-  const [isNextArrowClicked, setIsNextArrowClicked] = useState(false);
-  const [currentCardIndex, setCurrentCardIndex] = useState(0);
-  const learnCard = learnCards[currentCardIndex];
-  const cardsSetLength = learnCards.length;
+  const isWordCorrect = useSelector(learnCardParametersSelector).isWordCorrect;
+  const currentLearnCardIndex = useSelector(learnCardParametersSelector)
+    .currentLearnCardIndex;
+  const lastCorrectWordIndex = useSelector(learnCardParametersSelector)
+    .lastCorrectWordIndex;
+  const learnCard = learnCards[currentLearnCardIndex];
   const appState = useSelector(appStateSelector);
   const dispatch = useDispatch();
-
-  const handleCheckButtonClick = () => {
-    setIsCheckButtonClicked(!isCheckButtonClicked);
-  };
-
-  const handleShowAnswerButtonClick = () => {
-    setIsShowAnswerButtonClicked(!isShowAnswerButtonClicked);
-    dispatch(actionUpdateLearnedWordsAmount(learnedWordsAmount + 1));
-  };
-
-  const handleDeleteButtonClick = () => {
-    /* dispatch(actionUpdateDictionaryDeletedWords(learnCard)); */
-  };
-
-  const handleHardButtonClick = () => {
-    /* dispatch(actionUpdateDictionaryHardWords(learnCard)); */
-  };
-
-  const handleNextArrowClick = () => {
-    setIsNextArrowClicked(!isNextArrowClicked);
-    /* dispatch(actionUpdateDictionaryLearnedWords(learnCard)); */
-  };
-
-  const updateLearnedWordsAmount = (isWordCorrect) => {
-    if (isWordCorrect === true)
-      dispatch(actionUpdateLearnedWordsAmount(learnedWordsAmount + 1));
+  const flippingCardDirections = {
+    next: 'next',
+    previous: 'previous',
   };
 
   const handleArrowClick = (direction) => {
-    if (direction === 'next') {
-      setIsNextArrowClicked(!isNextArrowClicked);
-      if (
-        currentCardIndex === cardsSetLength - 1 ||
-        learnedWordsAmount <= currentCardIndex
-      )
-        return;
-      setCurrentCardIndex(currentCardIndex + 1);
-      setIsShowAnswerButtonClicked(false);
-    } else {
-      if (currentCardIndex === 0) return;
-      setCurrentCardIndex(currentCardIndex - 1);
+    if (
+      direction === 'next' &&
+      (isWordCorrect || currentLearnCardIndex <= lastCorrectWordIndex) &&
+      currentLearnCardIndex < learnCards.length - 1
+    ) {
+      dispatch(actionUpdateCurrentCardIndex(currentLearnCardIndex + 1));
+      if (isWordCorrect)
+        dispatch(actionUpdateLastCorrectWordIndex(lastCorrectWordIndex + 1));
     }
+    if (direction === 'previous' && currentLearnCardIndex > 0) {
+      dispatch(actionUpdateCurrentCardIndex(currentLearnCardIndex - 1));
+    }
+    dispatch(actionUpdateAnswerShownFlag(false));
+    dispatch(actionUpdateEnteredWord(''));
+    dispatch(actionUpdateSubmissionFlag(false));
+    dispatch(actionUpdateWordCorrectFlag(false));
+    dispatch(actionUpdateCheckDisplaying(false));
+    dispatch(actionUpdateAudiosToPlay([]));
+    dispatch(actionUpdateCurrentAudio(null));
   };
-
-  // useEffect(() => {
-  //   dispatch(actionUpdateLearnCard(currentCardIndex));
-  // }, [dispatch, currentCardIndex]);
 
   const changeAutoAudioPlay = useCallback(() => {
     dispatch(actionSetAutoAudio(!learnCardSettings.isAudioOn));
@@ -106,37 +86,24 @@ export const LearnPage = () => {
         changeVisibleSettingsModal={changeVisibleSettingsModal}
       />
       <div className="learn-page__flipping-container">
-        <LearnCardArrowPrevious
-          onPreviousArrowClick={handleArrowClick}
-          currentCardIndex={currentCardIndex}
+        <LearnCardArrow
+          direction={flippingCardDirections.previous}
+          onArrowClick={handleArrowClick}
+          currentCardIndex={currentLearnCardIndex}
         />
         <LearnCard
           learnCard={learnCard}
-          learnCardSettingsData={learnCardSettings}
-          isCheckButtonClicked={isCheckButtonClicked}
-          isShowAnswerButtonClicked={isShowAnswerButtonClicked}
-          isNextArrowClicked={isNextArrowClicked}
-          handleCheckButtonClick={handleCheckButtonClick}
-          updateLearnedWordsAmount={updateLearnedWordsAmount}
-          handleNextArrowClick={handleNextArrowClick}
+          learnCardSettings={learnCardSettings}
         />
-        <LearnCardArrowNext
-          onNextArrowClick={handleArrowClick}
-          currentCardIndex={currentCardIndex}
-          cardsSetLength={cardsSetLength}
-          learnedWordsAmount={learnedWordsAmount}
+        <LearnCardArrow
+          direction={flippingCardDirections.next}
+          onArrowClick={handleArrowClick}
+          currentCardIndex={currentLearnCardIndex}
+          learnCardsLength={learnCards.length}
+          isWordCorrect={isWordCorrect}
         />
       </div>
-      <div>
-        <CheckWordButton onCheckButtonClick={handleCheckButtonClick} />
-        <ShowAnswerButton
-          onShowAnswerButtonClick={handleShowAnswerButtonClick}
-        />
-      </div>
-      <div>
-        <DeleteWordButton onDeleteButtonClick={handleDeleteButtonClick} />
-        <HardWordButton onHardButtonClick={handleHardButtonClick} />
-      </div>
+      <LearnCardButtonsContainer learnCard={learnCard} />
     </div>
   );
 };
