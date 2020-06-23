@@ -5,7 +5,7 @@ export const LearnCardExample = ({
   isTranslationOn,
   example,
   exampleTranslation,
-  isCheckButtonClicked,
+  isWordSubmitted,
 }) => {
   const createExampleMarkup = () => {
     return {
@@ -21,7 +21,7 @@ export const LearnCardExample = ({
         ></p>
       )}
 
-      {isExampleOn && isTranslationOn && isCheckButtonClicked && (
+      {isExampleOn && isTranslationOn && isWordSubmitted && (
         <p className="card-text">{exampleTranslation}</p>
       )}
     </>

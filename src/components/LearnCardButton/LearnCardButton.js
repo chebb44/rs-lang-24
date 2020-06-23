@@ -1,12 +1,14 @@
 import React from 'react';
 import './LearnCardButton.scss';
 
-const LearnCardButton = ({ icon, func }) => {
+export const LearnCardButton = ({ text, onButtonClick }) => {
   return (
-    <button className="button-wrapper__learn" onClick={func}>
-      <img src={icon} alt="button-learn" />
+    <button
+      type="button"
+      className="btn ml-2 mb-2 learn-card-buttons__button"
+      onClick={() => onButtonClick()}
+    >
+      {text}
     </button>
   );
 };
-
-export default LearnCardButton;

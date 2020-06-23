@@ -1,40 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { createCheckedWordMarkup } from '../../utilities/learnCard/createCheckedWordMarkup';
+import { learnCardParametersSelector } from '../../reducers/learnCard/learnCardReducer';
+import {
+  actionUpdateEnteredWord,
+  actionUpdateCheckDisplaying,
+} from '../../reducers/learnCard/learnCardActions';
 import './LearnCardInput.scss';
 
 export const LearnCardInput = ({
   originalWord,
-  enteredWord,
-  isCheckButtonClicked,
-  isShowAnswerButtonClicked,
-  isNextArrowClicked,
-  handleInputChange,
-  handleNextArrowClick,
+  isWordSubmitted,
+  isAnswerShown,
 }) => {
-  const [isCheckedWordDisplayed, setIsCheckedWordDisplayed] = useState(false);
-
-  const changeIsCheckWordDisplayed = () => {
-    if (isCheckButtonClicked) {
-      setIsCheckedWordDisplayed(!isCheckedWordDisplayed);
-    }
-  };
-  useEffect(changeIsCheckWordDisplayed, [isCheckButtonClicked]);
+  const enteredWord = useSelector(learnCardParametersSelector).enteredWord;
+  const isCheckDisplayed = useSelector(learnCardParametersSelector)
+    .isCheckDisplayed;
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (isNextArrowClicked) {
-      handleInputChange('');
-      setIsCheckedWordDisplayed(false);
-      handleNextArrowClick();
+    if (isWordSubmitted) {
+      dispatch(actionUpdateCheckDisplaying(true));
     }
-  }, [isNextArrowClicked, handleInputChange, handleNextArrowClick]);
+  }, [isWordSubmitted, dispatch]);
 
-  const handleCheckedWordClick = () => {
-    setIsCheckedWordDisplayed(!isCheckedWordDisplayed);
+  const removeCheckDisplaying = () => {
+    dispatch(actionUpdateCheckDisplaying(false));
   };
 
   return (
     <div className="card-text">
-      {!isCheckedWordDisplayed && (
+      {!isCheckDisplayed && (
         <input
           className="form-control m-auto entered-word"
           type="text"
@@ -42,18 +38,20 @@ export const LearnCardInput = ({
             width: `calc(4px + 12.5px * ${originalWord.length})`,
           }}
           autoFocus
-          value={isShowAnswerButtonClicked ? originalWord : enteredWord}
-          onChange={(event) => handleInputChange(event.target.value)}
+          value={isAnswerShown ? originalWord : enteredWord}
+          onChange={(event) =>
+            dispatch(actionUpdateEnteredWord(event.target.value))
+          }
         />
       )}
-      {isCheckedWordDisplayed && (
+      {isCheckDisplayed && (
         <p
           className="checked-word"
           dangerouslySetInnerHTML={createCheckedWordMarkup(
             enteredWord,
             originalWord,
           )}
-          onClick={handleCheckedWordClick}
+          onClick={removeCheckDisplaying}
         ></p>
       )}
     </div>
