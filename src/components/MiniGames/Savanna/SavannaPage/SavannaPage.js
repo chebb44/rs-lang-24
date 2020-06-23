@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react'; //, { useState, useEffect }
+//import { useSelector, useDispatch } from 'react-redux';
 import london from '../../../../assets/img/england_PNG723.png';
 
 import './SavannaPage.scss';
