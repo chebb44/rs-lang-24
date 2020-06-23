@@ -9,6 +9,6 @@ export const routes = {
   dictionaryLearn: '/app/dictionary/learn',
   dictionaryHard: '/app/dictionary/hard',
   dictionaryDeleted: '/app/dictionary/deleted',
-  speakit: '/app/speakit',
+  speakIt: '/app/speakit',
   savanna: '/app/savanna',
 };
