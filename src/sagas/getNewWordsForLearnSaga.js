@@ -10,6 +10,7 @@ import {
   NUMBER_OF_REPEAT_WORDS,
   NEW_WORDS_MODE,
   REPEAT_MODE,
+  ONLY_HARD_WORDS_MODE,
 } from '../store/defaultAppSettings';
 import { learnCardSettingsSelector } from './../reducers/learnSettings/learnSettingsReducer';
 import { dictionaryStateStateSelector } from './../reducers/dictionaryReducer/dictionaryReducer';
@@ -27,6 +28,20 @@ export function* getNewWordsForLearn() {
   } = yield select(learnCardSettingsSelector);
   const { learnedWords } = yield select(dictionaryStateStateSelector);
   let needNew, needRepeat;
+
+  switch (learnMode) {
+    case STANDARD_MODE:
+      break;
+    case NEW_WORDS_MODE:
+      break;
+    case REPEAT_MODE:
+      break;
+    case ONLY_HARD_WORDS_MODE:
+      break;
+
+    default:
+      break;
+  }
 
   if (learnMode === STANDARD_MODE) {
     needNew = NUMBER_OF_NEW_WORDS;

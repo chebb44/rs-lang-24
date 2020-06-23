@@ -5,6 +5,7 @@ export const NUMBER_OF_REPEAT_WORDS = DAILY_NORM - NUMBER_OF_NEW_WORDS;
 
 export const NEW_WORDS_MODE = 'NEW_WORDS_MODE';
 export const REPEAT_MODE = 'REPEAT_MODE';
+export const ONLY_HARD_WORDS_MODE = 'ONLY_HARD_WORDS_MODE';
 export const STANDARD_MODE = 'STANDARD_MODE';
 
 export const defaultLearnSettings = {
