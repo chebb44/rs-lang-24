@@ -14,6 +14,8 @@ import { routes } from './constants/routes';
 import { actionInitApp } from '../store/actionsForSaga';
 import { CSSTransition } from 'react-transition-group';
 import { Spinner } from '../components/Spinner/Spinner';
+import { SpeakItMainPage } from '../components/MiniGames/SpeakIt/SpeakItPage/SpeakItMainPage';
+import { actionToggleSideBar } from '../reducers/appState/appStateActions';
 
 export const App = () => {
   let { path } = useRouteMatch();
@@ -23,6 +25,9 @@ export const App = () => {
   useEffect(() => {
     dispatch(actionInitApp());
   }, [dispatch]);
+  const hideSidebar = () => {
+    if (isSideBarShow) dispatch(actionToggleSideBar());
+  };
   return token ? (
     <div className="app-container">
       <PageHeader />
@@ -36,11 +41,12 @@ export const App = () => {
           <PageSideBar />
         </CSSTransition>
         {initDone ? (
-          <div className="content-wrap flex-grow-1">
+          <div className="content-wrap flex-grow-1" onClick={hideSidebar}>
             <Switch>
               <Route path={routes.learn} component={LearnPage} />
               <Route path={routes.dictionary} component={DictionaryPage} />
               <Route path={routes.stats} component={StatisticPage} />
+              <Route path={routes.speakIt} component={SpeakItMainPage} />
               <Route exact path={path}>
                 <h1>Main Page</h1>
               </Route>

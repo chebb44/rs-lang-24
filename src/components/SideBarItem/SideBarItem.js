@@ -4,18 +4,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { SidebarItemLinks } from '../SidebarItemLinks/SidebarItemLinks';
 
-export const SideBarItem = ({ item }) => {
+export const SideBarItem = ({ item, hideSidebar }) => {
   const { head, headLink, items } = item;
   return (
     <li className="sidebar-parts">
       {headLink ? (
         <Link to={headLink}>
-          <button className="btn part-header-btn">{head}</button>
+          <button onClick={hideSidebar} className="btn part-header-btn">
+            {head}
+          </button>
         </Link>
       ) : (
         <span className="part-header">{head}</span>
       )}
-      <SidebarItemLinks items={items} />
+      <SidebarItemLinks hideSidebar={hideSidebar} items={items} />
     </li>
   );
 };

@@ -41,10 +41,10 @@ export const createUserWord = async ({ userId, wordId, data, token }) => {
     );
     if (rawResponse.status === 417) {
       console.log(`Error: Word exist! id: ${wordId}`);
-      console.log('Word create successfully', wordId);
       return WORD_EXIST;
     }
     if (rawResponse.status === 200) {
+      console.log('Word create successfully', wordId);
       return WORD_CREATED_SUCCESSFULLY;
     }
   } catch (error) {
@@ -77,9 +77,7 @@ export const updateUserWord = async ({ userId, wordId, data, token }) => {
         body: JSON.stringify(data),
       },
     );
-    const content = await rawResponse.json();
-    console.log('updateUserWord -> content', content);
-    return true;
+    if (rawResponse.ok) return true;
   } catch (error) {
     console.log('createUserWord -> error', error);
     return null;
@@ -149,6 +147,49 @@ export const getUserWordById = async ({ userId, wordId, token }) => {
     return content;
   } catch (error) {
     console.log('getUserWordById -> error', error);
+    return null;
+  }
+};
+
+export const getAggregateUserWordById = async ({ userId, wordId, token }) => {
+  try {
+    const rawResponse = await fetch(
+      `https://afternoon-falls-25894.herokuapp.com/users/${userId}/aggregatedWords/${wordId}`,
+      {
+        method: 'GET',
+        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/json',
+        },
+      },
+    );
+    const [content] = await rawResponse.json();
+    return content;
+  } catch (error) {
+    console.log('getAggregateUserWordById -> error', error);
+    return null;
+  }
+};
+
+export const getAllAggregateUserWords = async ({ userId, token }) => {
+  try {
+    const rawResponse = await fetch(
+      `https://afternoon-falls-25894.herokuapp.com/users/${userId}/aggregatedWords`,
+      {
+        method: 'GET',
+        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/json',
+        },
+      },
+    );
+    const content = await rawResponse.json();
+    console.log('getAllAggregateUserWords -> content', content);
+    return content;
+  } catch (error) {
+    console.log('getAllAggregateUserWords -> error', error);
     return null;
   }
 };

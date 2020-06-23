@@ -4,6 +4,7 @@ const defaultData = {
   learnedWords: [],
   hardWords: [],
   deletedWords: [],
+  nextTrainWords: [],
 };
 
 export const dictionaryStateStateSelector = (state) => state.dictionaryState;
