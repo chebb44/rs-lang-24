@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { PageSideBarView } from '../components/PageSideBarView/PageSideBarView';
 import { sideBarLinksList } from './constants/sideBarLinksList';
+import { useDispatch } from 'react-redux';
+import { actionToggleSideBar } from '../reducers/appState/appStateActions';
 
 export const PageSideBar = () => {
-  return <PageSideBarView sideBarLinksList={sideBarLinksList} />;
+  const dispatch = useDispatch();
+  const hideSidebar = useCallback(() => {
+    console.log('hideSidebar -> hideSidebar');
+    dispatch(actionToggleSideBar());
+  }, [dispatch]);
+  return (
+    <PageSideBarView
+      sideBarLinksList={sideBarLinksList}
+      hideSidebar={hideSidebar}
+    />
+  );
 };

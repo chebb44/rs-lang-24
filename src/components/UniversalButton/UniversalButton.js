@@ -6,7 +6,7 @@ export const UniversalButton = ({
   buttonText = 'text',
   extraClasses = '',
 }) => {
-  const classes = 'btn button_universal' + extraClasses;
+  const classes = 'btn button_universal ' + extraClasses;
   return (
     <button type="button" className={classes} onClick={onClickHandler}>
       {buttonText}

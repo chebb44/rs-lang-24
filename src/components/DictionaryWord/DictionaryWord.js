@@ -8,6 +8,7 @@ import { LearnCardMeaning } from './../LearnCardMeaning/LearnCardMeaning';
 import { LearnCardLearnWord } from '../LearnCardLearnWord/LearnCardLearnWord';
 import './DictionaryWord.scss';
 import { UniversalButton } from './../UniversalButton/UniversalButton';
+import { WordStat } from './../WordStat/WordStat';
 export const DictionaryWord = ({
   word,
   learnCardSettings,
@@ -19,13 +20,13 @@ export const DictionaryWord = ({
   return (
     <div className="word-card card-body border-top">
       <LearnCardLearnWord word={formattedCardData.word} />
-      <div className="d-flex align-items-center justify-content-center">
+      <div className="word-card-content d-flex align-items-center justify-content-center">
         <LearnCardImg
           height="h-50"
           isImageOn={learnCardSettings.isImageOn}
           imageSrc={formattedCardData.image}
         />
-        <div className="description-block ml-5 mr-5 flex-grow-1">
+        <div className="description-block flex-grow-1">
           <LearnCardTranslation
             isTranslationOn={learnCardSettings.isTranslationOn}
             translation={formattedCardData.wordTranslate}
@@ -50,10 +51,12 @@ export const DictionaryWord = ({
             meaningTranslation={formattedCardData.textMeaningTranslate}
             isWordSubmitted={true}
           />
+          <WordStat stat={word.userWord} />
         </div>
         <UniversalButton
           buttonText={buttonText}
           onClickHandler={buttonCallback(wordId)}
+          extraClasses="mt-3 mb-3"
         />
       </div>
     </div>
