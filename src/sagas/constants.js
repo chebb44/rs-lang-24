@@ -1,5 +1,6 @@
 export const TOKEN = 'TOKEN';
 export const USER_ID = 'USER_ID';
+export const TOKEN_OUTDATED = 'TOKEN_OUTDATED';
 
 // types of words on server
 export const LEARNED_WORD = 'LEARNED_WORD';
@@ -9,7 +10,7 @@ export const GOOD_WORD = 'GOOD_WORD';
 export const EASY_WORD = 'EASY_WORD';
 export const DELETED_WORD = 'DELETED_WORD';
 
-export const STEP_BASIS = 4;
+export const STEP_BASIS = 0.1;
 export const STEP_WORDS = {
   LEARNED_WORD: 3,
   HARD_WORD: 1,
