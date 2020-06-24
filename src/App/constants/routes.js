@@ -12,4 +12,5 @@ export const routes = {
   dictionaryForNextTrain: '/app/dictionary/next',
   speakIt: '/app/speakit',
   savanna: '/app/savanna',
+  sprint: '/app/sprint',
 };

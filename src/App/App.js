@@ -16,6 +16,7 @@ import { CSSTransition } from 'react-transition-group';
 import { Spinner } from '../components/Spinner/Spinner';
 import { SpeakItMainPage } from '../components/MiniGames/SpeakIt/SpeakItPage/SpeakItMainPage';
 import { actionToggleSideBar } from '../reducers/appState/appStateActions';
+import { SprintMain } from './../pages/miniGames/Sprint/containers/SprintMain';
 
 export const App = () => {
   let { path } = useRouteMatch();
@@ -47,6 +48,7 @@ export const App = () => {
               <Route path={routes.dictionary} component={DictionaryPage} />
               <Route path={routes.stats} component={StatisticPage} />
               <Route path={routes.speakIt} component={SpeakItMainPage} />
+              <Route path={routes.sprint} component={SprintMain} />
               <Route exact path={path}>
                 <h1>Main Page</h1>
               </Route>
