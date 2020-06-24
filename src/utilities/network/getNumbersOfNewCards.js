@@ -9,7 +9,7 @@ export const getNumbersOfNewCards = async ({
   let page = wordsPage;
   let group = wordsGroup;
   let wordInPage = wordOnPage;
-  const cardsForLearn = [];
+  let cardsForLearn = [];
   let newCardsFromApi = await getWordsByPageAndGroup({ page, group });
   newCardsFromApi = newCardsFromApi.slice(wordInPage);
 
@@ -27,6 +27,9 @@ export const getNumbersOfNewCards = async ({
     }
     cardsForLearn.push(newCardsFromApi.shift());
     wordInPage += 1;
+    cardsForLearn = cardsForLearn.map((card) => {
+      return { ...card, _id: card.id };
+    });
   }
   return { cardsForLearn, page, group, wordInPage };
 };
