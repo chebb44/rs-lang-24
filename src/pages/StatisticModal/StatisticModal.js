@@ -7,7 +7,7 @@ import { StatisticModalView } from '../../components/StatisticModalView/Statisti
 
 export const StatisticModal = () => {
   const { visibleStatisticModal } = useSelector(appStateSelector);
-  const statistic = useSelector(statisticStateSelector);
+  const { shortStatistic } = useSelector(statisticStateSelector);
   const dispatch = useDispatch();
   const hideStatisticModal = useCallback(() => {
     dispatch(actionStatisticModal(false));
@@ -17,7 +17,7 @@ export const StatisticModal = () => {
 
   return (
     <StatisticModalView
-      statistic={statistic}
+      statistic={shortStatistic}
       hideStatisticModal={hideStatisticModal}
     />
   );

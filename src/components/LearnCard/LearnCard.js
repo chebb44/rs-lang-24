@@ -17,13 +17,18 @@ import {
 import {
   actionUpdatePrevPageGroupWordNumber,
   actionAddAnswerAccuracy,
-  actionUpdateLearningSetFinishFlag,
 } from '../../reducers/learnSettings/learnSettingsActions';
 import { actionMarkWord } from '../../store/actionsForSaga';
 import { LEARNED_WORD } from '../../sagas/constants';
 import './LearnCard.scss';
 import { DescriptionWord } from './../DescriptionWord/DescriptionWord';
 import { actionStatisticModal } from '../../reducers/appState/appStateActions';
+import { learnCardSettingsSelector } from '../../reducers/learnSettings/learnSettingsReducer';
+import { calculateCorrectAnswersStatistic } from '../../utilities/learnCard/calculateCorrectAnswersStatistic';
+import {
+  actionSetCorrectAnswersPercent,
+  actionSetLongestCorrectAnswerSeries,
+} from '../../reducers/statisticReducer/statisticActions';
 
 export const LearnCard = ({
   learnCard,
@@ -40,6 +45,7 @@ export const LearnCard = ({
     currentAudio,
     isWordCorrect,
   } = useSelector(learnCardParametersSelector);
+  const { answersAccuracy } = useSelector(learnCardSettingsSelector);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -85,6 +91,14 @@ export const LearnCard = ({
       );
       dispatch(actionAddAnswerAccuracy(true));
       if (currentLearnCardIndex === learnCardsLength - 1) {
+        const [
+          correctAnswersPercent,
+          longestCorrectAnswersSeries,
+        ] = calculateCorrectAnswersStatistic(answersAccuracy);
+        dispatch(actionSetCorrectAnswersPercent(correctAnswersPercent));
+        dispatch(
+          actionSetLongestCorrectAnswerSeries(longestCorrectAnswersSeries),
+        );
         dispatch(actionUpdatePrevPageGroupWordNumber());
         dispatch(actionStatisticModal(true));
       }

@@ -30,7 +30,7 @@ export const actionSetNewWordsAmount = (amount) => ({
 
 export const SET_LONGEST_CORRECT_ANSWER_SERIES =
   'SET_LONGEST_CORRECT_ANSWER_SERIES';
-export const actionSetLongestCorrect_Answer_Series = (series) => ({
+export const actionSetLongestCorrectAnswerSeries = (series) => ({
   type: SET_LONGEST_CORRECT_ANSWER_SERIES,
   payload: series,
 });
