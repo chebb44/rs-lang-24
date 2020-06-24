@@ -6,6 +6,14 @@ import {
   SET_PAGE_GROUP_WORD_NUMBER,
   SET_LEARN_MODE,
   UPDATE_PREV_PAGE_GROUP_WORD_NUMBER,
+  SET_MEANING_WORD,
+  SET_EXAMPLE_WORD,
+  SET_TRANSCRIPTION_WORD,
+  SET_IMAGE,
+  SET_CARDS_PER_DAY,
+  SET_SHOW_ANSWER_BTN,
+  SET_DELETE_BTN,
+  SET_SHOW_MARK_DIFFICULTY_BTNS,
 } from './learnSettingsActions';
 import {
   SET_WORDS_PER_DAY,
@@ -101,37 +109,68 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
         },
       };
     case UPDATE_LAST_CORRECT_WORD_INDEX:
+    case SET_MEANING_WORD:
       return {
         ...state,
         learnCardSettings: {
           ...state.learnCardSettings,
-          lastCorrectWordIndex: action.payload,
+          isMeaningOn: action.payload,
         },
       };
-    case ADD_ANSWER_ACCURACY:
-      console.log(state);
-      const array = state.learnCardSettings.answersAccuracy;
+    case SET_EXAMPLE_WORD:
       return {
         ...state,
         learnCardSettings: {
           ...state.learnCardSettings,
-          answersAccuracy: [...array, action.payload],
+          isExampleOn: action.payload,
         },
       };
-    case UPDATE_LEARNING_SET_FINISH_FLAG:
+    case SET_TRANSCRIPTION_WORD:
       return {
         ...state,
         learnCardSettings: {
           ...state.learnCardSettings,
-          isLearningSetFinished: action.payload,
+          isTranscriptionOn: action.payload,
         },
       };
-    case UPDATE_LEARNING_FLAG:
+    case SET_IMAGE:
       return {
         ...state,
         learnCardSettings: {
           ...state.learnCardSettings,
-          isLearningOn: action.payload,
+          isImageOn: action.payload,
+        },
+      };
+    case SET_CARDS_PER_DAY:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          cardsPerDay: action.payload,
+        },
+      };
+    case SET_SHOW_ANSWER_BTN:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isShowAnswerBtnOn: action.payload,
+        },
+      };
+    case SET_DELETE_BTN:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isDeleteBtnOn: action.payload,
+        },
+      };
+    case SET_SHOW_MARK_DIFFICULTY_BTNS:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isMarkDifficultyBtnsOn: action.payload,
         },
       };
     default:

@@ -29,6 +29,9 @@ export const defaultLearnSettings = {
     answersAccuracy: [],
     isLearningSetFinished: false,
     isLearningOn: true,
+    isShowAnswerBtnOn: true,
+    isDeleteBtnOn: true,
+    isMarkDifficultyBtnsOn: true,
   },
 };
 

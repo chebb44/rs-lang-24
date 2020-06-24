@@ -1,6 +1,6 @@
 @import 'src/scss/vars';
 
-.button-wrapper__learn {
+.control-buttons__item {
   margin: 1px;
   padding: 0;
   position: relative;
@@ -12,15 +12,15 @@
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   overflow: hidden;
-  img {
-    width: 35px;
-    height: 35px;
-}
   transition: .1s ease-in;
   -webkit-transition: .1s ease-in;
   -moz-transition: .1s ease-in;
   -ms-transition: .1s ease-in;
   -o-transition: .1s ease-in;
+  img {
+    width: 35px;
+    height: 35px;
+  }
   &:hover {
     transform: scale(1.04);
     -webkit-transform: scale(1.04);
@@ -32,5 +32,5 @@
     -moz-transition: .1s ease-in;
     -ms-transition: .1s ease-in;
     -o-transition: .1s ease-in;
-}
+  }
 }

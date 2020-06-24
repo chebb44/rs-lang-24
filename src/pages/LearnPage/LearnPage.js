@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { learnCardsSelector } from '../../reducers/learnCards/learnCardsReducer';
 import { LearnCardButtonsContainer } from '../../components/LearnCardButtonsContainer/LearnCardButtonsContainer';
@@ -16,16 +16,10 @@ import {
 import { LearnCard } from '../../components/LearnCard/LearnCard';
 import { LearnCardArrow } from '../../components/LearnCardArrow/LearnCardArrow';
 import './LearnPage.scss';
-import LearnCardButtonsBlock from '../../components/LearnCardButtonsBlock/LearnCardButtonsBlock';
-import {
-  actionSetAutoAudio,
-  actionSetAutoTranslate,
-  actionUpdateLastCorrectWordIndex,
-} from '../../reducers/learnSettings/learnSettingsActions';
-import { appStateSelector } from '../../reducers/appState/appStateReducer';
-import { actionSettingsModal } from '../../reducers/appState/appStateActions';
 import { learnCardParametersSelector } from '../../reducers/learnCard/learnCardReducer';
 import { ProgressBar } from './../../components/ProgressBar/ProgressBar';
+import SettingsModal from '../SettingsModal/SettingsModal';
+import ControlButtons from '../ControlButtons/ControlButtons';
 
 export const LearnPage = () => {
   const learnCards = useSelector(learnCardsSelector);
@@ -34,7 +28,6 @@ export const LearnPage = () => {
     learnCardParametersSelector,
   );
   const learnCard = learnCards[currentLearnCardIndex];
-  const appState = useSelector(appStateSelector);
   const dispatch = useDispatch();
   const flippingCardDirections = {
     next: 'next',
@@ -51,11 +44,11 @@ export const LearnPage = () => {
     ) {
       dispatch(actionUpdateCurrentCardIndex(currentLearnCardIndex + 1));
       if (isWordCorrect)
-        dispatch(
+        /* dispatch(
           actionUpdateLastCorrectWordIndex(
             learnCardSettings.lastCorrectWordIndex + 1,
           ),
-        );
+        ); */
     }
     if (direction === 'previous' && currentLearnCardIndex > 0) {
       dispatch(actionUpdateCurrentCardIndex(currentLearnCardIndex - 1));
@@ -68,28 +61,10 @@ export const LearnPage = () => {
     dispatch(actionUpdateAudiosToPlay([]));
     dispatch(actionUpdateCurrentAudio(null));
   };
-
-  const changeAutoAudioPlay = useCallback(() => {
-    dispatch(actionSetAutoAudio(!learnCardSettings.isAudioOn));
-  }, [dispatch, learnCardSettings.isAudioOn]);
-
-  const changeAutoTranslate = useCallback(() => {
-    dispatch(actionSetAutoTranslate(!learnCardSettings.isTranslationOn));
-  }, [dispatch, learnCardSettings.isTranslationOn]);
-
-  const changeVisibleSettingsModal = useCallback(() => {
-    dispatch(actionSettingsModal(!appState.visibleSettingsModal));
-  }, [dispatch, appState.visibleSettingsModal]);
-
   return (
     <div className="learn-page">
-      <LearnCardButtonsBlock
-        learnCardSettingsData={learnCardSettings}
-        appState={appState}
-        changeAutoAudioPlay={changeAutoAudioPlay}
-        changeAutoTranslate={changeAutoTranslate}
-        changeVisibleSettingsModal={changeVisibleSettingsModal}
-      />
+      <SettingsModal />
+      <ControlButtons />
       <div className="learn-page__flipping-container">
         <LearnCardArrow
           direction={flippingCardDirections.previous}
