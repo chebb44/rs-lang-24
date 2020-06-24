@@ -84,6 +84,7 @@ export const LearnCard = ({
       dispatch(actionAddAnswerAccuracy(true));
       if (currentLearnCardIndex === learnCardsLength - 1)
         dispatch(actionUpdatePrevPageGroupWordNumber());
+
     } else {
       dispatch(actionAddAnswerAccuracy(false));
     }

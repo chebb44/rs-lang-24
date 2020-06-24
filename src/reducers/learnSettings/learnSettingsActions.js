@@ -75,3 +75,16 @@ export const actionAddAnswerAccuracy = (flag) => ({
   type: ADD_ANSWER_ACCURACY,
   payload: flag,
 });
+
+export const UPDATE_LEARNING_SET_FINISH_FLAG =
+  'UPDATE_LEARNING_SET_FINISH_FLAG';
+export const actionUpdateLearningSetFinishFlag = (flag) => ({
+  type: UPDATE_LEARNING_SET_FINISH_FLAG,
+  payload: flag,
+});
+
+export const UPDATE_LEARNING_FLAG = 'UPDATE_LEARNING_FLAG';
+export const actionUpdateLearningFlag = (flag) => ({
+  type: UPDATE_LEARNING_FLAG,
+  payload: flag,
+});

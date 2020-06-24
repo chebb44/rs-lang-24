@@ -15,6 +15,8 @@ import {
   SET_AUTO_TRANSLATE,
   UPDATE_LAST_CORRECT_WORD_INDEX,
   ADD_ANSWER_ACCURACY,
+  UPDATE_LEARNING_SET_FINISH_FLAG,
+  UPDATE_LEARNING_FLAG,
 } from './learnSettingsActions';
 
 export const learnSettingsSelector = (state) => state.learnSettings;
@@ -114,6 +116,22 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
         learnCardSettings: {
           ...state.learnCardSettings,
           answersAccuracy: [...array, action.payload],
+        },
+      };
+    case UPDATE_LEARNING_SET_FINISH_FLAG:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isLearningSetFinished: action.payload,
+        },
+      };
+    case UPDATE_LEARNING_FLAG:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isLearningOn: action.payload,
         },
       };
     default:
