@@ -2,13 +2,12 @@ import React from 'react';
 import { LearnCardTranscription } from '../LearnCardTranscription/LearnCardTranscription';
 import { formatLearnCardText } from './../../utilities/learnCard/formatLearnCardText';
 import { LearnCardTranslation } from '../LearnCardTranslation/LearnCardTranslation';
-import { LearnCardExample } from './../LearnCardExample/LearnCardExample';
 import { LearnCardImg } from './../LearnCardImg/LearnCardImg';
-import { LearnCardMeaning } from './../LearnCardMeaning/LearnCardMeaning';
 import { LearnCardLearnWord } from '../LearnCardLearnWord/LearnCardLearnWord';
 import './DictionaryWord.scss';
 import { UniversalButton } from './../UniversalButton/UniversalButton';
 import { WordStat } from './../WordStat/WordStat';
+import { DescriptionWord } from '../DescriptionWord/DescriptionWord';
 export const DictionaryWord = ({
   word,
   learnCardSettings,
@@ -37,19 +36,23 @@ export const DictionaryWord = ({
             transcription={formattedCardData.transcription}
             isTranscriptionOn={learnCardSettings.isTranscriptionOn}
           />
-          <LearnCardExample
-            isExampleOn={learnCardSettings.isExampleOn}
+          <DescriptionWord
+            isOn={learnCardSettings.isExampleOn}
             isTranslationOn={learnCardSettings.isTranslationOn}
-            example={formattedCardData.textExample}
-            exampleTranslation={formattedCardData.textExampleTranslate}
+            text={formattedCardData.textExample}
+            textTranslation={formattedCardData.textExampleTranslate}
             isWordSubmitted={true}
+            isWordCorrect={true}
+            tag="b"
           />
-          <LearnCardMeaning
-            isMeaningOn={learnCardSettings.isMeaningOn}
+          <DescriptionWord
+            isOn={learnCardSettings.isMeaningOn}
             isTranslationOn={learnCardSettings.isTranslationOn}
-            meaning={formattedCardData.textMeaning}
-            meaningTranslation={formattedCardData.textMeaningTranslate}
+            text={formattedCardData.textMeaning}
+            textTranslation={formattedCardData.textMeaningTranslate}
             isWordSubmitted={true}
+            isWordCorrect={true}
+            tag="i"
           />
           <WordStat stat={word.userWord} />
         </div>

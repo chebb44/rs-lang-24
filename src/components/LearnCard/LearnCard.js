@@ -4,8 +4,6 @@ import { LearnCardImg } from '../LearnCardImg/LearnCardImg';
 import { LearnCardInput } from '../LearnCardInput/LearnCardInput';
 import { LearnCardTranscription } from '../LearnCardTranscription/LearnCardTranscription';
 import { LearnCardTranslation } from '../LearnCardTranslation/LearnCardTranslation';
-import { LearnCardExample } from '../LearnCardExample/LearnCardExample';
-import { LearnCardMeaning } from '../LearnCardMeaning/LearnCardMeaning';
 import { LearnCardAudio } from '../LearnCardAudio/LearnCardAudio';
 import { formatLearnCardText } from '../../utilities/learnCard/formatLearnCardText';
 import { obtainAudiosToPlay } from '../../utilities/learnCard/obtainAudiosToPlay';
@@ -20,6 +18,7 @@ import { actionUpdatePrevPageGroupWordNumber } from '../../reducers/learnSetting
 import { actionMarkWord } from '../../store/actionsForSaga';
 import { LEARNED_WORD } from '../../sagas/constants';
 import './LearnCard.scss';
+import { DescriptionWord } from './../DescriptionWord/DescriptionWord';
 
 export const LearnCard = ({
   learnCard,
@@ -117,21 +116,23 @@ export const LearnCard = ({
                   translation={learnCardFormatted.wordTranslate}
                   isWordSubmitted={isWordSubmitted}
                 />
-                <LearnCardExample
-                  isExampleOn={learnCardSettings.isExampleOn}
+                <DescriptionWord
+                  isOn={learnCardSettings.isExampleOn}
                   isTranslationOn={learnCardSettings.isTranslationOn}
-                  example={learnCardFormatted.textExample}
-                  exampleTranslation={learnCardFormatted.textExampleTranslate}
+                  text={learnCardFormatted.textExample}
+                  textTranslation={learnCardFormatted.textExampleTranslate}
                   isWordSubmitted={isWordSubmitted}
                   isWordCorrect={isWordCorrect}
+                  tag="b"
                 />
-                <LearnCardMeaning
-                  isMeaningOn={learnCardSettings.isMeaningOn}
+                <DescriptionWord
+                  isOn={learnCardSettings.isMeaningOn}
                   isTranslationOn={learnCardSettings.isTranslationOn}
-                  meaning={learnCardFormatted.textMeaning}
-                  meaningTranslation={learnCardFormatted.textMeaningTranslate}
+                  text={learnCardFormatted.textMeaning}
+                  textTranslation={learnCardFormatted.textMeaningTranslate}
                   isWordSubmitted={isWordSubmitted}
                   isWordCorrect={isWordCorrect}
+                  tag="i"
                 />
               </div>
             </div>
