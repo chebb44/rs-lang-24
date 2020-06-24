@@ -10,6 +10,12 @@ export const actionSetWordsPerDay = (wordsNumber) => ({
   payload: wordsNumber,
 });
 
+export const SET_CARDS_PER_DAY = 'SET_CARDS_PER_DAY';
+export const actionSetCardsPerDay = (cardsNumber) => ({
+  type: SET_CARDS_PER_DAY,
+  payload: cardsNumber,
+});
+
 export const SET_LEARN_SETTINGS = 'SET_LEARN_SETTINGS';
 export const actionSetLearnSetting = (settings) => ({
   type: SET_LEARN_SETTINGS,
@@ -62,4 +68,46 @@ export const SET_LEARN_MODE = 'SET_LEARN_MODE';
 export const actionSetLearnMode = (mode) => ({
   type: SET_LEARN_MODE,
   payload: mode,
+});
+
+export const SET_MEANING_WORD = 'SET_MEANING_WORD';
+export const actionSetMeaningWord = (meaning) => ({
+  type: SET_MEANING_WORD,
+  payload: meaning,
+});
+
+export const SET_EXAMPLE_WORD = 'SET_EXAMPLE_WORD';
+export const actionSetExampleWord = (example) => ({
+  type: SET_EXAMPLE_WORD,
+  payload: example,
+});
+
+export const SET_TRANSCRIPTION_WORD = 'SET_TRANSCRIPTION_WORD';
+export const actionSetTranscriptionWord = (translate) => ({
+  type: SET_TRANSCRIPTION_WORD,
+  payload: translate,
+});
+
+export const SET_IMAGE = 'SET_IMAGE';
+export const actionSetImage = (image) => ({
+  type: SET_IMAGE,
+  payload: image,
+});
+
+export const SET_SHOW_ANSWER_BTN = 'SET_SHOW_ANSWER_BTN';
+export const actionSetShowAnswerBtn = (btn) => ({
+  type: SET_SHOW_ANSWER_BTN,
+  payload: btn,
+});
+
+export const SET_DELETE_BTN = 'SET_DELETE_BTN';
+export const actionSetDeleteBtn = (btn) => ({
+  type: SET_DELETE_BTN,
+  payload: btn,
+});
+
+export const SET_SHOW_MARK_DIFFICULTY_BTNS = 'SET_SHOW_MARK_DIFFICULTY_BTNS';
+export const actionSetMarkDifficultyBtns = (btn) => ({
+  type: SET_SHOW_MARK_DIFFICULTY_BTNS,
+  payload: btn,
 });
