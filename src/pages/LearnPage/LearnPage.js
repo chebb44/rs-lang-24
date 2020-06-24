@@ -25,6 +25,7 @@ import {
 import { appStateSelector } from '../../reducers/appState/appStateReducer';
 import { actionSettingsModal } from '../../reducers/appState/appStateActions';
 import { learnCardParametersSelector } from '../../reducers/learnCard/learnCardReducer';
+import { ProgressBar } from './../../components/ProgressBar/ProgressBar';
 
 export const LearnPage = () => {
   const learnCards = useSelector(learnCardsSelector);
@@ -108,6 +109,7 @@ export const LearnPage = () => {
         learnCard={learnCard}
         isWordCorrect={isWordCorrect}
       />
+      <ProgressBar current={currentLearnCardIndex} all={learnCards.length} />
     </div>
   );
 };
