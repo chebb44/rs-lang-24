@@ -30,12 +30,14 @@ const shuffleTranslate = (cards) => {
       wordTranslate: card.wordTranslate,
     };
   });
-  translate.sort(() => Math.random() - 0.5);
-  const outArray = words.map((word, i) => {
+  for (let i = 0; i < 5; i += 1) {
+    const buffer = translate.shift();
+    translate.push(buffer);
+  }
+  return words.map((word, i) => {
     return {
       ...word,
       wordTranslate: translate[i].wordTranslate,
     };
   });
-  return outArray;
 };
