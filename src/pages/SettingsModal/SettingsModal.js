@@ -15,6 +15,7 @@ import {
   actionSetMeaningWord,
   actionSetWordsPerDay,
   actionSetLearnMode,
+  actionSetCardsPerDay,
 } from '../../reducers/learnSettings/learnSettingsActions';
 import { actionSettingsModal } from '../../reducers/appState/appStateActions';
 
@@ -28,7 +29,7 @@ const SettingsModal = () => {
   // question 1
   const changeWordsPerDay = useCallback(
     (wordsNumber) => {
-      dispatch(actionSetWordsPerDay(wordsNumber));
+      dispatch(actionSetWordsPerDay(+wordsNumber));
     },
     [dispatch],
   );
@@ -77,6 +78,58 @@ const SettingsModal = () => {
   ];
   // /question 1
 
+  // question 2
+  const changeCardPerDay = useCallback(
+    (cardPerDay) => {
+      dispatch(actionSetCardsPerDay(+cardPerDay));
+    },
+    [dispatch],
+  );
+
+  const question2 = [
+    {
+      id: 'customRadioInline2-1',
+      name: 'customRadioInline2',
+      value: 30,
+      text: 30,
+      defaultStateValue: settings.cardsPerDay,
+      func: changeCardPerDay,
+    },
+    {
+      id: 'customRadioInline2-2',
+      name: 'customRadioInline2',
+      value: 40,
+      text: 40,
+      defaultStateValue: settings.cardsPerDay,
+      func: changeCardPerDay,
+    },
+    {
+      id: 'customRadioInline2-3',
+      name: 'customRadioInline2',
+      value: 50,
+      text: 50,
+      defaultStateValue: settings.cardsPerDay,
+      func: changeCardPerDay,
+    },
+    {
+      id: 'customRadioInline2-4',
+      name: 'customRadioInline2',
+      value: 60,
+      text: 60,
+      defaultStateValue: settings.cardsPerDay,
+      func: changeCardPerDay,
+    },
+    {
+      id: 'customRadioInline2-5',
+      name: 'customRadioInline2',
+      value: 70,
+      text: 70,
+      defaultStateValue: settings.cardsPerDay,
+      func: changeCardPerDay,
+    },
+  ];
+  // /question 2
+
   // question 3
   const changeGameMode = useCallback(
     (wordsNumber) => {
@@ -114,7 +167,7 @@ const SettingsModal = () => {
       id: 'customRadioInline3-4',
       name: 'customRadioInline3',
       text: 'Только сложные слова',
-      value: 'DIFFICULT_MODE',
+      value: 'ONLY_HARD_WORDS_MODE',
       defaultStateValue: settings.learnMode,
       func: changeGameMode,
     },
@@ -197,6 +250,7 @@ const SettingsModal = () => {
   return (
     <SettingsModalView
       question1={question1}
+      question2={question2}
       question3={question3}
       question4={question4}
       hideSettingsModal={changeVisibleSettingsModal}

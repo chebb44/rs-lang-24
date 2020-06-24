@@ -10,6 +10,7 @@ import {
   SET_EXAMPLE_WORD,
   SET_TRANSCRIPTION_WORD,
   SET_IMAGE,
+  SET_CARDS_PER_DAY,
 } from './learnSettingsActions';
 import {
   SET_WORDS_PER_DAY,
@@ -130,6 +131,14 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
         learnCardSettings: {
           ...state.learnCardSettings,
           isImageOn: action.payload,
+        },
+      };
+    case SET_CARDS_PER_DAY:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          cardsPerDay: action.payload,
         },
       };
     default:

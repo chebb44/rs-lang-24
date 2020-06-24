@@ -4,7 +4,7 @@ import SettingsRadioInput from '../SettingsRadioInput/SettingsRadioInput';
 import SettingsCheckboxInput from '../SettingsCheckboxInput/SettingsCheckboxInput';
 import {
   // question1,
-  question2,
+  // question2,
   // question3,
   // question4,
   question5,
@@ -12,6 +12,7 @@ import {
 
 const SettingsModalView = ({
   question1,
+  question2,
   question3,
   question4,
   hideSettingsModal,

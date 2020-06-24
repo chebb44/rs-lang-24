@@ -10,6 +10,12 @@ export const actionSetWordsPerDay = (wordsNumber) => ({
   payload: wordsNumber,
 });
 
+export const SET_CARDS_PER_DAY = 'SET_CARDS_PER_DAY';
+export const actionSetCardsPerDay = (cardsNumber) => ({
+  type: SET_CARDS_PER_DAY,
+  payload: cardsNumber,
+});
+
 export const SET_LEARN_SETTINGS = 'SET_LEARN_SETTINGS';
 export const actionSetLearnSetting = (settings) => ({
   type: SET_LEARN_SETTINGS,
