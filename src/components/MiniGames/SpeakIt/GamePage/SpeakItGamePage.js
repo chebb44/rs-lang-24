@@ -57,7 +57,6 @@ export const SpeakItGameScreen = function () {
       // TODO: Mark card inactive(orGreen)
       //  setCurrentCard to next card
       //  .shift() from gameCardsArray first element
-
     }
     console.log(recogWin);
   }, [recognisedWords]);

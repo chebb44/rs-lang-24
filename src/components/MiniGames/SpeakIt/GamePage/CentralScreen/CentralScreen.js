@@ -3,7 +3,7 @@ import { FILES_URL } from '../../../../../utilities/network/networkConstants';
 import { capitalizeFirstLetter } from '../../SpeakItHepler';
 import React from 'react';
 
-export const CentralScreen = ({currentCard}) => {
+export const CentralScreen = ({ currentCard }) => {
   return (
     <div className="central-screen">
       <div className="central-screen__image">
