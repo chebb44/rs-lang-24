@@ -11,6 +11,9 @@ import {
   SET_TRANSCRIPTION_WORD,
   SET_IMAGE,
   SET_CARDS_PER_DAY,
+  SET_SHOW_ANSWER_BTN,
+  SET_DELETE_BTN,
+  SET_SHOW_MARK_DIFFICULTY_BTNS,
 } from './learnSettingsActions';
 import {
   SET_WORDS_PER_DAY,
@@ -139,6 +142,30 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
         learnCardSettings: {
           ...state.learnCardSettings,
           cardsPerDay: action.payload,
+        },
+      };
+    case SET_SHOW_ANSWER_BTN:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isShowAnswerBtnOn: action.payload,
+        },
+      };
+    case SET_DELETE_BTN:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isDeleteBtnOn: action.payload,
+        },
+      };
+    case SET_SHOW_MARK_DIFFICULTY_BTNS:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isMarkDifficultyBtnsOn: action.payload,
         },
       };
     default:

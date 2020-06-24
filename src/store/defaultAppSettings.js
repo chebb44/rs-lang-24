@@ -7,7 +7,6 @@ export const NEW_WORDS_MODE = 'NEW_WORDS_MODE';
 export const REPEAT_MODE = 'REPEAT_MODE';
 export const ONLY_HARD_WORDS_MODE = 'ONLY_HARD_WORDS_MODE';
 export const STANDARD_MODE = 'STANDARD_MODE';
-export const DIFFICULT_MODE = 'DIFFICULT_MODE';
 
 export const defaultLearnSettings = {
   wordsPerDay: 40,
@@ -26,6 +25,9 @@ export const defaultLearnSettings = {
     currentWordOnPage: 0,
     learnMode: STANDARD_MODE,
     cardsPerDay: 50,
+    isShowAnswerBtnOn: true,
+    isDeleteBtnOn: true,
+    isMarkDifficultyBtnsOn: true,
   },
 };
 

@@ -16,6 +16,9 @@ import {
   actionSetWordsPerDay,
   actionSetLearnMode,
   actionSetCardsPerDay,
+  actionSetShowAnswerBtn,
+  actionSetDeleteBtn,
+  actionSetMarkDifficultyBtns,
 } from '../../reducers/learnSettings/learnSettingsActions';
 import { actionSettingsModal } from '../../reducers/appState/appStateActions';
 
@@ -243,6 +246,41 @@ const SettingsModal = () => {
   ];
   // /question 4
 
+  // question 5
+  const changeShowAnswerBtn = useCallback(() => {
+    dispatch(actionSetShowAnswerBtn(!settings.isShowAnswerBtnOn));
+  }, [dispatch, settings.isShowAnswerBtnOn]);
+
+  const changeDeleteBtn = useCallback(() => {
+    dispatch(actionSetDeleteBtn(!settings.isDeleteBtnOn));
+  }, [dispatch, settings.isDeleteBtnOn]);
+
+  const changeMarkDifficultyBtns = useCallback(() => {
+    dispatch(actionSetMarkDifficultyBtns(!settings.isMarkDifficultyBtnsOn));
+  }, [dispatch, settings.isMarkDifficultyBtnsOn]);
+
+  const question5 = [
+    {
+      id: 'customCheck8',
+      value: `"Показать ответ"`,
+      defaultChecked: settings.isShowAnswerBtnOn,
+      func: changeShowAnswerBtn,
+    },
+    {
+      id: 'customCheck9',
+      value: `"Удалить"`,
+      defaultChecked: settings.isDeleteBtnOn,
+      func: changeDeleteBtn,
+    },
+    {
+      id: 'customCheck10',
+      value: `"Снова", "Трудно", "Хорошо", "Легко"`,
+      defaultChecked: settings.isMarkDifficultyBtnsOn,
+      func: changeMarkDifficultyBtns,
+    },
+  ];
+  // /question 5
+
   if (visibleSettingsModal === false) {
     return null;
   }
@@ -253,6 +291,7 @@ const SettingsModal = () => {
       question2={question2}
       question3={question3}
       question4={question4}
+      question5={question5}
       hideSettingsModal={changeVisibleSettingsModal}
     />
   );

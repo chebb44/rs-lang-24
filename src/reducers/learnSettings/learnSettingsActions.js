@@ -93,3 +93,21 @@ export const actionSetImage = (image) => ({
   type: SET_IMAGE,
   payload: image,
 });
+
+export const SET_SHOW_ANSWER_BTN = 'SET_SHOW_ANSWER_BTN';
+export const actionSetShowAnswerBtn = (btn) => ({
+  type: SET_SHOW_ANSWER_BTN,
+  payload: btn,
+});
+
+export const SET_DELETE_BTN = 'SET_DELETE_BTN';
+export const actionSetDeleteBtn = (btn) => ({
+  type: SET_DELETE_BTN,
+  payload: btn,
+});
+
+export const SET_SHOW_MARK_DIFFICULTY_BTNS = 'SET_SHOW_MARK_DIFFICULTY_BTNS';
+export const actionSetMarkDifficultyBtns = (btn) => ({
+  type: SET_SHOW_MARK_DIFFICULTY_BTNS,
+  payload: btn,
+});

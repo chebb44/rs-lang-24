@@ -2,19 +2,13 @@ import React from 'react';
 import './SettingsModalView.scss';
 import SettingsRadioInput from '../SettingsRadioInput/SettingsRadioInput';
 import SettingsCheckboxInput from '../SettingsCheckboxInput/SettingsCheckboxInput';
-import {
-  // question1,
-  // question2,
-  // question3,
-  // question4,
-  question5,
-} from '../../App/constants/SettingsList';
 
 const SettingsModalView = ({
   question1,
   question2,
   question3,
   question4,
+  question5,
   hideSettingsModal,
 }) => {
   return (
