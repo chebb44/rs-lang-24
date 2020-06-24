@@ -8,6 +8,7 @@
   height: 20px;
   width: 80%;
   max-width: 400px;
+  min-width: 250px;
   border-radius: 20px;
   border: 1px solid $dark-color;
   overflow: hidden;
@@ -19,7 +20,7 @@
 }
 .percents{
   line-height: 20px;
-  width: 150px;
+  width: 240px;
   height: 20px;
   position: absolute;
   top: 0;
