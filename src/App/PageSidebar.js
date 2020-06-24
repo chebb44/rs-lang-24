@@ -7,7 +7,6 @@ import { actionToggleSideBar } from '../reducers/appState/appStateActions';
 export const PageSideBar = () => {
   const dispatch = useDispatch();
   const hideSidebar = useCallback(() => {
-    console.log('hideSidebar -> hideSidebar');
     dispatch(actionToggleSideBar());
   }, [dispatch]);
   return (
