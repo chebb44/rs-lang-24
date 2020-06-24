@@ -14,7 +14,10 @@ import {
   actionUpdateAudiosToPlay,
   actionUpdateCurrentAudio,
 } from '../../reducers/learnCard/learnCardActions';
-import { actionUpdatePrevPageGroupWordNumber } from '../../reducers/learnSettings/learnSettingsActions';
+import {
+  actionUpdatePrevPageGroupWordNumber,
+  actionAddAnswerAccuracy,
+} from '../../reducers/learnSettings/learnSettingsActions';
 import { actionMarkWord } from '../../store/actionsForSaga';
 import { LEARNED_WORD } from '../../sagas/constants';
 import './LearnCard.scss';
@@ -78,8 +81,11 @@ export const LearnCard = ({
       dispatch(
         actionMarkWord({ wordId: learnCard._id, difficulty: LEARNED_WORD }),
       );
+      dispatch(actionAddAnswerAccuracy(true));
       if (currentLearnCardIndex === learnCardsLength - 1)
-        dispatch(actionUpdatePrevPageGroupWordNumber);
+        dispatch(actionUpdatePrevPageGroupWordNumber());
+    } else {
+      dispatch(actionAddAnswerAccuracy(false));
     }
     const audiosToPlay = obtainAudiosToPlay(learnCard, learnCardSettings);
     dispatch(actionUpdateAudiosToPlay(audiosToPlay));

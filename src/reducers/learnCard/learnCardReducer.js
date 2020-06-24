@@ -12,7 +12,6 @@ import {
 
 const defaultData = {
   currentLearnCardIndex: 0,
-  //lastCorrectWordIndex: -1,
   enteredWord: '',
   isWordSubmitted: false,
   isWordCorrect: false,

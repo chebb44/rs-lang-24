@@ -14,6 +14,7 @@ import {
   SET_AUTO_AUDIO,
   SET_AUTO_TRANSLATE,
   UPDATE_LAST_CORRECT_WORD_INDEX,
+  ADD_ANSWER_ACCURACY,
 } from './learnSettingsActions';
 
 export const learnSettingsSelector = (state) => state.learnSettings;
@@ -98,12 +99,21 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
         },
       };
     case UPDATE_LAST_CORRECT_WORD_INDEX:
-      console.log(state.learnCardSettings.lastCorrectWordIndex);
       return {
         ...state,
         learnCardSettings: {
           ...state.learnCardSettings,
           lastCorrectWordIndex: action.payload,
+        },
+      };
+    case ADD_ANSWER_ACCURACY:
+      console.log(state);
+      const array = state.learnCardSettings.answersAccuracy;
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          answersAccuracy: [...array, action.payload],
         },
       };
     default:

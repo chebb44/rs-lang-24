@@ -26,6 +26,7 @@ export const defaultLearnSettings = {
     learnMode: STANDARD_MODE,
     cardsPerDay: 50,
     lastCorrectWordIndex: -1,
+    answersAccuracy: [],
   },
 };
 

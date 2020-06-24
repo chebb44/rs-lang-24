@@ -69,3 +69,9 @@ export const actionUpdateLastCorrectWordIndex = (index) => ({
   type: UPDATE_LAST_CORRECT_WORD_INDEX,
   payload: index,
 });
+
+export const ADD_ANSWER_ACCURACY = 'ADD_ANSWER_ACCURACY';
+export const actionAddAnswerAccuracy = (flag) => ({
+  type: ADD_ANSWER_ACCURACY,
+  payload: flag,
+});
