@@ -21,6 +21,8 @@ import {
   actionSetMarkDifficultyBtns,
 } from '../../reducers/learnSettings/learnSettingsActions';
 import { actionSettingsModal } from '../../reducers/appState/appStateActions';
+import { dictionaryStateStateSelector } from '../../reducers/dictionaryReducer/dictionaryReducer';
+import { actionInitCardSet } from '../../store/actionsForSaga';
 
 const SettingsModal = () => {
   const dispatch = useDispatch();
@@ -28,6 +30,12 @@ const SettingsModal = () => {
   const learnSettings = useSelector(learnSettingsSelector);
   const settings = useSelector(learnCardSettingsSelector);
   const appState = useSelector(appStateSelector);
+  const dictionaryState = useSelector(dictionaryStateStateSelector);
+
+  const changeVisibleSettingsModal = useCallback(() => {
+    dispatch(actionInitCardSet());
+    dispatch(actionSettingsModal(!appState.visibleSettingsModal));
+  }, [dispatch, appState.visibleSettingsModal]);
 
   // question 1
   const changeWordsPerDay = useCallback(
@@ -44,6 +52,7 @@ const SettingsModal = () => {
       value: 20,
       text: 20,
       defaultStateValue: learnSettings.wordsPerDay,
+      cardsPerDay: settings.cardsPerDay,
       func: changeWordsPerDay,
     },
     {
@@ -52,6 +61,7 @@ const SettingsModal = () => {
       value: 30,
       text: 30,
       defaultStateValue: learnSettings.wordsPerDay,
+      cardsPerDay: settings.cardsPerDay,
       func: changeWordsPerDay,
     },
     {
@@ -60,6 +70,7 @@ const SettingsModal = () => {
       value: 40,
       text: 40,
       defaultStateValue: learnSettings.wordsPerDay,
+      cardsPerDay: settings.cardsPerDay,
       func: changeWordsPerDay,
     },
     {
@@ -68,6 +79,7 @@ const SettingsModal = () => {
       value: 50,
       text: 50,
       defaultStateValue: learnSettings.wordsPerDay,
+      cardsPerDay: settings.cardsPerDay,
       func: changeWordsPerDay,
     },
     {
@@ -76,6 +88,7 @@ const SettingsModal = () => {
       value: 60,
       text: 60,
       defaultStateValue: learnSettings.wordsPerDay,
+      cardsPerDay: settings.cardsPerDay,
       func: changeWordsPerDay,
     },
   ];
@@ -96,6 +109,7 @@ const SettingsModal = () => {
       value: 30,
       text: 30,
       defaultStateValue: settings.cardsPerDay,
+      wordsPerDay: learnSettings.wordsPerDay,
       func: changeCardPerDay,
     },
     {
@@ -104,6 +118,7 @@ const SettingsModal = () => {
       value: 40,
       text: 40,
       defaultStateValue: settings.cardsPerDay,
+      wordsPerDay: learnSettings.wordsPerDay,
       func: changeCardPerDay,
     },
     {
@@ -112,6 +127,7 @@ const SettingsModal = () => {
       value: 50,
       text: 50,
       defaultStateValue: settings.cardsPerDay,
+      wordsPerDay: learnSettings.wordsPerDay,
       func: changeCardPerDay,
     },
     {
@@ -120,6 +136,7 @@ const SettingsModal = () => {
       value: 60,
       text: 60,
       defaultStateValue: settings.cardsPerDay,
+      wordsPerDay: learnSettings.wordsPerDay,
       func: changeCardPerDay,
     },
     {
@@ -128,6 +145,7 @@ const SettingsModal = () => {
       value: 70,
       text: 70,
       defaultStateValue: settings.cardsPerDay,
+      wordsPerDay: learnSettings.wordsPerDay,
       func: changeCardPerDay,
     },
   ];
@@ -149,6 +167,7 @@ const SettingsModal = () => {
       value: 'NEW_WORDS_MODE',
       defaultStateValue: settings.learnMode,
       func: changeGameMode,
+      dictionaryState: dictionaryState,
     },
     {
       id: 'customRadioInline3-2',
@@ -157,6 +176,7 @@ const SettingsModal = () => {
       value: 'REPEAT_MODE',
       defaultStateValue: settings.learnMode,
       func: changeGameMode,
+      dictionaryState: dictionaryState,
     },
     {
       id: 'customRadioInline3-3',
@@ -165,6 +185,7 @@ const SettingsModal = () => {
       value: 'STANDARD_MODE',
       defaultStateValue: settings.learnMode,
       func: changeGameMode,
+      dictionaryState: dictionaryState,
     },
     {
       id: 'customRadioInline3-4',
@@ -173,15 +194,12 @@ const SettingsModal = () => {
       value: 'ONLY_HARD_WORDS_MODE',
       defaultStateValue: settings.learnMode,
       func: changeGameMode,
+      dictionaryState: dictionaryState,
     },
   ];
   // /question 3
 
   // question 4
-  const changeVisibleSettingsModal = useCallback(() => {
-    dispatch(actionSettingsModal(!appState.visibleSettingsModal));
-  }, [dispatch, appState.visibleSettingsModal]);
-
   const changeAutoTranslate = useCallback(() => {
     dispatch(actionSetAutoTranslate(!settings.isTranslationOn));
   }, [dispatch, settings.isTranslationOn]);
