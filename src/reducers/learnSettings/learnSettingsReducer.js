@@ -108,7 +108,6 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
           learnMode: action.payload,
         },
       };
-    case UPDATE_LAST_CORRECT_WORD_INDEX:
     case SET_MEANING_WORD:
       return {
         ...state,
@@ -171,6 +170,39 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
         learnCardSettings: {
           ...state.learnCardSettings,
           isMarkDifficultyBtnsOn: action.payload,
+        },
+      };
+    case UPDATE_LAST_CORRECT_WORD_INDEX:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          lastCorrectWordIndex: action.payload,
+        },
+      };
+    case ADD_ANSWER_ACCURACY:
+      const array = state.learnCardSettings.answersAccuracy;
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          answersAccuracy: [...array, action.payload],
+        },
+      };
+    case UPDATE_LEARNING_SET_FINISH_FLAG:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isLearningSetFinished: action.payload,
+        },
+      };
+    case UPDATE_LEARNING_FLAG:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isLearningOn: action.payload,
         },
       };
     default:
