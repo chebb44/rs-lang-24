@@ -12,7 +12,7 @@ import {
 
 const defaultData = {
   currentLearnCardIndex: 0,
-  lastCorrectWordIndex: -1,
+  //lastCorrectWordIndex: -1,
   enteredWord: '',
   isWordSubmitted: false,
   isWordCorrect: false,
@@ -60,11 +60,6 @@ export const learnCard = (state = defaultData, action) => {
       return {
         ...state,
         currentAudio: action.audio,
-      };
-    case UPDATE_LAST_CORRECT_WORD_INDEX:
-      return {
-        ...state,
-        lastCorrectWordIndex: action.index,
       };
     case UPDATE_ANSWER_SHOWN_FLAG:
       return {

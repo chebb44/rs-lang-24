@@ -11,7 +11,6 @@ import {
   actionUpdateCheckDisplaying,
   actionUpdateAudiosToPlay,
   actionUpdateCurrentAudio,
-  actionUpdateLastCorrectWordIndex,
   actionUpdateAnswerShownFlag,
 } from '../../reducers/learnCard/learnCardActions';
 import { LearnCard } from '../../components/LearnCard/LearnCard';
@@ -21,6 +20,7 @@ import LearnCardButtonsBlock from '../../components/LearnCardButtonsBlock/LearnC
 import {
   actionSetAutoAudio,
   actionSetAutoTranslate,
+  actionUpdateLastCorrectWordIndex,
 } from '../../reducers/learnSettings/learnSettingsActions';
 import { appStateSelector } from '../../reducers/appState/appStateReducer';
 import { actionSettingsModal } from '../../reducers/appState/appStateActions';
@@ -30,11 +30,9 @@ import { ProgressBar } from './../../components/ProgressBar/ProgressBar';
 export const LearnPage = () => {
   const learnCards = useSelector(learnCardsSelector);
   const learnCardSettings = useSelector(learnCardSettingsSelector);
-  const {
-    isWordCorrect,
-    currentLearnCardIndex,
-    lastCorrectWordIndex,
-  } = useSelector(learnCardParametersSelector);
+  const { isWordCorrect, currentLearnCardIndex } = useSelector(
+    learnCardParametersSelector,
+  );
   const learnCard = learnCards[currentLearnCardIndex];
   const appState = useSelector(appStateSelector);
   const dispatch = useDispatch();
@@ -44,14 +42,20 @@ export const LearnPage = () => {
   };
 
   const handleArrowClick = (direction) => {
+    console.log(learnCardSettings);
     if (
       direction === 'next' &&
-      (isWordCorrect || currentLearnCardIndex <= lastCorrectWordIndex) &&
+      (isWordCorrect ||
+        currentLearnCardIndex <= learnCardSettings.lastCorrectWordIndex) &&
       currentLearnCardIndex < learnCards.length - 1
     ) {
       dispatch(actionUpdateCurrentCardIndex(currentLearnCardIndex + 1));
       if (isWordCorrect)
-        dispatch(actionUpdateLastCorrectWordIndex(lastCorrectWordIndex + 1));
+        dispatch(
+          actionUpdateLastCorrectWordIndex(
+            learnCardSettings.lastCorrectWordIndex + 1,
+          ),
+        );
     }
     if (direction === 'previous' && currentLearnCardIndex > 0) {
       dispatch(actionUpdateCurrentCardIndex(currentLearnCardIndex - 1));

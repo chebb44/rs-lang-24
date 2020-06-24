@@ -13,6 +13,7 @@ import {
   SET_LEARN_CARD_SETTINGS,
   SET_AUTO_AUDIO,
   SET_AUTO_TRANSLATE,
+  UPDATE_LAST_CORRECT_WORD_INDEX,
 } from './learnSettingsActions';
 
 export const learnSettingsSelector = (state) => state.learnSettings;
@@ -94,6 +95,15 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
         learnCardSettings: {
           ...state.learnCardSettings,
           learnMode: action.payload,
+        },
+      };
+    case UPDATE_LAST_CORRECT_WORD_INDEX:
+      console.log(state.learnCardSettings.lastCorrectWordIndex);
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          lastCorrectWordIndex: action.payload,
         },
       };
     default:

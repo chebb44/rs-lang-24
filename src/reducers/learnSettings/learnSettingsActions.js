@@ -63,3 +63,9 @@ export const actionSetLearnMode = (mode) => ({
   type: SET_LEARN_MODE,
   payload: mode,
 });
+
+export const UPDATE_LAST_CORRECT_WORD_INDEX = 'UPDATE_LAST_CORRECT_WORD_INDEX';
+export const actionUpdateLastCorrectWordIndex = (index) => ({
+  type: UPDATE_LAST_CORRECT_WORD_INDEX,
+  payload: index,
+});

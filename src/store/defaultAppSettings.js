@@ -25,6 +25,7 @@ export const defaultLearnSettings = {
     currentWordOnPage: 0,
     learnMode: STANDARD_MODE,
     cardsPerDay: 50,
+    lastCorrectWordIndex: -1,
   },
 };
 
