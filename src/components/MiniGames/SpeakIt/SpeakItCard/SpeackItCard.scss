@@ -21,8 +21,8 @@
     background-color: $primary-color;
   }
   &.active {
-    background-color: #609EB8;
-    color: white;
+    background-color: $accent-color;
+    color: $neutral-inactive;
   }
 }
 

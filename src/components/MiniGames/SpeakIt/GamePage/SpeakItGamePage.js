@@ -1,67 +1,103 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { learnCardsSelector } from '../../../../reducers/learnCards/learnCardsReducer';
+import { dictionaryStateStateSelector } from '../../../../reducers/dictionaryReducer/dictionaryReducer';
 import './SpeakItGamePage.scss';
 import blank from './../../../../assets/img/blank.jpg';
 import { SpeakItCard } from '../SpeakItCard/SpeackItCard';
 import { FILES_URL } from '../../../../utilities/network/networkConstants';
-
-const searchCardIndexInArray = (cardId, cardsArray) => {
-  // TODO: implement searchCardIndexInArray by card id function
-  return cardsArray.findIndex((card) => card.id === cardId);
-};
+import {
+  capitalizeFirstLetter,
+  getRecognisedWordsArrayFromEvent,
+  searchCardIndexInArray,
+  setActiveCardInArray,
+  shuffleArray,
+} from '../SpeakItHepler';
+import { INIT_CARD } from '../SpeakItConstants';
+import { CentralScreen } from './CentralScreen/CentralScreen';
+import { Buttons } from './Buttons';
+import recognition, {
+  startVoxRecognition,
+  stopVoxRecognition,
+} from '../../../../utilities/speachRecognition';
 
 export const SpeakItGameScreen = function () {
+  const speakDictionary = useSelector(dictionaryStateStateSelector);
   const learnCards = useSelector(learnCardsSelector);
-  const currentGameCards = learnCards.slice(0, 10);
-  console.log(currentGameCards);
-  const [currentCard, setCurrentCard] = useState({
-    id: null,
-    group: 0,
-    page: 0,
-    word: ' ',
-    image: 'files/01_0005.jpg',
-    wordTranslate: ' ',
-  });
+  const cardsToTrain = learnCards.slice(0, 10);
+  const [trainCards, setTrainCards] = useState(cardsToTrain);
+  const [gameCardsArray, setGameCardsArray] = useState(
+    shuffleArray(cardsToTrain),
+  );
+  const [currentCard, setCurrentCard] = useState(INIT_CARD);
+  const [gameMode, setGameMode] = useState(false);
+  const [recognisedWords, setRecognisedWords] = useState([]);
+  console.log(cardsToTrain, speakDictionary);
+
+  // TODO: Show and hide results pannel
+  // TODO: Show and hide microphone icon
+
+  useEffect(() => {
+    if (gameMode) {
+      // TODO: setCurrentCard  .shift() from gameCardsArray
+      startVoxRecognition();
+      recognition.onresult = (event) => {
+        setRecognisedWords(getRecognisedWordsArrayFromEvent(event));
+      };
+    } else {
+      stopVoxRecognition();
+    }
+  }, [gameMode]);
+
+  useEffect(() => {
+    const recogWin = recognisedWords.find(
+      (word) => word.toLowerCase() === currentCard.word.toLowerCase(),
+    );
+    if (recogWin) {
+      // TODO: Mark card inactive(orGreen)
+      //  setCurrentCard to next card
+      //  .shift() from gameCardsArray first element
+
+    }
+    console.log(recogWin);
+  }, [recognisedWords]);
 
   const onClickCard = (event) => {
-    event.currentTarget.children[3] && event.currentTarget.children[3].play();
-    // TODO: set current card from cards array by cardId
-    //  Use searchCardIndexInArray function
-    console.dir(event.currentTarget.dataset.cardid);
-    // setCurrentCard(() => )
+    if (!gameMode) {
+      const cardId = event.currentTarget.dataset.cardid;
+      event.currentTarget.children[3] && event.currentTarget.children[3].play();
+      const cardIdx = searchCardIndexInArray(cardId, trainCards);
+      setCurrentCard(() => trainCards[cardIdx]);
+      setTrainCards(setActiveCardInArray(cardIdx, trainCards));
+    }
+  };
+
+  const onClickSpeakButton = () => {
+    setGameMode(true);
+    setTrainCards(setActiveCardInArray(null, trainCards));
+    setCurrentCard(INIT_CARD);
+  };
+
+  const onClickResetButton = () => {
+    setGameMode(false);
+    setTrainCards(setActiveCardInArray(null, trainCards));
+    setCurrentCard(INIT_CARD);
+    // TODO: Deactivate microphone icon
   };
 
   return (
     <div className="speak-it__game-screen">
       <div className="game-score" />
-      <div className="central-screen">
-        <div className="central-screen__image">
-          <img src={currentCard.id === null ? blank : FILES_URL + currentCard.image} alt="img" />
-        </div>
-        <div className="translation__block">
-          <i className="material-icons md-36 icon__mic">mic</i>
-          <div className="central-screen__translation">
-            {currentCard.wordTranslate}
-          </div>
-        </div>
-      </div>
+      <CentralScreen currentCard={currentCard} />
       <div className="cards">
-        {currentGameCards.map((card, idx) => (
+        {trainCards.map((card, idx) => (
           <SpeakItCard cardData={card} key={idx} onClickCard={onClickCard} />
         ))}
       </div>
-      <div className="buttons">
-        <button className="btn btn_speak-it btn_small button__reset active">
-          Сброс
-        </button>
-        <button className="btn btn_speak-it btn_wide button__speak-please">
-          SPEAK IT
-        </button>
-        <button className="btn btn_speak-it btn_small button__result">
-          Результаты
-        </button>
-      </div>
+      <Buttons
+        onClickSpeakButton={onClickSpeakButton}
+        onClickResetButton={onClickResetButton}
+      />
     </div>
   );
 };
