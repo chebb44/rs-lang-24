@@ -189,14 +189,6 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
           answersAccuracy: [...array, action.payload],
         },
       };
-    case UPDATE_LEARNING_SET_FINISH_FLAG:
-      return {
-        ...state,
-        learnCardSettings: {
-          ...state.learnCardSettings,
-          isLearningSetFinished: action.payload,
-        },
-      };
     case UPDATE_LEARNING_FLAG:
       return {
         ...state,

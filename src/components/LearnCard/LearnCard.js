@@ -17,11 +17,13 @@ import {
 import {
   actionUpdatePrevPageGroupWordNumber,
   actionAddAnswerAccuracy,
+  actionUpdateLearningSetFinishFlag,
 } from '../../reducers/learnSettings/learnSettingsActions';
 import { actionMarkWord } from '../../store/actionsForSaga';
 import { LEARNED_WORD } from '../../sagas/constants';
 import './LearnCard.scss';
 import { DescriptionWord } from './../DescriptionWord/DescriptionWord';
+import { actionStatisticModal } from '../../reducers/appState/appStateActions';
 
 export const LearnCard = ({
   learnCard,
@@ -82,8 +84,10 @@ export const LearnCard = ({
         actionMarkWord({ wordId: learnCard._id, difficulty: LEARNED_WORD }),
       );
       dispatch(actionAddAnswerAccuracy(true));
-      if (currentLearnCardIndex === learnCardsLength - 1)
+      if (currentLearnCardIndex === learnCardsLength - 1) {
         dispatch(actionUpdatePrevPageGroupWordNumber());
+        dispatch(actionStatisticModal(true));
+      }
     } else {
       dispatch(actionAddAnswerAccuracy(false));
     }

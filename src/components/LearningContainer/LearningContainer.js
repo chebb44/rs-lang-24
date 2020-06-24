@@ -21,6 +21,7 @@ import { learnCardParametersSelector } from '../../reducers/learnCard/learnCardR
 import { ProgressBar } from './../../components/ProgressBar/ProgressBar';
 import SettingsModal from '../../pages/SettingsModal/SettingsModal';
 import ControlButtons from '../../pages/ControlButtons/ControlButtons';
+import { appStateSelector } from '../../reducers/appState/appStateReducer';
 
 export const LearningContainer = () => {
   const learnCards = useSelector(learnCardsSelector);
@@ -28,6 +29,7 @@ export const LearningContainer = () => {
   const { isWordCorrect, currentLearnCardIndex } = useSelector(
     learnCardParametersSelector,
   );
+  const { visibleStatisticModal } = useSelector(appStateSelector);
   const learnCard = learnCards[currentLearnCardIndex];
   const dispatch = useDispatch();
   const flippingCardDirections = {
@@ -62,6 +64,8 @@ export const LearningContainer = () => {
     dispatch(actionUpdateAudiosToPlay([]));
     dispatch(actionUpdateCurrentAudio(null));
   };
+
+  if (visibleStatisticModal) return null;
   return (
     <div className="learning-container">
       <SettingsModal />
