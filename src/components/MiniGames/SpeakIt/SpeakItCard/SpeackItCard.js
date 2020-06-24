@@ -5,11 +5,7 @@ import { FILES_URL } from '../../../../utilities/network/networkConstants';
 
 export const SpeakItCard = function ({ cardData, onClickCard }) {
   return (
-    <div
-      className="card"
-      onClick={onClickCard}
-      data-cardid={cardData.id}
-    >
+    <div className="card" onClick={onClickCard} datacardid={cardData.id}>
       <span className="card__audio-icon">
         <SpeakerImage />
       </span>

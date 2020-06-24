@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { learnCardsSelector } from '../../../../reducers/learnCards/learnCardsReducer';
 import './SpeakItGamePage.scss';
 import blank from './../../../../assets/img/blank.jpg';
 import { SpeakItCard } from '../SpeakItCard/SpeackItCard';
@@ -8,13 +6,10 @@ import { FILES_URL } from '../../../../utilities/network/networkConstants';
 
 const searchCardIndexInArray = (cardId, cardsArray) => {
   // TODO: implement searchCardIndexInArray by card id function
-  return cardsArray.findIndex((card) => card.id === cardId);
-};
+  return
+}
 
 export const SpeakItGameScreen = function () {
-  const learnCards = useSelector(learnCardsSelector);
-  const currentGameCards = learnCards.slice(0, 10);
-  console.log(currentGameCards);
   const [currentCard, setCurrentCard] = useState({
     id: null,
     group: 0,
@@ -28,7 +23,6 @@ export const SpeakItGameScreen = function () {
     event.currentTarget.children[3] && event.currentTarget.children[3].play();
     // TODO: set current card from cards array by cardId
     //  Use searchCardIndexInArray function
-    console.dir(event.currentTarget.dataset.cardid);
     // setCurrentCard(() => )
   };
 
@@ -47,9 +41,27 @@ export const SpeakItGameScreen = function () {
         </div>
       </div>
       <div className="cards">
-        {currentGameCards.map((card, idx) => (
-          <SpeakItCard cardData={card} key={idx} onClickCard={onClickCard} />
-        ))}
+        <SpeakItCard
+          cardData={{
+            id: '5e9f5ee35eb9e72bc21af4a2',
+            group: 0,
+            page: 0,
+            word: 'boat',
+            image: 'files/01_0005.jpg',
+            audio: 'files/01_0005.mp3',
+            audioMeaning: 'files/01_0005_meaning.mp3',
+            audioExample: 'files/01_0005_example.mp3',
+            textMeaning: 'A <i>boat</i> is a vehicle that moves across water.',
+            textExample: 'There is a small <b>boat</b> on the lake.',
+            transcription: '[bout]',
+            textExampleTranslate: 'На озере есть маленькая лодка',
+            textMeaningTranslate:
+              'Лодка - это транспортное средство, которое движется по воде',
+            wordTranslate: 'лодка',
+            wordsPerExampleSentence: 8,
+          }}
+          onClickCard={onClickCard}
+        />
       </div>
       <div className="buttons">
         <button className="btn btn_speak-it btn_small button__reset active">
