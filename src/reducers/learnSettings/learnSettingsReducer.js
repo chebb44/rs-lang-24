@@ -23,7 +23,7 @@ import {
   SET_AUTO_TRANSLATE,
   UPDATE_LAST_CORRECT_WORD_INDEX,
   ADD_ANSWER_ACCURACY,
-  UPDATE_LEARNING_SET_FINISH_FLAG,
+  CLEAR_ANSWER_ACCURACY,
   UPDATE_LEARNING_FLAG,
 } from './learnSettingsActions';
 
@@ -182,11 +182,20 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
       };
     case ADD_ANSWER_ACCURACY:
       const array = state.learnCardSettings.answersAccuracy;
+      console.log(array, action.payload);
       return {
         ...state,
         learnCardSettings: {
           ...state.learnCardSettings,
           answersAccuracy: [...array, action.payload],
+        },
+      };
+    case CLEAR_ANSWER_ACCURACY:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          answersAccuracy: [],
         },
       };
     case UPDATE_LEARNING_FLAG:

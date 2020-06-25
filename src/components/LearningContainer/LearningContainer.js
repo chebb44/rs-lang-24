@@ -1,19 +1,8 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { learnCardsSelector } from '../../reducers/learnCards/learnCardsReducer';
 import { LearnCardButtonsContainer } from '../../components/LearnCardButtonsContainer/LearnCardButtonsContainer';
 import { learnCardSettingsSelector } from '../../reducers/learnSettings/learnSettingsReducer';
-import {
-  actionUpdateCurrentCardIndex,
-  actionUpdateEnteredWord,
-  actionUpdateSubmissionFlag,
-  actionUpdateWordCorrectFlag,
-  actionUpdateCheckDisplaying,
-  actionUpdateAudiosToPlay,
-  actionUpdateCurrentAudio,
-  actionUpdateAnswerShownFlag,
-} from '../../reducers/learnCard/learnCardActions';
-import { actionUpdateLastCorrectWordIndex } from '../../reducers/learnSettings/learnSettingsActions';
 import { LearnCard } from '../../components/LearnCard/LearnCard';
 import { LearnCardArrow } from '../../components/LearnCardArrow/LearnCardArrow';
 import './LearningContainer.scss';
@@ -22,6 +11,7 @@ import { ProgressBar } from './../../components/ProgressBar/ProgressBar';
 import SettingsModal from '../../pages/SettingsModal/SettingsModal';
 import ControlButtons from '../../pages/ControlButtons/ControlButtons';
 import { appStateSelector } from '../../reducers/appState/appStateReducer';
+import { handleArrowClickFunction } from '../../utilities/LearningContainer/handleArrowClickFunction';
 
 export const LearningContainer = () => {
   const learnCards = useSelector(learnCardsSelector);
@@ -31,38 +21,20 @@ export const LearningContainer = () => {
   );
   const { visibleStatisticModal } = useSelector(appStateSelector);
   const learnCard = learnCards[currentLearnCardIndex];
-  const dispatch = useDispatch();
   const flippingCardDirections = {
     next: 'next',
     previous: 'previous',
   };
 
   const handleArrowClick = (direction) => {
-    console.log(learnCardSettings);
-    if (
-      direction === 'next' &&
-      (isWordCorrect ||
-        currentLearnCardIndex <= learnCardSettings.lastCorrectWordIndex) &&
-      currentLearnCardIndex < learnCards.length - 1
-    ) {
-      dispatch(actionUpdateCurrentCardIndex(currentLearnCardIndex + 1));
-      if (isWordCorrect)
-        dispatch(
-          actionUpdateLastCorrectWordIndex(
-            learnCardSettings.lastCorrectWordIndex + 1,
-          ),
-        );
-    }
-    if (direction === 'previous' && currentLearnCardIndex > 0) {
-      dispatch(actionUpdateCurrentCardIndex(currentLearnCardIndex - 1));
-    }
-    dispatch(actionUpdateAnswerShownFlag(false));
-    dispatch(actionUpdateEnteredWord(''));
-    dispatch(actionUpdateSubmissionFlag(false));
-    dispatch(actionUpdateWordCorrectFlag(false));
-    dispatch(actionUpdateCheckDisplaying(false));
-    dispatch(actionUpdateAudiosToPlay([]));
-    dispatch(actionUpdateCurrentAudio(null));
+    handleArrowClickFunction(
+      direction,
+      isWordCorrect,
+      currentLearnCardIndex,
+      learnCardSettings.lastCorrectWordIndex,
+      learnCards.length,
+      learnCardSettings.answersAccuracy,
+    );
   };
 
   if (visibleStatisticModal) return null;
@@ -79,7 +51,6 @@ export const LearningContainer = () => {
         <LearnCard
           learnCard={learnCard}
           learnCardSettings={learnCardSettings}
-          learnCardsLength={learnCards.length}
         />
         <LearnCardArrow
           direction={flippingCardDirections.next}
