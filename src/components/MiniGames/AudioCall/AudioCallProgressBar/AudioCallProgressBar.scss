@@ -1,0 +1,17 @@
+@import 'src/scss/vars';
+
+.audio-call-progress{
+  position: relative;
+  margin: 4px;
+  display: flex;
+  justify-content: flex-start;
+  height: 5px;
+  width: 80%;
+  width: 100%;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+  &__indicator{
+    background-color: $default-color;
+    transition: width 1000ms ease-in-out;
+  }
+}
