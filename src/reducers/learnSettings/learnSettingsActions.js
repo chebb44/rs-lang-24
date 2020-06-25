@@ -83,8 +83,9 @@ export const actionAddAnswerAccuracy = (flag) => ({
 });
 
 export const CLEAR_ANSWER_ACCURACY = 'CLEAR_ANSWER_ACCURACY';
-export const actionClearAnswerAccuracy = () => ({
+export const actionClearAnswerAccuracy = (array) => ({
   type: CLEAR_ANSWER_ACCURACY,
+  payload: array,
 });
 
 export const UPDATE_LEARNING_FLAG = 'UPDATE_LEARNING_FLAG';

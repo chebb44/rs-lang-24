@@ -1,7 +1,7 @@
 import React from 'react';
 import './MaxCardsModalView.scss';
 
-const MaxCardsModal = ({ hideStatisticModal }) => {
+export const MaxCardsModalView = ({ hideStatisticModal }) => {
   return (
     <div className="modal-dialog modal-dialog-centered">
       <div className="modal-content modal_max-cards">
@@ -40,5 +40,3 @@ const MaxCardsModal = ({ hideStatisticModal }) => {
     </div>
   );
 };
-
-export default MaxCardsModal;

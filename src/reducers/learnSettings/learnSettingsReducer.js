@@ -191,11 +191,12 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
         },
       };
     case CLEAR_ANSWER_ACCURACY:
+      console.log('nnnn');
       return {
         ...state,
         learnCardSettings: {
           ...state.learnCardSettings,
-          answersAccuracy: [],
+          answersAccuracy: action.payload,
         },
       };
     case UPDATE_LEARNING_FLAG:

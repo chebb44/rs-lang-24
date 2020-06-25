@@ -38,7 +38,7 @@ export const defaultAppState = {
   alertMessage: '',
   isSideBarShow: false,
   initDone: false,
-  visibleStatisticModal: false,
-  visibleMaxCardsModal: false,
+  isStatisticModalShown: false,
+  isMaxCardsModalShown: false,
   visibleSettingsModal: false,
 };
