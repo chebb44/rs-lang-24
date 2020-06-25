@@ -70,6 +70,29 @@ export const actionSetLearnMode = (mode) => ({
   payload: mode,
 });
 
+export const UPDATE_LAST_CORRECT_WORD_INDEX = 'UPDATE_LAST_CORRECT_WORD_INDEX';
+export const actionUpdateLastCorrectWordIndex = (index) => ({
+  type: UPDATE_LAST_CORRECT_WORD_INDEX,
+  payload: index,
+});
+
+export const ADD_ANSWER_ACCURACY = 'ADD_ANSWER_ACCURACY';
+export const actionAddAnswerAccuracy = (flag) => ({
+  type: ADD_ANSWER_ACCURACY,
+  payload: flag,
+});
+
+export const CLEAR_ANSWER_ACCURACY = 'CLEAR_ANSWER_ACCURACY';
+export const actionClearAnswerAccuracy = () => ({
+  type: CLEAR_ANSWER_ACCURACY,
+});
+
+export const UPDATE_LEARNING_FLAG = 'UPDATE_LEARNING_FLAG';
+export const actionUpdateLearningFlag = (flag) => ({
+  type: UPDATE_LEARNING_FLAG,
+  payload: flag,
+});
+
 export const SET_MEANING_WORD = 'SET_MEANING_WORD';
 export const actionSetMeaningWord = (meaning) => ({
   type: SET_MEANING_WORD,

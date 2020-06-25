@@ -21,6 +21,10 @@ import {
   SET_LEARN_CARD_SETTINGS,
   SET_AUTO_AUDIO,
   SET_AUTO_TRANSLATE,
+  UPDATE_LAST_CORRECT_WORD_INDEX,
+  ADD_ANSWER_ACCURACY,
+  CLEAR_ANSWER_ACCURACY,
+  UPDATE_LEARNING_FLAG,
 } from './learnSettingsActions';
 
 export const learnSettingsSelector = (state) => state.learnSettings;
@@ -166,6 +170,40 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
         learnCardSettings: {
           ...state.learnCardSettings,
           isMarkDifficultyBtnsOn: action.payload,
+        },
+      };
+    case UPDATE_LAST_CORRECT_WORD_INDEX:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          lastCorrectWordIndex: action.payload,
+        },
+      };
+    case ADD_ANSWER_ACCURACY:
+      const array = state.learnCardSettings.answersAccuracy;
+      console.log(array, action.payload);
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          answersAccuracy: [...array, action.payload],
+        },
+      };
+    case CLEAR_ANSWER_ACCURACY:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          answersAccuracy: [],
+        },
+      };
+    case UPDATE_LEARNING_FLAG:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isLearningOn: action.payload,
         },
       };
     default:
