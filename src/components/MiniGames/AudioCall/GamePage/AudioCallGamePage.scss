@@ -1,0 +1,33 @@
+@import "src/scss/vars";
+@import "src/scss/mixins";
+
+.audio-call-game-page {
+  min-height: calc(100vh - 70px);
+  width: 100vw;
+  background-blend-mode: multiply;
+  // background: url('./assets/bgAudioCall.jpg') repeat ;
+  // background-color: #D2C0FF;
+  background: linear-gradient(180deg, rgba(210,150,252,1) 21%, rgba(222,201,255,1) 44%, rgba(210,192,255,1) 65%);
+  background-size: 110px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  z-index: -5;
+  &:before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url('./assets/bgAudioCall.jpg') repeat ;
+    background-size: 110px;
+    opacity: .15;
+
+  }
+
+
+}
