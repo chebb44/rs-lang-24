@@ -20,13 +20,20 @@ import recognition, {
   startVoxRecognition,
   stopVoxRecognition,
 } from '../../../../utilities/speachRecognition';
-import { MicIcon } from '../SpeakItCard/SpeakerImage';
 
 export const SpeakItGameScreen = function () {
   const speakDictionary = useSelector(dictionaryStateStateSelector);
   const learnCards = useSelector(learnCardsSelector);
+  const cardsForSpeak =
+    speakDictionary.learnedWords.length > 9
+      ? shuffleArray(speakDictionary.learnedWords).slice(0, 10)
+      : shuffleArray([...speakDictionary.learnedWords, ...learnCards]).slice(
+          0,
+          10,
+        );
 
-  const [trainCards, setTrainCards] = useState([...learnCards.slice(0, 10)]);
+  const [trainCards, setTrainCards] = useState(cardsForSpeak);
+  // const [trainCards, setTrainCards] = useState([...learnCards.slice(0, 10)]);
   const [gameCardsArray, setGameCardsArray] = useState([]);
   const [currentCard, setCurrentCard] = useState(INIT_CARD);
   const [gameMode, setGameMode] = useState(false);
@@ -67,11 +74,15 @@ export const SpeakItGameScreen = function () {
 
   useEffect(() => {
     if (gameMode) {
-      const currentCardIdx = searchCardIndexInArray(currentCard.id, trainCards);
+      const currentCardIdx = searchCardIndexInArray(
+        currentCard._id,
+        trainCards,
+      );
       const recogWin = recognisedWords.find(
         (word) => word.toLowerCase() === currentCard.word.toLowerCase(),
       );
       if (recogWin) {
+        console.log(currentCardIdx, trainCards, currentCard._id);
         setTrainCards(setRightCardInArrayByIdx(currentCardIdx, trainCards));
       } else {
         setTrainCards(setWrongCardInArrayByIdx(currentCardIdx, trainCards));
