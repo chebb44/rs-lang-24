@@ -12,6 +12,7 @@ import {
   setRightCardInArrayByIdx,
   setWrongCardInArrayByIdx,
   initCardsView,
+  makeUniqueObjectsArray,
 } from '../SpeakItHepler';
 import { INIT_CARD } from '../SpeakItConstants';
 import { CentralScreen } from './CentralScreen/CentralScreen';
@@ -22,26 +23,33 @@ import recognition, {
 } from '../../../../utilities/speachRecognition';
 
 export const SpeakItGameScreen = function () {
-  const speakDictionary = useSelector(dictionaryStateStateSelector);
-  const learnCards = useSelector(learnCardsSelector);
-  const cardsForSpeak =
-    speakDictionary.learnedWords.length > 9
-      ? shuffleArray(speakDictionary.learnedWords).slice(0, 10)
-      : shuffleArray([...speakDictionary.learnedWords, ...learnCards]).slice(
-          0,
-          10,
+  const dictionary = useSelector(dictionaryStateStateSelector);
+  const learnedWords = [
+    ...dictionary.learnedWords,
+    ...dictionary.hardWords,
+    ...dictionary.nextTrainWords,
+  ];
+  const cardsToLearn = useSelector(learnCardsSelector);
+  const cardsForCurrentGame =
+    learnedWords.length > 9
+      ? shuffleArray(learnedWords)
+      : shuffleArray(
+          makeUniqueObjectsArray([
+            ...learnedWords,
+            ...shuffleArray(cardsToLearn).slice(0, 10),
+          ]),
         );
 
-  const [trainCards, setTrainCards] = useState(cardsForSpeak);
-  // const [trainCards, setTrainCards] = useState([...learnCards.slice(0, 10)]);
+  const [trainCards, setTrainCards] = useState(
+    cardsForCurrentGame.slice(0, 10),
+  );
   const [gameCardsArray, setGameCardsArray] = useState([]);
   const [currentCard, setCurrentCard] = useState(INIT_CARD);
   const [gameMode, setGameMode] = useState(false);
   const [recognisedWords, setRecognisedWords] = useState([]);
-  // console.log(learnCards, trainCards);
+  // console.log(cardsToLearn, trainCards);
 
   // TODO: Show and hide results pannel
-  // TODO: Show and hide microphone icon
 
   const changeCardsOnRightAnswer = useCallback(() => {
     if (gameCardsArray.length > 0) {
