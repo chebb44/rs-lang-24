@@ -7,7 +7,6 @@ import {
   actionSetIsMaxCardsModalShown,
 } from '../../reducers/appState/appStateActions';
 import { StatisticModalView } from '../../components/StatisticModalView/StatisticModalView';
-import { actionClearAnswerAccuracy } from '../../reducers/learnSettings/learnSettingsActions';
 
 export const StatisticModal = () => {
   const { isStatisticModalShown } = useSelector(appStateSelector);
@@ -16,7 +15,6 @@ export const StatisticModal = () => {
   const hideStatisticModal = useCallback(() => {
     dispatch(actionSetIsStatisticModalShown(false));
     dispatch(actionSetIsMaxCardsModalShown(true));
-    //dispatch(actionClearAnswerAccuracy([]));
   }, [dispatch]);
 
   if (!isStatisticModalShown) return null;

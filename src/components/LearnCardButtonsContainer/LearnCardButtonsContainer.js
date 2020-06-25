@@ -7,12 +7,14 @@ import {
   GOOD_WORD,
   EASY_WORD,
   DELETED_WORD,
+  LEARNED_WORD,
 } from '../../sagas/constants';
 import {
   actionUpdateSubmissionFlag,
   actionUpdateWordCorrectFlag,
   actionUpdateAnswerShownFlag,
 } from '../../reducers/learnCard/learnCardActions';
+import { actionAddAnswerAccuracy } from '../../reducers/learnSettings/learnSettingsActions';
 import { buttonParams } from './constants';
 
 export const LearnCardButtonsContainer = ({ learnCard, isWordCorrect }) => {
@@ -24,6 +26,10 @@ export const LearnCardButtonsContainer = ({ learnCard, isWordCorrect }) => {
   const handleShowAnswerButtonClick = () => {
     dispatch(actionUpdateAnswerShownFlag(true));
     dispatch(actionUpdateWordCorrectFlag(true));
+    dispatch(
+      actionMarkWord({ wordId: learnCard._id, difficulty: LEARNED_WORD }),
+    );
+    dispatch(actionAddAnswerAccuracy(true));
   };
   const handleDeleteButtonClick = () => {
     dispatch(
