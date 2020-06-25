@@ -6,30 +6,20 @@ import { LearnCardTranscription } from '../LearnCardTranscription/LearnCardTrans
 import { LearnCardTranslation } from '../LearnCardTranslation/LearnCardTranslation';
 import { LearnCardAudio } from '../LearnCardAudio/LearnCardAudio';
 import { formatLearnCardText } from '../../utilities/learnCard/formatLearnCardText';
-import { obtainAudiosToPlay } from '../../utilities/learnCard/obtainAudiosToPlay';
 import { learnCardParametersSelector } from '../../reducers/learnCard/learnCardReducer';
 import {
-  actionUpdateWordCorrectFlag,
   actionUpdateSubmissionFlag,
-  actionUpdateAudiosToPlay,
   actionUpdateCurrentAudio,
 } from '../../reducers/learnCard/learnCardActions';
-import { actionUpdatePrevPageGroupWordNumber } from '../../reducers/learnSettings/learnSettingsActions';
-import { actionMarkWord } from '../../store/actionsForSaga';
-import { LEARNED_WORD } from '../../sagas/constants';
 import './LearnCard.scss';
 import { DescriptionWord } from './../DescriptionWord/DescriptionWord';
+import { submitWordFunction } from '../../utilities/learnCard/submitWordFunction';
 
-export const LearnCard = ({
-  learnCard,
-  learnCardSettings,
-  learnCardsLength,
-}) => {
+export const LearnCard = ({ learnCard, learnCardSettings }) => {
   const [learnCardFormatted, setLearnCardFormatted] = useState(null);
   const {
     enteredWord,
     isWordSubmitted,
-    currentLearnCardIndex,
     isAnswerShown,
     audiosToPlay,
     currentAudio,
@@ -62,7 +52,7 @@ export const LearnCard = ({
 
   const handleWordSubmitOnClick = () => {
     if (isWordSubmitted) {
-      submitWord();
+      submitWordFunction(enteredWord, learnCard, learnCardSettings);
       if (!learnCardSettings.isAudioOn) {
         setTimeout(() => {
           dispatch(actionUpdateSubmissionFlag(false));
@@ -71,20 +61,6 @@ export const LearnCard = ({
     }
   };
   useEffect(handleWordSubmitOnClick, [isWordSubmitted, dispatch]);
-
-  const submitWord = () => {
-    if (enteredWord.toLowerCase() === learnCard.word.toLowerCase()) {
-      dispatch(actionUpdateWordCorrectFlag(true));
-      dispatch(
-        actionMarkWord({ wordId: learnCard._id, difficulty: LEARNED_WORD }),
-      );
-      if (currentLearnCardIndex === learnCardsLength - 1)
-        dispatch(actionUpdatePrevPageGroupWordNumber);
-    }
-    const audiosToPlay = obtainAudiosToPlay(learnCard, learnCardSettings);
-    dispatch(actionUpdateAudiosToPlay(audiosToPlay));
-    dispatch(actionUpdateCurrentAudio(audiosToPlay[0]));
-  };
 
   if (!learnCardFormatted) return null;
   return (
