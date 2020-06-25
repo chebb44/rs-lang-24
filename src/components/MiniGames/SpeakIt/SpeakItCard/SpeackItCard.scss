@@ -24,6 +24,14 @@
     background-color: $accent-color;
     color: $neutral-inactive;
   }
+  &.wrong {
+    background-color: $danger-color;
+    color: $neutral-disabled;
+  }
+  &.right {
+    background-color: $primary-color;
+    color: $neutral-disabled;
+  }
 }
 
 .card__audio-icon {

@@ -5,7 +5,9 @@ import { FILES_URL } from '../../../../utilities/network/networkConstants';
 import { capitalizeFirstLetter } from '../SpeakItHepler';
 
 export const SpeakItCard = function ({ cardData, onClickCard }) {
-  const cardClassName = cardData.active ? 'card active' : 'card';
+  let cardClassName = cardData.active ? 'card active' : 'card';
+  cardClassName = cardData.right ? `${cardClassName} right` : cardClassName;
+  cardClassName = cardData.wrong ? `${cardClassName} wrong` : cardClassName;
   return (
     <div
       className={cardClassName}

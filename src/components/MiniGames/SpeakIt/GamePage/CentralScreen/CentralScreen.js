@@ -2,8 +2,10 @@ import blank from '../../../../../assets/img/blank.jpg';
 import { FILES_URL } from '../../../../../utilities/network/networkConstants';
 import { capitalizeFirstLetter } from '../../SpeakItHepler';
 import React from 'react';
+import { MicIcon } from '../../SpeakItCard/SpeakerImage';
+import './CentralScreen.scss';
 
-export const CentralScreen = ({ currentCard }) => {
+export const CentralScreen = ({ currentCard, gameMode }) => {
   return (
     <div className="central-screen">
       <div className="central-screen__image">
@@ -13,7 +15,7 @@ export const CentralScreen = ({ currentCard }) => {
         />
       </div>
       <div className="translation__block">
-        <i className="material-icons md-36 icon__mic">mic</i>
+        <MicIcon gameMode={gameMode} />
         <div className="central-screen__translation">
           {capitalizeFirstLetter(currentCard.wordTranslate)}
         </div>

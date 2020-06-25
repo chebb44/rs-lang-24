@@ -6,7 +6,8 @@ export const searchCardIndexInArray = (cardId, cardsArray) => {
   return cardsArray.findIndex((card) => card._id === cardId);
 };
 
-export const setActiveCardInArray = (cardIdx, cardsArray) => {
+export const setActiveCardInArray = (cardIdx, oldCardsArray) => {
+  const cardsArray = [...oldCardsArray];
   return cardsArray.map((card, idx) => {
     card.active = idx === cardIdx;
     return card;
@@ -36,4 +37,26 @@ export const getRecognisedWordsArrayFromEvent = (event) => {
     .map((val) => val.toLowerCase());
   console.log(recognisedVars);
   return recognisedVars;
+};
+
+export const setRightCardInArrayByIdx = (cardIdx, oldCardsArray) => {
+  const cardsArray = [...oldCardsArray];
+  cardsArray[cardIdx].wrong = false;
+  cardsArray[cardIdx].right = true;
+  return cardsArray;
+};
+
+export const setWrongCardInArrayByIdx = (cardIdx, oldCardsArray) => {
+  const cardsArray = [...oldCardsArray];
+  cardsArray[cardIdx].right = false;
+  cardsArray[cardIdx].wrong = true;
+  return cardsArray;
+};
+
+export const initCardsView = (cardsArray) => {
+  cardsArray.forEach((card) => {
+    card.right = false;
+    card.wrong = false;
+    card.active = false;
+  });
 };
