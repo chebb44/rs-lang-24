@@ -6,6 +6,14 @@ import {
   SET_PAGE_GROUP_WORD_NUMBER,
   SET_LEARN_MODE,
   UPDATE_PREV_PAGE_GROUP_WORD_NUMBER,
+  SET_MEANING_WORD,
+  SET_EXAMPLE_WORD,
+  SET_TRANSCRIPTION_WORD,
+  SET_IMAGE,
+  SET_CARDS_PER_DAY,
+  SET_SHOW_ANSWER_BTN,
+  SET_DELETE_BTN,
+  SET_SHOW_MARK_DIFFICULTY_BTNS,
 } from './learnSettingsActions';
 import {
   SET_WORDS_PER_DAY,
@@ -94,6 +102,70 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
         learnCardSettings: {
           ...state.learnCardSettings,
           learnMode: action.payload,
+        },
+      };
+    case SET_MEANING_WORD:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isMeaningOn: action.payload,
+        },
+      };
+    case SET_EXAMPLE_WORD:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isExampleOn: action.payload,
+        },
+      };
+    case SET_TRANSCRIPTION_WORD:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isTranscriptionOn: action.payload,
+        },
+      };
+    case SET_IMAGE:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isImageOn: action.payload,
+        },
+      };
+    case SET_CARDS_PER_DAY:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          cardsPerDay: action.payload,
+        },
+      };
+    case SET_SHOW_ANSWER_BTN:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isShowAnswerBtnOn: action.payload,
+        },
+      };
+    case SET_DELETE_BTN:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isDeleteBtnOn: action.payload,
+        },
+      };
+    case SET_SHOW_MARK_DIFFICULTY_BTNS:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          isMarkDifficultyBtnsOn: action.payload,
         },
       };
     default:

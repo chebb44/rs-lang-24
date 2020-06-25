@@ -25,6 +25,9 @@ export const defaultLearnSettings = {
     currentWordOnPage: 0,
     learnMode: STANDARD_MODE,
     cardsPerDay: 50,
+    isShowAnswerBtnOn: true,
+    isDeleteBtnOn: true,
+    isMarkDifficultyBtnsOn: true,
   },
 };
 
