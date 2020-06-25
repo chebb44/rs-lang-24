@@ -2,12 +2,12 @@ import React from 'react';
 import { SuccessSvg } from './assets/success.js';
 import './StatisticModal.scss';
 
-const StatisticModal = ({ statistic, hideStatisticModal }) => {
+export const StatisticModalView = ({ statistic, hideStatisticModal }) => {
   const {
-    endCards,
-    correctAnswer,
-    newWords,
-    longestSeriesCorrectAnswer,
+    cardsAmount,
+    correctAnswersPercent,
+    newWordsAmount,
+    longestCorrectAnswersSeries,
   } = statistic;
 
   return (
@@ -21,17 +21,17 @@ const StatisticModal = ({ statistic, hideStatisticModal }) => {
         </div>
         <div className="modal-body text-left">
           <p className="border-bottom d-flex justify-content-between">
-            Карточек завершено:&nbsp;<span>{endCards}</span>
+            Карточек завершено:&nbsp;<span>{cardsAmount}</span>
           </p>
           <p className="border-bottom d-flex justify-content-between">
-            Правильные ответы:&nbsp;<span>{correctAnswer}%</span>
+            Правильные ответы:&nbsp;<span>{correctAnswersPercent}%</span>
           </p>
           <p className="border-bottom d-flex justify-content-between">
-            Новые слова:&nbsp;<span>{newWords}</span>
+            Новые слова:&nbsp;<span>{newWordsAmount}</span>
           </p>
           <p className="border-bottom d-flex justify-content-between">
             Самая длинная серия ответов:&nbsp;
-            <span>{longestSeriesCorrectAnswer}</span>
+            <span>{longestCorrectAnswersSeries}</span>
           </p>
         </div>
         <button
@@ -45,5 +45,3 @@ const StatisticModal = ({ statistic, hideStatisticModal }) => {
     </div>
   );
 };
-
-export default StatisticModal;
