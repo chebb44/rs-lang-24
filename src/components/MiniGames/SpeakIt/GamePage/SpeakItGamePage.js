@@ -26,7 +26,7 @@ export const SpeakItGameScreen = function () {
   const speakDictionary = useSelector(dictionaryStateStateSelector);
   const learnCards = useSelector(learnCardsSelector);
 
-  const [trainCards, setTrainCards] = useState([...learnCards.slice(10, 20)]);
+  const [trainCards, setTrainCards] = useState([...learnCards.slice(0, 10)]);
   const [gameCardsArray, setGameCardsArray] = useState([]);
   const [currentCard, setCurrentCard] = useState(INIT_CARD);
   const [gameMode, setGameMode] = useState(false);
