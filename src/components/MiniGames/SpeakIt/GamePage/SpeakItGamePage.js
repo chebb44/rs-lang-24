@@ -12,6 +12,7 @@ import {
   setRightCardInArrayByIdx,
   setWrongCardInArrayByIdx,
   initCardsView,
+  makeUniqueObjectsArray,
 } from '../SpeakItHepler';
 import { INIT_CARD } from '../SpeakItConstants';
 import { CentralScreen } from './CentralScreen/CentralScreen';
@@ -20,21 +21,35 @@ import recognition, {
   startVoxRecognition,
   stopVoxRecognition,
 } from '../../../../utilities/speachRecognition';
-import { MicIcon } from '../SpeakItCard/SpeakerImage';
 
 export const SpeakItGameScreen = function () {
-  const speakDictionary = useSelector(dictionaryStateStateSelector);
-  const learnCards = useSelector(learnCardsSelector);
+  const dictionary = useSelector(dictionaryStateStateSelector);
+  const learnedWords = [
+    ...dictionary.learnedWords,
+    ...dictionary.hardWords,
+    ...dictionary.nextTrainWords,
+  ];
+  const cardsToLearn = useSelector(learnCardsSelector);
+  const cardsForCurrentGame =
+    learnedWords.length > 9
+      ? shuffleArray(learnedWords)
+      : shuffleArray(
+          makeUniqueObjectsArray([
+            ...learnedWords,
+            ...shuffleArray(cardsToLearn).slice(0, 10),
+          ]),
+        );
 
-  const [trainCards, setTrainCards] = useState([...learnCards.slice(0, 10)]);
+  const [trainCards, setTrainCards] = useState(
+    cardsForCurrentGame.slice(0, 10),
+  );
   const [gameCardsArray, setGameCardsArray] = useState([]);
   const [currentCard, setCurrentCard] = useState(INIT_CARD);
   const [gameMode, setGameMode] = useState(false);
   const [recognisedWords, setRecognisedWords] = useState([]);
-  // console.log(learnCards, trainCards);
+  // console.log(cardsToLearn, trainCards);
 
   // TODO: Show and hide results pannel
-  // TODO: Show and hide microphone icon
 
   const changeCardsOnRightAnswer = useCallback(() => {
     if (gameCardsArray.length > 0) {
@@ -67,11 +82,15 @@ export const SpeakItGameScreen = function () {
 
   useEffect(() => {
     if (gameMode) {
-      const currentCardIdx = searchCardIndexInArray(currentCard.id, trainCards);
+      const currentCardIdx = searchCardIndexInArray(
+        currentCard._id,
+        trainCards,
+      );
       const recogWin = recognisedWords.find(
         (word) => word.toLowerCase() === currentCard.word.toLowerCase(),
       );
       if (recogWin) {
+        console.log(currentCardIdx, trainCards, currentCard._id);
         setTrainCards(setRightCardInArrayByIdx(currentCardIdx, trainCards));
       } else {
         setTrainCards(setWrongCardInArrayByIdx(currentCardIdx, trainCards));

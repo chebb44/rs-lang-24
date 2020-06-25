@@ -60,3 +60,14 @@ export const initCardsView = (cardsArray) => {
     card.active = false;
   });
 };
+
+export const makeUniqueObjectsArray = (array) => {
+  // let resultArray = [];
+  return array.reduce((resultArray, card) => {
+    if (resultArray.find((cardCopy) => cardCopy.word === card.word)) {
+      return resultArray;
+    } else {
+      return [...resultArray, card];
+    }
+  }, []);
+};
