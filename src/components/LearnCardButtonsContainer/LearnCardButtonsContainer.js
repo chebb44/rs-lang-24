@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { UniversalButton } from '../UniversalButton/UniversalButton';
 import { actionMarkWord } from '../../store/actionsForSaga';
 import {
@@ -16,8 +16,14 @@ import {
 } from '../../reducers/learnCard/learnCardActions';
 import { actionAddAnswerAccuracy } from '../../reducers/learnSettings/learnSettingsActions';
 import { buttonParams } from './constants';
+import { learnCardSettingsSelector } from '../../reducers/learnSettings/learnSettingsReducer';
 
 export const LearnCardButtonsContainer = ({ learnCard, isWordCorrect }) => {
+  const {
+    isShowAnswerBtnOn,
+    isDeleteBtnOn,
+    isMarkDifficultyBtnsOn,
+  } = useSelector(learnCardSettingsSelector);
   const dispatch = useDispatch();
 
   const handleCheckButtonClick = () => {
@@ -58,18 +64,22 @@ export const LearnCardButtonsContainer = ({ learnCard, isWordCorrect }) => {
           buttonText={buttonParams.check.text}
           extraClasses={buttonParams.check.classes}
         />
-        <UniversalButton
-          onClickHandler={handleShowAnswerButtonClick}
-          buttonText={buttonParams.showAnswer.text}
-          extraClasses={buttonParams.showAnswer.classes}
-        />
-        <UniversalButton
-          onClickHandler={handleDeleteButtonClick}
-          buttonText={buttonParams.delete.text}
-          extraClasses={buttonParams.delete.classes}
-        />
+        {isShowAnswerBtnOn && (
+          <UniversalButton
+            onClickHandler={handleShowAnswerButtonClick}
+            buttonText={buttonParams.showAnswer.text}
+            extraClasses={buttonParams.showAnswer.classes}
+          />
+        )}
+        {isDeleteBtnOn && (
+          <UniversalButton
+            onClickHandler={handleDeleteButtonClick}
+            buttonText={buttonParams.delete.text}
+            extraClasses={buttonParams.delete.classes}
+          />
+        )}
       </div>
-      {isWordCorrect && (
+      {isMarkDifficultyBtnsOn && isWordCorrect && (
         <div>
           <UniversalButton
             onClickHandler={handleMarkAsHardButtonClick}

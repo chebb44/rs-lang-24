@@ -1,17 +1,28 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { appStateSelector } from '../../reducers/appState/appStateReducer';
-import { actionSetIsMaxCardsModalShown } from '../../reducers/appState/appStateActions';
+import {
+  actionSetIsMaxCardsModalShown,
+  actionSettingsModal,
+} from '../../reducers/appState/appStateActions';
 import { MaxCardsModalView } from '../../components/MaxCardsModalView/MaxCardsModalView';
 
 export const MaxCardsModal = () => {
   const { isMaxCardsModalShown } = useSelector(appStateSelector);
   const dispatch = useDispatch();
-  const hideStatisticModal = useCallback(() => {
+  const hideMaxCardsModal = useCallback(() => {
     dispatch(actionSetIsMaxCardsModalShown(false));
+  }, [dispatch]);
+  const showSettings = useCallback(() => {
+    dispatch(actionSettingsModal(true));
   }, [dispatch]);
 
   if (!isMaxCardsModalShown) return null;
 
-  return <MaxCardsModalView hideStatisticModal={hideStatisticModal} />;
+  return (
+    <MaxCardsModalView
+      hideMaxCardsModal={hideMaxCardsModal}
+      showSettings={showSettings}
+    />
+  );
 };

@@ -52,6 +52,7 @@ export function handleArrowClickFunction(
       store.dispatch(actionClearAnswerAccuracy([]));
       store.dispatch(actionUpdatePrevPageGroupWordNumber());
       store.dispatch(actionSetIsStatisticModalShown(true));
+      store.dispatch(actionUpdateCurrentCardIndex(0));
     }
   }
   if (direction === 'previous' && currentLearnCardIndex > 0) {
