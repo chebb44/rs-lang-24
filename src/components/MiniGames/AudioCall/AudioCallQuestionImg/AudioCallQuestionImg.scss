@@ -1,0 +1,21 @@
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+
+.audio-call-question-image {
+  position: relative;
+  margin: 0 auto;
+  width: 95px;
+  height: 95px;
+  border: 1px solid $neutral-inactive;
+  border-radius: 50%;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+
+  img: {
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,9 @@
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+
+.audio-call-question-container {
+  position: relative;
+  margin-top: 20px;
+  height: 135px;
+  text-align: center;
+}

@@ -1,0 +1,46 @@
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+
+.audio-call-question-audio {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: auto;
+  padding: 0;
+  width: 100px;
+  height: 100px;
+  border: none;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  z-index: 5;
+  svg {
+    position: absolute;
+    left: 0;
+    width: 100px;
+    height: 100px;
+  }
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+    -webkit-transform: scale(1.03);
+    -moz-transform: scale(1.03);
+    -ms-transform: scale(1.03);
+    -o-transform: scale(1.03);
+}
+  &_true {
+    top: auto;
+    left: -47px;
+    bottom: 0px;
+    width: 40px;
+    height: 40px;
+    svg {
+      position: absolute;
+      left: 0px;
+      width: 40px;
+      height: 40px;
+    }
+  }
+}

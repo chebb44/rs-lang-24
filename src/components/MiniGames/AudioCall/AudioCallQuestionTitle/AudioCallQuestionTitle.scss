@@ -1,0 +1,12 @@
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+
+.audio-call-question-title {
+  color: $default-color;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 32px;
+  max-width: 200px;
+  word-wrap: break-word;
+  overflow: hidden;
+}
