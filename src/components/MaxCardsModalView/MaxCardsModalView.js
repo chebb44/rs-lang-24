@@ -1,7 +1,7 @@
 import React from 'react';
 import './MaxCardsModalView.scss';
 
-const MaxCardsModal = ({ hideStatisticModal }) => {
+export const MaxCardsModalView = ({ hideMaxCardsModal, showSettings }) => {
   return (
     <div className="modal-dialog modal-dialog-centered">
       <div className="modal-content modal_max-cards">
@@ -12,7 +12,7 @@ const MaxCardsModal = ({ hideStatisticModal }) => {
             className="close"
             data-dismiss="modal"
             aria-label="Close"
-            onClick={hideStatisticModal}
+            onClick={hideMaxCardsModal}
           >
             <span aria-hidden="true">&times;</span>
           </button>
@@ -32,7 +32,7 @@ const MaxCardsModal = ({ hideStatisticModal }) => {
         <button
           type="button"
           className="btn button_settings"
-          onClick={hideStatisticModal}
+          onClick={showSettings}
         >
           Перейти в настройки
         </button>
@@ -40,5 +40,3 @@ const MaxCardsModal = ({ hideStatisticModal }) => {
     </div>
   );
 };
-
-export default MaxCardsModal;
