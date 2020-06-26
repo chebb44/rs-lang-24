@@ -1,0 +1,66 @@
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+
+.audio-call-answer-btn {
+  position: relative;
+  margin: 5px 5px;
+  padding: 5px 8px;
+  background: none;
+  border: none;
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+  color: $default-color;
+  font-weight: 500;
+  opacity: .9;
+  z-index: 15;
+  line-height: 20px;
+  &__position {
+    position: relative;
+    margin-right: 5px;
+    opacity: .6;
+    &_success {
+      display: none;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: $default-color;
+    opacity: .9;
+  }
+  &:checked:before {
+    border: none;
+    background: none;
+  }
+  &_false {
+    opacity: .5;
+    .audio-call-answer-btn__text {
+      text-decoration: line-through;
+      text-decoration-color: $neutral-inactive;
+      -moz-text-decoration-color: $neutral-inactive;
+    }
+  }
+  &_true {
+    opacity: 1;
+    .audio-call-answer-btn__position {
+      opacity: .9;
+    }
+    .audio-call-answer-btn__position_success {
+      display: block;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      top: 0;
+      left: -6px;
+    }
+  }
+  &_disabled {
+    opacity: .5;
+  }
+  &_true-after-false{
+    opacity: .9;
+  }
+}
