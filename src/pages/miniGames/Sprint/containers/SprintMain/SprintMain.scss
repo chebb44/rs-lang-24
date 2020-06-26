@@ -1,10 +1,25 @@
-.sprint-main-wrapper{
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+
+.sprint-main-wrapper {
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: $neutral-active;
 }
-.sprint-content-wrapper{
-  
+.sprint-content-wrapper {
+  color: $neutral-active;
+  position: relative;
+  width: 60%;
+  height: 60%;
+  min-height: 380px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media screen and (max-width: 500px) {
+    width: 90%;
+  }
 }

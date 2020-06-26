@@ -3,7 +3,7 @@ import './GameButtons.scss';
 import { UniversalButton } from '../../../../../components/UniversalButton/UniversalButton';
 export const GameButtons = ({ clickHandler }) => {
   return (
-    <div>
+    <div className="sprint-buttons">
       <UniversalButton
         buttonText="Верно"
         extraClasses="sprint-true-button"

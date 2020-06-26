@@ -1,1 +1,1 @@
-export const SPRINT_SHOW_RESULT_DELAY = 2000;
+export const SPRINT_SHOW_RESULT_DELAY = 1000;
