@@ -1,0 +1,16 @@
+@import 'src/scss/vars';
+
+.timer {
+  text-align: center;
+  margin: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid $dark-color;
+  position: absolute;
+  right: 0;
+  top: 20%;
+  @media screen and (max-width: 500px) {
+    top: 0;
+  }
+}

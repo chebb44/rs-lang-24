@@ -1,15 +1,17 @@
-import { call, put } from 'redux-saga/effects';
-import { store } from '../store/store';
+import { call, put, select } from 'redux-saga/effects';
 import { getUserStatistic } from './../utilities/network/statisticAPI';
-import { actionSetAllStatistic } from '../reducers/statisticReducer/statisticActions';
-import { sendStatisticToBackendWorker } from './sendStatisticToBackend';
+import { currentUserSelector } from '../reducers/currentUser/currentUserReducer';
+import { actionSetAllMiniGamesStats } from '../reducers/miniGamesStats/miniGamesStatsActions';
+import { actionSetAllLearnStatistic } from '../reducers/statisticReducer/statisticActions';
 
 export function* initStatisticSaga() {
-  const { token, id: userId } = store.getState().currentUser;
+  const { token, id: userId } = yield select(currentUserSelector);
   const statistic = yield call(getUserStatistic, { token, userId }); //get statistic from API
   if (statistic) {
-    yield put(actionSetAllStatistic(statistic)); // set statistic to store if they are
-  } else {
-    yield call(sendStatisticToBackendWorker); //send defaultStatistic
+    const {
+      optional: { miniGames, learnStatistic },
+    } = statistic;
+    yield put(actionSetAllMiniGamesStats({ miniGames }));
+    yield put(actionSetAllLearnStatistic(learnStatistic));
   }
 }

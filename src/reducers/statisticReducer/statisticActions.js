@@ -4,9 +4,9 @@ export const actionSetWordsPerDay = (wordsNumber) => ({
   payload: wordsNumber,
 });
 
-export const SET_ALL_STATISTIC = 'SET_ALL_STATISTIC';
-export const actionSetAllStatistic = (data) => ({
-  type: SET_ALL_STATISTIC,
+export const SET_ALL_LEARN_STATISTIC = 'SET_ALL_LEARN_STATISTIC';
+export const actionSetAllLearnStatistic = (data) => ({
+  type: SET_ALL_LEARN_STATISTIC,
   payload: data,
 });
 

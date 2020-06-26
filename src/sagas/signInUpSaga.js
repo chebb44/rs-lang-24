@@ -24,10 +24,6 @@ export function* signUpWorker(action) {
 export function* signInWorker(action) {
   const userSignInResponse = yield call(loginUser, action.payload);
   if (userSignInResponse.success) {
-    console.log(
-      'function*signInWorker ->  userSignInResponse.payload',
-      userSignInResponse.payload,
-    );
     const { token, userId } = userSignInResponse.payload;
     yield localStorage.setItem(TOKEN, token);
     yield localStorage.setItem(USER_ID, userId);

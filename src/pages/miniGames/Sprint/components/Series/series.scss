@@ -1,0 +1,25 @@
+.sprint-series {
+  height: 40px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sprint-series-stars{
+  margin-left: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sprint-star {
+  width: 30px;
+  height: 30px;
+  background-image: url('./assets/star.svg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+}
+.sprint-empty-star {
+  background-image: url('./assets/star-empty.svg');
+}
