@@ -1,0 +1,47 @@
+@import "src/scss/vars";
+@import "src/scss/mixins";
+
+.speak-it-modal__wrapper {
+
+  .speak-it-modal__background {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: $neutral-inactive;
+    min-width: 100vw;
+    min-height: 100vh;
+    z-index: 10;
+    //display: flex;
+    //justify-content: center;
+
+    .speak-it-modal__window {
+      position: absolute;
+      top: calc(50% - 130px);
+      left: calc(50% - 145px);;
+      width: 300px;
+      min-height: 260px;
+      background: $default-color;
+      border-radius: 5px;
+
+      .modal_title {
+        margin-top: 25px;
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+
+      .modal_text {
+        margin-top: 40px;
+      }
+
+      .btn_modal {
+        @include std_button;
+        min-width: 120px;
+        min-height: 45px;
+        background-color: $accent-color;
+        position: absolute;
+        bottom: 30px;
+        left: calc(50% - 60px);;
+      }
+    }
+  }
+}
