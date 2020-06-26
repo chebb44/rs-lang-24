@@ -12,10 +12,13 @@ export function* initSettingsSaga() {
     yield put(actionLogOutUser());
   } else {
     if (settings) {
-      const { wordsPerDay, optional } = settings;
+      const {
+        wordsPerDay,
+        optional: { learnCardSettings },
+      } = settings;
       const learnSettings = {
         wordsPerDay,
-        learnCardSettings: JSON.parse(optional.learnCardSettings),
+        learnCardSettings,
       };
       yield put(actionSetLearnSetting(learnSettings));
     }

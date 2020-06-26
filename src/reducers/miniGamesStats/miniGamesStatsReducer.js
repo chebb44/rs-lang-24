@@ -15,7 +15,6 @@ export const miniGamesStats = (state = defaultData, action) => {
     case SPRINT_SEND_GAME_RESULT:
       const { date, result } = action.payload;
       let dayStat = [];
-      console.log('miniGamesStats -> state', state);
       if (date in state.miniGames.sprint) {
         dayStat = [...state.miniGames.sprint[date], result];
       } else {

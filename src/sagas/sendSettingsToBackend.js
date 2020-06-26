@@ -9,7 +9,7 @@ export function* sendSettingsToBackendWorker() {
   );
 
   const optional = {
-    learnCardSettings: yield JSON.stringify(learnCardSettings),
+    learnCardSettings,
   };
   const complexSettings = {
     wordsPerDay,

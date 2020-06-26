@@ -1,10 +1,10 @@
 import {
   SET_LEARNED_WORDS,
-  SET_ALL_STATISTIC,
   SET_CARDS_AMOUNT,
   SET_CORRECT_ANSWERS_PERCENT,
   SET_NEW_WORDS_AMOUNT,
   SET_LONGEST_CORRECT_ANSWER_SERIES,
+  SET_ALL_LEARN_STATISTIC,
 } from './statisticActions';
 
 const defaultSettings = {
@@ -15,10 +15,6 @@ const defaultSettings = {
     longestCorrectAnswersSeries: 0,
   },
   learnedWords: 0,
-  optional: {
-    test: 'xxx',
-    test2: 'yyy',
-  },
 };
 
 export const statisticStateSelector = (state) => state.statisticState;
@@ -30,7 +26,7 @@ export const statisticState = (state = defaultSettings, action) => {
         ...state,
         wordsPerDay: action.payload,
       };
-    case SET_ALL_STATISTIC:
+    case SET_ALL_LEARN_STATISTIC:
       return {
         ...state,
         ...action.payload,
