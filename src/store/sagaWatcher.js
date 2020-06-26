@@ -24,6 +24,7 @@ import {
   SET_LEARN_MODE,
 } from './../reducers/learnSettings/learnSettingsActions';
 import { moveWordsWorker } from '../sagas/moveUserWords';
+import { SPRINT_SEND_GAME_RESULT } from './../reducers/miniGamesStats/miniGamesStatsActions';
 export function* sagaWatcher() {
   yield takeLatest(SIGN_UP_USER, signUpWorker);
   yield takeLatest(SIGN_IN_USER, signInWorker);
@@ -40,6 +41,7 @@ export function* sagaWatcher() {
   yield takeLatest(SET_LEARN_MODE, sendSettingsToBackendWorker);
 
   yield takeLatest(SET_LEARNED_WORDS, sendStatisticToBackendWorker);
+  yield takeLatest(SPRINT_SEND_GAME_RESULT, sendStatisticToBackendWorker);
 
   yield takeEvery(MARK_WORD, markWordsWorker);
   yield takeEvery(MOVE_WORD, moveWordsWorker);

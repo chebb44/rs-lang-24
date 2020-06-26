@@ -20,7 +20,6 @@ export const SprintMain = () => {
   useEffect(() => {
     const { shuffledCards } = shuffleCards({ cards });
     setGameCards(shuffledCards);
-    console.log('cards shuffled');
   }, [cards]);
   const startGameHandler = useCallback(() => {
     setIsStartScreen(false);

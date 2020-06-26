@@ -1,4 +1,7 @@
-import { SPRINT_SEND_GAME_RESULT } from './miniGamesStatsActions';
+import {
+  SPRINT_SEND_GAME_RESULT,
+  SET_ALL_MINI_GAMES_STATS,
+} from './miniGamesStatsActions';
 const defaultData = {
   miniGames: {
     sprint: {},
@@ -12,11 +15,10 @@ export const miniGamesStats = (state = defaultData, action) => {
     case SPRINT_SEND_GAME_RESULT:
       const { date, result } = action.payload;
       let dayStat = [];
+      console.log('miniGamesStats -> state', state);
       if (date in state.miniGames.sprint) {
-        console.log('date in');
         dayStat = [...state.miniGames.sprint[date], result];
       } else {
-        console.log('date out');
         dayStat = [result];
       }
       return {
@@ -29,6 +31,12 @@ export const miniGamesStats = (state = defaultData, action) => {
           },
         },
       };
+    case SET_ALL_MINI_GAMES_STATS: {
+      const { miniGames } = action.payload;
+      return {
+        miniGames,
+      };
+    }
     default:
       return state;
   }

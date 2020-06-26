@@ -3,7 +3,7 @@ import './Timer.scss';
 import { useInterval } from '../../../../../utilities/sprint/useInterval';
 
 export const Timer = ({ timeoutHandler, redirectToStartScreen }) => {
-  const ROUND_TIME = 10;
+  const ROUND_TIME = 2;
   const END_GAME_DELAY = 3000;
   const [startTime, setStartTime] = useState(null);
   const [timeLeft, setTimeLeft] = useState(60);
