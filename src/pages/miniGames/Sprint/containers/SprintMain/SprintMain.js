@@ -49,7 +49,12 @@ export const SprintMain = () => {
               timeoutHandler={timeoutHandler}
               redirectToStartScreen={redirectToStartScreen}
             />
-            <CardField score={score} setScore={setScore} cards={gameCards} />
+            <CardField
+              score={score}
+              setScore={setScore}
+              cards={gameCards}
+              redirectToStartScreen={redirectToStartScreen}
+            />
           </div>
         ) : (
           <EndGame score={score} />

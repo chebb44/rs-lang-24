@@ -6,7 +6,12 @@ import { GameButtons } from '../../components/GameButtons/GameButtons';
 import { GameNotification } from '../../components/GameNotification/GameNotification';
 import { SPRINT_SHOW_RESULT_DELAY } from '../../constants';
 
-export const CardField = ({ cards, score, setScore }) => {
+export const CardField = ({
+  cards,
+  score,
+  setScore,
+  redirectToStartScreen,
+}) => {
   const [buttonEnable, setButtonEnable] = useState(true);
   const [timeoutId, setTimeoutId] = useState(null);
   const [currentNumber, setCurrentNumber] = useState(0);
@@ -48,6 +53,11 @@ export const CardField = ({ cards, score, setScore }) => {
     },
     [cards, currentNumber, series, showNext, buttonEnable],
   );
+  useEffect(() => {
+    if (currentNumber >= cards.length) {
+      redirectToStartScreen();
+    }
+  }, [currentNumber, cards, redirectToStartScreen]);
   useEffect(() => {
     return () => {
       clearTimeout(timeoutId);
