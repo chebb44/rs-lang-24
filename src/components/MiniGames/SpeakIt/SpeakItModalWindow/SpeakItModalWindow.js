@@ -9,7 +9,9 @@ const SpeakItModalWindow = ({ onCloseModal }) => {
           <p className="modal_title">Заголовок модалки</p>
           <p className="modal_text">Ваш результат в этой игре:</p>
           <p className="modal_result">3 очка против 4 очков</p>
-          <button className="btn btn_modal" onClick={onCloseModal}>Закрыть</button>
+          <button className="btn btn_modal" onClick={onCloseModal}>
+            Закрыть
+          </button>
         </div>
       </div>
     </div>

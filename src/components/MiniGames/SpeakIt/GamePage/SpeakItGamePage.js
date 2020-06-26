@@ -125,7 +125,6 @@ export const SpeakItGameScreen = function () {
     setGameMode(false);
     initCardsView(trainCards);
     setCurrentCard(INIT_CARD);
-    // TODO: Deactivate microphone icon
   };
   const onCloseModal = () => {
     setModalOpen(false);
