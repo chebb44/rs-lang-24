@@ -50,7 +50,8 @@ export const SpeakItGameScreen = function () {
   const [gameMode, setGameMode] = useState(false);
   const [recognisedWords, setRecognisedWords] = useState([]);
 
-  const changeCardsArrayOnRightAnswer = useCallback(() => {
+  const changeCardsArrayOnRightAnswer = useCallback((gamecarDs) => {
+    console.log(gamecarDs);
     if (gameCardsArray.length > 0) {
       console.log(gameCardsArray);
       setCurrentCard(gameCardsArray[0]);
@@ -133,9 +134,11 @@ export const SpeakItGameScreen = function () {
     trainCards,
   ]);
 
-  const startGame = useCallback(() => {
-    console.log('startgame');
-    changeCardsArrayOnRightAnswer();
+  const startGame = useCallback(
+    (gameCards) => {
+      console.log(gameCards);
+      console.log('startgame');
+    changeCardsArrayOnRightAnswer(gameCards);
     startVoxRecognition();
     recognition.onresult = (event) => {
       setRecognisedWords(getRecognisedWordsArrayFromEvent(event));
@@ -159,16 +162,14 @@ export const SpeakItGameScreen = function () {
 
   const makeGameCardsArray = useCallback(() => {
     setGameCardsArray(shuffleArray(trainCards));
-  }, [trainCards]);
+    initCardsView(trainCards);
+    startGame(gameCardsArray);
+  }, [gameCardsArray, startGame, trainCards]);
 
   const onClickSpeakButton = useCallback(() => {
     setGameMode(true);
     makeGameCardsArray();
-    console.log(gameCardsArray);
-    initCardsView(trainCards);
-    // setCurrentCard(INIT_CARD);
-    startGame();
-  }, [trainCards, gameCardsArray, startGame]);
+  }, [makeGameCardsArray]);
 
   const onClickResetButton = useCallback(() => {
     setGameMode(false);
