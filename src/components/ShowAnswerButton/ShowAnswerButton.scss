@@ -1,7 +1,0 @@
-@import "../../scss/vars.scss";
-@import "../../scss/mixins.scss";
-
-.button_show-answer {
-  @include std_button;
-  background-color: $primary-color;
-}

@@ -66,11 +66,7 @@ export const LearnCard = ({ learnCard, learnCardSettings }) => {
   return (
     learnCardFormatted && (
       <>
-        <div
-          className="card m-3 learn-card"
-          style={{ maxWidth: '540px' }}
-          onKeyPress={handleWordSubmitOnEnter}
-        >
+        <div className="card learn-card" onKeyPress={handleWordSubmitOnEnter}>
           <div className="row no-gutters">
             <div className="col-md-12">
               <div className="card-body">

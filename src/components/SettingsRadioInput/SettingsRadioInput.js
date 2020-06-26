@@ -29,7 +29,7 @@ const SettingsRadioInput = ({ item }) => {
       value === 'REPEAT_MODE')
   ) {
     return (
-      <div className="custom-control custom-radio custom-control-inline">
+      <div className="custom-control custom-radio custom-control-inline mb-1">
         <input
           type="radio"
           id={id}
@@ -40,7 +40,7 @@ const SettingsRadioInput = ({ item }) => {
           onChange={handleChange}
         ></input>
         <label
-          className="custom-control-label font-italic"
+          className="custom-control-label"
           htmlFor={id}
           data-toggle="tooltip"
           data-placement="top"
@@ -57,7 +57,7 @@ const SettingsRadioInput = ({ item }) => {
     (wordsPerDay && value < wordsPerDay)
   ) {
     return (
-      <div className="custom-control custom-radio custom-control-inline">
+      <div className="custom-control custom-radio custom-control-inline mb-1">
         <input
           type="radio"
           id={id}
@@ -67,7 +67,7 @@ const SettingsRadioInput = ({ item }) => {
           disabled
           onChange={handleChange}
         ></input>
-        <label className="custom-control-label font-italic" htmlFor={id}>
+        <label className="custom-control-label" htmlFor={id}>
           {text}
         </label>
       </div>
@@ -76,7 +76,7 @@ const SettingsRadioInput = ({ item }) => {
 
   if (defaultStateValue === value) {
     return (
-      <div className="custom-control custom-radio custom-control-inline">
+      <div className="custom-control custom-radio custom-control-inline mb-1">
         <input
           type="radio"
           id={id}
@@ -86,7 +86,7 @@ const SettingsRadioInput = ({ item }) => {
           defaultChecked
           onChange={handleChange}
         ></input>
-        <label className="custom-control-label font-italic" htmlFor={id}>
+        <label className="custom-control-label" htmlFor={id}>
           {text}
         </label>
       </div>
@@ -94,7 +94,7 @@ const SettingsRadioInput = ({ item }) => {
   }
 
   return (
-    <div className="custom-control custom-radio custom-control-inline">
+    <div className="custom-control custom-radio custom-control-inline mb-1">
       <input
         type="radio"
         id={id}
@@ -103,7 +103,7 @@ const SettingsRadioInput = ({ item }) => {
         value={value}
         onChange={handleChange}
       ></input>
-      <label className="custom-control-label font-italic" htmlFor={id}>
+      <label className="custom-control-label" htmlFor={id}>
         {text}
       </label>
     </div>

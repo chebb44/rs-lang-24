@@ -44,6 +44,7 @@ export const LearningContainer = () => {
   return (
     <div className="learning-container">
       <ControlButtons />
+      <ProgressBar current={currentLearnCardIndex} all={learnCards.length} />
       <div className="learning-container__flipping-container">
         <LearnCardArrow
           direction={flippingCardDirections.previous}
@@ -66,7 +67,6 @@ export const LearningContainer = () => {
         learnCard={learnCard}
         isWordCorrect={isWordCorrect}
       />
-      <ProgressBar current={currentLearnCardIndex} all={learnCards.length} />
     </div>
   );
 };

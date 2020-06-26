@@ -1,0 +1,24 @@
+@import "../../scss/vars.scss";
+@import "../../scss/mixins.scss";
+
+.learn-card-buttons {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  @include  media-mobile-big {
+    flex-direction: row;
+  }
+}
+
+.learn-card-buttons__action-buttons,
+.learn-card-buttons__mark-buttons {
+  display: flex;
+  flex-direction: row;
+
+  @include  media-mobile-big {
+    flex-direction: column;
+  }
+}
+
+
