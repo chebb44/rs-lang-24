@@ -24,7 +24,7 @@ import {
   UPDATE_LAST_CORRECT_WORD_INDEX,
   ADD_ANSWER_ACCURACY,
   CLEAR_ANSWER_ACCURACY,
-  UPDATE_LEARNING_FLAG,
+  UPDATE_LAST_FINISHED_LEARNING_DATE,
 } from './learnSettingsActions';
 
 export const learnSettingsSelector = (state) => state.learnSettings;
@@ -191,19 +191,20 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
         },
       };
     case CLEAR_ANSWER_ACCURACY:
+      console.log('nnnn');
       return {
         ...state,
         learnCardSettings: {
           ...state.learnCardSettings,
-          answersAccuracy: [],
+          answersAccuracy: action.payload,
         },
       };
-    case UPDATE_LEARNING_FLAG:
+    case UPDATE_LAST_FINISHED_LEARNING_DATE:
       return {
         ...state,
         learnCardSettings: {
           ...state.learnCardSettings,
-          isLearningOn: action.payload,
+          lastFinishedLearningDate: action.payload,
         },
       };
     default:

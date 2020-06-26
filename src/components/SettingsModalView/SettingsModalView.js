@@ -28,13 +28,13 @@ const SettingsModalView = ({
         </div>
         <div className="modal-body">
           <form className="ml-2">
-            <h6 className="text-left ml-3">Количество новых слов в день:</h6>
-            {question1.map((item, index) => (
+            <h6 className="text-left ml-3">Количество карточек в день:</h6>
+            {question2.map((item, index) => (
               <SettingsRadioInput item={item} key={index} />
             ))}
 
-            <h6 className="text-left ml-3">Количество карточек в день:</h6>
-            {question2.map((item, index) => (
+            <h6 className="text-left ml-3">Количество новых слов в день:</h6>
+            {question1.map((item, index) => (
               <SettingsRadioInput item={item} key={index} />
             ))}
 

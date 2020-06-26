@@ -8,7 +8,6 @@ import { LearnCardArrow } from '../../components/LearnCardArrow/LearnCardArrow';
 import './LearningContainer.scss';
 import { learnCardParametersSelector } from '../../reducers/learnCard/learnCardReducer';
 import { ProgressBar } from './../../components/ProgressBar/ProgressBar';
-import SettingsModal from '../../pages/SettingsModal/SettingsModal';
 import ControlButtons from '../../pages/ControlButtons/ControlButtons';
 import { appStateSelector } from '../../reducers/appState/appStateReducer';
 import { handleArrowClickFunction } from '../../utilities/LearningContainer/handleArrowClickFunction';
@@ -19,7 +18,11 @@ export const LearningContainer = () => {
   const { isWordCorrect, currentLearnCardIndex } = useSelector(
     learnCardParametersSelector,
   );
-  const { visibleStatisticModal } = useSelector(appStateSelector);
+  const {
+    isStatisticModalShown,
+    isMaxCardsModalShown,
+    visibleSettingsModal,
+  } = useSelector(appStateSelector);
   const learnCard = learnCards[currentLearnCardIndex];
   const flippingCardDirections = {
     next: 'next',
@@ -37,10 +40,9 @@ export const LearningContainer = () => {
     );
   };
 
-  if (visibleStatisticModal) return null;
+  if (isStatisticModalShown || isMaxCardsModalShown || !learnCard) return null;
   return (
     <div className="learning-container">
-      <SettingsModal />
       <ControlButtons />
       <div className="learning-container__flipping-container">
         <LearnCardArrow

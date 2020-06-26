@@ -27,7 +27,7 @@ export const defaultLearnSettings = {
     cardsPerDay: 10,
     lastCorrectWordIndex: -1,
     answersAccuracy: [],
-    isLearningOn: true,
+    lastFinishedLearningDate: null,
     isShowAnswerBtnOn: true,
     isDeleteBtnOn: true,
     isMarkDifficultyBtnsOn: true,
@@ -38,7 +38,7 @@ export const defaultAppState = {
   alertMessage: '',
   isSideBarShow: false,
   initDone: false,
-  visibleStatisticModal: false,
-  visibleMaxCardsModal: false,
+  isStatisticModalShown: false,
+  isMaxCardsModalShown: false,
   visibleSettingsModal: false,
 };

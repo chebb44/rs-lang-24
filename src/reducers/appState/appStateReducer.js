@@ -25,12 +25,12 @@ export const appState = (state = defaultAppState, action) => {
     case SET_STATISTIC_MODAL:
       return {
         ...state,
-        visibleStatisticModal: action.payload,
+        isStatisticModalShown: action.payload,
       };
     case SET_MAX_CARDS_MODAL:
       return {
         ...state,
-        visibleMaxCardsModal: action.payload,
+        isMaxCardsModalShown: action.payload,
       };
     case SET_SETTINGS_MODAL:
       return {

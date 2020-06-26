@@ -9,9 +9,15 @@ import {
   actionUpdateCurrentAudio,
   actionUpdateAnswerShownFlag,
 } from '../../reducers/learnCard/learnCardActions';
-import { actionUpdateLastCorrectWordIndex } from '../../reducers/learnSettings/learnSettingsActions';
-import { actionUpdatePrevPageGroupWordNumber } from '../../reducers/learnSettings/learnSettingsActions';
-import { actionStatisticModal } from '../../reducers/appState/appStateActions';
+import {
+  actionUpdateLastCorrectWordIndex,
+  actionClearAnswerAccuracy,
+} from '../../reducers/learnSettings/learnSettingsActions';
+import {
+  actionUpdatePrevPageGroupWordNumber,
+  actionUpdateLastFinishedLearningDate,
+} from '../../reducers/learnSettings/learnSettingsActions';
+import { actionSetIsStatisticModalShown } from '../../reducers/appState/appStateActions';
 import { calculateCorrectAnswersStatistic } from '../../utilities/learnCard/calculateCorrectAnswersStatistic';
 import {
   actionSetCorrectAnswersPercent,
@@ -45,8 +51,12 @@ export function handleArrowClickFunction(
       store.dispatch(
         actionSetLongestCorrectAnswerSeries(longestCorrectAnswersSeries),
       );
+      store.dispatch(actionUpdateLastCorrectWordIndex(-1));
+      store.dispatch(actionClearAnswerAccuracy([]));
       store.dispatch(actionUpdatePrevPageGroupWordNumber());
-      store.dispatch(actionStatisticModal(true));
+      store.dispatch(actionSetIsStatisticModalShown(true));
+      store.dispatch(actionUpdateCurrentCardIndex(0));
+      store.dispatch(actionUpdateLastFinishedLearningDate(new Date()));
     }
   }
   if (direction === 'previous' && currentLearnCardIndex > 0) {

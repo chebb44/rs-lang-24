@@ -10,13 +10,13 @@ export const actionToggleSideBar = () => ({
 });
 
 export const SET_STATISTIC_MODAL = 'SET_STATISTIC_MODAL';
-export const actionStatisticModal = (text) => ({
+export const actionSetIsStatisticModalShown = (text) => ({
   type: SET_STATISTIC_MODAL,
   payload: text,
 });
 
 export const SET_MAX_CARDS_MODAL = 'SET_MAX_CARDS_MODAL';
-export const actionMaxCardsModal = (text) => ({
+export const actionSetIsMaxCardsModalShown = (text) => ({
   type: SET_MAX_CARDS_MODAL,
   payload: text,
 });
