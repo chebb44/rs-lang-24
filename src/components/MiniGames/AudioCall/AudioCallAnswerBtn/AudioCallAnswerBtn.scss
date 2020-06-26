@@ -13,10 +13,11 @@
   -ms-border-radius: 7px;
   -o-border-radius: 7px;
   color: $default-color;
+  font-size: 24px;
   font-weight: 500;
   opacity: .9;
   z-index: 15;
-  line-height: 20px;
+  line-height: 30px;
   &__position {
     position: relative;
     margin-right: 5px;
@@ -54,7 +55,7 @@
       width: 20px;
       height: 20px;
       top: 0;
-      left: -6px;
+      left: -5px;
     }
   }
   &_disabled {

@@ -4,8 +4,10 @@
 .audio-call-question-image {
   position: relative;
   margin: 0 auto;
-  width: 95px;
-  height: 95px;
+  width: 100%;
+  height: 20vw;
+  max-height: 200px;
+  min-height: 160px;
   border: 1px solid $neutral-inactive;
   border-radius: 50%;
   box-shadow: $box-shadow;
@@ -14,8 +16,4 @@
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
-
-  img: {
-    margin: 0 auto;
-  }
 }

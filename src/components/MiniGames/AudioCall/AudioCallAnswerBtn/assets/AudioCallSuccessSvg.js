@@ -5,8 +5,8 @@ export const AudioCallSuccessSvg = () => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 171 171"
-      width="20px"
-      height="20px"
+      width="23px"
+      height="23px"
     >
       <g
         style={{ mixBlendMode: 'normal' }}

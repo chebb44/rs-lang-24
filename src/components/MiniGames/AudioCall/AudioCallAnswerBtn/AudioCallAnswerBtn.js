@@ -2,7 +2,7 @@
 // - default -- 'audio-call-answer-btn' --
 // - disabled (visible number) -- 'audio-call-answer-btn_disabled' --
 // - false --'audio-call-answer-btn_false' --
-// - true -- 'audio-call-answer-btn_true' -- , -- 'audio-call-answer-btn_true-after-false' --
+// - true -- 'audio-call-answer-btn_true' -- , -- 'audio-call-answer-btn_true-after-false' -- it also default
 import React from 'react';
 import './AudioCallAnswerBtn.scss';
 import { AudioCallSuccessSvg } from './assets/AudioCallSuccessSvg';
@@ -22,7 +22,7 @@ export const AudioCallAnswerBtn = ({ item }) => {
   return (
     <button
       type="button"
-      className="audio-call-answer-btn"
+      className="audio-call-answer-btn "
       //onClick={handleClick}
     >
       <span className="audio-call-answer-btn__position">

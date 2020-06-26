@@ -1,8 +1,9 @@
 @import 'src/scss/vars';
 
 .audio-call-progress{
-  position: relative;
-  margin: 4px;
+  position: absolute;
+  top: 0px;
+  margin: 4px 0;
   display: flex;
   justify-content: flex-start;
   height: 5px;

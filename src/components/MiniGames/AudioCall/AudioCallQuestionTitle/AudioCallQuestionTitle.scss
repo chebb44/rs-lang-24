@@ -2,9 +2,11 @@
 @import 'src/scss/mixins';
 
 .audio-call-question-title {
+  margin-top: 5px;
+  margin-left: 20px;
   color: $default-color;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 32px;
   line-height: 32px;
   max-width: 200px;
   word-wrap: break-word;

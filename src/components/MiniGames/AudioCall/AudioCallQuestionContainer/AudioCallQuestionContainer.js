@@ -9,9 +9,7 @@ const word = 'example';
 export const AudioCallQuestionContainer = () => {
   return (
     <div className="audio-call-question-container">
-      <AudioCallQuestionAudio
-        className={'audio-call-question-audio audio-call-question-audio_true'}
-      />
+      <AudioCallQuestionAudio className={'audio-call-question-audio'} />
       <AudioCallQuestionImg />
       <AudioCallQuestionTitle word={word} />
     </div>

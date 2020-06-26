@@ -2,20 +2,19 @@
 @import "src/scss/mixins";
 
 .audio-call-game-page {
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh - 71px);
   width: 100vw;
   background-blend-mode: multiply;
-  // background: url('./assets/bgAudioCall.jpg') repeat ;
-  // background-color: #D2C0FF;
-  background: linear-gradient(180deg, rgba(210,150,252,1) 21%, rgba(222,201,255,1) 44%, rgba(210,192,255,1) 65%);
+  background: url('./assets/bgAudioCall.jpg') repeat ;
+  background-color: rgba(0, 0, 0, .72);
   background-size: 110px;
   display: flex;
   position: relative;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   overflow: hidden;
-  z-index: -5;
+  z-index: 0;
   &:before {
     content: " ";
     position: absolute;
@@ -23,11 +22,8 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: url('./assets/bgAudioCall.jpg') repeat ;
+    background: linear-gradient(180deg, rgba(210,150,252,1) 21%, rgba(222,201,255,1) 44%, rgba(210,192,255,1) 65%);
     background-size: 110px;
-    opacity: .15;
-
+    opacity: .6;
   }
-
-
 }

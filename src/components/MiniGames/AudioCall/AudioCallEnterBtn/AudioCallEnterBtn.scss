@@ -4,9 +4,10 @@
 .audio-call-enter-btn {
   position: relative;
   margin-top: 20px;
+  margin-bottom: 20px;
   padding: 0;
-  width: 70px;
-  height: 25px;
+  width: 100px;
+  height: 35px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -22,9 +23,10 @@
   overflow: hidden;
   &__text {
     position: absolute;
-    top: -1px;
-    left: 4px;
+    top: 3px;
+    left: 16px;
     opacity: 0.8;
+    font-size: 18px;
   }
   &__arrow-right {
     display: none;
@@ -32,7 +34,7 @@
   &:hover {
     background-color: rgba(255, 255, 255, 0.4);
     .audio-call-enter-btn__arrow-right {
-      left: 20px;
+      left: 35px;
       transition: .1s ease-in;
       -webkit-transition: .1s ease-in;
       -moz-transition: .1s ease-in;
@@ -49,8 +51,8 @@
     .audio-call-enter-btn__arrow-right {
       display: block;
       position: absolute;
-      top: -2px;
-      left: 19px;
+      top: 2px;
+      left: 33px;
       transition: .1s ease-in;
       -webkit-transition: .1s ease-in;
       -moz-transition: .1s ease-in;
