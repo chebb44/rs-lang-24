@@ -13,7 +13,10 @@ import {
   actionUpdateLastCorrectWordIndex,
   actionClearAnswerAccuracy,
 } from '../../reducers/learnSettings/learnSettingsActions';
-import { actionUpdatePrevPageGroupWordNumber } from '../../reducers/learnSettings/learnSettingsActions';
+import {
+  actionUpdatePrevPageGroupWordNumber,
+  actionUpdateLastFinishedLearningDate,
+} from '../../reducers/learnSettings/learnSettingsActions';
 import { actionSetIsStatisticModalShown } from '../../reducers/appState/appStateActions';
 import { calculateCorrectAnswersStatistic } from '../../utilities/learnCard/calculateCorrectAnswersStatistic';
 import {
@@ -53,6 +56,7 @@ export function handleArrowClickFunction(
       store.dispatch(actionUpdatePrevPageGroupWordNumber());
       store.dispatch(actionSetIsStatisticModalShown(true));
       store.dispatch(actionUpdateCurrentCardIndex(0));
+      store.dispatch(actionUpdateLastFinishedLearningDate(new Date()));
     }
   }
   if (direction === 'previous' && currentLearnCardIndex > 0) {

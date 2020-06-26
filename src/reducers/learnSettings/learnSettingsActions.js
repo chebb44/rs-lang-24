@@ -88,10 +88,11 @@ export const actionClearAnswerAccuracy = (array) => ({
   payload: array,
 });
 
-export const UPDATE_LEARNING_FLAG = 'UPDATE_LEARNING_FLAG';
-export const actionUpdateLearningFlag = (flag) => ({
-  type: UPDATE_LEARNING_FLAG,
-  payload: flag,
+export const UPDATE_LAST_FINISHED_LEARNING_DATE =
+  'UPDATE_LAST_FINISHED_LEARNING_DATE';
+export const actionUpdateLastFinishedLearningDate = (date) => ({
+  type: UPDATE_LAST_FINISHED_LEARNING_DATE,
+  payload: date,
 });
 
 export const SET_MEANING_WORD = 'SET_MEANING_WORD';

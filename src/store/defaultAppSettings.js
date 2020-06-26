@@ -27,7 +27,7 @@ export const defaultLearnSettings = {
     cardsPerDay: 10,
     lastCorrectWordIndex: -1,
     answersAccuracy: [],
-    isLearningOn: true,
+    lastFinishedLearningDate: null,
     isShowAnswerBtnOn: true,
     isDeleteBtnOn: true,
     isMarkDifficultyBtnsOn: true,

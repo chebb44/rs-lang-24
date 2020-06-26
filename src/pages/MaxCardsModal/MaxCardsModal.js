@@ -8,7 +8,9 @@ import {
 import { MaxCardsModalView } from '../../components/MaxCardsModalView/MaxCardsModalView';
 
 export const MaxCardsModal = () => {
-  const { isMaxCardsModalShown } = useSelector(appStateSelector);
+  const { isMaxCardsModalShown, isStatisticModalShown } = useSelector(
+    appStateSelector,
+  );
   const dispatch = useDispatch();
   const hideMaxCardsModal = useCallback(() => {
     dispatch(actionSetIsMaxCardsModalShown(false));
@@ -17,7 +19,7 @@ export const MaxCardsModal = () => {
     dispatch(actionSettingsModal(true));
   }, [dispatch]);
 
-  if (!isMaxCardsModalShown) return null;
+  if (!isMaxCardsModalShown || isStatisticModalShown) return null;
 
   return (
     <MaxCardsModalView
