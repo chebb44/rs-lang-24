@@ -21,6 +21,7 @@ import recognition, {
   startVoxRecognition,
   stopVoxRecognition,
 } from '../../../../utilities/speachRecognition';
+import SpeakItModalWindow from '../SpeakItModalWindow/SpeakItModalWindow';
 
 export const SpeakItGameScreen = function () {
   const dictionary = useSelector(dictionaryStateStateSelector);
@@ -40,6 +41,7 @@ export const SpeakItGameScreen = function () {
           ]),
         );
 
+  const [modalOpen, setModalOpen] = useState(false);
   const [trainCards, setTrainCards] = useState(
     cardsForCurrentGame.slice(0, 10),
   );
@@ -47,7 +49,6 @@ export const SpeakItGameScreen = function () {
   const [currentCard, setCurrentCard] = useState(INIT_CARD);
   const [gameMode, setGameMode] = useState(false);
   const [recognisedWords, setRecognisedWords] = useState([]);
-  // console.log(cardsToLearn, trainCards);
 
   // TODO: Show and hide results pannel
 
@@ -59,10 +60,11 @@ export const SpeakItGameScreen = function () {
         cardsArray.shift();
         return cardsArray;
       });
-    } else {
+    } else if (gameMode && gameCardsArray.length === 0) {
+      setTimeout(() => setModalOpen(true), 1000);
       setGameMode(false);
     }
-  }, [gameCardsArray]);
+  }, [gameCardsArray, gameMode]);
 
   useEffect(() => {
     if (gameMode) {
@@ -74,10 +76,12 @@ export const SpeakItGameScreen = function () {
     } else {
       stopVoxRecognition();
     }
+    //eslint-disable-next-line
   }, [gameMode]);
 
   useEffect(() => {
     changeCardsOnRightAnswer();
+    //eslint-disable-next-line
   }, [recognisedWords]);
 
   useEffect(() => {
@@ -97,6 +101,7 @@ export const SpeakItGameScreen = function () {
       }
       console.log(recogWin);
     }
+    //eslint-disable-next-line
   }, [recognisedWords]);
 
   const onClickCard = (event) => {
@@ -112,7 +117,6 @@ export const SpeakItGameScreen = function () {
   const onClickSpeakButton = () => {
     setGameMode(true);
     initCardsView(trainCards);
-    // setTrainCards(setActiveCardInArray(null, trainCards));
     setCurrentCard(INIT_CARD);
     setGameCardsArray(shuffleArray(trainCards));
   };
@@ -121,7 +125,9 @@ export const SpeakItGameScreen = function () {
     setGameMode(false);
     initCardsView(trainCards);
     setCurrentCard(INIT_CARD);
-    // TODO: Deactivate microphone icon
+  };
+  const onCloseModal = () => {
+    setModalOpen(false);
   };
 
   return (
@@ -137,6 +143,7 @@ export const SpeakItGameScreen = function () {
         onClickSpeakButton={onClickSpeakButton}
         onClickResetButton={onClickResetButton}
       />
+      {modalOpen && <SpeakItModalWindow onCloseModal={onCloseModal} />}
     </div>
   );
 };

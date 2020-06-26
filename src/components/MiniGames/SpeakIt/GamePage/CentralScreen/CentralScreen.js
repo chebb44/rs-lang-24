@@ -2,7 +2,7 @@ import blank from '../../../../../assets/img/blank.jpg';
 import { FILES_URL } from '../../../../../utilities/network/networkConstants';
 import { capitalizeFirstLetter } from '../../SpeakItHepler';
 import React from 'react';
-import { MicIcon } from '../../SpeakItCard/SpeakerImage';
+import { MicIcon } from '../../SpeakItCard/SpeakItImagesSvg';
 import './CentralScreen.scss';
 
 export const CentralScreen = ({ currentCard, gameMode }) => {
