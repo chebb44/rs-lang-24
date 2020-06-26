@@ -1,8 +1,8 @@
 @import "src/scss/vars";
 @import "src/scss/mixins";
 
-.modal_color {
-  background-color: $default-color;
+.modal-content {
+  border: 0;
 }
 
 .modal-header__statistic{
@@ -13,7 +13,5 @@
 .button_continue {
   @include std_button;
   margin: 0 auto;
-  background-color: $success-color;
-  width: 125px;
-  margin-bottom: 10px;
+  background-color: $accent-color;
 }

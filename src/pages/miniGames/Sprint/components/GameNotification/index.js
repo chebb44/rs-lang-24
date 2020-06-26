@@ -1,1 +1,1 @@
-export { default } from './GameNotification'
+export { default } from './GameNotification';

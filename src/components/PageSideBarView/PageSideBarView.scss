@@ -1,26 +1,21 @@
 @import 'src/scss/vars';
 
 .app-sidebar {
-  z-index: 100;
+  z-index: 10;
   user-select: none;
   box-sizing: border-box;
   width: 220px;
   position: absolute;
   top: 0;
   left: 0;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  height: 100vh;
+  margin-top: -80px;
+  padding-top: 50px;
   background-color: $default-color;
   color: $neutral-inactive;
-  -webkit-box-shadow: 0px 0px 5px 2px rgba(85, 91, 110, 0.38);
-  -moz-box-shadow: 0px 0px 5px 2px rgba(85, 91, 110, 0.38);
-  box-shadow: 0px 0px 5px 2px rgba(85, 91, 110, 0.38);
-  border-radius: 0 10px 10px 0;
-  z-index: 20;
-  -webkit-border-radius: 0 10px 10px 0;
-  -moz-border-radius: 0 10px 10px 0;
-  -ms-border-radius: 0 10px 10px 0;
-  -o-border-radius: 0 10px 10px 0;
+  box-shadow: 0px 0px 3px 2px rgba(85, 91, 110, 0.2);
+  -webkit-box-shadow: 0px 0px 5px 2px rgba(85, 91, 110, 0.2);
+  -moz-box-shadow: 0px 0px 5px 2px rgba(85, 91, 110, 0.2);
 }
 .sidebar-link-list {
   padding: 5px;
@@ -31,7 +26,6 @@
   align-items: center;
   font-size: 22px;
   margin-bottom: 0;
-  //text-align: left;
 }
 
 /* enter */

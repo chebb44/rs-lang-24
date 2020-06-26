@@ -6,6 +6,8 @@ import { MaxCardsModal } from '../MaxCardsModal/MaxCardsModal';
 import SettingsModal from '../../pages/SettingsModal/SettingsModal';
 import { learnCardSettingsSelector } from '../../reducers/learnSettings/learnSettingsReducer';
 import { actionSetIsMaxCardsModalShown } from '../../reducers/appState/appStateActions';
+import './LearnPage.scss';
+import london from './../../assets/img/england_PNG72.png';
 
 export const LearnPage = () => {
   const { lastFinishedLearningDate } = useSelector(learnCardSettingsSelector);
@@ -29,6 +31,7 @@ export const LearnPage = () => {
       <LearningContainer />
       <StatisticModal />
       <MaxCardsModal />
+      <img className="learn-page__london-image" src={london} alt="london" />
     </div>
   );
 };

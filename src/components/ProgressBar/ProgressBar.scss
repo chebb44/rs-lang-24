@@ -5,13 +5,14 @@
   margin: 1rem;
   display: flex;
   justify-content: flex-start;
-  height: 20px;
+  height: 30px;
   width: 80%;
   max-width: 400px;
   min-width: 250px;
   border-radius: 20px;
-  border: 1px solid $dark-color;
+  border: 1px solid $primary-darker-color;
   overflow: hidden;
+  color: $primary-darker-color;
 }
 
 .learn-progress-indicator{

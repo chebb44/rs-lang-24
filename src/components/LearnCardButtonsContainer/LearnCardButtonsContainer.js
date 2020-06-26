@@ -17,6 +17,7 @@ import {
 import { actionAddAnswerAccuracy } from '../../reducers/learnSettings/learnSettingsActions';
 import { buttonParams } from './constants';
 import { learnCardSettingsSelector } from '../../reducers/learnSettings/learnSettingsReducer';
+import './LearnCardButtonsContainer.scss';
 
 export const LearnCardButtonsContainer = ({ learnCard, isWordCorrect }) => {
   const {
@@ -58,7 +59,7 @@ export const LearnCardButtonsContainer = ({ learnCard, isWordCorrect }) => {
 
   return (
     <div className="learn-card-buttons">
-      <div>
+      <div className="learn-card-buttons__action-buttons">
         <UniversalButton
           onClickHandler={handleCheckButtonClick}
           buttonText={buttonParams.check.text}
@@ -80,7 +81,7 @@ export const LearnCardButtonsContainer = ({ learnCard, isWordCorrect }) => {
         )}
       </div>
       {isMarkDifficultyBtnsOn && isWordCorrect && (
-        <div>
+        <div className="learn-card-buttons__mark-buttons">
           <UniversalButton
             onClickHandler={handleMarkAsHardButtonClick}
             buttonText={buttonParams.markAsHard.text}
