@@ -11,11 +11,11 @@ export const ArrowRightSvg = () => {
       <g
         style={{ mixBlendMode: 'normal' }}
         fill="none"
-        stroke-miterlimit="10"
-        font-family="none"
-        font-size="none"
-        font-weight="none"
-        text-anchor="none"
+        strokeMiterlimit="10"
+        fontFamily="none"
+        fontSize="none"
+        fontWeight="none"
+        textAnchor="none"
       >
         <path d="M0,171.99374v-171.99374h171.99374v171.99374z" />
         <path
