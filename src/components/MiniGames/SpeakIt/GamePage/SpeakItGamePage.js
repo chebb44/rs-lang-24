@@ -52,6 +52,7 @@ export const SpeakItGameScreen = function () {
 
   const changeCardsArrayOnRightAnswer = useCallback(() => {
     if (gameCardsArray.length > 0) {
+      console.log(gameCardsArray);
       setCurrentCard(gameCardsArray[0]);
       setGameCardsArray(() => {
         const cardsArray = [...gameCardsArray];
@@ -80,12 +81,6 @@ export const SpeakItGameScreen = function () {
   //   }
   //   //eslint-disable-next-line
   // }, [gameMode]);
-
-  // useEffect(() => {
-  //   if (gameMode) {
-  //     startGame();
-  //   }
-  // }, [gameMode, startGame]);
 
   // useEffect(() => {
   //   changeCardsArrayOnRightAnswer();
@@ -123,7 +118,6 @@ export const SpeakItGameScreen = function () {
         (word) => word.toLowerCase() === currentCard.word.toLowerCase(),
       );
       if (recogWin) {
-        console.log(currentCardIdx, trainCards, currentCard._id);
         setTrainCards(setRightCardInArrayByIdx(currentCardIdx, trainCards));
       } else {
         setTrainCards(setWrongCardInArrayByIdx(currentCardIdx, trainCards));
@@ -149,34 +143,43 @@ export const SpeakItGameScreen = function () {
     };
   }, [changeCardsArrayOnRightAnswer, onNewWordRecognise]);
 
-  const onClickCard = (event) => {
-    if (!gameMode) {
-      const cardId = event.currentTarget.dataset.cardid;
-      event.currentTarget.children[3] && event.currentTarget.children[3].play();
-      const cardIdx = searchCardIndexInArray(cardId, trainCards);
-      setCurrentCard(() => trainCards[cardIdx]);
-      setTrainCards(setActiveCardInArray(cardIdx, trainCards));
-    }
-  };
+  const onClickCard = useCallback(
+    (event) => {
+      if (!gameMode) {
+        const cardId = event.currentTarget.dataset.cardid;
+        event.currentTarget.children[3] &&
+          event.currentTarget.children[3].play();
+        const cardIdx = searchCardIndexInArray(cardId, trainCards);
+        setCurrentCard(() => trainCards[cardIdx]);
+        setTrainCards(setActiveCardInArray(cardIdx, trainCards));
+      }
+    },
+    [gameMode, trainCards],
+  );
 
-  const onClickSpeakButton = () => {
-    setGameMode(true);
+  const makeGameCardsArray = useCallback(() => {
     setGameCardsArray(shuffleArray(trainCards));
-    initCardsView(trainCards);
-    setCurrentCard(INIT_CARD);
-    startGame();
-    // setTimeout(() => startGame(), 2000);
-  };
+  }, [trainCards]);
 
-  const onClickResetButton = () => {
+  const onClickSpeakButton = useCallback(() => {
+    setGameMode(true);
+    makeGameCardsArray();
+    console.log(gameCardsArray);
+    initCardsView(trainCards);
+    // setCurrentCard(INIT_CARD);
+    startGame();
+  }, [trainCards, gameCardsArray, startGame]);
+
+  const onClickResetButton = useCallback(() => {
     setGameMode(false);
     stopGame();
     initCardsView(trainCards);
     setCurrentCard(INIT_CARD);
-  };
-  const onCloseModal = () => {
+  }, [stopGame, trainCards]);
+
+  const onCloseModal = useCallback(() => {
     setModalOpen(false);
-  };
+  }, []);
 
   return (
     <div className="speak-it__game-screen">
