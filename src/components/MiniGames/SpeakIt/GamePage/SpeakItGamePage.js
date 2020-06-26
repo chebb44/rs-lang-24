@@ -50,9 +50,7 @@ export const SpeakItGameScreen = function () {
   const [gameMode, setGameMode] = useState(false);
   const [recognisedWords, setRecognisedWords] = useState([]);
 
-  // TODO: Show and hide results pannel
-
-  const changeCardsOnRightAnswer = useCallback(() => {
+  const changeCardsArrayOnRightAnswer = useCallback(() => {
     if (gameCardsArray.length > 0) {
       setCurrentCard(gameCardsArray[0]);
       setGameCardsArray(() => {
@@ -66,26 +64,57 @@ export const SpeakItGameScreen = function () {
     }
   }, [gameCardsArray, gameMode]);
 
-  useEffect(() => {
-    if (gameMode) {
-      changeCardsOnRightAnswer();
-      startVoxRecognition();
-      recognition.onresult = (event) => {
-        setRecognisedWords(getRecognisedWordsArrayFromEvent(event));
-      };
-    } else {
-      stopVoxRecognition();
-    }
-    //eslint-disable-next-line
-  }, [gameMode]);
+  const stopGame = useCallback(() => {
+    stopVoxRecognition();
+  }, []);
 
-  useEffect(() => {
-    changeCardsOnRightAnswer();
-    //eslint-disable-next-line
-  }, [recognisedWords]);
+  // useEffect(() => {
+  //   if (gameMode) {
+  //     changeCardsArrayOnRightAnswer();
+  //     startVoxRecognition();
+  //     recognition.onresult = (event) => {
+  //       setRecognisedWords(getRecognisedWordsArrayFromEvent(event));
+  //     };
+  //   } else {
+  //     stopVoxRecognition();
+  //   }
+  //   //eslint-disable-next-line
+  // }, [gameMode]);
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   if (gameMode) {
+  //     startGame();
+  //   }
+  // }, [gameMode, startGame]);
+
+  // useEffect(() => {
+  //   changeCardsArrayOnRightAnswer();
+  //   //eslint-disable-next-line
+  // }, [recognisedWords]);
+
+  // useEffect(() => {
+  //   if (gameMode) {
+  //     const currentCardIdx = searchCardIndexInArray(
+  //       currentCard._id,
+  //       trainCards,
+  //     );
+  //     const recogWin = recognisedWords.find(
+  //       (word) => word.toLowerCase() === currentCard.word.toLowerCase(),
+  //     );
+  //     if (recogWin) {
+  //       console.log(currentCardIdx, trainCards, currentCard._id);
+  //       setTrainCards(setRightCardInArrayByIdx(currentCardIdx, trainCards));
+  //     } else {
+  //       setTrainCards(setWrongCardInArrayByIdx(currentCardIdx, trainCards));
+  //     }
+  //     console.log(recogWin);
+  //   }
+  //   //eslint-disable-next-line
+  // }, [recognisedWords]);
+
+  const onNewWordRecognise = useCallback(() => {
     if (gameMode) {
+      changeCardsArrayOnRightAnswer();
       const currentCardIdx = searchCardIndexInArray(
         currentCard._id,
         trainCards,
@@ -101,8 +130,24 @@ export const SpeakItGameScreen = function () {
       }
       console.log(recogWin);
     }
-    //eslint-disable-next-line
-  }, [recognisedWords]);
+  }, [
+    changeCardsArrayOnRightAnswer,
+    currentCard._id,
+    currentCard.word,
+    gameMode,
+    recognisedWords,
+    trainCards,
+  ]);
+
+  const startGame = useCallback(() => {
+    console.log('startgame');
+    changeCardsArrayOnRightAnswer();
+    startVoxRecognition();
+    recognition.onresult = (event) => {
+      setRecognisedWords(getRecognisedWordsArrayFromEvent(event));
+      onNewWordRecognise();
+    };
+  }, [changeCardsArrayOnRightAnswer, onNewWordRecognise]);
 
   const onClickCard = (event) => {
     if (!gameMode) {
@@ -116,13 +161,16 @@ export const SpeakItGameScreen = function () {
 
   const onClickSpeakButton = () => {
     setGameMode(true);
+    setGameCardsArray(shuffleArray(trainCards));
     initCardsView(trainCards);
     setCurrentCard(INIT_CARD);
-    setGameCardsArray(shuffleArray(trainCards));
+    startGame();
+    // setTimeout(() => startGame(), 2000);
   };
 
   const onClickResetButton = () => {
     setGameMode(false);
+    stopGame();
     initCardsView(trainCards);
     setCurrentCard(INIT_CARD);
   };
