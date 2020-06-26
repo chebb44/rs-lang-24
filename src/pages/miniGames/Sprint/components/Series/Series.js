@@ -1,5 +1,5 @@
 import React from 'react';
-import './Series.scss';
+import './SeriesStyles.scss';
 export const Series = ({ number }) => {
   return (
     <div className="sprint-series">
