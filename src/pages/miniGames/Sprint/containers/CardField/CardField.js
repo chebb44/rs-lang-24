@@ -8,6 +8,7 @@ import { SPRINT_SHOW_RESULT_DELAY } from '../../constants';
 
 export const CardField = ({ cards, score, setScore }) => {
   console.log(cards);
+  const [buttonEnable, setButtonEnable] = useState(true);
   const [timeoutId, setTimeoutId] = useState(null);
   const [currentNumber, setCurrentNumber] = useState(0);
   const [series, setSeries] = useState(0);
@@ -25,6 +26,7 @@ export const CardField = ({ cards, score, setScore }) => {
       const timeoutId = setTimeout(() => {
         setNotificationText('');
         setCurrentNumber(currentNumber + 1);
+        setButtonEnable(true);
       }, SPRINT_SHOW_RESULT_DELAY);
       setTimeoutId(timeoutId);
     },
@@ -32,18 +34,20 @@ export const CardField = ({ cards, score, setScore }) => {
   );
   const buttonsHandler = useCallback(
     (value) => () => {
-      console.log(cards[currentNumber]);
-      if (value === cards[currentNumber].correct) {
-        console.log('yes');
-        setSeries(series + 1);
-        showNext({ success: true });
-      } else {
-        console.log('no');
-        setSeries(0);
-        showNext({ success: false });
+      if (buttonEnable) {
+        setButtonEnable(false);
+        if (value === cards[currentNumber].correct) {
+          console.log('yes');
+          setSeries(series + 1);
+          showNext({ success: true });
+        } else {
+          console.log('no');
+          setSeries(0);
+          showNext({ success: false });
+        }
       }
     },
-    [cards, currentNumber, series, showNext],
+    [cards, currentNumber, series, showNext, buttonEnable],
   );
   useEffect(() => {
     return () => {

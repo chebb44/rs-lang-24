@@ -19,7 +19,7 @@ export const Spin = () => {
             cx="0"
             cy="0"
             r="5"
-            fill="#26de81"
+            fill="#89B0AE"
             fillOpacity="1"
             transform="scale(1.24892 1.24892)"
           >
@@ -49,7 +49,7 @@ export const Spin = () => {
             cx="0"
             cy="0"
             r="5"
-            fill="#26de81"
+            fill="#89B0AE"
             fillOpacity="0.9090909090909091"
             transform="scale(1.29619 1.29619)"
           >
@@ -79,7 +79,7 @@ export const Spin = () => {
             cx="0"
             cy="0"
             r="5"
-            fill="#26de81"
+            fill="#89B0AE"
             fillOpacity="0.8181818181818182"
             transform="scale(1.34347 1.34347)"
           >
@@ -109,7 +109,7 @@ export const Spin = () => {
             cx="0"
             cy="0"
             r="5"
-            fill="#26de81"
+            fill="#89B0AE"
             fillOpacity="0.7272727272727273"
             transform="scale(1.39074 1.39074)"
           >
@@ -139,7 +139,7 @@ export const Spin = () => {
             cx="0"
             cy="0"
             r="5"
-            fill="#26de81"
+            fill="#89B0AE"
             fillOpacity="0.6363636363636364"
             transform="scale(1.43801 1.43801)"
           >
@@ -169,7 +169,7 @@ export const Spin = () => {
             cx="0"
             cy="0"
             r="5"
-            fill="#26de81"
+            fill="#89B0AE"
             fillOpacity="0.5454545454545454"
             transform="scale(1.48528 1.48528)"
           >
@@ -199,7 +199,7 @@ export const Spin = () => {
             cx="0"
             cy="0"
             r="5"
-            fill="#26de81"
+            fill="#89B0AE"
             fillOpacity="0.45454545454545453"
             transform="scale(1.01256 1.01256)"
           >
@@ -229,7 +229,7 @@ export const Spin = () => {
             cx="0"
             cy="0"
             r="5"
-            fill="#26de81"
+            fill="#89B0AE"
             fillOpacity="0.36363636363636365"
             transform="scale(1.05983 1.05983)"
           >
@@ -259,7 +259,7 @@ export const Spin = () => {
             cx="0"
             cy="0"
             r="5"
-            fill="#26de81"
+            fill="#89B0AE"
             fillOpacity="0.2727272727272727"
             transform="scale(1.1071 1.1071)"
           >
@@ -289,7 +289,7 @@ export const Spin = () => {
             cx="0"
             cy="0"
             r="5"
-            fill="#26de81"
+            fill="#89B0AE"
             fillOpacity="0.18181818181818182"
             transform="scale(1.15437 1.15437)"
           >
@@ -319,7 +319,7 @@ export const Spin = () => {
             cx="0"
             cy="0"
             r="5"
-            fill="#26de81"
+            fill="#89B0AE"
             fillOpacity="0.09090909090909091"
             transform="scale(1.20165 1.20165)"
           >

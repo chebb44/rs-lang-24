@@ -18,7 +18,7 @@
 }
 .button__log-out {
   @include std_button;
-  background-color: $warning-color;
+  background-color: $accent-color;
 }
 
 .app-header {
