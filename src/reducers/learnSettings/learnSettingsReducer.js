@@ -1,8 +1,5 @@
 import { defaultLearnSettings } from './../../store/defaultAppSettings';
 import {
-  // SET_CURRENT_WORDS_PAGE,
-  // SET_CURRENT_WORDS_GROUP,
-  // SET_CURRENT_WORD_ON_PAGE,
   SET_PAGE_GROUP_WORD_NUMBER,
   SET_LEARN_MODE,
   UPDATE_PREV_PAGE_GROUP_WORD_NUMBER,
@@ -18,7 +15,6 @@ import {
 import {
   SET_WORDS_PER_DAY,
   SET_LEARN_SETTINGS,
-  SET_LEARN_CARD_SETTINGS,
   SET_AUTO_AUDIO,
   SET_AUTO_TRANSLATE,
   UPDATE_LAST_CORRECT_WORD_INDEX,
@@ -33,11 +29,6 @@ export const learnCardSettingsSelector = (state) =>
 
 export const learnSettings = (state = defaultLearnSettings, action) => {
   switch (action.type) {
-    case SET_LEARN_CARD_SETTINGS:
-      return {
-        ...state,
-        learnCardSettings: action.payload,
-      };
     case SET_WORDS_PER_DAY:
       return {
         ...state,
@@ -48,21 +39,6 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
         ...state,
         ...action.payload,
       };
-    // case SET_CURRENT_WORDS_PAGE:
-    //   return {
-    //     ...state,
-    //     currentWordsPage: action.page,
-    //   };
-    // case SET_CURRENT_WORDS_GROUP:
-    //   return {
-    //     ...state,
-    //     currentWordsGroup: action.group,
-    //   };
-    // case SET_CURRENT_WORD_ON_PAGE:
-    //   return {
-    //     ...state,
-    //     currentWordOnPage: action.wordNumber,
-    //   };
     case SET_PAGE_GROUP_WORD_NUMBER:
       const { page, group, wordInPage } = action.data;
       return {

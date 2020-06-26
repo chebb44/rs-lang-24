@@ -1,6 +1,6 @@
 import React from 'react';
 import './SpeackItCard.scss';
-import SpeakerImage from './SpeakerImage';
+import SpeakerImage from './SpeakItImagesSvg';
 import { FILES_URL } from '../../../../utilities/network/networkConstants';
 import { capitalizeFirstLetter } from '../SpeakItHepler';
 

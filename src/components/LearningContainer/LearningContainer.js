@@ -18,11 +18,9 @@ export const LearningContainer = () => {
   const { isWordCorrect, currentLearnCardIndex } = useSelector(
     learnCardParametersSelector,
   );
-  const {
-    isStatisticModalShown,
-    isMaxCardsModalShown,
-    visibleSettingsModal,
-  } = useSelector(appStateSelector);
+  const { isStatisticModalShown, isMaxCardsModalShown } = useSelector(
+    appStateSelector,
+  );
   const learnCard = learnCards[currentLearnCardIndex];
   const flippingCardDirections = {
     next: 'next',

@@ -14,7 +14,6 @@ export const getUserSettings = async ({ userId, token }) => {
     );
     if (rawResponse.status === 401) return TOKEN_OUTDATED;
     const content = await rawResponse.json();
-    console.log('get settings: ', content); //{id: "5ee846f3e0f08ce8479a2ff7", wordsPerDay: 100}
     return content;
   } catch (error) {
     console.log('Failed get settings for this user', error);
@@ -37,8 +36,7 @@ export const putUserSettings = async ({ userId, token, data }) => {
         body: JSON.stringify(data),
       },
     );
-    const content = await rawResponse.json();
-    console.log('send settings: ', content); //{id: "5ee846f3e0f08ce8479a2ff7", wordsPerDay: 100}
+    if (!rawResponse) console.log('no response put settings');
   } catch (error) {
     console.log('Send setting error: ' + error);
   }
