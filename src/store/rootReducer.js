@@ -6,6 +6,7 @@ import { learnCard } from '../reducers/learnCard/learnCardReducer';
 import { learnSettings } from '../reducers/learnSettings/learnSettingsReducer';
 import { statisticState } from '../reducers/statisticReducer/statiscticReducer';
 import { dictionaryState } from '../reducers/dictionaryReducer/dictionaryReducer';
+import { miniGamesStats } from './../reducers/miniGamesStats/miniGamesStatsReducer';
 export const rootReducer = combineReducers({
   appState,
   currentUser,
@@ -14,4 +15,5 @@ export const rootReducer = combineReducers({
   statisticState,
   dictionaryState,
   learnCard,
+  miniGamesStats,
 });

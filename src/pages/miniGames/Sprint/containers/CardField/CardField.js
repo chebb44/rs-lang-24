@@ -7,7 +7,6 @@ import { GameNotification } from '../../components/GameNotification/GameNotifica
 import { SPRINT_SHOW_RESULT_DELAY } from '../../constants';
 
 export const CardField = ({ cards, score, setScore }) => {
-  console.log(cards);
   const [buttonEnable, setButtonEnable] = useState(true);
   const [timeoutId, setTimeoutId] = useState(null);
   const [currentNumber, setCurrentNumber] = useState(0);

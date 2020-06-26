@@ -4,10 +4,11 @@ import { Score } from '../../components/Score/Score';
 import './SprintMain.scss';
 import { CardField } from '../CardField/CardField';
 import { learnCardsSelector } from '../../../../../reducers/learnCards/learnCardsReducer';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { shuffleCards } from '../../../../../utilities/sprint/shuffleCards';
 import { StartScreen } from '../../components/StartScreen/StartScreen';
 import { EndGame } from './../../components/EndGame/EndGame';
+import { actionSprintSendGameResult } from '../../../../../reducers/miniGamesStats/miniGamesStatsActions';
 
 export const SprintMain = () => {
   const cards = useSelector(learnCardsSelector);
@@ -15,6 +16,7 @@ export const SprintMain = () => {
   const [isStillTime, setIsStillTime] = useState(true);
   const [score, setScore] = useState(0);
   const [gameCards, setGameCards] = useState(cards);
+  const dispatch = useDispatch();
   useEffect(() => {
     const { shuffledCards } = shuffleCards({ cards });
     setGameCards(shuffledCards);
@@ -24,10 +26,16 @@ export const SprintMain = () => {
     setIsStartScreen(false);
   }, []);
   const redirectToStartScreen = useCallback(() => {
+    dispatch(
+      actionSprintSendGameResult({
+        date: new Date().toLocaleDateString(),
+        result: score,
+      }),
+    );
     setIsStartScreen(true);
     setIsStillTime(true);
     setScore(0);
-  }, []);
+  }, [dispatch, score]);
   const timeoutHandler = useCallback((val) => {
     setIsStillTime(val);
   }, []);
