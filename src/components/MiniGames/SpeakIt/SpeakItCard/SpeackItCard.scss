@@ -1,3 +1,4 @@
+@import "src/scss/vars";
 
 .card {
   position: relative;
@@ -15,12 +16,21 @@
   background-color: #fff;
   transition: .3s;
 
+
   &:hover {
-    background-color: #E3FDFD;
+    background-color: $primary-color;
   }
   &.active {
-    background-color: #609EB8;
-    color: white;
+    background-color: $accent-color;
+    color: $neutral-inactive;
+  }
+  &.wrong {
+    background-color: $danger-color;
+    color: $neutral-disabled;
+  }
+  &.right {
+    background-color: $primary-color;
+    color: $neutral-disabled;
   }
 }
 
@@ -38,12 +48,13 @@
 }
 
 .card__word {
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: bold;
   padding-left: 25px;
 }
 
 .card__transcription {
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 100;
   padding-left: 25px;
 }
