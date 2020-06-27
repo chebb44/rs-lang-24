@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { learnCardsSelector } from '../../../../reducers/learnCards/learnCardsReducer';
 import { dictionaryStateStateSelector } from '../../../../reducers/dictionaryReducer/dictionaryReducer';
@@ -23,6 +23,18 @@ import recognition, {
 } from '../../../../utilities/speachRecognition';
 import SpeakItModalWindow from '../SpeakItModalWindow/SpeakItModalWindow';
 
+const calculateAnswers = (cardsArray) => {
+  const answers = {
+    wrong: 0,
+    right: 0,
+  };
+  cardsArray.forEach((card) => {
+    card.right && answers.right++;
+    card.wrong && answers.wrong++;
+  });
+  return answers;
+};
+
 export const SpeakItGameScreen = function () {
   const dictionary = useSelector(dictionaryStateStateSelector);
   const learnedWords = [
@@ -45,149 +57,106 @@ export const SpeakItGameScreen = function () {
   const [trainCards, setTrainCards] = useState(
     cardsForCurrentGame.slice(0, 10),
   );
-  const [gameCardsArray, setGameCardsArray] = useState([]);
-  const [currentCard, setCurrentCard] = useState(INIT_CARD);
-  const [gameMode, setGameMode] = useState(false);
-  const [recognisedWords, setRecognisedWords] = useState([]);
+  const [currentCardState, setCurrentCardState] = useState(INIT_CARD);
+  const [isGameStarted, setIsGameStarted] = useState(false);
+  let gameCardsArray = useRef([]);
+  let curGameCard = useRef({});
 
-  const changeCardsArrayOnRightAnswer = useCallback((gamecarDs) => {
-    console.log(gamecarDs);
-    if (gameCardsArray.length > 0) {
-      console.log(gameCardsArray);
-      setCurrentCard(gameCardsArray[0]);
-      setGameCardsArray(() => {
-        const cardsArray = [...gameCardsArray];
-        cardsArray.shift();
-        return cardsArray;
-      });
-    } else if (gameMode && gameCardsArray.length === 0) {
-      setTimeout(() => setModalOpen(true), 1000);
-      setGameMode(false);
-    }
-  }, [gameCardsArray, gameMode]);
-
-  const stopGame = useCallback(() => {
+  const finishGame = useCallback(() => {
+    setTimeout(() => setModalOpen(true), 1000);
+    setIsGameStarted(false);
     stopVoxRecognition();
   }, []);
 
-  // useEffect(() => {
-  //   if (gameMode) {
-  //     changeCardsArrayOnRightAnswer();
-  //     startVoxRecognition();
-  //     recognition.onresult = (event) => {
-  //       setRecognisedWords(getRecognisedWordsArrayFromEvent(event));
-  //     };
-  //   } else {
-  //     stopVoxRecognition();
-  //   }
-  //   //eslint-disable-next-line
-  // }, [gameMode]);
+  const setNewCard = useCallback(() => {
+    curGameCard.current = gameCardsArray.current.shift();
+    setCurrentCardState(curGameCard.current);
+  }, []);
 
-  // useEffect(() => {
-  //   changeCardsArrayOnRightAnswer();
-  //   //eslint-disable-next-line
-  // }, [recognisedWords]);
+  const checkGameIsFinish = useCallback(
+    (gameCards) => {
+      if (gameCards.length > 0) {
+        setNewCard(gameCards);
+      } else if (gameCards.length === 0) {
+        finishGame();
+      }
+    },
+    [finishGame, setNewCard],
+  );
 
-  // useEffect(() => {
-  //   if (gameMode) {
-  //     const currentCardIdx = searchCardIndexInArray(
-  //       currentCard._id,
-  //       trainCards,
-  //     );
-  //     const recogWin = recognisedWords.find(
-  //       (word) => word.toLowerCase() === currentCard.word.toLowerCase(),
-  //     );
-  //     if (recogWin) {
-  //       console.log(currentCardIdx, trainCards, currentCard._id);
-  //       setTrainCards(setRightCardInArrayByIdx(currentCardIdx, trainCards));
-  //     } else {
-  //       setTrainCards(setWrongCardInArrayByIdx(currentCardIdx, trainCards));
-  //     }
-  //     console.log(recogWin);
-  //   }
-  //   //eslint-disable-next-line
-  // }, [recognisedWords]);
-
-  const onNewWordRecognise = useCallback(() => {
-    if (gameMode) {
-      changeCardsArrayOnRightAnswer();
+  const onNewWordRecognise = useCallback(
+    (recognised) => {
+      console.log('onNewWordRecognise');
+      const isGuessTheWord = recognised.find(
+        (word) => word.toLowerCase() === curGameCard.current.word.toLowerCase(),
+      );
+      console.log(currentCardState);
       const currentCardIdx = searchCardIndexInArray(
-        currentCard._id,
+        curGameCard.current._id,
         trainCards,
       );
-      const recogWin = recognisedWords.find(
-        (word) => word.toLowerCase() === currentCard.word.toLowerCase(),
-      );
-      if (recogWin) {
+      if (isGuessTheWord) {
         setTrainCards(setRightCardInArrayByIdx(currentCardIdx, trainCards));
       } else {
         setTrainCards(setWrongCardInArrayByIdx(currentCardIdx, trainCards));
       }
-      console.log(recogWin);
-    }
-  }, [
-    changeCardsArrayOnRightAnswer,
-    currentCard._id,
-    currentCard.word,
-    gameMode,
-    recognisedWords,
-    trainCards,
-  ]);
-
-  const startGame = useCallback(
-    (gameCards) => {
-      console.log(gameCards);
-      console.log('startgame');
-      changeCardsArrayOnRightAnswer(gameCards);
-      startVoxRecognition();
-      recognition.onresult = (event) => {
-        setRecognisedWords(getRecognisedWordsArrayFromEvent(event));
-        onNewWordRecognise();
-      };
+      checkGameIsFinish(gameCardsArray.current);
+      console.log(isGuessTheWord);
     },
-    [changeCardsArrayOnRightAnswer, onNewWordRecognise],
+    [checkGameIsFinish, currentCardState, trainCards],
   );
+
+  const startVoiceRecognition = useCallback(() => {
+    startVoxRecognition();
+    recognition.onresult = (event) => {
+      const recognised = getRecognisedWordsArrayFromEvent(event);
+      // setRecognisedWords();
+      onNewWordRecognise(recognised);
+    };
+  }, [onNewWordRecognise]);
+
+  const initNewGame = useCallback(() => {
+    setIsGameStarted(true);
+    initCardsView(trainCards);
+    gameCardsArray.current = shuffleArray(trainCards);
+    setNewCard();
+    startVoiceRecognition();
+  }, [setNewCard, startVoiceRecognition, trainCards]);
+
+  const onClickSpeakButton = useCallback(() => {
+    initNewGame();
+  }, [initNewGame]);
+
+  const onClickResetButton = useCallback(() => {
+    setIsGameStarted(false);
+    stopVoxRecognition();
+    initCardsView(trainCards);
+    setCurrentCardState(INIT_CARD);
+  }, [trainCards]);
+
+  const onCloseModal = useCallback(() => {
+    setModalOpen(false);
+    initCardsView(trainCards);
+  }, [trainCards]);
 
   const onClickCard = useCallback(
     (event) => {
-      if (!gameMode) {
+      if (!isGameStarted) {
         const cardId = event.currentTarget.dataset.cardid;
         event.currentTarget.children[3] &&
           event.currentTarget.children[3].play();
         const cardIdx = searchCardIndexInArray(cardId, trainCards);
-        setCurrentCard(() => trainCards[cardIdx]);
+        setCurrentCardState(() => trainCards[cardIdx]);
         setTrainCards(setActiveCardInArray(cardIdx, trainCards));
       }
     },
-    [gameMode, trainCards],
+    [isGameStarted, trainCards],
   );
-
-  const makeGameCardsArray = useCallback(() => {
-    setGameCardsArray(shuffleArray(trainCards));
-    initCardsView(trainCards);
-    startGame(gameCardsArray);
-  }, [gameCardsArray, startGame, trainCards]);
-
-  const onClickSpeakButton = useCallback(() => {
-    setGameMode(true);
-    makeGameCardsArray();
-  }, [makeGameCardsArray]);
-
-  const onClickResetButton = useCallback(() => {
-    setGameMode(false);
-    stopGame();
-    initCardsView(trainCards);
-    setCurrentCard(INIT_CARD);
-  }, [stopGame, trainCards]);
-
-  const onCloseModal = useCallback(() => {
-    setModalOpen(false);
-  }, []);
 
   return (
     <div className="speak-it__game-screen">
       <div className="game-score" />
-      <CentralScreen currentCard={currentCard} gameMode={gameMode} />
+      <CentralScreen currentCard={currentCardState} gameMode={isGameStarted} />
       <div className="cards">
         {trainCards.map((card, idx) => (
           <SpeakItCard cardData={card} key={idx} onClickCard={onClickCard} />
@@ -197,7 +166,12 @@ export const SpeakItGameScreen = function () {
         onClickSpeakButton={onClickSpeakButton}
         onClickResetButton={onClickResetButton}
       />
-      {modalOpen && <SpeakItModalWindow onCloseModal={onCloseModal} />}
+      {modalOpen && (
+        <SpeakItModalWindow
+          answers={calculateAnswers(trainCards)}
+          onCloseModal={onCloseModal}
+        />
+      )}
     </div>
   );
 };

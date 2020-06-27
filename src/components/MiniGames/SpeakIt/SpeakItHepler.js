@@ -71,3 +71,9 @@ export const makeUniqueObjectsArray = (array) => {
     }
   }, []);
 };
+
+export const copyArray = (array) => {
+  return array.map((el) => {
+    return { ...el };
+  });
+};
