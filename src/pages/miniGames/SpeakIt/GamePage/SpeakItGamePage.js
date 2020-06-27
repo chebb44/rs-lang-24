@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { learnCardsSelector } from '../../../../reducers/learnCards/learnCardsReducer';
 import { dictionaryStateStateSelector } from '../../../../reducers/dictionaryReducer/dictionaryReducer';
 import './SpeakItGamePage.scss';
@@ -13,6 +13,7 @@ import {
   setWrongCardInArrayByIdx,
   initCardsView,
   makeUniqueObjectsArray,
+  calculateAnswers,
 } from '../SpeakItHepler';
 import { INIT_CARD } from '../SpeakItConstants';
 import { CentralScreen } from './CentralScreen/CentralScreen';
@@ -23,19 +24,8 @@ import recognition, {
 } from '../../../../utilities/speachRecognition';
 import SpeakItModalWindow from '../SpeakItModalWindow/SpeakItModalWindow';
 
-const calculateAnswers = (cardsArray) => {
-  const answers = {
-    wrong: 0,
-    right: 0,
-  };
-  cardsArray.forEach((card) => {
-    card.right && answers.right++;
-    card.wrong && answers.wrong++;
-  });
-  return answers;
-};
-
 export const SpeakItGameScreen = function () {
+  const dispatch = useDispatch();
   const dictionary = useSelector(dictionaryStateStateSelector);
   const learnedWords = [
     ...dictionary.learnedWords,
