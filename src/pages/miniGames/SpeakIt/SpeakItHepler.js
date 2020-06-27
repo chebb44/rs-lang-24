@@ -71,3 +71,21 @@ export const makeUniqueObjectsArray = (array) => {
     }
   }, []);
 };
+
+export const copyArray = (array) => {
+  return array.map((el) => {
+    return { ...el };
+  });
+};
+
+export const calculateAnswers = (cardsArray) => {
+  const answers = {
+    wrong: 0,
+    right: 0,
+  };
+  cardsArray.forEach((card) => {
+    card.right && answers.right++;
+    card.wrong && answers.wrong++;
+  });
+  return answers;
+};

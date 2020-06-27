@@ -16,7 +16,7 @@ export const Buttons = ({ onClickSpeakButton, onClickResetButton }) => {
         SPEAK IT
       </button>
       <button className="btn btn_speak-it btn_small button__result">
-        Результаты
+        Статистика
       </button>
     </div>
   );
