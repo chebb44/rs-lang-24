@@ -6,12 +6,7 @@ import { GameButtons } from '../../components/GameButtons/GameButtons';
 import { GameNotification } from '../../components/GameNotification/GameNotification';
 import { SPRINT_SHOW_RESULT_DELAY } from '../../constants';
 
-export const CardField = ({
-  cards,
-  score,
-  setScore,
-  redirectToStartScreen,
-}) => {
+export const CardField = ({ cards, score, setScore, timeoutHandler }) => {
   const [buttonEnable, setButtonEnable] = useState(true);
   const [timeoutId, setTimeoutId] = useState(null);
   const [currentNumber, setCurrentNumber] = useState(0);
@@ -21,7 +16,6 @@ export const CardField = ({
     ({ success }) => {
       if (success) {
         const bonus = Math.min(10 * Math.pow(2, series), 80);
-        console.log(bonus);
         setNotificationText(`+${bonus} баллов!`);
         setScore(score + bonus);
       } else {
@@ -41,11 +35,9 @@ export const CardField = ({
       if (buttonEnable) {
         setButtonEnable(false);
         if (value === cards[currentNumber].correct) {
-          console.log('yes');
           setSeries(series + 1);
           showNext({ success: true });
         } else {
-          console.log('no');
           setSeries(0);
           showNext({ success: false });
         }
@@ -54,10 +46,10 @@ export const CardField = ({
     [cards, currentNumber, series, showNext, buttonEnable],
   );
   useEffect(() => {
-    if (currentNumber >= cards.length) {
-      redirectToStartScreen();
+    if (currentNumber >= cards.length - 1) {
+      timeoutHandler();
     }
-  }, [currentNumber, cards, redirectToStartScreen]);
+  }, [currentNumber, cards, timeoutHandler]);
   useEffect(() => {
     return () => {
       clearTimeout(timeoutId);
