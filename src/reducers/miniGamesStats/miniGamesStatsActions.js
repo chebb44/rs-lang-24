@@ -4,6 +4,12 @@ export const actionSprintSendGameResult = ({ date, result }) => ({
   payload: { date, result },
 });
 
+export const SPEAK_IT_SEND_GAME_RESULT = 'SPEAK_IT_SEND_GAME_RESULT';
+export const actionSpeakItSendGameResult = ({ dates, results }) => ({
+  type: SPEAK_IT_SEND_GAME_RESULT,
+  payload: { dates, results },
+});
+
 export const SET_ALL_MINI_GAMES_STATS = 'SET_ALL_MINI_GAMES_STATS';
 export const actionSetAllMiniGamesStats = ({ miniGames }) => ({
   type: SET_ALL_MINI_GAMES_STATS,

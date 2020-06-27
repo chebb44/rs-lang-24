@@ -1,6 +1,10 @@
 import React from 'react';
 
-export const Buttons = ({ onClickSpeakButton, onClickResetButton }) => {
+export const Buttons = ({
+  onClickSpeakButton,
+  onClickResetButton,
+  onClickResultsButton,
+}) => {
   return (
     <div className="buttons">
       <button
@@ -15,7 +19,10 @@ export const Buttons = ({ onClickSpeakButton, onClickResetButton }) => {
       >
         SPEAK IT
       </button>
-      <button className="btn btn_speak-it btn_small button__result">
+      <button
+        className="btn btn_speak-it btn_small button__result"
+        onClick={onClickResultsButton}
+      >
         Статистика
       </button>
     </div>

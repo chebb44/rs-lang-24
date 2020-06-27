@@ -23,9 +23,15 @@ import recognition, {
   stopVoxRecognition,
 } from '../../../../utilities/speachRecognition';
 import SpeakItModalWindow from '../SpeakItModalWindow/SpeakItModalWindow';
+import { miniGamesStatsSelector } from '../../../../reducers/miniGamesStats/miniGamesStatsReducer';
+import { actionSpeakItSendGameResult } from '../../../../reducers/miniGamesStats/miniGamesStatsActions';
 
 export const SpeakItGameScreen = function () {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const {
+    miniGames: { speakIt: gameStat },
+  } = useSelector(miniGamesStatsSelector);
+  console.log(gameStat);
   const dictionary = useSelector(dictionaryStateStateSelector);
   const learnedWords = [
     ...dictionary.learnedWords,
@@ -52,35 +58,46 @@ export const SpeakItGameScreen = function () {
   let gameCardsArray = useRef([]);
   let curGameCard = useRef({});
 
-  const finishGame = useCallback(() => {
+  const sendDataToStatistic = useCallback(
+    (result) => {
+      dispatch(
+        actionSpeakItSendGameResult({
+          dates: new Date().toLocaleDateString(),
+          results: result,
+        }),
+      );
+    },
+    [dispatch],
+  );
+
+  const endGameHandler = useCallback(() => {
+    sendDataToStatistic(calculateAnswers(trainCards));
     setTimeout(() => setModalOpen(true), 1000);
     setIsGameStarted(false);
     stopVoxRecognition();
-  }, []);
+  }, [sendDataToStatistic, trainCards]);
 
   const setNewCard = useCallback(() => {
     curGameCard.current = gameCardsArray.current.shift();
     setCurrentCardState(curGameCard.current);
   }, []);
 
-  const checkGameIsFinish = useCallback(
+  const gameHandler = useCallback(
     (gameCards) => {
       if (gameCards.length > 0) {
         setNewCard(gameCards);
       } else if (gameCards.length === 0) {
-        finishGame();
+        endGameHandler();
       }
     },
-    [finishGame, setNewCard],
+    [endGameHandler, setNewCard],
   );
 
   const onNewWordRecognise = useCallback(
     (recognised) => {
-      console.log('onNewWordRecognise');
       const isGuessTheWord = recognised.find(
         (word) => word.toLowerCase() === curGameCard.current.word.toLowerCase(),
       );
-      console.log(currentCardState);
       const currentCardIdx = searchCardIndexInArray(
         curGameCard.current._id,
         trainCards,
@@ -90,17 +107,16 @@ export const SpeakItGameScreen = function () {
       } else {
         setTrainCards(setWrongCardInArrayByIdx(currentCardIdx, trainCards));
       }
-      checkGameIsFinish(gameCardsArray.current);
+      gameHandler(gameCardsArray.current);
       console.log(isGuessTheWord);
     },
-    [checkGameIsFinish, currentCardState, trainCards],
+    [gameHandler, trainCards],
   );
 
   const startVoiceRecognition = useCallback(() => {
     startVoxRecognition();
     recognition.onresult = (event) => {
       const recognised = getRecognisedWordsArrayFromEvent(event);
-      // setRecognisedWords();
       onNewWordRecognise(recognised);
     };
   }, [onNewWordRecognise]);
@@ -155,6 +171,7 @@ export const SpeakItGameScreen = function () {
       <Buttons
         onClickSpeakButton={onClickSpeakButton}
         onClickResetButton={onClickResetButton}
+        onClickResultsButton={sendDataToStatistic}
       />
       {modalOpen && (
         <SpeakItModalWindow
