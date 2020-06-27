@@ -1,7 +1,7 @@
 import React from 'react';
 import './StartScreen.scss';
 import { UniversalButton } from '../../../../../components/UniversalButton/UniversalButton';
-export const StartScreen = ({ startClickHandler }) => {
+export const StartScreen = ({ startClickHandler, redirectToStatistic }) => {
   return (
     <div className="sprint-start-screen">
       <h2 className="mb-3">Спринт</h2>
@@ -11,8 +11,8 @@ export const StartScreen = ({ startClickHandler }) => {
         участвуют только ранее изученные слова.
       </p>
       <p className="mb-2">
-        Для старта игры рекомендуется изучить не менее 30 слов. В течение игры,
-        слова в которых вы ошиблись - будут предложены вам для повторного
+        Для старта игры необходимо изучить <b>не менее 5 слов</b>. В течение
+        игры, слова в которых вы ошиблись - будут предложены вам для повторного
         изучения на следующей тренировке.
       </p>
       <p className="mb-2">
@@ -21,11 +21,18 @@ export const StartScreen = ({ startClickHandler }) => {
         увеличивают количество баллов за каждое угаданное слово вдвое, при
         ошибке за угаданное слово снова начисляется только 10 баллов.
       </p>
-      <UniversalButton
-        onClickHandler={startClickHandler}
-        buttonText="Начать игру"
-        extraClasses="mt-2"
-      />
+      <div>
+        <UniversalButton
+          onClickHandler={startClickHandler}
+          buttonText="Начать игру"
+          extraClasses="m-1"
+        />
+        <UniversalButton
+          onClickHandler={redirectToStatistic}
+          buttonText="Статистика"
+          extraClasses="m-1 sprint-stat-btn"
+        />
+      </div>
     </div>
   );
 };

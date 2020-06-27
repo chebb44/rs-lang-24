@@ -9,7 +9,13 @@ import { useDispatch } from 'react-redux';
 import { actionMarkWord } from '../../../../../store/actionsForSaga';
 import { NEXT_TRAIN_WORD } from './../../../../../sagas/constants';
 
-export const CardField = ({ cards, score, setScore, timeoutHandler }) => {
+export const CardField = ({
+  cards,
+  score,
+  setScore,
+  redirectToStartScreen,
+  endGameHandler,
+}) => {
   const [buttonEnable, setButtonEnable] = useState(true);
   const [timeoutId, setTimeoutId] = useState(null);
   const [currentNumber, setCurrentNumber] = useState(0);
@@ -55,11 +61,15 @@ export const CardField = ({ cards, score, setScore, timeoutHandler }) => {
     },
     [cards, currentNumber, series, showNext, buttonEnable],
   );
+
   useEffect(() => {
     if (currentNumber >= cards.length - 1) {
-      timeoutHandler();
+      endGameHandler();
     }
-  }, [currentNumber, cards, timeoutHandler]);
+    if (cards.length < 5) {
+      redirectToStartScreen();
+    }
+  }, [currentNumber, cards, redirectToStartScreen, endGameHandler]);
   useEffect(() => {
     return () => {
       clearTimeout(timeoutId);
