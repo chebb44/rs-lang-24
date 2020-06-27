@@ -12,7 +12,6 @@ export default recognition;
 export const startVoxRecognition = () => {
   recognition.start();
   recognition.onstart = () => console.log('Listening!');
-  // TODO: Make and Activate microphone icon
   recognition.onend = () => {
     console.log('...continue listening...');
     recognition.start();
