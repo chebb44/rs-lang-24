@@ -27,6 +27,12 @@ import {
   actionSetCardsAmount,
   actionSetNewWordsAmount,
 } from '../../reducers/statisticReducer/statisticActions';
+import {
+  NEW_WORDS_MODE,
+  REPEAT_MODE,
+  STANDARD_MODE,
+  ONLY_HARD_WORDS_MODE,
+} from '../../store/defaultAppSettings';
 
 const SettingsModal = () => {
   const dispatch = useDispatch();
@@ -170,7 +176,7 @@ const SettingsModal = () => {
       id: 'customRadioInline3-1',
       name: 'customRadioInline3',
       text: 'Только новые слова',
-      value: 'NEW_WORDS_MODE',
+      value: NEW_WORDS_MODE,
       defaultStateValue: settings.learnMode,
       func: changeGameMode,
       dictionaryState: dictionaryState,
@@ -179,7 +185,7 @@ const SettingsModal = () => {
       id: 'customRadioInline3-2',
       name: 'customRadioInline3',
       text: 'Только изученные слова',
-      value: 'REPEAT_MODE',
+      value: REPEAT_MODE,
       defaultStateValue: settings.learnMode,
       func: changeGameMode,
       dictionaryState: dictionaryState,
@@ -188,7 +194,7 @@ const SettingsModal = () => {
       id: 'customRadioInline3-3',
       name: 'customRadioInline3',
       text: 'Новые и изученные слова',
-      value: 'STANDARD_MODE',
+      value: STANDARD_MODE,
       defaultStateValue: settings.learnMode,
       func: changeGameMode,
       dictionaryState: dictionaryState,
@@ -197,7 +203,7 @@ const SettingsModal = () => {
       id: 'customRadioInline3-4',
       name: 'customRadioInline3',
       text: 'Только сложные слова',
-      value: 'ONLY_HARD_WORDS_MODE',
+      value: ONLY_HARD_WORDS_MODE,
       defaultStateValue: settings.learnMode,
       func: changeGameMode,
       dictionaryState: dictionaryState,
