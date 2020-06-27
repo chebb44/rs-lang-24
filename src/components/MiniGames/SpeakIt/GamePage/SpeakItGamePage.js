@@ -138,13 +138,15 @@ export const SpeakItGameScreen = function () {
     (gameCards) => {
       console.log(gameCards);
       console.log('startgame');
-    changeCardsArrayOnRightAnswer(gameCards);
-    startVoxRecognition();
-    recognition.onresult = (event) => {
-      setRecognisedWords(getRecognisedWordsArrayFromEvent(event));
-      onNewWordRecognise();
-    };
-  }, [changeCardsArrayOnRightAnswer, onNewWordRecognise]);
+      changeCardsArrayOnRightAnswer(gameCards);
+      startVoxRecognition();
+      recognition.onresult = (event) => {
+        setRecognisedWords(getRecognisedWordsArrayFromEvent(event));
+        onNewWordRecognise();
+      };
+    },
+    [changeCardsArrayOnRightAnswer, onNewWordRecognise],
+  );
 
   const onClickCard = useCallback(
     (event) => {
