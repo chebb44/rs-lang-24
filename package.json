@@ -29,7 +29,7 @@
     "prettier": "^2.0.5"
   },
   "scripts": {
-    "start": "cross-env BROWSER=chrome react-scripts start",
+    "start": "cross-env react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "eject": "react-scripts eject",

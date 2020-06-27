@@ -1,3 +1,7 @@
+@import 'src/scss/vars';
 .sprint-start-screen {
   padding: 3rem;
+}
+.sprint-stat-btn {
+  background-color: $accent-dark-color;
 }

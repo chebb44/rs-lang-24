@@ -1,0 +1,18 @@
+.sprint-statistic {
+  padding: 1rem;
+  height: 100%;
+  width: 100%;
+}
+.sprint-stat-header {
+  text-align: center;
+  position: relative;
+  margin-bottom: 2rem;
+  @media screen and (max-width: 500px) {
+    text-align: left;
+  }
+}
+.sprint-stat-close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
