@@ -25,7 +25,7 @@ import recognition, {
 import SpeakItModalWindow from '../SpeakItModalWindow/SpeakItModalWindow';
 
 export const SpeakItGameScreen = function () {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const dictionary = useSelector(dictionaryStateStateSelector);
   const learnedWords = [
     ...dictionary.learnedWords,
