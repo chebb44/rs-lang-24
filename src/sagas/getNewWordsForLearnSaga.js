@@ -84,6 +84,7 @@ export function* getNewWordsForLearn() {
     case REPEAT_MODE:
       outputWords = [...nextTrainWords.slice(0, needRepeatWords)];
       outputWords = [
+        ...outputWords,
         ...wordsForRepeat.slice(0, cardsPerDay - outputWords.length),
       ];
       break;

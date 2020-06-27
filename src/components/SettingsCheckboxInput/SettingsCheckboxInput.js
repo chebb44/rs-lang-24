@@ -4,7 +4,7 @@ const SettingsCheckboxInput = ({ item }) => {
   const { id, value, defaultChecked, func } = item;
   if (defaultChecked && func) {
     return (
-      <div className="custom-control custom-checkbox text-left ml-5">
+      <div className="custom-control custom-checkbox text-left ml-5 mb-1">
         <input
           type="checkbox"
           className="custom-control-input"
@@ -12,21 +12,21 @@ const SettingsCheckboxInput = ({ item }) => {
           defaultChecked
           onChange={func}
         ></input>
-        <label className="custom-control-label font-italic" htmlFor={id}>
+        <label className="custom-control-label" htmlFor={id}>
           {value}
         </label>
       </div>
     );
   }
   return (
-    <div className="custom-control custom-checkbox text-left ml-5">
+    <div className="custom-control custom-checkbox text-left ml-5 mb-1">
       <input
         type="checkbox"
         className="custom-control-input"
         id={id}
         onChange={func}
       ></input>
-      <label className="custom-control-label font-italic" htmlFor={id}>
+      <label className="custom-control-label" htmlFor={id}>
         {value}
       </label>
     </div>

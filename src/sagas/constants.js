@@ -10,7 +10,7 @@ export const GOOD_WORD = 'GOOD_WORD';
 export const EASY_WORD = 'EASY_WORD';
 export const DELETED_WORD = 'DELETED_WORD';
 
-export const STEP_BASIS = 0.1;
+export const STEP_BASIS = 0.2;
 export const STEP_WORDS = {
   LEARNED_WORD: 3,
   HARD_WORD: 1,

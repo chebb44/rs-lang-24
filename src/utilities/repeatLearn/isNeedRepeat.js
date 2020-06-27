@@ -6,9 +6,10 @@ export const isNeedToRepeat = ({ word: { userWord } }) => {
     optional: { lastRepeatDate },
   } = userWord;
   const msInDay = 1000 * 60 * 60 * 24;
-  const newDate = Date.parse(new Date());
-  const repeatDate =
-    Date.parse(lastRepeatDate) + STEP_BASIS * STEP_WORDS[difficulty] * msInDay;
-  const deltaDays = Math.ceil((newDate - repeatDate) / msInDay);
-  return deltaDays <= 1;
+  let todayDate = new Date();
+  let repeatDate = new Date(
+    Date.parse(lastRepeatDate) + STEP_BASIS * STEP_WORDS[difficulty] * msInDay,
+  );
+  repeatDate.setHours(0, 0, 0, 0);
+  return repeatDate < todayDate;
 };

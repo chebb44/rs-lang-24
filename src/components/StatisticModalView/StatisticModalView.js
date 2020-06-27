@@ -20,17 +20,17 @@ export const StatisticModalView = ({ statistic, hideStatisticModal }) => {
           <h5 className="modal-title text-center">Серия завершена</h5>
         </div>
         <div className="modal-body text-left">
-          <p className="border-bottom d-flex justify-content-between">
-            Новые слова:&nbsp;<span>{newWordsAmount}</span>
+          <p className="border-bottom d-flex justify-content-between mb-3">
+            Новые слова&nbsp;<span>{newWordsAmount}</span>
           </p>
-          <p className="border-bottom d-flex justify-content-between">
-            Карточек завершено:&nbsp;<span>{cardsAmount}</span>
+          <p className="border-bottom d-flex justify-content-between mb-3">
+            Завершенный карточки&nbsp;<span>{cardsAmount}</span>
           </p>
-          <p className="border-bottom d-flex justify-content-between">
-            Правильные ответы:&nbsp;<span>{correctAnswersPercent}%</span>
+          <p className="border-bottom d-flex justify-content-between mb-3">
+            Правильные ответы&nbsp;<span>{correctAnswersPercent}%</span>
           </p>
-          <p className="border-bottom d-flex justify-content-between">
-            Самая длинная серия ответов:&nbsp;
+          <p className="border-bottom d-flex justify-content-between mb-3">
+            Самая длинная серия ответов&nbsp;
             <span>{longestCorrectAnswersSeries}</span>
           </p>
         </div>
