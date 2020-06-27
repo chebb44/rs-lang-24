@@ -11,12 +11,17 @@ import { actionSprintSendGameResult } from '../../../../../reducers/miniGamesSta
 import { dictionaryStateStateSelector } from './../../../../../reducers/dictionaryReducer/dictionaryReducer';
 
 export const SprintMain = () => {
-  const { learnedWords: cards } = useSelector(dictionaryStateStateSelector);
+  const { learnedWords } = useSelector(dictionaryStateStateSelector);
+  const [cards, setCards] = useState(learnedWords);
   const [isStartScreen, setIsStartScreen] = useState(true);
   const [isStillTime, setIsStillTime] = useState(true);
   const [score, setScore] = useState(0);
   const [gameCards, setGameCards] = useState(cards);
   const dispatch = useDispatch();
+  useEffect(() => {
+    setCards(learnedWords);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   useEffect(() => {
     const { shuffledCards } = shuffleCards({ cards });
     setGameCards(shuffledCards);

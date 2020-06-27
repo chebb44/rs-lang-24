@@ -5,6 +5,9 @@ import { GameWord } from '../../components/GameWord/GameWord';
 import { GameButtons } from '../../components/GameButtons/GameButtons';
 import { GameNotification } from '../../components/GameNotification/GameNotification';
 import { SPRINT_SHOW_RESULT_DELAY } from '../../constants';
+import { useDispatch } from 'react-redux';
+import { actionMarkWord } from '../../../../../store/actionsForSaga';
+import { NEXT_TRAIN_WORD } from './../../../../../sagas/constants';
 
 export const CardField = ({ cards, score, setScore, timeoutHandler }) => {
   const [buttonEnable, setButtonEnable] = useState(true);
@@ -12,6 +15,7 @@ export const CardField = ({ cards, score, setScore, timeoutHandler }) => {
   const [currentNumber, setCurrentNumber] = useState(0);
   const [series, setSeries] = useState(0);
   const [notificationText, setNotificationText] = useState('');
+  const dispatch = useDispatch();
   const showNext = useCallback(
     ({ success }) => {
       if (success) {
@@ -19,6 +23,12 @@ export const CardField = ({ cards, score, setScore, timeoutHandler }) => {
         setNotificationText(`+${bonus} баллов!`);
         setScore(score + bonus);
       } else {
+        dispatch(
+          actionMarkWord({
+            wordId: cards[currentNumber]._id,
+            difficulty: NEXT_TRAIN_WORD,
+          }),
+        );
         setNotificationText(`Ответ неверный!`);
       }
       const timeoutId = setTimeout(() => {
@@ -28,7 +38,7 @@ export const CardField = ({ cards, score, setScore, timeoutHandler }) => {
       }, SPRINT_SHOW_RESULT_DELAY);
       setTimeoutId(timeoutId);
     },
-    [currentNumber, score, series, setScore],
+    [currentNumber, score, series, setScore, dispatch, cards],
   );
   const buttonsHandler = useCallback(
     (value) => () => {
