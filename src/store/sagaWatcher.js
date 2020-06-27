@@ -46,7 +46,10 @@ import {
   SET_LEARN_MODE,
 } from './../reducers/learnSettings/learnSettingsActions';
 import { moveWordsWorker } from '../sagas/moveUserWords';
-import { SPRINT_SEND_GAME_RESULT } from './../reducers/miniGamesStats/miniGamesStatsActions';
+import {
+  SPEAK_IT_SEND_GAME_RESULT,
+  SPRINT_SEND_GAME_RESULT,
+} from './../reducers/miniGamesStats/miniGamesStatsActions';
 const actionsForSenSettingsToBackendWorker = [
   SET_LEARN_MODE,
   SET_WORDS_PER_DAY,
@@ -69,6 +72,7 @@ const actionsForSenSettingsToBackendWorker = [
 
 const actionsForSendStatisticToBackend = [
   SPRINT_SEND_GAME_RESULT,
+  SPEAK_IT_SEND_GAME_RESULT,
   SET_LEARNED_WORDS,
   SET_CARDS_AMOUNT,
   SET_CORRECT_ANSWERS_PERCENT,
