@@ -52,12 +52,12 @@ export const miniGamesStats = (state = defaultData, action) => {
         },
       };
     case SET_ALL_MINI_GAMES_STATS: {
-      const miniGames = {
-        ...state.miniGames,
-        ...action.payload.miniGames,
-      };
       return {
-        miniGames,
+        ...state,
+        miniGames: {
+          ...state.miniGames,
+          ...action.payload.miniGames,
+        },
       };
     }
     default:
