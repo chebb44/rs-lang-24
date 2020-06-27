@@ -5,26 +5,36 @@ import { GameWord } from '../../components/GameWord/GameWord';
 import { GameButtons } from '../../components/GameButtons/GameButtons';
 import { GameNotification } from '../../components/GameNotification/GameNotification';
 import { SPRINT_SHOW_RESULT_DELAY } from '../../constants';
+import { useDispatch } from 'react-redux';
+import { actionMarkWord } from '../../../../../store/actionsForSaga';
+import { NEXT_TRAIN_WORD } from './../../../../../sagas/constants';
 
 export const CardField = ({
   cards,
   score,
   setScore,
   redirectToStartScreen,
+  endGameHandler,
 }) => {
   const [buttonEnable, setButtonEnable] = useState(true);
   const [timeoutId, setTimeoutId] = useState(null);
   const [currentNumber, setCurrentNumber] = useState(0);
   const [series, setSeries] = useState(0);
   const [notificationText, setNotificationText] = useState('');
+  const dispatch = useDispatch();
   const showNext = useCallback(
     ({ success }) => {
       if (success) {
         const bonus = Math.min(10 * Math.pow(2, series), 80);
-        console.log(bonus);
         setNotificationText(`+${bonus} баллов!`);
         setScore(score + bonus);
       } else {
+        dispatch(
+          actionMarkWord({
+            wordId: cards[currentNumber]._id,
+            difficulty: NEXT_TRAIN_WORD,
+          }),
+        );
         setNotificationText(`Ответ неверный!`);
       }
       const timeoutId = setTimeout(() => {
@@ -34,18 +44,16 @@ export const CardField = ({
       }, SPRINT_SHOW_RESULT_DELAY);
       setTimeoutId(timeoutId);
     },
-    [currentNumber, score, series, setScore],
+    [currentNumber, score, series, setScore, dispatch, cards],
   );
   const buttonsHandler = useCallback(
     (value) => () => {
       if (buttonEnable) {
         setButtonEnable(false);
         if (value === cards[currentNumber].correct) {
-          console.log('yes');
           setSeries(series + 1);
           showNext({ success: true });
         } else {
-          console.log('no');
           setSeries(0);
           showNext({ success: false });
         }
@@ -53,11 +61,15 @@ export const CardField = ({
     },
     [cards, currentNumber, series, showNext, buttonEnable],
   );
+
   useEffect(() => {
-    if (currentNumber >= cards.length) {
+    if (currentNumber >= cards.length - 1) {
+      endGameHandler();
+    }
+    if (cards.length < 5) {
       redirectToStartScreen();
     }
-  }, [currentNumber, cards, redirectToStartScreen]);
+  }, [currentNumber, cards, redirectToStartScreen, endGameHandler]);
   useEffect(() => {
     return () => {
       clearTimeout(timeoutId);

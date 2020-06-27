@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './Timer.scss';
 import { useInterval } from '../../../../../utilities/sprint/useInterval';
 
-export const Timer = ({ timeoutHandler, redirectToStartScreen }) => {
-  const ROUND_TIME = 2;
-  const END_GAME_DELAY = 3000;
+export const Timer = ({ endGameHandler }) => {
+  const ROUND_TIME = 60;
   const [startTime, setStartTime] = useState(null);
   const [timeLeft, setTimeLeft] = useState(60);
   useEffect(() => {
@@ -15,11 +14,8 @@ export const Timer = ({ timeoutHandler, redirectToStartScreen }) => {
   }, 1000);
   useEffect(() => {
     if (timeLeft < 1) {
-      timeoutHandler(false);
-      setTimeout(() => {
-        redirectToStartScreen();
-      }, END_GAME_DELAY);
+      endGameHandler();
     }
-  }, [redirectToStartScreen, timeLeft, timeoutHandler]);
+  }, [timeLeft, endGameHandler]);
   return <div className="timer">{timeLeft}</div>;
 };

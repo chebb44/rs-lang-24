@@ -18,7 +18,7 @@ import {
   SET_AUTO_AUDIO,
   SET_AUTO_TRANSLATE,
   UPDATE_LAST_CORRECT_WORD_INDEX,
-  ADD_ANSWER_ACCURACY,
+  // ADD_ANSWER_ACCURACY,
   CLEAR_ANSWER_ACCURACY,
   UPDATE_LAST_FINISHED_LEARNING_DATE,
 } from './learnSettingsActions';
@@ -156,16 +156,16 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
           lastCorrectWordIndex: action.payload,
         },
       };
-    case ADD_ANSWER_ACCURACY:
-      const array = state.learnCardSettings.answersAccuracy;
-      console.log(array, action.payload);
-      return {
-        ...state,
-        learnCardSettings: {
-          ...state.learnCardSettings,
-          answersAccuracy: [...array, action.payload],
-        },
-      };
+    // case ADD_ANSWER_ACCURACY:
+    //   const array = state.learnCardSettings.answersAccuracy;
+    //   console.log(array, action.payload);
+    //   return {
+    //     ...state,
+    //     learnCardSettings: {
+    //       ...state.learnCardSettings,
+    //       answersAccuracy: [...array, action.payload],
+    //     },
+    //   };
     case CLEAR_ANSWER_ACCURACY:
       console.log('nnnn');
       return {
