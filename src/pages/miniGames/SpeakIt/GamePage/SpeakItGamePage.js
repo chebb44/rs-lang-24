@@ -24,9 +24,7 @@ import recognition, {
 } from '../../../../utilities/speachRecognition';
 import SpeakItModalWindow from '../SpeakItModalWindow/SpeakItModalWindow';
 import { miniGamesStatsSelector } from '../../../../reducers/miniGamesStats/miniGamesStatsReducer';
-import {
-  actionSpeakItSendGameResult,
-} from '../../../../reducers/miniGamesStats/miniGamesStatsActions';
+import { actionSpeakItSendGameResult } from '../../../../reducers/miniGamesStats/miniGamesStatsActions';
 
 export const SpeakItGameScreen = function () {
   const dispatch = useDispatch();
