@@ -17,7 +17,7 @@ import { Spinner } from '../components/Spinner/Spinner';
 import { SpeakItMainPage } from '../pages/miniGames/SpeakIt/SpeakItPage/SpeakItMainPage';
 import { actionToggleSideBar } from '../reducers/appState/appStateActions';
 import { SprintMain } from './../pages/miniGames/Sprint/containers/SprintMain/SprintMain';
-import { AudioCallMainPage } from '../components/MiniGames/AudioCall/MainPage/AudioCallMainPage';
+import { AudioCallMainPage } from '../pages/miniGames/AudioCall/MainPage/AudioCallMainPage';
 
 export const App = () => {
   let { path } = useRouteMatch();
