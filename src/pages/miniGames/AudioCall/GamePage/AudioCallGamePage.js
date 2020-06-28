@@ -11,19 +11,17 @@ import { AudioCallStartScreen } from '../StartScreen/AudioCallStartScreen';
 const currentLearnCardIndex = 6;
 const learnCards = ['', '', '', '', '', '', '', '', '', ''];
 
-export const AudioCallGamePage = () => {
+export const AudioCallGamePage = ({ wordsForGame, func }) => {
   const [setAudioCallScreen] = useState('');
   const dispatch = useDispatch();
-  const backToStartPage = () => {
-    return <AudioCallStartScreen setAudioCallScreen={setAudioCallScreen} />;
-  };
+
   return (
     <div className="audio-call-game-page">
       <AudioCallProgressBar
         current={currentLearnCardIndex}
         all={learnCards.length}
       />
-      <AudioCallExitBtn func={backToStartPage} />
+      <AudioCallExitBtn func={func} />
       <AudioCallQuestionContainer />
       <AudioCallAnswerBtnsBlock />
       <AudioCallEnterBtn />

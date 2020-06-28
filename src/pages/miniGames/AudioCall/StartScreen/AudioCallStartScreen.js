@@ -2,7 +2,10 @@ import React from 'react';
 import './AudioCallStartScreen.scss';
 import london from '../../../../assets/img/england_PNG72.png';
 
-export const AudioCallStartScreen = function ({ setAudioCallScreen }) {
+export const AudioCallStartScreen = function ({
+  startGameHandler,
+  redirectToStatistic,
+}) {
   return (
     <div className="audio-call-start-screen">
       <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -20,7 +23,7 @@ export const AudioCallStartScreen = function ({ setAudioCallScreen }) {
       </p>
       <button
         className="btn audio-call-start-screen__button"
-        onClick={() => setAudioCallScreen('gamePage')}
+        onClick={startGameHandler}
       >
         Старт
       </button>
