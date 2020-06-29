@@ -1,11 +1,13 @@
 import React from 'react';
 import StatisticTextItem from '../StatisticTextItem/StatisticTextItem';
+import { StatisticLineGraph } from '../StatisticLineGraph/StatisticLineGraph';
 import './StatisticPageView.scss';
 import london from './../../assets/img/england_PNG72.png';
 
 export const StatisticPageView = ({ statisticItemList }) => {
   return (
     <div className="statistic-wrapper">
+      <StatisticLineGraph />
       <div>
         <div className="statistic-today">
           <h5 className="statistic-today__title">Сегодня</h5>
