@@ -4,13 +4,15 @@ import { AudioCallQuestionAudio } from '../AudioCallQuestionAudio/AudioCallQuest
 import { AudioCallQuestionImg } from '../AudioCallQuestionImg/AudioCallQuestionImg';
 import { AudioCallQuestionTitle } from '../AudioCallQuestionTitle/AudioCallQuestionTitle';
 
-const word = 'example';
-
-export const AudioCallQuestionContainer = () => {
+export const AudioCallQuestionContainer = ({ wordsForGame }) => {
+  const { id, audio, image, word } = wordsForGame[0];
   return (
     <div className="audio-call-question-container">
-      <AudioCallQuestionAudio className={'audio-call-question-audio'} />
-      <AudioCallQuestionImg />
+      <AudioCallQuestionAudio
+        className={'audio-call-question-audio audio-call-question-audio_true'}
+        audioSrc={audio}
+      />
+      <AudioCallQuestionImg image={image} />
       <AudioCallQuestionTitle word={word} />
     </div>
   );

@@ -1,29 +1,29 @@
 import React from 'react';
 import './AudioCallAnswerBtnsBlock.scss';
 import { AudioCallAnswerBtn } from '../AudioCallAnswerBtn/AudioCallAnswerBtn';
+import { shuffleArray } from '../utilities';
 
-export const AudioCallAnswerBtnsBlock = ({
-  mapWords = ['exa', 'exam', 'examp', 'exampl', 'example'],
-}) => {
+export const AudioCallAnswerBtnsBlock = ({ wordsForGame }) => {
+  wordsForGame = shuffleArray(wordsForGame);
   const btnList = [
     {
-      word: mapWords[0],
+      word: wordsForGame[0].word,
       position: 1,
     },
     {
-      word: mapWords[1],
+      word: wordsForGame[1].word,
       position: 2,
     },
     {
-      word: mapWords[2],
+      word: wordsForGame[2].word,
       position: 3,
     },
     {
-      word: mapWords[3],
+      word: wordsForGame[3].word,
       position: 4,
     },
     {
-      word: mapWords[4],
+      word: wordsForGame[4].word,
       position: 5,
     },
   ];

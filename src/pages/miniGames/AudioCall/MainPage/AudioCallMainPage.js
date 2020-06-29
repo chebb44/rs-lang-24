@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
+import './AudioCallMainPage.scss';
 import { AudioCallStartScreen } from '../StartScreen/AudioCallStartScreen';
 import { AudioCallGamePage } from '../GamePage/AudioCallGamePage';
 import {
@@ -14,10 +15,9 @@ import {
   getFalseWordsForAudioCall,
 } from '../getWordsForAudioCall';
 import { learnCardSettingsSelector } from '../../../../reducers/learnSettings/learnSettingsReducer';
-import { actionInitCardSetAudioCall } from '../../../../store/actionsForSaga';
+import { Spinner } from '../../../../components/Spinner/Spinner';
 
 export const AudioCallMainPage = () => {
-  const dispatch = useDispatch();
   const { learnedWords } = useSelector(dictionaryStateStateSelector);
   const { currentWordsGroup, currentWordsPage } = useSelector(
     learnCardSettingsSelector,
@@ -40,7 +40,7 @@ export const AudioCallMainPage = () => {
   //get level option
   const [wordsGroup, setWordsGroup] = useState(0);
   const [wordPage, setWordPage] = useState(0);
-  const [wordsForGame, setWordsForGame] = useState([]);
+  const [wordsForGame, setWordsForGame] = useState();
 
   const upState = useCallback(() => {
     setWordsGroup(wordsGroup + 1);
@@ -62,7 +62,7 @@ export const AudioCallMainPage = () => {
   }, [wordPage, wordsGroup, currentWordsGroup, currentWordsPage, learnedWords]);
 
   return (
-    <div>
+    <div className="audio-call-main-page">
       {(() => {
         switch (currentScreen) {
           case AUDIO_CALL_START_SCREEN:
@@ -73,13 +73,14 @@ export const AudioCallMainPage = () => {
               />
             );
           case AUDIO_CALL_GAME_SCREEN:
-            return (
+            return wordsForGame ? (
               <AudioCallGamePage
-                learnedWords={learnedWords}
                 redirectToStartScreen={redirectToStartScreen}
                 wordsForGame={wordsForGame}
                 upState={upState}
               />
+            ) : (
+              <Spinner />
             );
           // case AUDIO_CALL_END_SCREEN:
           //   return (

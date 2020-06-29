@@ -2,10 +2,16 @@ import React from 'react';
 import './AudioCallQuestionAudio.scss';
 import { AudioSoundSvg } from './assets/AudioSoundSvg';
 
-export const AudioCallQuestionAudio = ({ className }) => {
+export const AudioCallQuestionAudio = ({ className, audioSrc }) => {
+  const playAudioClickHandler = () => {
+    const audio = new Audio();
+    audio.src = `https://raw.githubusercontent.com/veronika-martinovich/rslang-data/master/${audioSrc}`;
+    audio.play();
+  };
+
   return (
-    <div className={className}>
+    <button className={className} onClick={playAudioClickHandler}>
       <AudioSoundSvg />
-    </div>
+    </button>
   );
 };

@@ -6,25 +6,19 @@ import { AudioCallAnswerBtnsBlock } from '../AudioCallAnswerBtnsBlock/AudioCallA
 import { AudioCallEnterBtn } from '../AudioCallEnterBtn/AudioCallEnterBtn';
 import { AudioCallExitBtn } from '../AudioCallExitBtn/AudioCallExitBtn';
 
-const currentLearnCardIndex = 6;
-const learnCards = ['', '', '', '', '', '', '', '', '', ''];
-
 export const AudioCallGamePage = ({
-  learnedWords,
   redirectToStartScreen,
   wordsForGame,
   upState,
 }) => {
+  const [wordNumber, setWordNumber] = useState(0);
 
   return (
     <div className="audio-call-game-page">
-      <AudioCallProgressBar
-        current={currentLearnCardIndex}
-        all={learnCards.length}
-      />
+      <AudioCallProgressBar current={wordNumber} all={wordsForGame.length} />
       <AudioCallExitBtn func={redirectToStartScreen} />
-      <AudioCallQuestionContainer />
-      <AudioCallAnswerBtnsBlock />
+      <AudioCallQuestionContainer wordsForGame={wordsForGame[wordNumber]} />
+      <AudioCallAnswerBtnsBlock wordsForGame={wordsForGame[wordNumber]} />
       <AudioCallEnterBtn func={upState} />
     </div>
   );
