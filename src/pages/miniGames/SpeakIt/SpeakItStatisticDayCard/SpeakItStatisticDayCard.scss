@@ -1,0 +1,47 @@
+@import "src/scss/vars";
+
+
+.speak-it-statistic__day-card {
+  width: 300px;
+  min-height: 150px;
+  border: 1px solid rgb(206, 212, 218);
+  border-radius: 5px;
+  margin: 0 10px 10px;
+  color: $neutral-active;
+
+  .speak-it-statistic-card__title {
+    background: $primary-color;
+    display: flex;
+    justify-content: space-around;
+    font-weight: 500;
+    height: 30px;
+    align-items: center;
+  }
+
+  .speak-it-statistic__results {
+    margin-top: 5px;
+
+    .statistic__result {
+      font-size: .9rem;
+      display: flex;
+      margin-bottom: 2px;
+      justify-content: center;
+
+      .speak-it-stat_right-word {
+        min-width: 20px;
+        min-height: 20px;
+        margin-right: 20px;
+        margin-left: 5px;
+        background-color: $primary-color;
+      }
+
+      .speak-it-stat_wrong-word {
+        min-width: 20px;
+        min-height: 20px;
+        margin-right: 10px;
+        margin-left: 5px;
+        background-color: $accent-color;
+      }
+    }
+  }
+}

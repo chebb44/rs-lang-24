@@ -3,7 +3,7 @@ import React from 'react';
 export const Buttons = ({
   onClickSpeakButton,
   onClickResetButton,
-  onClickResultsButton,
+  onClickStatsButton,
 }) => {
   return (
     <div className="speak-it__buttons">
@@ -21,7 +21,7 @@ export const Buttons = ({
       </button>
       <button
         className="btn btn_speak-it btn_small button__result"
-        onClick={onClickResultsButton}
+        onClick={onClickStatsButton}
       >
         Статистика
       </button>
