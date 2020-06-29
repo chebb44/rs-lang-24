@@ -14,7 +14,7 @@ const SpeakItStatisticDayCard = ({ dayStatistic }) => {
       </div>
       <div className="speak-it-statistic__results">
         {dayStatistic.data.map((result, idx) => (
-          <StatisticsResult result={result} key={idx}/>
+          <StatisticsResult result={result} key={idx} />
         ))}
       </div>
     </div>
