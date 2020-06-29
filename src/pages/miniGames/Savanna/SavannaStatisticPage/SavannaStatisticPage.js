@@ -2,9 +2,9 @@ import React from 'react';
 
 export const SavannaStatistic = () => {
   return (
-    <div class="Statistic-page">
+    <div className="Statistic-page">
       <div className="table">
-        вs ответили на :{' '}
+        вы ответили на :{' '}
         {localStorage.getItem('SavannaStatisticCorrectAnswers')} из{' '}
         {localStorage.getItem('SavannaStatisticAnswers')} вопросов
       </div>
