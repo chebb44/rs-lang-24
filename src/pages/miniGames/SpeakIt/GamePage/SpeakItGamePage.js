@@ -23,15 +23,11 @@ import recognition, {
   stopVoxRecognition,
 } from '../../../../utilities/speachRecognition';
 import SpeakItModalWindow from '../SpeakItModalWindow/SpeakItModalWindow';
-import { miniGamesStatsSelector } from '../../../../reducers/miniGamesStats/miniGamesStatsReducer';
 import { actionSpeakItSendGameResult } from '../../../../reducers/miniGamesStats/miniGamesStatsActions';
+import { getBeginDayTimeStamp } from '../../../../utilities/getBeginDayTimeStamp';
 
-export const SpeakItGameScreen = function () {
+export const SpeakItGameScreen = function ({ onClickStatsButton }) {
   const dispatch = useDispatch();
-  const {
-    miniGames: { speakIt: gameStat },
-  } = useSelector(miniGamesStatsSelector);
-  console.log(gameStat);
   const dictionary = useSelector(dictionaryStateStateSelector);
   const learnedWords = [
     ...dictionary.learnedWords,
@@ -62,7 +58,7 @@ export const SpeakItGameScreen = function () {
     (result) => {
       dispatch(
         actionSpeakItSendGameResult({
-          dates: new Date().toLocaleDateString(),
+          dates: getBeginDayTimeStamp(new Date()),
           results: result,
         }),
       );
@@ -130,8 +126,9 @@ export const SpeakItGameScreen = function () {
   }, [setNewCard, startVoiceRecognition, trainCards]);
 
   const onClickSpeakButton = useCallback(() => {
-    initNewGame();
-  }, [initNewGame]);
+    window.scrollTo(0, 0);
+    !isGameStarted && initNewGame();
+  }, [initNewGame, isGameStarted]);
 
   const onClickResetButton = useCallback(() => {
     setIsGameStarted(false);
@@ -143,6 +140,7 @@ export const SpeakItGameScreen = function () {
   const onCloseModal = useCallback(() => {
     setModalOpen(false);
     initCardsView(trainCards);
+    setCurrentCardState(INIT_CARD);
   }, [trainCards]);
 
   const onClickCard = useCallback(
@@ -161,7 +159,6 @@ export const SpeakItGameScreen = function () {
 
   return (
     <div className="speak-it__game-screen">
-      {/*<div className="game-score" />*/}
       <CentralScreen currentCard={currentCardState} gameMode={isGameStarted} />
       <div className="cards">
         {trainCards.map((card, idx) => (
@@ -171,7 +168,7 @@ export const SpeakItGameScreen = function () {
       <Buttons
         onClickSpeakButton={onClickSpeakButton}
         onClickResetButton={onClickResetButton}
-        onClickResultsButton={sendDataToStatistic}
+        onClickStatsButton={onClickStatsButton}
       />
       {modalOpen && (
         <SpeakItModalWindow

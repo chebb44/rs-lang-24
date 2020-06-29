@@ -33,7 +33,6 @@ export const miniGamesStats = (state = defaultData, action) => {
         },
       };
     case SPEAK_IT_SEND_GAME_RESULT:
-      console.log(action.payload);
       const { dates, results } = action.payload;
       let speakItDayStat = [];
       if (dates in state.miniGames.speakIt) {
