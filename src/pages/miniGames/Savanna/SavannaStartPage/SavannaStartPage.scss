@@ -1,0 +1,36 @@
+  .start-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .btn-rslang{
+    margin: 30px;
+    color: #204b62bf;
+    background: #FFD6BA
+  }
+  .color-rslang{
+    color: #204b62bf;
+  }
+  svg {
+    position: absolute;
+    top: 90px;
+    left: calc(50% - 40px);
+    width: 300px;
+    height: 300px;
+    z-index: -3;
+    fill: #FFD6BA;
+    transform: scale(1.7, 1.5) translate(85px, -133px);
+  }
+  .footer_image {
+    position: absolute;
+    bottom: 0;
+    left: auto;
+    right: auto;
+    width: 100%;
+    z-index: -3;
+    opacity: .15;
+    max-height: 200px;
+    max-width: 600px;
+  }
