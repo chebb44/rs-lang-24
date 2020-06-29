@@ -6,7 +6,7 @@ export const Buttons = ({
   onClickResultsButton,
 }) => {
   return (
-    <div className="buttons">
+    <div className="speak-it__buttons">
       <button
         className="btn btn_speak-it btn_small button__reset active"
         onClick={onClickResetButton}
