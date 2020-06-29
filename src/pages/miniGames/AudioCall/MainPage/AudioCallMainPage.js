@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { AudioCallStartScreen } from '../StartScreen/AudioCallStartScreen';
 import { AudioCallGamePage } from '../GamePage/AudioCallGamePage';
 import {
@@ -9,16 +9,20 @@ import {
 } from '../constants';
 import { useDispatch, useSelector } from 'react-redux';
 import { dictionaryStateStateSelector } from '../../../../reducers/dictionaryReducer/dictionaryReducer';
-import { shuffleArray } from '../utilities';
 import {
   getWordsForAudioCall,
   getFalseWordsForAudioCall,
 } from '../getWordsForAudioCall';
+import { learnCardSettingsSelector } from '../../../../reducers/learnSettings/learnSettingsReducer';
+import { actionInitCardSetAudioCall } from '../../../../store/actionsForSaga';
 
 export const AudioCallMainPage = () => {
   const dispatch = useDispatch();
   const { learnedWords } = useSelector(dictionaryStateStateSelector);
-  const [currentScreen, setCurrentScreen] = useState(AUDIO_CALL_START_SCREEN);
+  const { currentWordsGroup, currentWordsPage } = useSelector(
+    learnCardSettingsSelector,
+  );
+  const [currentScreen, setCurrentScreen] = useState(AUDIO_CALL_GAME_SCREEN);
 
   const startGameHandler = useCallback(() => {
     setCurrentScreen(AUDIO_CALL_GAME_SCREEN);
@@ -33,13 +37,29 @@ export const AudioCallMainPage = () => {
     setCurrentScreen(AUDIO_CALL_END_SCREEN);
   }, []);
 
-  // dispatch
-  let wordsForGame = [];
-  learnedWords.length > 9
-    ? // get page/group of MAIN user state
-      (wordsForGame = getFalseWordsForAudioCall(0, 0, learnedWords))
-    : // get difficulty game user
-      (wordsForGame = getWordsForAudioCall(0, 0));
+  //get level option
+  const [wordsGroup, setWordsGroup] = useState(0);
+  const [wordPage, setWordPage] = useState(0);
+  const [wordsForGame, setWordsForGame] = useState([]);
+
+  const upState = useCallback(() => {
+    setWordsGroup(wordsGroup + 1);
+  });
+
+  useEffect(() => {
+    const fetchWords = async () => {
+      let wordsArray = [];
+      learnedWords.length > 9
+        ? (wordsArray = await getFalseWordsForAudioCall(
+            currentWordsGroup,
+            currentWordsPage,
+            learnedWords,
+          ))
+        : (wordsArray = await getWordsForAudioCall(wordsGroup, wordPage));
+      setWordsForGame(wordsArray);
+    };
+    fetchWords();
+  }, [wordPage, wordsGroup, currentWordsGroup, currentWordsPage, learnedWords]);
 
   return (
     <div>
@@ -55,8 +75,10 @@ export const AudioCallMainPage = () => {
           case AUDIO_CALL_GAME_SCREEN:
             return (
               <AudioCallGamePage
-                wordsForGame={wordsForGame}
+                learnedWords={learnedWords}
                 redirectToStartScreen={redirectToStartScreen}
+                wordsForGame={wordsForGame}
+                upState={upState}
               />
             );
           // case AUDIO_CALL_END_SCREEN:

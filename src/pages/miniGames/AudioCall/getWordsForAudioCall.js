@@ -4,9 +4,7 @@ import { shuffleArray, getArrayRandElement } from './utilities';
 export const getWordsForAudioCall = async (group, page) => {
   let newWordsFromApi = await getWordsByPageAndGroup({ page, group });
 
-  newWordsFromApi = shuffleArray(newWordsFromApi)
-    .slice(10)
-    .map((item) => new Array(item));
+  newWordsFromApi = shuffleArray(newWordsFromApi).slice(10);
   return getFalseWordsForAudioCall(page + 1, group, newWordsFromApi);
 };
 
@@ -34,9 +32,8 @@ export const getFalseWordsForAudioCall = async (page, group, wordsForGame) => {
   falseWords = shuffleArray(falseWords);
 
   wordsForGame = wordsForGame.map((item) =>
-    item.concat(getArrayRandElement(falseWords)),
+    new Array(item).concat(getArrayRandElement(falseWords)),
   );
-  console.log('after wordsForGame', wordsForGame);
 
   return wordsForGame;
 };
