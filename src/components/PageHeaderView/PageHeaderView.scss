@@ -15,10 +15,21 @@
   @media screen and (max-width: 767px) {
     font-size: 1.3rem;
   }
+  @media screen and (max-width: $mobile-width-big ) {
+    font-size: 1.1rem;
+    line-height: 1rem;
+  }
 }
 .button__log-out {
   @include std_button;
   background-color: $accent-color;
+
+  @media screen and (max-width: $mobile-width-big) {
+    width: 60px;
+    height: 30px;
+    padding: 0;
+    font-size: .9rem;
+  }
 }
 
 .app-header {
@@ -29,11 +40,14 @@
   -webkit-box-shadow: 0px 0px 3px 2px rgba(85, 91, 110, 0.2);
   -moz-box-shadow: 0px 0px 3px 2px rgba(85, 91, 110, 0.2);
   box-shadow: 0px 0px 3px 2px rgba(85, 91, 110, 0.2);
+  @media screen and (max-width: $mobile-width-big ) {
+    height: 40px;
+  }
 }
 
 .app-burger {
   margin-right: 10px;
-  transition-duration: 500ms;
+  transition-duration: .3s;
   background: url(./assets/open-menu.svg);
   background-position: center;
   background-size: cover;
@@ -41,8 +55,12 @@
   height: 30px;
   z-index: 11;
   cursor: pointer;
+  @media screen and (max-width: $mobile-width-big ) {
+    width: 22px;
+    height: 22px;
+  }
 }
 .rotate-burger {
   transform: rotate(90deg);
-  transition-duration: 300ms;
+  transition-duration: .3s;
 }

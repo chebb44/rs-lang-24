@@ -19,8 +19,6 @@ export const MicIcon = ({ gameMode }) => {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="#fc5c65"
-      width="36px"
-      height="36px"
       opacity={opacity}
     >
       <path d="M0 0h24v24H0z" fill="none" />

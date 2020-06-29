@@ -16,6 +16,14 @@
   background-color: #fff;
   transition: .3s;
 
+  @media screen and (max-width: $mobile-width-big ) {
+    min-width: calc(100vw / 2 - 10px);
+    min-height: calc((100vw / 2) / 20 * 7);
+    //margin-top: 10px;
+    margin-bottom: 3px;
+    margin-top: 0;
+
+  }
 
   &:hover {
     background-color: $primary-color;
@@ -41,9 +49,18 @@
   width: 34px;
   height: 34px;
 
+  @media screen and (max-width: $mobile-width-big ) {
+    top: calc(50% - 12px);
+  }
+
   svg {
     width: 34px;
     height: 34px;
+
+    @media screen and (max-width: $mobile-width-big ) {
+      width: 30px;
+      height: 30px;
+    }
   }
 }
 
@@ -51,10 +68,24 @@
   font-size: 20px;
   font-weight: bold;
   padding-left: 25px;
+
+  @media screen and (max-width: $mobile-width-big ) {
+    font-size: 18px;
+  }
+  @media screen and (max-width: $mobile-width-small ) {
+    font-size: 15px;
+  }
 }
 
 .card__transcription {
   font-size: 16px;
   font-weight: 100;
   padding-left: 25px;
+
+  @media screen and (max-width: $mobile-width-big ) {
+    font-size: 15px;
+  }
+  @media screen and (max-width: $mobile-width-small ) {
+    font-size: 13px;
+  }
 }

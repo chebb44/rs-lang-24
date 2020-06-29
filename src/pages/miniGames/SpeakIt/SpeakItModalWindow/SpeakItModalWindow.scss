@@ -11,13 +11,11 @@
     min-width: 100vw;
     min-height: 100vh;
     z-index: 10;
-    //display: flex;
-    //justify-content: center;
 
     .speak-it-modal__window {
       position: absolute;
       top: calc(50% - 130px);
-      left: calc(50% - 145px);;
+      left: calc(50% - 150px);;
       width: 300px;
       min-height: 260px;
       background: $default-color;

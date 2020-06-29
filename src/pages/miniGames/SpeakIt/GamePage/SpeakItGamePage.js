@@ -161,7 +161,7 @@ export const SpeakItGameScreen = function () {
 
   return (
     <div className="speak-it__game-screen">
-      <div className="game-score" />
+      {/*<div className="game-score" />*/}
       <CentralScreen currentCard={currentCardState} gameMode={isGameStarted} />
       <div className="cards">
         {trainCards.map((card, idx) => (
