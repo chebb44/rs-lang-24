@@ -11,27 +11,27 @@ import { speackIcon } from './assets/speackIcon';
 import { writeIcon } from './assets/writeIcon';
 
 export const StatisticPage = () => {
-  const statistic = useSelector(statisticStateSelector);
+  const { shortStatistic } = useSelector(statisticStateSelector);
 
   const statisticItemList = [
     {
-      text: 'Карточек завершено:',
-      value: statistic.endCards,
-      icon: learnIcon,
-    },
-    {
-      text: 'Новых слов:',
-      value: statistic.correctAnswer,
+      text: 'Новые слова:',
+      value: shortStatistic.newWordsAmount,
       icon: writeIcon,
     },
     {
+      text: 'Завершенный карточки:',
+      value: shortStatistic.cardsAmount,
+      icon: learnIcon,
+    },
+    {
       text: 'Правильные ответы:',
-      value: statistic.newWords,
+      value: `${shortStatistic.correctAnswersPercent}%`,
       icon: speackIcon,
     },
     {
       text: 'Самая длинная серия ответов:',
-      value: statistic.longestSeriesCorrectAnswer,
+      value: shortStatistic.longestCorrectAnswersSeries,
       icon: headIcon,
     },
   ];

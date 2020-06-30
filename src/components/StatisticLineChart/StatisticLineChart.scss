@@ -1,0 +1,34 @@
+@import "../../scss/mixins.scss";
+@import "../../scss/vars.scss";
+
+.canvas-container {
+  position: relative;
+  margin: 20px auto;
+  max-width: 720px;
+  height: 350px;
+
+  @include media-tablet-big {
+    height: 300px;
+    max-width: 670px;
+  }
+
+  @include media-tablet-small {
+    height: 270px;
+    max-width: 480px;
+  }
+
+  @include media-mobile-big {
+    height: 250px;
+    max-width: 370px;
+  }
+
+  @include media-mobile-small {
+    height: 240px;
+    max-width: 318px;
+  }
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+}

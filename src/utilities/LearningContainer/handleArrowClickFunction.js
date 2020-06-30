@@ -22,7 +22,9 @@ import { calculateCorrectAnswersStatistic } from '../../utilities/learnCard/calc
 import {
   actionSetCorrectAnswersPercent,
   actionSetLongestCorrectAnswerSeries,
+  actionUpdateLearnedWords,
 } from '../../reducers/statisticReducer/statisticActions';
+import { getDateStringByDate } from '../../utilities/getDateStringByDate';
 
 export function handleArrowClickFunction(
   direction,
@@ -38,10 +40,15 @@ export function handleArrowClickFunction(
     currentLearnCardIndex <= learnCardsLength - 1
   ) {
     store.dispatch(actionUpdateCurrentCardIndex(currentLearnCardIndex + 1));
-    if (isWordCorrect)
+
+    if (isWordCorrect) {
       store.dispatch(
         actionUpdateLastCorrectWordIndex(lastCorrectWordIndex + 1),
       );
+      const date = getDateStringByDate(new Date());
+      store.dispatch(actionUpdateLearnedWords(date));
+    }
+
     if (currentLearnCardIndex === learnCardsLength - 1) {
       const [
         correctAnswersPercent,
