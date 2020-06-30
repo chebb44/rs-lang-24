@@ -72,7 +72,7 @@ export const SpeakItGameScreen = function ({ onClickStatsButton }) {
     sendDataToStatistic(calculateAnswers(trainCards));
     setTimeout(() => setModalOpen(true), 1000);
     setIsGameStarted(false);
-    stopVoxRecognition();
+    recognition && stopVoxRecognition();
   }, [sendDataToStatistic, trainCards]);
 
   const setNewCard = useCallback(() => {
@@ -112,7 +112,7 @@ export const SpeakItGameScreen = function ({ onClickStatsButton }) {
   );
 
   const startVoiceRecognition = useCallback(() => {
-    startVoxRecognition();
+    recognition && startVoxRecognition();
     recognition.onresult = (event) => {
       const recognised = getRecognisedWordsArrayFromEvent(event);
       onNewWordRecognise(recognised);
@@ -135,7 +135,7 @@ export const SpeakItGameScreen = function ({ onClickStatsButton }) {
 
   const onClickResetButton = useCallback(() => {
     setIsGameStarted(false);
-    stopVoxRecognition();
+    recognition && stopVoxRecognition();
     initCardsView(trainCards);
     setCurrentCardState(INIT_CARD);
   }, [trainCards]);
