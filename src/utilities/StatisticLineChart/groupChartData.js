@@ -25,6 +25,5 @@ export function groupChartData(/* learnedWords */) {
     }
   }
   const data = Object.values(dataPerMonth);
-  console.log(data);
   return data;
 }

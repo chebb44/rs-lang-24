@@ -2,8 +2,8 @@ import React, { useRef, useEffect } from 'react';
 import Chart from 'chart.js';
 import { useSelector } from 'react-redux';
 import { statisticStateSelector } from '../../reducers/statisticReducer/statiscticReducer';
-//import { drawGraph } from '../../utilities/StatisticLineChart/drawGraph';
 import { groupChartData } from '../../utilities/StatisticLineChart/groupChartData';
+import { groupChartDataForTooltip } from '../../utilities/StatisticLineChart/groupChartDataForTooltip';
 import { months } from './constants';
 import './StatisticLineChart.scss';
 
@@ -14,16 +14,30 @@ export const StatisticLineChart = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
-    //drawGraph(canvas, ctx, learnedWordsForStatistic);
     const chartData = groupChartData(learnedWordsForStatistic);
     new Chart(ctx, {
       type: 'line',
       data: {
-        datasets: [{ label: 'Изученных слов', data: chartData }],
+        datasets: [{ label: 'Изученные слова', data: chartData }],
         labels: months,
       },
       options: {
         maintainAspectRatio: false,
+        tooltips: {
+          callbacks: {
+            title: function () {
+              return 'Изученные слова';
+            },
+            label: function (tooltipItem) {
+              const labelData = groupChartDataForTooltip(
+                learnedWordsForStatistic,
+              );
+              const label = labelData[tooltipItem.index];
+              console.log(tooltipItem);
+              return label;
+            },
+          },
+        },
       },
     });
   });
