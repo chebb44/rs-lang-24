@@ -1,7 +1,9 @@
+import { BACKEND_URL } from './networkConstants';
+
 export const getUserStatistic = async ({ userId, token }) => {
   try {
     const rawResponse = await fetch(
-      `https://afternoon-falls-25894.herokuapp.com/users/${userId}/statistics`,
+      `${BACKEND_URL}/users/${userId}/statistics`,
       {
         method: 'GET',
         withCredentials: true,
@@ -11,8 +13,7 @@ export const getUserStatistic = async ({ userId, token }) => {
         },
       },
     );
-    const content = await rawResponse.json();
-    return content;
+    return await rawResponse.json();
   } catch (error) {
     console.log('Failed get statistic for this user');
     return null;
@@ -22,7 +23,7 @@ export const getUserStatistic = async ({ userId, token }) => {
 export const putUserStatistic = async ({ userId, token, data }) => {
   try {
     const rawResponse = await fetch(
-      `https://afternoon-falls-25894.herokuapp.com/users/${userId}/statistics`,
+      `${BACKEND_URL}/users/${userId}/statistics`,
       {
         method: 'PUT',
         withCredentials: true,
