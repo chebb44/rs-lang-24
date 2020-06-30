@@ -19,16 +19,19 @@ export const StatisticLineChart = () => {
     new Chart(ctx, {
       type: 'line',
       data: {
-        datasets: [
-          {
-            data: chartData,
-          },
-        ],
+        datasets: [{ label: 'Изученных слов', data: chartData }],
         labels: months,
+      },
+      options: {
+        maintainAspectRatio: false,
       },
     });
   });
 
   if (!learnedWordsForStatistic) return null;
-  return <canvas ref={canvasRef} width="500" height="300"></canvas>;
+  return (
+    <div className="canvas-container">
+      <canvas ref={canvasRef}></canvas>
+    </div>
+  );
 };
