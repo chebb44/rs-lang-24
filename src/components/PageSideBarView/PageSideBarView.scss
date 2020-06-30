@@ -24,6 +24,11 @@
   @media screen and (max-width: $mobile-width-big ) {
     height: calc(100vh - 40px);
   }
+
+  &::-webkit-scrollbar { /* chrome based */
+    width: 0px;  /* ширина scrollbar'a */
+    background: transparent;  /* опционально */
+  }
 }
 .sidebar-link-list {
   padding: 5px;

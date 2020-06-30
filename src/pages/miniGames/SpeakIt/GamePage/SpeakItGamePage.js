@@ -25,6 +25,7 @@ import recognition, {
 import SpeakItModalWindow from '../SpeakItModalWindow/SpeakItModalWindow';
 import { actionSpeakItSendGameResult } from '../../../../reducers/miniGamesStats/miniGamesStatsActions';
 import { getBeginDayTimeStamp } from '../../../../utilities/getBeginDayTimeStamp';
+import { loginUser } from '../../../../utilities/network/userAPI';
 
 export const SpeakItGameScreen = function ({ onClickStatsButton }) {
   const dispatch = useDispatch();
@@ -46,6 +47,7 @@ export const SpeakItGameScreen = function ({ onClickStatsButton }) {
         );
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [isUnsupportedBrowser, setIsUnsupportedBrowser] = useState(false);
   const [trainCards, setTrainCards] = useState(
     cardsForCurrentGame.slice(0, 10),
   );
@@ -127,7 +129,8 @@ export const SpeakItGameScreen = function ({ onClickStatsButton }) {
 
   const onClickSpeakButton = useCallback(() => {
     window.scrollTo(0, 0);
-    !isGameStarted && initNewGame();
+    !recognition && setIsUnsupportedBrowser(true);
+    !isGameStarted && recognition && initNewGame();
   }, [initNewGame, isGameStarted]);
 
   const onClickResetButton = useCallback(() => {
@@ -157,6 +160,12 @@ export const SpeakItGameScreen = function ({ onClickStatsButton }) {
     [isGameStarted, trainCards],
   );
 
+  const onCloseModalError = useCallback(() => {
+    setIsUnsupportedBrowser(false);
+    initCardsView(trainCards);
+    setCurrentCardState(INIT_CARD);
+  }, [trainCards]);
+
   return (
     <div className="speak-it__game-screen">
       <CentralScreen currentCard={currentCardState} gameMode={isGameStarted} />
@@ -174,7 +183,11 @@ export const SpeakItGameScreen = function ({ onClickStatsButton }) {
         <SpeakItModalWindow
           answers={calculateAnswers(trainCards)}
           onCloseModal={onCloseModal}
+          endGame={true}
         />
+      )}
+      {isUnsupportedBrowser && (
+        <SpeakItModalWindow onCloseModal={onCloseModalError} />
       )}
     </div>
   );
