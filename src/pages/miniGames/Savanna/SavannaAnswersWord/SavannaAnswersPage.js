@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 export const SavannaAnswers = ({ learnwords, difficulty, answerindex }) => {
   let tab = true;
+  const [answers, setAnswers] = useState(0);
   const saveAnswer = (answer) => {
+    setAnswers(answers+1);
     if (localStorage.getItem('SavannaStatisticAnswers') == null) {
       localStorage.setItem('SavannaStatisticAnswers', 0);
       localStorage.setItem('SavannaStatisticCorrectAnswers', 0);
