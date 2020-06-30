@@ -10,9 +10,9 @@ import {
 
 const defaultSettings = {
   shortStatistic: {
-    cardsAmount: 10,
+    cardsAmount: 0,
     correctAnswersPercent: 0,
-    newWordsAmount: 10,
+    newWordsAmount: 0,
     longestCorrectAnswersSeries: 0,
   },
   learnedWords: 0,
