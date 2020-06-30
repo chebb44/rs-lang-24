@@ -25,7 +25,6 @@ import recognition, {
 import SpeakItModalWindow from '../SpeakItModalWindow/SpeakItModalWindow';
 import { actionSpeakItSendGameResult } from '../../../../reducers/miniGamesStats/miniGamesStatsActions';
 import { getBeginDayTimeStamp } from '../../../../utilities/getBeginDayTimeStamp';
-import { loginUser } from '../../../../utilities/network/userAPI';
 
 export const SpeakItGameScreen = function ({ onClickStatsButton }) {
   const dispatch = useDispatch();
