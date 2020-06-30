@@ -1,12 +1,14 @@
 import React from 'react';
 import './SpeakItStatisticDayCard.scss';
+import { getDateByString } from '../../../../utilities/getDateStringByDate';
 
 const SpeakItStatisticDayCard = ({ dayStatistic }) => {
+  console.log(dayStatistic);
   return (
     <div className="speak-it-statistic__day-card">
       <div className="speak-it-statistic-card__title">
         <div className="speak-it-statistic__date">
-          {new Date(dayStatistic.date).toLocaleDateString()}
+          {getDateByString(dayStatistic.date).toLocaleDateString()}
         </div>
         <div className="speak-it-statistic__game-played">
           Всего игр: {dayStatistic.data.length}

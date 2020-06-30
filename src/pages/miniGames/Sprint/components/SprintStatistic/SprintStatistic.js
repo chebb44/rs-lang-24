@@ -2,6 +2,7 @@ import React from 'react';
 import './SprintStatistic.scss';
 import { SprintStatisticItem } from './../SprintStatisticItem/SprintStatisticItem';
 import { UniversalButton } from './../../../../../components/UniversalButton/UniversalButton';
+
 export const SprintStatistic = ({ redirectToStartScreen, gameStat }) => {
   console.log('SprintStatistic -> gameStat', gameStat);
   const statArray = [];

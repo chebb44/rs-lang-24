@@ -13,7 +13,7 @@ import { SPRINT_GAME_SCREEN, SPRINT_START_SCREEN } from '../../constants';
 import { SPRINT_END_SCREEN, SPRINT_STATISTIC_SCREEN } from './../../constants';
 import { SprintStatistic } from '../../components/SprintStatistic/SprintStatistic';
 import { miniGamesStatsSelector } from './../../../../../reducers/miniGamesStats/miniGamesStatsReducer';
-import { getBeginDayTimeStamp } from './../../../../../utilities/getBeginDayTimeStamp';
+import { getDateStringByDate } from '../../../../../utilities/getDateStringByDate';
 
 export const SprintMain = () => {
   const {
@@ -53,7 +53,7 @@ export const SprintMain = () => {
   const endGameHandler = useCallback(() => {
     dispatch(
       actionSprintSendGameResult({
-        date: getBeginDayTimeStamp(new Date()),
+        date: getDateStringByDate(new Date()),
         result: score,
       }),
     );
