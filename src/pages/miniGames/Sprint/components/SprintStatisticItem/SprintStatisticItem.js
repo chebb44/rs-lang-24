@@ -7,7 +7,7 @@ export const SprintStatisticItem = ({ dayStat: { date, data } }) => {
   return (
     <div className="sprint-day-stat" title={title}>
       {`${new Date(
-        +date,
+        date,
       ).toLocaleDateString()} вы играли ${amountAttempts} раз(а)! Лучший результат: ${bestResult} очков!`}
     </div>
   );
