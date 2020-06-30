@@ -33,7 +33,6 @@ export const StatisticLineChart = () => {
                 learnedWordsForStatistic,
               );
               const label = labelData[tooltipItem.index];
-              console.log(tooltipItem);
               return label;
             },
           },
