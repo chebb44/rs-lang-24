@@ -7,8 +7,8 @@ import { AudioCallEnterBtn } from '../AudioCallEnterBtn/AudioCallEnterBtn';
 import { AudioCallExitBtn } from '../AudioCallExitBtn/AudioCallExitBtn';
 import successSrc from '../../../../assets/audio/success.mp3';
 import { SHOW_TRUE, MAX_WORDS_FOR_GAME } from '../constants';
+import { SwitchTransition, CSSTransition } from 'react-transition-group';
 
-//TODO: fade effect
 //TODO: end game result modal
 //TODO: statistic modal on startScreen
 //TODO: difficulty level
@@ -115,16 +115,35 @@ export const AudioCallGamePage = ({ redirectToStartScreen, wordsForGame }) => {
     <div className="audio-call-game-page">
       <AudioCallProgressBar current={wordNumber} all={MAX_WORDS_FOR_GAME} />
       <AudioCallExitBtn func={redirectToStartScreen} />
-      <AudioCallQuestionContainer
-        wordsForGame={wordsForGame[wordNumber]}
-        questionAudioClass={questionAudioClass}
-        questionTitleClass={questionTitleClass}
-      />
-      <AudioCallAnswerBtnsBlock
-        wordsForGame={wordsForGame[wordNumber]}
-        func={checkTrueWordClick}
-      />
-      <AudioCallEnterBtn func={clickEnterBtn} enterBtnClass={enterBtnClass} />
+      <SwitchTransition>
+        <CSSTransition
+          key={wordNumber}
+          appear
+          timeout={800}
+          classNames={{
+            enter: 'slide-enter',
+            enterActive: 'slide-enter-active',
+            exit: 'slide-exit',
+            exitActive: 'slide-exit-active',
+          }}
+        >
+          <div className="audio-call-game-page__container">
+            <AudioCallQuestionContainer
+              wordsForGame={wordsForGame[wordNumber]}
+              questionAudioClass={questionAudioClass}
+              questionTitleClass={questionTitleClass}
+            />
+            <AudioCallAnswerBtnsBlock
+              wordsForGame={wordsForGame[wordNumber]}
+              func={checkTrueWordClick}
+            />
+            <AudioCallEnterBtn
+              func={clickEnterBtn}
+              enterBtnClass={enterBtnClass}
+            />
+          </div>
+        </CSSTransition>
+      </SwitchTransition>
     </div>
   );
 };
