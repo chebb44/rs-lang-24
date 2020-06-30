@@ -46,6 +46,7 @@ export const SpeakItGameScreen = function ({ onClickStatsButton }) {
         );
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [isUnsupportedBrowser, setIsUnsupportedBrowser] = useState(false);
   const [trainCards, setTrainCards] = useState(
     cardsForCurrentGame.slice(0, 10),
   );
@@ -70,7 +71,7 @@ export const SpeakItGameScreen = function ({ onClickStatsButton }) {
     sendDataToStatistic(calculateAnswers(trainCards));
     setTimeout(() => setModalOpen(true), 1000);
     setIsGameStarted(false);
-    stopVoxRecognition();
+    recognition && stopVoxRecognition();
   }, [sendDataToStatistic, trainCards]);
 
   const setNewCard = useCallback(() => {
@@ -110,7 +111,7 @@ export const SpeakItGameScreen = function ({ onClickStatsButton }) {
   );
 
   const startVoiceRecognition = useCallback(() => {
-    startVoxRecognition();
+    recognition && startVoxRecognition();
     recognition.onresult = (event) => {
       const recognised = getRecognisedWordsArrayFromEvent(event);
       onNewWordRecognise(recognised);
@@ -127,12 +128,13 @@ export const SpeakItGameScreen = function ({ onClickStatsButton }) {
 
   const onClickSpeakButton = useCallback(() => {
     window.scrollTo(0, 0);
-    !isGameStarted && initNewGame();
+    !recognition && setIsUnsupportedBrowser(true);
+    !isGameStarted && recognition && initNewGame();
   }, [initNewGame, isGameStarted]);
 
   const onClickResetButton = useCallback(() => {
     setIsGameStarted(false);
-    stopVoxRecognition();
+    recognition && stopVoxRecognition();
     initCardsView(trainCards);
     setCurrentCardState(INIT_CARD);
   }, [trainCards]);
@@ -157,6 +159,12 @@ export const SpeakItGameScreen = function ({ onClickStatsButton }) {
     [isGameStarted, trainCards],
   );
 
+  const onCloseModalError = useCallback(() => {
+    setIsUnsupportedBrowser(false);
+    initCardsView(trainCards);
+    setCurrentCardState(INIT_CARD);
+  }, [trainCards]);
+
   return (
     <div className="speak-it__game-screen">
       <CentralScreen currentCard={currentCardState} gameMode={isGameStarted} />
@@ -174,7 +182,11 @@ export const SpeakItGameScreen = function ({ onClickStatsButton }) {
         <SpeakItModalWindow
           answers={calculateAnswers(trainCards)}
           onCloseModal={onCloseModal}
+          endGame={true}
         />
+      )}
+      {isUnsupportedBrowser && (
+        <SpeakItModalWindow onCloseModal={onCloseModalError} />
       )}
     </div>
   );
