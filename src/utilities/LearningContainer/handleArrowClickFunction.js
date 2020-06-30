@@ -24,7 +24,7 @@ import {
   actionSetLongestCorrectAnswerSeries,
   actionUpdateLearnedWords,
 } from '../../reducers/statisticReducer/statisticActions';
-import { getBeginDayTimeStamp } from '../../utilities/getBeginDayTimeStamp';
+import { getDateStringByDate } from '../../utilities/getDateStringByDate';
 
 export function handleArrowClickFunction(
   direction,
@@ -45,7 +45,7 @@ export function handleArrowClickFunction(
       store.dispatch(
         actionUpdateLastCorrectWordIndex(lastCorrectWordIndex + 1),
       );
-      const date = getBeginDayTimeStamp(new Date());
+      const date = getDateStringByDate(new Date());
       store.dispatch(actionUpdateLearnedWords(date));
     }
 
