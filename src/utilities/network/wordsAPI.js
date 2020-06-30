@@ -1,9 +1,10 @@
 import { WORD_EXIST, WORD_CREATED_SUCCESSFULLY } from './networkConstants';
+import { BACKEND_URL } from './networkConstants';
 
 export const getWordsByPageAndGroup = async ({ page, group }) => {
   try {
     const rawResponse = await fetch(
-      `https://afternoon-falls-25894.herokuapp.com/words?page=${page}&group=${group}`,
+      `${BACKEND_URL}/words?page=${page}&group=${group}`,
     );
     const content = await rawResponse.json();
     return content;
@@ -15,9 +16,7 @@ export const getWordsByPageAndGroup = async ({ page, group }) => {
 
 export const getWordDataById = async ({ wordId }) => {
   try {
-    const rawResponse = await fetch(
-      `https://afternoon-falls-25894.herokuapp.com/words/${wordId}`,
-    );
+    const rawResponse = await fetch(`${BACKEND_URL}/words/${wordId}`);
     const content = await rawResponse.json();
     return content;
   } catch (error) {
@@ -27,7 +26,7 @@ export const getWordDataById = async ({ wordId }) => {
 export const createUserWord = async ({ userId, wordId, data, token }) => {
   try {
     const rawResponse = await fetch(
-      `https://afternoon-falls-25894.herokuapp.com/users/${userId}/words/${wordId}`,
+      `${BACKEND_URL}/users/${userId}/words/${wordId}`,
       {
         method: 'POST',
         withCredentials: true,
@@ -65,7 +64,7 @@ export const createUserWord = async ({ userId, wordId, data, token }) => {
 export const updateUserWord = async ({ userId, wordId, data, token }) => {
   try {
     const rawResponse = await fetch(
-      `https://afternoon-falls-25894.herokuapp.com/users/${userId}/words/${wordId}`,
+      `${BACKEND_URL}/users/${userId}/words/${wordId}`,
       {
         method: 'PUT',
         withCredentials: true,
@@ -87,7 +86,7 @@ export const updateUserWord = async ({ userId, wordId, data, token }) => {
 export const deleteUserWord = async ({ userId, wordId, token }) => {
   try {
     const rawResponse = await fetch(
-      `https://afternoon-falls-25894.herokuapp.com/users/${userId}/words/${wordId}`,
+      `${BACKEND_URL}/users/${userId}/words/${wordId}`,
       {
         method: 'DELETE',
         withCredentials: true,
@@ -110,17 +109,14 @@ export const deleteUserWord = async ({ userId, wordId, token }) => {
 
 export const getAllUserWords = async ({ userId, token }) => {
   try {
-    const rawResponse = await fetch(
-      `https://afternoon-falls-25894.herokuapp.com/users/${userId}/words`,
-      {
-        method: 'GET',
-        withCredentials: true,
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: 'application/json',
-        },
+    const rawResponse = await fetch(`${BACKEND_URL}/users/${userId}/words`, {
+      method: 'GET',
+      withCredentials: true,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json',
       },
-    );
+    });
     const content = await rawResponse.json();
     return content;
   } catch (error) {
@@ -132,7 +128,7 @@ export const getAllUserWords = async ({ userId, token }) => {
 export const getUserWordById = async ({ userId, wordId, token }) => {
   try {
     const rawResponse = await fetch(
-      `https://afternoon-falls-25894.herokuapp.com/users/${userId}/words/${wordId}`,
+      `${BACKEND_URL}/users/${userId}/words/${wordId}`,
       {
         method: 'GET',
         withCredentials: true,
@@ -154,7 +150,7 @@ export const getUserWordById = async ({ userId, wordId, token }) => {
 export const getAggregateUserWordById = async ({ userId, wordId, token }) => {
   try {
     const rawResponse = await fetch(
-      `https://afternoon-falls-25894.herokuapp.com/users/${userId}/aggregatedWords/${wordId}`,
+      `${BACKEND_URL}/users/${userId}/aggregatedWords/${wordId}`,
       {
         method: 'GET',
         withCredentials: true,
@@ -175,7 +171,7 @@ export const getAggregateUserWordById = async ({ userId, wordId, token }) => {
 export const getAllAggregateUserWords = async ({ userId, token }) => {
   try {
     const rawResponse = await fetch(
-      `https://afternoon-falls-25894.herokuapp.com/users/${userId}/aggregatedWords`,
+      `${BACKEND_URL}/users/${userId}/aggregatedWords`,
       {
         method: 'GET',
         withCredentials: true,
@@ -194,7 +190,7 @@ export const getAllAggregateUserWords = async ({ userId, token }) => {
   }
 };
 
-// https://afternoon-falls-25894.herokuapp.com/words?page=2&group=0
+// ${BACKEND_URL}/words?page=2&group=0
 // {
 //   "id": "5e9f5ee35eb9e72bc21af4c8",
 //   "group": 0,
