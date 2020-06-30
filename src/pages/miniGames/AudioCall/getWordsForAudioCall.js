@@ -11,23 +11,19 @@ export const getWordsForAudioCall = async (group, page) => {
 export const getFalseWordsForAudioCall = async (page, group, wordsForGame) => {
   let falseWords = [];
   const numberOfNeed = 100;
-  let wordInPage = 0;
 
   let newFalseWordsFromApi = await getWordsByPageAndGroup({ page, group });
   for (let i = 0; i < numberOfNeed; i++) {
     if (newFalseWordsFromApi.length === 0) {
       if (group < 29) {
         page += 1;
-        wordInPage = 0;
       } else {
         group += 1;
         page = 0;
-        wordInPage = 0;
       }
       newFalseWordsFromApi = await getWordsByPageAndGroup({ page, group });
     }
     falseWords.push(newFalseWordsFromApi.shift());
-    wordInPage += 1;
   }
   falseWords = shuffleArray(falseWords);
 

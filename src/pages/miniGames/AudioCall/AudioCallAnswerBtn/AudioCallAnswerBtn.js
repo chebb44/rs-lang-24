@@ -1,29 +1,20 @@
-// 5 state :
-// - default -- 'audio-call-answer-btn' --
-// - disabled (visible number) -- 'audio-call-answer-btn_disabled' --
-// - false --'audio-call-answer-btn_false' --
-// - true -- 'audio-call-answer-btn_true' -- , -- 'audio-call-answer-btn_true-after-false' -- it also default
 import React from 'react';
 import './AudioCallAnswerBtn.scss';
 import { AudioCallSuccessSvg } from './assets/AudioCallSuccessSvg';
 
 export const AudioCallAnswerBtn = ({ item }) => {
-  const { word, position } = item;
+  const { word, position, checkFunc } = item;
 
-  // const handleClick = (event) => {
-  //   if (event.target.classList.contains('btn') && answer === question) {
-  //     return event.target.classList.add('btn_true');
-  //   }
-  //   if (event.target.classList.contains('btn') && answer !== question) {
-  //     return event.target.classList.add('btn_false(disabled)');
-  //   }
-  // };
+  const handleClick = (event) => {
+    return checkFunc(event);
+  };
 
   return (
     <button
+      value={word}
       type="button"
-      className="audio-call-answer-btn "
-      //onClick={handleClick}
+      className="audio-call-answer-btn btn "
+      onClick={handleClick}
     >
       <span className="audio-call-answer-btn__position">
         {position}

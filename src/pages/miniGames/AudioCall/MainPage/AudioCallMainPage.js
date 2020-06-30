@@ -7,8 +7,9 @@ import {
   AUDIO_CALL_STATISTIC_SCREEN,
   AUDIO_CALL_GAME_SCREEN,
   AUDIO_CALL_END_SCREEN,
+  MAX_WORDS_FOR_GAME,
 } from '../constants';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { dictionaryStateStateSelector } from '../../../../reducers/dictionaryReducer/dictionaryReducer';
 import {
   getWordsForAudioCall,
@@ -37,19 +38,14 @@ export const AudioCallMainPage = () => {
     setCurrentScreen(AUDIO_CALL_END_SCREEN);
   }, []);
 
-  //get level option
   const [wordsGroup, setWordsGroup] = useState(0);
   const [wordPage, setWordPage] = useState(0);
   const [wordsForGame, setWordsForGame] = useState();
 
-  const upState = useCallback(() => {
-    setWordsGroup(wordsGroup + 1);
-  });
-
   useEffect(() => {
     const fetchWords = async () => {
       let wordsArray = [];
-      learnedWords.length > 9
+      learnedWords.length === MAX_WORDS_FOR_GAME
         ? (wordsArray = await getFalseWordsForAudioCall(
             currentWordsGroup,
             currentWordsPage,
@@ -77,7 +73,6 @@ export const AudioCallMainPage = () => {
               <AudioCallGamePage
                 redirectToStartScreen={redirectToStartScreen}
                 wordsForGame={wordsForGame}
-                upState={upState}
               />
             ) : (
               <Spinner />

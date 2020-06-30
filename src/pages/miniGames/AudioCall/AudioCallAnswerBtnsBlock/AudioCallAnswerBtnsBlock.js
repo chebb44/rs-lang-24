@@ -1,38 +1,55 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './AudioCallAnswerBtnsBlock.scss';
 import { AudioCallAnswerBtn } from '../AudioCallAnswerBtn/AudioCallAnswerBtn';
 import { shuffleArray } from '../utilities';
 
-export const AudioCallAnswerBtnsBlock = ({ wordsForGame }) => {
-  wordsForGame = shuffleArray(wordsForGame);
+export const AudioCallAnswerBtnsBlock = ({ wordsForGame, func }) => {
+  const [wordsForGameShuffle, setWordsForGameShuffle] = useState([
+    '',
+    '',
+    '',
+    '',
+    '',
+  ]);
+
+  useEffect(() => {
+    setWordsForGameShuffle(shuffleArray(wordsForGame));
+  }, [wordsForGame]);
   const btnList = [
     {
-      word: wordsForGame[0].word,
+      word: wordsForGameShuffle[0].word,
       position: 1,
+      checkFunc: func,
     },
     {
-      word: wordsForGame[1].word,
+      word: wordsForGameShuffle[1].word,
       position: 2,
+      checkFunc: func,
     },
     {
-      word: wordsForGame[2].word,
+      word: wordsForGameShuffle[2].word,
       position: 3,
+      checkFunc: func,
     },
     {
-      word: wordsForGame[3].word,
+      word: wordsForGameShuffle[3].word,
       position: 4,
+      checkFunc: func,
     },
     {
-      word: wordsForGame[4].word,
+      word: wordsForGameShuffle[4].word,
       position: 5,
+      checkFunc: func,
     },
   ];
 
   return (
     <div className="audio-call-answer-btns-block">
-      {btnList.map((item, index) => (
-        <AudioCallAnswerBtn item={item} key={index} />
-      ))}
+      <form>
+        {btnList.map((item, index) => (
+          <AudioCallAnswerBtn item={item} key={index} />
+        ))}
+      </form>
     </div>
   );
 };

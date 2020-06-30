@@ -1,12 +1,9 @@
 import React from 'react';
 import './AudioCallQuestionTitle.scss';
 
-export const AudioCallQuestionTitle = ({ word }) => {
+export const AudioCallQuestionTitle = ({ word, questionTitleClass }) => {
   return (
-    <div
-      className="audio-call-question-title audio-call-question-title_visible"
-      value={word}
-    >
+    <div className={questionTitleClass} id="questionWord">
       {word}
     </div>
   );

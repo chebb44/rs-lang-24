@@ -1,7 +1,7 @@
 import React from 'react';
 import './AudioCallProgressBar.scss';
 
-export const AudioCallProgressBar = ({ current = 4, all = 10 }) => {
+export const AudioCallProgressBar = ({ current, all }) => {
   const percent = Math.round((current / all) * 100);
   return (
     <div className="audio-call-progress">

@@ -22,9 +22,13 @@
     position: relative;
     margin-right: 5px;
     opacity: .6;
-    &_success {
+    pointer-events: none;
+  &_success {
       display: none;
     }
+  }
+  &__text {
+    pointer-events: none;
   }
   &:hover {
     cursor: pointer;
