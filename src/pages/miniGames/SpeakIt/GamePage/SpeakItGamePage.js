@@ -24,7 +24,7 @@ import recognition, {
 } from '../../../../utilities/speachRecognition';
 import SpeakItModalWindow from '../SpeakItModalWindow/SpeakItModalWindow';
 import { actionSpeakItSendGameResult } from '../../../../reducers/miniGamesStats/miniGamesStatsActions';
-import { getBeginDayTimeStamp } from '../../../../utilities/getBeginDayTimeStamp';
+import { getDateStringByDate } from '../../../../utilities/getDateStringByDate';
 
 export const SpeakItGameScreen = function ({ onClickStatsButton }) {
   const dispatch = useDispatch();
@@ -59,7 +59,7 @@ export const SpeakItGameScreen = function ({ onClickStatsButton }) {
     (result) => {
       dispatch(
         actionSpeakItSendGameResult({
-          dates: getBeginDayTimeStamp(new Date()),
+          dates: getDateStringByDate(new Date()),
           results: result,
         }),
       );
