@@ -20,8 +20,6 @@ export function groupChartDataForTooltip(/* learnedWords */) {
   learnedWordsArray.forEach((item) => {
     console.log(getDateByString(item[0]).getDate());
 
-
-
     const month = getDateByString(item[0]).getMonth();
     tooltipData[month].push(
       `${getDateByString(item[0]).getDate()} ${months[month]}: ${item[1]} слов`,
