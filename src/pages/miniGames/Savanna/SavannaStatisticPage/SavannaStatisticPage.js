@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { routes } from './../../../../App/constants/routes';
 
 export const SavannaStatistic = () => {
   return (
@@ -8,15 +10,11 @@ export const SavannaStatistic = () => {
         {localStorage.getItem('SavannaStatisticCorrectAnswers')} из{' '}
         {localStorage.getItem('SavannaStatisticAnswers')} вопросов
       </div>
-      <button
-        type="button"
-        className="btn btn-warning"
-        onClick={() => {
-          document.location.href = '/app';
-        }}
-      >
-        ОТЛИЧНО!
-      </button>
+      <Link to={routes.mainApp}>
+        <button type="button" className="btn btn-warning">
+          ОТЛИЧНО!
+        </button>
+      </Link>
     </div>
   );
 };
