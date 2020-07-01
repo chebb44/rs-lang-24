@@ -6,11 +6,11 @@ import './SavannaPlayPage.scss';
 import { SavannaAnswers } from '../SavannaAnswersWord/SavannaAnswersPage';
 import big_ben_upper from '../SavannaAssets/png/big_ben_upper.png';
 import big_ben_down from '../SavannaAssets/png/big_ben_down.png';
+
 export const SavannaPlay = ({ difficulty }) => {
   const [SavannaTimer, setSavannaTimer] = useState(90);
-  const Difficulty = difficulty;
   const learnCards = useSelector(learnCardsSelector);
-  if (learnCards.length < Difficulty - 1) {
+  if (learnCards.length < difficulty - 1) {
     return SavannaStatistic(``);
   }
   let random_index = parseInt(Math.random() * learnCards.length);
@@ -19,30 +19,32 @@ export const SavannaPlay = ({ difficulty }) => {
       setSavannaTimer(SavannaTimer + 360);
     }, 10);
   }
-  const TimerId = setTimeout(() => {
+  setTimeout(() => {
     setSavannaTimer(SavannaTimer + 360);
   }, 3000);
-  return [
-    <img src={big_ben_upper} alt="big Ben" />,
-    <div className="game-container">
-      <p className="question">{learnCards[random_index].wordTranslate}</p>
-      <div className="clock">
-        <div
-          style={{ transform: 'rotate(' + SavannaTimer + 'deg)' }}
-          className="arrow"
-        >
-          <div></div>
-          <div></div>
+  return (
+    <>
+      <img src={big_ben_upper} alt="big Ben" />
+      <div className="game-container">
+        <p className="question">{learnCards[random_index].wordTranslate}</p>
+        <div className="clock">
+          <div
+            style={{ transform: 'rotate(' + SavannaTimer + 'deg)' }}
+            className="arrow"
+          >
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+        <div className="answers">
+          <SavannaAnswers
+            learnwords={learnCards}
+            difficulty={difficulty}
+            answerindex={random_index}
+          />
         </div>
       </div>
-      <div className="answers">
-        <SavannaAnswers
-          learnwords={learnCards}
-          difficulty={Difficulty}
-          answerindex={random_index}
-        />
-      </div>
-    </div>,
-    <img src={big_ben_down} alt="big Ben" />,
-  ];
+      <img src={big_ben_down} alt="big Ben" />
+    </>
+  );
 };
