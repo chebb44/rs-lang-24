@@ -22,6 +22,8 @@ import { calculateCorrectAnswersStatistic } from '../../utilities/learnCard/calc
 import {
   actionSetCorrectAnswersPercent,
   actionSetLongestCorrectAnswerSeries,
+  actionSetCardsAmount,
+  actionSetNewWordsAmount,
   actionUpdateLearnedWords,
 } from '../../reducers/statisticReducer/statisticActions';
 import { getDateStringByDate } from '../../utilities/getDateStringByDate';
@@ -30,6 +32,8 @@ export function handleArrowClickFunction(
   direction,
   isWordCorrect,
   currentLearnCardIndex,
+  wordsPerDay,
+  cardsPerDay,
   lastCorrectWordIndex,
   learnCardsLength,
   answersAccuracy,
@@ -58,6 +62,8 @@ export function handleArrowClickFunction(
       store.dispatch(
         actionSetLongestCorrectAnswerSeries(longestCorrectAnswersSeries),
       );
+      store.dispatch(actionSetCardsAmount(cardsPerDay));
+      store.dispatch(actionSetNewWordsAmount(wordsPerDay));
       store.dispatch(actionUpdateLastCorrectWordIndex(-1));
       store.dispatch(actionClearAnswerAccuracy([]));
       store.dispatch(actionUpdatePrevPageGroupWordNumber());
