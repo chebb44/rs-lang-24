@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './AudioCallEndGameStatisticModal.scss';
 import { AudioCallEndGameStatisticModalItem } from '../AudioCallEndGameStatisticModalItem/AudioCallEndGameStatisticModalItem';
 
@@ -6,7 +6,11 @@ export const AudioCallEndGameStatisticModal = ({
   trueAnswerStatistic,
   falseAnswerStatistic,
   redirectToStartScreen,
+  saveStatistic,
 }) => {
+  useEffect(() => {
+    saveStatistic();
+  }, [saveStatistic, trueAnswerStatistic]);
   return (
     <div className="modal-overlay">
       <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable settings-modal">

@@ -1,10 +1,13 @@
 import React from 'react';
 import './AudioCallStartScreen.scss';
 import london from '../../../../assets/img/england_PNG72.png';
+import { AudioCallStatisticToDay } from '../AudioCallStatisticToDay/AudioCallStatisticToDay';
 
 export const AudioCallStartScreen = function ({
   startGameHandler,
-  redirectToStatistic,
+  visibleStatistic,
+  visibleStatisticGame,
+  audioCallDayStat,
 }) {
   return (
     <div className="audio-call-start-screen">
@@ -21,16 +24,29 @@ export const AudioCallStartScreen = function ({
       <p className="audio-call-start-screen__description">
         Чтобы начать нажмите СТАРТ
       </p>
-      <button
-        className="btn audio-call-start-screen__button"
-        onClick={startGameHandler}
-      >
-        Старт
-      </button>
+      <div>
+        <button
+          className="btn audio-call-start-screen__button audio-call-start-screen__button_start"
+          onClick={startGameHandler}
+        >
+          Старт
+        </button>
+        <button
+          className="btn audio-call-start-screen__button audio-call-start-screen__button_settings"
+          onClick={visibleStatistic}
+        >
+          Статистика
+        </button>
+      </div>
       <img
         className="audio-call-start-screen__footer_image"
         src={london}
         alt="london"
+      />
+      <AudioCallStatisticToDay
+        visibleStatisticGame={visibleStatisticGame}
+        visibleStatistic={visibleStatistic}
+        audioCallDayStat={audioCallDayStat}
       />
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import './AudioCallGamePage.scss';
 import { AudioCallProgressBar } from '../AudioCallProgressBar/AudioCallProgressBar';
 import { AudioCallQuestionContainer } from '../AudioCallQuestionContainer/AudioCallQuestionContainer';
@@ -9,8 +9,10 @@ import successSrc from '../../../../assets/audio/success.mp3';
 import { SHOW_TRUE, MAX_WORDS_FOR_GAME } from '../constants';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { AudioCallEndGameStatisticModal } from '../AudioCallEndGameStatisticModal/AudioCallEndGameStatisticModal';
+import { useDispatch } from 'react-redux';
+import { actionAudioCallSendGameResult } from '../../../../reducers/miniGamesStats/miniGamesStatsActions';
+import { getBeginDayTimeStamp } from '../../../../utilities/getBeginDayTimeStamp';
 
-//TODO: statistic modal on startScreen
 //TODO: difficulty level
 
 export const AudioCallGamePage = ({ redirectToStartScreen, wordsForGame }) => {
@@ -24,6 +26,18 @@ export const AudioCallGamePage = ({ redirectToStartScreen, wordsForGame }) => {
   const [questionTitleClass, setQuestionTitleClass] = useState(
     'audio-call-question-title',
   );
+  const dispatch = useDispatch();
+
+  const saveStatistic = useCallback(() => {
+    let score = trueAnswerStatistic.length;
+
+    dispatch(
+      actionAudioCallSendGameResult({
+        audioCallDate: getBeginDayTimeStamp(new Date()),
+        audioCallResult: score,
+      }),
+    );
+  }, [dispatch, trueAnswerStatistic.length]);
 
   const success = new Audio();
   success.src = successSrc;
@@ -121,6 +135,7 @@ export const AudioCallGamePage = ({ redirectToStartScreen, wordsForGame }) => {
         trueAnswerStatistic={trueAnswerStatistic}
         falseAnswerStatistic={falseAnswerStatistic}
         redirectToStartScreen={redirectToStartScreen}
+        saveStatistic={saveStatistic}
       />
     </div>
   ) : (

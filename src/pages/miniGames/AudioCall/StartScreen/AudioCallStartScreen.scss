@@ -39,7 +39,7 @@
   }
 
   &__description {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     color: #1a3542ba;
     font-size: 16px;
     text-align: center;
@@ -49,11 +49,16 @@
   }
 
   &__button {
-    margin-top: 20px;
+    margin: 5px 10px;
     @include std_button;
     min-width: 180px;
     min-height: 60px;
-    background-color: $primary-color;
+    &_start {
+      background-color: $primary-color;
+    }
+    &_settings {
+      background-color: $accent-color;
+    }
   }
 
   &__footer_image {
@@ -63,7 +68,7 @@
     right: auto;
     width: 100%;
     z-index: -3;
-    opacity: .35;
+    opacity: .3;
   }
 }
 

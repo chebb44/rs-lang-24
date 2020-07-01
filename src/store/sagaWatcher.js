@@ -49,6 +49,7 @@ import { moveWordsWorker } from '../sagas/moveUserWords';
 import {
   SPEAK_IT_SEND_GAME_RESULT,
   SPRINT_SEND_GAME_RESULT,
+  AUDIO_CALL_SEND_GAME_RESULT,
 } from './../reducers/miniGamesStats/miniGamesStatsActions';
 const actionsForSenSettingsToBackendWorker = [
   SET_LEARN_MODE,
@@ -79,6 +80,7 @@ const actionsForSendStatisticToBackend = [
   SET_NEW_WORDS_AMOUNT,
   SET_LONGEST_CORRECT_ANSWER_SERIES,
   SPRINT_SEND_GAME_RESULT,
+  AUDIO_CALL_SEND_GAME_RESULT,
 ];
 export function* sagaWatcher() {
   yield takeLatest(SIGN_UP_USER, signUpWorker);

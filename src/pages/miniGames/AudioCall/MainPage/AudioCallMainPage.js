@@ -4,9 +4,7 @@ import { AudioCallStartScreen } from '../StartScreen/AudioCallStartScreen';
 import { AudioCallGamePage } from '../GamePage/AudioCallGamePage';
 import {
   AUDIO_CALL_START_SCREEN,
-  AUDIO_CALL_STATISTIC_SCREEN,
   AUDIO_CALL_GAME_SCREEN,
-  AUDIO_CALL_END_SCREEN,
   MAX_WORDS_FOR_GAME,
 } from '../constants';
 import { useSelector } from 'react-redux';
@@ -17,6 +15,7 @@ import {
 } from '../getWordsForAudioCall';
 import { learnCardSettingsSelector } from '../../../../reducers/learnSettings/learnSettingsReducer';
 import { Spinner } from '../../../../components/Spinner/Spinner';
+import { miniGamesStatsSelector } from '../../../../reducers/miniGamesStats/miniGamesStatsReducer';
 
 export const AudioCallMainPage = () => {
   const { learnedWords } = useSelector(dictionaryStateStateSelector);
@@ -24,6 +23,7 @@ export const AudioCallMainPage = () => {
     learnCardSettingsSelector,
   );
   const [currentScreen, setCurrentScreen] = useState(AUDIO_CALL_START_SCREEN);
+  const [visibleStatisticGame, setVisibleStatisticGame] = useState(false);
 
   const startGameHandler = useCallback(() => {
     setCurrentScreen(AUDIO_CALL_GAME_SCREEN);
@@ -31,12 +31,12 @@ export const AudioCallMainPage = () => {
   const redirectToStartScreen = useCallback(() => {
     setCurrentScreen(AUDIO_CALL_START_SCREEN);
   }, []);
-  const redirectToStatistic = useCallback(() => {
-    setCurrentScreen(AUDIO_CALL_STATISTIC_SCREEN);
-  }, []);
-  const endGameHandler = useCallback(() => {
-    setCurrentScreen(AUDIO_CALL_END_SCREEN);
-  }, []);
+  const visibleStatistic = useCallback(() => {
+    setVisibleStatisticGame(!visibleStatisticGame);
+  }, [visibleStatisticGame]);
+  const {
+    miniGames: { audioCall: audioCallDayStat },
+  } = useSelector(miniGamesStatsSelector);
 
   const [wordsGroup, setWordsGroup] = useState(0);
   const [wordPage, setWordPage] = useState(0);
@@ -65,7 +65,9 @@ export const AudioCallMainPage = () => {
             return (
               <AudioCallStartScreen
                 startGameHandler={startGameHandler}
-                redirectToStatistic={redirectToStatistic}
+                visibleStatistic={visibleStatistic}
+                visibleStatisticGame={visibleStatisticGame}
+                audioCallDayStat={audioCallDayStat}
               />
             );
           case AUDIO_CALL_GAME_SCREEN:
@@ -77,20 +79,6 @@ export const AudioCallMainPage = () => {
             ) : (
               <Spinner />
             );
-          // case AUDIO_CALL_END_SCREEN:
-          //   return (
-          //     <AudioCallEndGame
-          //       redirectToStartScreen={redirectToStartScreen}
-          //       score={score}
-          //     />
-          //   );
-          // case AUDIO_CALL_STATISTIC_SCREEN:
-          //   return (
-          //     <AudioCallStatistic
-          //       gameStat={gameStat}
-          //       redirectToStartScreen={redirectToStartScreen}
-          //     />
-          //   );
           default:
             break;
         }
