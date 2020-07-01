@@ -117,8 +117,10 @@ export const getAllUserWords = async ({ userId, token }) => {
         Accept: 'application/json',
       },
     });
-    const content = await rawResponse.json();
-    return content;
+    if (rawResponse.ok) {
+      const content = await rawResponse.json();
+      return content;
+    }
   } catch (error) {
     console.log('getAllUserWords -> error', error);
     return null;
