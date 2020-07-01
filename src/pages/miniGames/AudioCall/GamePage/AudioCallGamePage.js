@@ -28,7 +28,7 @@ export const AudioCallGamePage = ({ redirectToStartScreen, wordsForGame }) => {
   success.src = successSrc;
 
   const getTrueAnswer = () => {
-    const trueWord = wordsForGame[wordNumber][0].word;
+    const trueWord = wordsForGame[wordNumber][0].wordTranslate;
     const answerBtns = document.querySelectorAll('.audio-call-answer-btn');
     answerBtns.forEach((el) => {
       if (trueWord === el.value) {
@@ -101,10 +101,10 @@ export const AudioCallGamePage = ({ redirectToStartScreen, wordsForGame }) => {
   const checkTrueWordClick = (event) => {
     const questionWord = document.getElementById('questionWord');
 
-    if (event.target.value !== questionWord.textContent) {
+    if (event.target.value !== questionWord.title) {
       event.target.classList.add('audio-call-answer-btn_false');
     }
-    if (event.target.value === questionWord.textContent) {
+    if (event.target.value === questionWord.title) {
       successAddClasses(event.target);
     }
   };

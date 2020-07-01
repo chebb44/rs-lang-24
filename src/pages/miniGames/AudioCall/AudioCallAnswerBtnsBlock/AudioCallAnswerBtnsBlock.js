@@ -17,27 +17,27 @@ export const AudioCallAnswerBtnsBlock = ({ wordsForGame, func }) => {
   }, [wordsForGame]);
   const btnList = [
     {
-      word: wordsForGameShuffle[0].word,
+      wordTranslate: wordsForGameShuffle[0].wordTranslate,
       position: 1,
       checkFunc: func,
     },
     {
-      word: wordsForGameShuffle[1].word,
+      wordTranslate: wordsForGameShuffle[1].wordTranslate,
       position: 2,
       checkFunc: func,
     },
     {
-      word: wordsForGameShuffle[2].word,
+      wordTranslate: wordsForGameShuffle[2].wordTranslate,
       position: 3,
       checkFunc: func,
     },
     {
-      word: wordsForGameShuffle[3].word,
+      wordTranslate: wordsForGameShuffle[3].wordTranslate,
       position: 4,
       checkFunc: func,
     },
     {
-      word: wordsForGameShuffle[4].word,
+      wordTranslate: wordsForGameShuffle[4].wordTranslate,
       position: 5,
       checkFunc: func,
     },

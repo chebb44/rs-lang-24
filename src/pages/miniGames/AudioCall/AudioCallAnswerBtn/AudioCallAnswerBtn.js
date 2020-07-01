@@ -3,7 +3,7 @@ import './AudioCallAnswerBtn.scss';
 import { AudioCallSuccessSvg } from './assets/AudioCallSuccessSvg';
 
 export const AudioCallAnswerBtn = ({ item }) => {
-  const { word, position, checkFunc } = item;
+  const { wordTranslate, position, checkFunc } = item;
 
   const handleClick = (event) => {
     return checkFunc(event);
@@ -11,9 +11,9 @@ export const AudioCallAnswerBtn = ({ item }) => {
 
   return (
     <button
-      value={word}
+      value={wordTranslate}
       type="button"
-      className="audio-call-answer-btn btn "
+      className="audio-call-answer-btn btn"
       onClick={handleClick}
     >
       <span className="audio-call-answer-btn__position">
@@ -22,7 +22,7 @@ export const AudioCallAnswerBtn = ({ item }) => {
           <AudioCallSuccessSvg />
         </span>
       </span>{' '}
-      <span className="audio-call-answer-btn__text">{word}</span>
+      <span className="audio-call-answer-btn__text">{wordTranslate}</span>
     </button>
   );
 };

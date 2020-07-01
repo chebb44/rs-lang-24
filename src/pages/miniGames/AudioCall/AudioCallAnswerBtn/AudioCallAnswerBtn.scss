@@ -42,6 +42,7 @@
   }
   &_false {
     opacity: .5;
+    pointer-events: none;
     .audio-call-answer-btn__text {
       text-decoration: line-through;
       text-decoration-color: $neutral-inactive;
@@ -50,6 +51,7 @@
   }
   &_true {
     opacity: 1;
+    pointer-events: none;
     .audio-call-answer-btn__position {
       opacity: .9;
     }
@@ -64,8 +66,10 @@
   }
   &_disabled {
     opacity: .5;
+    pointer-events: none;
   }
   &_true-after-false{
     opacity: .9;
+    pointer-events: none;
   }
 }

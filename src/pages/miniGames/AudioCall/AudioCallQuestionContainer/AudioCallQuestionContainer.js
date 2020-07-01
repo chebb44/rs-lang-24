@@ -9,7 +9,7 @@ export const AudioCallQuestionContainer = ({
   questionAudioClass,
   questionTitleClass,
 }) => {
-  const { audio, image, word } = wordsForGame[0];
+  const { audio, image, word, wordTranslate } = wordsForGame[0];
   return (
     <div className="audio-call-question-container">
       <AudioCallQuestionAudio
@@ -19,6 +19,7 @@ export const AudioCallQuestionContainer = ({
       <AudioCallQuestionImg image={image} />
       <AudioCallQuestionTitle
         word={word}
+        wordTranslate={wordTranslate}
         questionTitleClass={questionTitleClass}
       />
     </div>
