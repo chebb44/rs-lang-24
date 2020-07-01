@@ -6,6 +6,7 @@ export const SavannaAnswers = ({ learnwords, difficulty, answerindex }) => {
       localStorage.setItem('SavannaStatisticAnswers', 0);
       localStorage.setItem('SavannaStatisticCorrectAnswers', 0);
     }
+
     if (answer) {
       localStorage.setItem(
         'SavannaStatisticAnswers',
