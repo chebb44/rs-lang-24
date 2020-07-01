@@ -15,7 +15,8 @@ import { SwitchTransition, CSSTransition } from 'react-transition-group';
 
 export const AudioCallGamePage = ({ redirectToStartScreen, wordsForGame }) => {
   const [wordNumber, setWordNumber] = useState(0);
-  const [gameStatistic, setGameStatistic] = useState([]);
+  const [trueAnswerStatistic, setTrueAnswerStatistic] = useState([]);
+  const [falseAnswerStatistic, setFalseAnswerStatistic] = useState([]);
   const [enterBtnClass, setEnterBtnClass] = useState('audio-call-enter-btn');
   const [questionAudioClass, setQuestionAudioClass] = useState(
     'audio-call-question-audio',
@@ -61,9 +62,14 @@ export const AudioCallGamePage = ({ redirectToStartScreen, wordsForGame }) => {
     });
 
     check || SHOW_TRUE
-      ? item.classList.add('audio-call-answer-btn_true-after-false')
-      : setGameStatistic([...gameStatistic, wordsForGame[wordNumber][0]]) ||
-        item.classList.add('audio-call-answer-btn_true');
+      ? setFalseAnswerStatistic([
+          ...falseAnswerStatistic,
+          wordsForGame[wordNumber][0],
+        ]) || item.classList.add('audio-call-answer-btn_true-after-false')
+      : setTrueAnswerStatistic([
+          ...trueAnswerStatistic,
+          wordsForGame[wordNumber][0],
+        ]) || item.classList.add('audio-call-answer-btn_true');
 
     setQuestionTitleClass(
       'audio-call-question-title audio-call-question-title_visible',
@@ -110,7 +116,10 @@ export const AudioCallGamePage = ({ redirectToStartScreen, wordsForGame }) => {
   };
 
   return wordNumber === MAX_WORDS_FOR_GAME ? (
-    <h1>END game result: {gameStatistic.length}</h1>
+    <h1>
+      END game result true: {trueAnswerStatistic.length} result false:{' '}
+      {falseAnswerStatistic.length}
+    </h1>
   ) : (
     <div className="audio-call-game-page">
       <AudioCallProgressBar current={wordNumber} all={MAX_WORDS_FOR_GAME} />
