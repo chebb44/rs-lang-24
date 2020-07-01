@@ -13,13 +13,16 @@ export const DictionaryPage = () => {
   const { learnedWords, hardWords, deletedWords, nextTrainWords } = useSelector(
     dictionaryStateStateSelector,
   );
+
   const dispatch = useDispatch();
+
   const moveToDeleted = useCallback(
     (wordId) => () => {
       dispatch(actionMoveWord({ wordId, difficulty: DELETED_WORD }));
     },
     [dispatch],
   );
+
   const moveToLearned = useCallback(
     (wordId) => () => {
       dispatch(actionMoveWord({ wordId, difficulty: LEARNED_WORD }));

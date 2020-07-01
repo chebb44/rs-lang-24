@@ -1,0 +1,77 @@
+@import "src/scss/vars";
+
+.dictionary__current-card-view {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .current-card-view__picture {
+    width: 370px;
+    height: 247px;
+    border-radius: 5px;
+    box-shadow: -3px 6px 25px rgba(118, 118, 118, .25);
+
+    @media screen and (max-width: $mobile-width-big ) {
+      width: calc(100vw - 10px);
+      height: calc((100vw - 10px) / 3 * 2);
+    }
+
+    img{
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+    }
+  }
+  .current-card-view__information {
+    color: $neutral-inactive;
+    width: 370px;
+    min-height: 247px;
+    border-radius: 5px;
+    box-shadow: 3px 6px 25px rgba(118, 118, 118, .25);
+    padding: 8px 5px;
+    @media screen and (max-width: $mobile-width-big ) {
+      width: calc(100vw - 10px);
+      min-height: calc((100vw - 10px) / 3 * 2);
+    }
+
+    .card-text {
+      margin-bottom: 3px;
+    }
+
+    .card-meaning_title, .card-example_title{
+      text-align: left;
+      font-size: .8rem;
+      font-weight: 800;
+      margin-left: 15px;
+    }
+
+    .card-meaning {
+      font-size: .8rem;
+      line-height: .9rem;
+      text-align: justify;
+      border: 1px solid rgb(206, 212, 218);
+      border-radius: 5px;
+      padding: 3px 5px;
+      margin-bottom: 7px;
+      background-color: $primary-color;
+      .card-meaning_english {
+        margin-bottom: 8px;
+      }
+
+    }
+    .card-example {
+      font-size: .8rem;
+      line-height: .9rem;
+      text-align: justify;
+      border: 1px solid rgb(206, 212, 218);
+      border-radius: 5px;
+      padding: 5px;
+      margin-bottom: 7px;
+      background-color: $accent-color;
+      .card-example_english {
+        margin-bottom: 8px;
+      }
+    }
+  }
+}

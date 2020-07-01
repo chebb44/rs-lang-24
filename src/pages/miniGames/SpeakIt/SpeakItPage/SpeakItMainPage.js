@@ -18,7 +18,6 @@ export const SpeakItMainPage = function () {
       statArray.push({ date: key, data: gameStat[key] });
     }
   }
-  // console.log(statArray);
   return (
     <div>
       {speakItScreen === 'gamePage' && !showStatistic ? (
