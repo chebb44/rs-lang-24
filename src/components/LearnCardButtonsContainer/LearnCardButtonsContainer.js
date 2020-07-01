@@ -17,6 +17,8 @@ import {
 import { actionAddAnswerAccuracy } from '../../reducers/learnSettings/learnSettingsActions';
 import { buttonParams } from './constants';
 import { learnCardSettingsSelector } from '../../reducers/learnSettings/learnSettingsReducer';
+import { learnCardParametersSelector } from '../../reducers/learnCard/learnCardReducer';
+import { actionAddRepeatingWord } from '../../reducers/learnCards/learnCardsActions';
 import './LearnCardButtonsContainer.scss';
 
 export const LearnCardButtonsContainer = ({ learnCard, isWordCorrect }) => {
@@ -25,6 +27,7 @@ export const LearnCardButtonsContainer = ({ learnCard, isWordCorrect }) => {
     isDeleteBtnOn,
     isMarkDifficultyBtnsOn,
   } = useSelector(learnCardSettingsSelector);
+  const { currentLearnCardIndex } = useSelector(learnCardParametersSelector);
   const dispatch = useDispatch();
 
   const handleCheckButtonClick = () => {
@@ -54,7 +57,7 @@ export const LearnCardButtonsContainer = ({ learnCard, isWordCorrect }) => {
     dispatch(actionMarkWord({ wordId: learnCard._id, difficulty: EASY_WORD }));
   };
   const handleLearnAgainButtonClick = () => {
-    //dispatch(actionMarkWord());
+    dispatch(actionAddRepeatingWord(currentLearnCardIndex));
   };
 
   return (

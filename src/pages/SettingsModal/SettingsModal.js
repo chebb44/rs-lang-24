@@ -24,10 +24,6 @@ import { actionSettingsModal } from '../../reducers/appState/appStateActions';
 import { dictionaryStateStateSelector } from '../../reducers/dictionaryReducer/dictionaryReducer';
 import { actionInitCardSet } from '../../store/actionsForSaga';
 import {
-  actionSetCardsAmount,
-  actionSetNewWordsAmount,
-} from '../../reducers/statisticReducer/statisticActions';
-import {
   NEW_WORDS_MODE,
   REPEAT_MODE,
   STANDARD_MODE,
@@ -51,7 +47,6 @@ const SettingsModal = () => {
   const changeWordsPerDay = useCallback(
     (wordsNumber) => {
       dispatch(actionSetWordsPerDay(+wordsNumber));
-      dispatch(actionSetNewWordsAmount(+wordsNumber));
     },
     [dispatch],
   );
@@ -109,7 +104,6 @@ const SettingsModal = () => {
   const changeCardPerDay = useCallback(
     (cardPerDay) => {
       dispatch(actionSetCardsPerDay(+cardPerDay));
-      dispatch(actionSetCardsAmount(+cardPerDay));
     },
     [dispatch],
   );

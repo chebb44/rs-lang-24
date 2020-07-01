@@ -10,8 +10,8 @@ export const actionAddLearnCards = (cards) => ({
   cards,
 });
 
-export const UPDATE_LEARNED_WORDS_AMOUNT = 'UPDATE_LEARNED_WORDS_AMOUNT';
-export const actionUpdateLearnedWordsAmount = (amount) => ({
-  type: UPDATE_LEARNED_WORDS_AMOUNT,
-  amount,
+export const ADD_REPEATING_WORD = 'ADD_REPEATING_WORD';
+export const actionAddRepeatingWord = (index) => ({
+  type: ADD_REPEATING_WORD,
+  payload: index,
 });
