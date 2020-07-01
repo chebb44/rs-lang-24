@@ -23,7 +23,7 @@ export const AudioCallMainPage = () => {
   const { currentWordsGroup, currentWordsPage } = useSelector(
     learnCardSettingsSelector,
   );
-  const [currentScreen, setCurrentScreen] = useState(AUDIO_CALL_GAME_SCREEN);
+  const [currentScreen, setCurrentScreen] = useState(AUDIO_CALL_START_SCREEN);
 
   const startGameHandler = useCallback(() => {
     setCurrentScreen(AUDIO_CALL_GAME_SCREEN);

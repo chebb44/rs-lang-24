@@ -67,8 +67,9 @@
   }
 }
 
-@media screen and (max-width:480px) {
+@media screen and (max-width: $mobile-width-big ) {
   .audio-call-start-screen {
+    min-height: calc(100vh - 40px);
     &__title {
       font-size: 30px;
       letter-spacing: 6px;

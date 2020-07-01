@@ -8,8 +8,8 @@ import { AudioCallExitBtn } from '../AudioCallExitBtn/AudioCallExitBtn';
 import successSrc from '../../../../assets/audio/success.mp3';
 import { SHOW_TRUE, MAX_WORDS_FOR_GAME } from '../constants';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
+import { AudioCallEndGameStatisticModal } from '../AudioCallEndGameStatisticModal/AudioCallEndGameStatisticModal';
 
-//TODO: end game result modal
 //TODO: statistic modal on startScreen
 //TODO: difficulty level
 
@@ -116,10 +116,13 @@ export const AudioCallGamePage = ({ redirectToStartScreen, wordsForGame }) => {
   };
 
   return wordNumber === MAX_WORDS_FOR_GAME ? (
-    <h1>
-      END game result true: {trueAnswerStatistic.length} result false:{' '}
-      {falseAnswerStatistic.length}
-    </h1>
+    <div className="audio-call-game-page">
+      <AudioCallEndGameStatisticModal
+        trueAnswerStatistic={trueAnswerStatistic}
+        falseAnswerStatistic={falseAnswerStatistic}
+        redirectToStartScreen={redirectToStartScreen}
+      />
+    </div>
   ) : (
     <div className="audio-call-game-page">
       <AudioCallProgressBar current={wordNumber} all={MAX_WORDS_FOR_GAME} />

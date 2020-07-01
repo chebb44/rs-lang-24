@@ -23,6 +23,7 @@ export const AudioCallQuestionAudio = ({ audioSrc, questionAudioClass }) => {
       className={questionAudioClass}
       onClick={playAudioClickHandler}
       id="audioIcon"
+      muted="muted"
     >
       <AudioSoundSvg />
     </button>
