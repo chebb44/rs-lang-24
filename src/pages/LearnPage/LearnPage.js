@@ -6,24 +6,29 @@ import { MaxCardsModal } from '../MaxCardsModal/MaxCardsModal';
 import SettingsModal from '../../pages/SettingsModal/SettingsModal';
 import { learnCardSettingsSelector } from '../../reducers/learnSettings/learnSettingsReducer';
 import { actionSetIsMaxCardsModalShown } from '../../reducers/appState/appStateActions';
+import { getDateByString } from '../../utilities/getDateStringByDate';
 import './LearnPage.scss';
 import london from './../../assets/img/england_PNG72.png';
 
 export const LearnPage = () => {
   const { lastFinishedLearningDate } = useSelector(learnCardSettingsSelector);
+  const lastLearningDate = getDateByString(lastFinishedLearningDate).getDate();
+  const lastLearningMonth = getDateByString(
+    lastFinishedLearningDate,
+  ).getMonth();
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (
       lastFinishedLearningDate &&
-      lastFinishedLearningDate.getDate() === new Date().getDate() &&
-      lastFinishedLearningDate.getMonth() === new Date().getMonth()
+      lastLearningDate === new Date().getDate() &&
+      lastLearningMonth === new Date().getMonth()
     ) {
       dispatch(actionSetIsMaxCardsModalShown(true));
     } else {
       dispatch(actionSetIsMaxCardsModalShown(false));
     }
-  }, [lastFinishedLearningDate, dispatch]);
+  }, [lastFinishedLearningDate, lastLearningDate, lastLearningMonth, dispatch]);
 
   return (
     <div className="learn-page">
