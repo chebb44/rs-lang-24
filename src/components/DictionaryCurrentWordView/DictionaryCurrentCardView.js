@@ -5,6 +5,7 @@ import { LearnCardTranscription } from '../LearnCardTranscription/LearnCardTrans
 import { DescriptionWord } from '../DescriptionWord/DescriptionWord';
 import './DictionaryCurrentCardView.scss';
 import { capitalizeFirstLetter } from '../../pages/miniGames/SpeakIt/SpeakItHepler';
+import { getPlanRepeatDate } from '../../utilities/repeatLearn/getPlanRepeatDate';
 
 const getWordFromTaggedText = (text, tag) => {
   const regexpAll = new RegExp(`<${tag}>(\\w+)<\\/${tag}>`);
@@ -41,7 +42,7 @@ const DictionaryCurrentCardView = ({
           {currentCard.transcription}{' '}
           <b>{capitalizeFirstLetter(currentCard.wordTranslate)}</b>
         </p>
-        <p className="card-meaning_title">Meaning</p>
+        <p className="card-meaning_title">Значение</p>
         <div className="card-meaning">
           <p className="card-meaning_english">
             <span>{textMeaningArray[0]}</span>
@@ -52,7 +53,7 @@ const DictionaryCurrentCardView = ({
             {currentCard.textMeaningTranslate}
           </p>
         </div>
-        <p className="card-example_title">Example</p>
+        <p className="card-example_title">Пример</p>
         <div className="card-example">
           <p className="card-example_english">
             <span>{textExampleArray[0]}</span>
@@ -62,6 +63,17 @@ const DictionaryCurrentCardView = ({
           <p className="card-example_russian">
             {currentCard.textExampleTranslate}
           </p>
+        </div>
+        <div className="card-statistics">
+          <span>Повторов: {currentCard.userWord.optional.sumOfRepeats}</span>
+          {' '}
+          <span>
+            Следующий:{' '}
+            {getPlanRepeatDate({
+              difficulty: currentCard.userWord.difficulty,
+              lastRepeatDate: currentCard.userWord.optional.lastRepeatDate,
+            }).toLocaleDateString()}
+          </span>
         </div>
         {/*<LearnCardTranslation*/}
         {/*  isTranslationOn={learnCardSettings.isTranslationOn}*/}

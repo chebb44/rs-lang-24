@@ -7,6 +7,8 @@ import { LearnCardTranscription } from '../LearnCardTranscription/LearnCardTrans
 import { DescriptionWord } from '../DescriptionWord/DescriptionWord';
 import { WordStat } from '../WordStat/WordStat';
 import DictionaryCurrentCardView from '../DictionaryCurrentWordView/DictionaryCurrentCardView';
+import DictionaryAllWordsList from '../DictionaryAllWordsList/DictionaryAllWordsList';
+import { searchCardIndexInArray } from '../../pages/miniGames/SpeakIt/SpeakItHepler';
 
 export const DictionaryPart = ({
   words,
@@ -15,12 +17,20 @@ export const DictionaryPart = ({
   buttonText,
   buttonCallback,
 }) => {
-  const [currentCardDictionary, setCurrentCardDictionary] = useState(words[0]);
+  const [currentCardDictionary, setCurrentCardDictionary] = useState(words[4]);
   console.log(currentCardDictionary);
 
-  const onWordClick = useCallback((card) => {
-    setCurrentCardDictionary(card);
-  }, []);
+  const onWordClick = useCallback(
+    (event) => {
+      const currentCardIndex = searchCardIndexInArray(
+        event.currentTarget.dataset.wordid,
+        words,
+      );
+      // console.log(words);
+      setCurrentCardDictionary(words[currentCardIndex]);
+    },
+    [words],
+  );
 
   return (
     <div className="dictionary-block">
@@ -31,13 +41,10 @@ export const DictionaryPart = ({
         buttonText={buttonText}
         buttonCallback={buttonCallback}
       />
-      <div className="dictionary__all-words">
-
-      </div>
+      <DictionaryAllWordsList onWordClick={onWordClick} words={words} />
     </div>
   );
 };
-
 
 // {words.length > 0 ? (
 //   <div className="words-container">
