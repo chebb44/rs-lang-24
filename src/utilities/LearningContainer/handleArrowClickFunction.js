@@ -49,8 +49,8 @@ export function handleArrowClickFunction(
       store.dispatch(
         actionUpdateLastCorrectWordIndex(lastCorrectWordIndex + 1),
       );
-      const date = getDateStringByDate(new Date());
-      store.dispatch(actionUpdateLearnedWords(date));
+      const wordDate = getDateStringByDate(new Date());
+      store.dispatch(actionUpdateLearnedWords(wordDate));
     }
 
     if (currentLearnCardIndex === learnCardsLength - 1) {
@@ -69,7 +69,8 @@ export function handleArrowClickFunction(
       store.dispatch(actionUpdatePrevPageGroupWordNumber());
       store.dispatch(actionSetIsStatisticModalShown(true));
       store.dispatch(actionUpdateCurrentCardIndex(0));
-      store.dispatch(actionUpdateLastFinishedLearningDate(new Date()));
+      const cardsSetDate = getDateStringByDate(new Date());
+      store.dispatch(actionUpdateLastFinishedLearningDate(cardsSetDate));
     }
   }
   if (direction === 'previous' && currentLearnCardIndex > 0) {
