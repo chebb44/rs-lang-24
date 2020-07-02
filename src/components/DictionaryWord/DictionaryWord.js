@@ -29,7 +29,7 @@ export const DictionaryWord = ({
           <LearnCardTranslation
             isTranslationOn={learnCardSettings.isTranslationOn}
             translation={formattedCardData.wordTranslate}
-            isWordSubmitted={true}
+            isTranslationShown={true}
             dictionaryMode={true}
           />
           <LearnCardTranscription
@@ -41,7 +41,7 @@ export const DictionaryWord = ({
             isTranslationOn={learnCardSettings.isTranslationOn}
             text={formattedCardData.textExample}
             textTranslation={formattedCardData.textExampleTranslate}
-            isWordSubmitted={true}
+            isTranslationShown={true}
             isWordCorrect={true}
             tag="b"
           />
@@ -50,7 +50,7 @@ export const DictionaryWord = ({
             isTranslationOn={learnCardSettings.isTranslationOn}
             text={formattedCardData.textMeaning}
             textTranslation={formattedCardData.textMeaningTranslate}
-            isWordSubmitted={true}
+            isTranslationShown={true}
             isWordCorrect={true}
             tag="i"
           />

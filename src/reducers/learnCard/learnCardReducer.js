@@ -7,13 +7,14 @@ import {
   UPDATE_CURRENT_AUDIO,
   UPDATE_SUBMISSION_FLAG,
   UPDATE_ANSWER_SHOWN_FLAG,
+  UPDATE_TRANSLATION_SHOWN_FLAG,
 } from './learnCardActions';
 
 const defaultData = {
   currentLearnCardIndex: 0,
   enteredWord: '',
-  isWordSubmitted: false,
   isWordCorrect: false,
+  isTranslationShown: false,
   isCheckDisplayed: false,
   isAnswerShown: false,
   audiosToPlay: [],
@@ -44,11 +45,6 @@ export const learnCard = (state = defaultData, action) => {
         ...state,
         isWordCorrect: action.flag,
       };
-    case UPDATE_SUBMISSION_FLAG:
-      return {
-        ...state,
-        isWordSubmitted: action.flag,
-      };
     case UPDATE_AUDIOS_TO_PLAY:
       return {
         ...state,
@@ -63,6 +59,11 @@ export const learnCard = (state = defaultData, action) => {
       return {
         ...state,
         isAnswerShown: action.flag,
+      };
+    case UPDATE_TRANSLATION_SHOWN_FLAG:
+      return {
+        ...state,
+        isTranslationShown: action.flag,
       };
     default:
       return state;
