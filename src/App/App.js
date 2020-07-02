@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Switch, Route, useRouteMatch, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { DictionaryPage } from './../pages/DictionaryPage/DictionaryPage';
 import { useSelector, useDispatch } from 'react-redux';
 import { currentUserSelector } from './../reducers/currentUser/currentUserReducer';
@@ -20,7 +20,7 @@ import { actionToggleSideBar } from '../reducers/appState/appStateActions';
 import { SprintMain } from './../pages/miniGames/Sprint/containers/SprintMain/SprintMain';
 
 export const App = () => {
-  let { path } = useRouteMatch();
+  //let { path } = useRouteMatch();
   const { token } = useSelector(currentUserSelector);
   const { isSideBarShow, initDone } = useSelector(appStateSelector);
   const dispatch = useDispatch();
