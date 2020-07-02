@@ -36,7 +36,7 @@ export const actionSetLongestCorrectAnswerSeries = (series) => ({
 });
 
 export const UPDATE_LEARNED_WORDS = 'UPDATE_LEARNED_WORDS';
-export const actionUpdateLearnedWords = (date) => ({
+export const actionUpdateLearnedWordsStatistic = (date) => ({
   type: UPDATE_LEARNED_WORDS,
   payload: date,
 });
