@@ -1,87 +1,40 @@
-/* eslint-disable no-loop-func */
-import React, { useState } from 'react';
-export const SavannaAnswers = ({ learnwords, difficulty, answerindex }) => {
-  let tab = true;
-  const [answers, setAnswers] = useState(0);
-  const saveAnswer = (answer) => {
-    setAnswers(answers + 1);
-    if (localStorage.getItem('SavannaStatisticAnswers') == null) {
-      localStorage.setItem('SavannaStatisticAnswers', 0);
-      localStorage.setItem('SavannaStatisticCorrectAnswers', 0);
-    }
-    if (answer) {
-      localStorage.setItem(
-        'SavannaStatisticAnswers',
-        parseInt(localStorage.getItem('SavannaStatisticAnswers')) + 1,
-      );
-      localStorage.setItem(
-        'SavannaStatisticCorrectAnswers',
-        parseInt(localStorage.getItem('SavannaStatisticCorrectAnswers')) + 1,
-      );
-    } else {
-      localStorage.setItem(
-        'SavannaStatisticAnswers',
-        parseInt(localStorage.getItem('SavannaStatisticAnswers')) + 1,
-      );
-    }
-  };
-  let AnswersArray = [
-    <button
-      key={learnwords[answerindex].word}
-      type="button"
-      className="btn btn-outline-light answer"
-      onClick={(event) => {
-        if (tab) {
-          saveAnswer(true);
-          tab = false;
-          event.target.className = 'btn btn-warning answer';
-        }
-      }}
-    >
-      {learnwords[answerindex].word}
-    </button>,
-  ];
-  for (let i = 0; i < difficulty - 1; i++) {
-    let random = Math.random();
-    let random_word = learnwords.splice(
-      parseInt(random * learnwords.length),
-      1,
-    )[0].word;
-    if (random > 1 / 2) {
-      AnswersArray.unshift(
-        <button
-          key={random}
-          type="button"
-          className="btn btn-outline-light answer"
-          onClick={(event) => {
-            if (tab) {
-              saveAnswer(true);
-              tab = false;
-              event.target.className = 'btn btn-warning answer';
-            }
-          }}
-        >
-          {random_word}
-        </button>,
+import React, { useEffect } from 'react';
+import { WordContainer } from '../SavannaWordContainer/wordContainer';
+export const SavannaAnswers = ({
+  currentCards,
+  blockSize,
+  answerIndex,
+  blockIndex,
+  trueOrFalse,
+  setTrueOrFalse,
+}) => {
+  let wordArray = [];
+  for (let i = 0; i < blockSize; i++) {
+    if (Math.random() > 1 / 2) {
+      wordArray.unshift(
+        <WordContainer
+          currentCards={currentCards}
+          blockSize={blockSize}
+          blockIndex={blockIndex}
+          cardIndex={i}
+          answerIndex={answerIndex}
+          trueOrFalse={trueOrFalse}
+          setTrueOrFalse={setTrueOrFalse}
+        />,
       );
     } else {
-      AnswersArray.push(
-        <button
-          key={random}
-          type="button"
-          className="btn btn-outline-light answer"
-          onClick={(event) => {
-            if (tab) {
-              saveAnswer(true);
-              tab = false;
-              event.target.className = 'btn btn-warning answer';
-            }
-          }}
-        >
-          {random_word}
-        </button>,
+      wordArray.push(
+        <WordContainer
+          currentCards={currentCards}
+          blockSize={blockSize}
+          blockIndex={blockIndex}
+          cardIndex={i}
+          answerIndex={answerIndex}
+          trueOrFalse={trueOrFalse}
+          setTrueOrFalse={setTrueOrFalse}
+        />,
       );
     }
   }
-  return AnswersArray;
+  return wordArray;
 };
