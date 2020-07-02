@@ -34,14 +34,14 @@ export const actionUpdateCurrentAudio = (audio) => ({
   audio,
 });
 
-export const UPDATE_SUBMISSION_FLAG = 'UPDATE_SUBMISSION_FLAG';
-export const actionUpdateSubmissionFlag = (flag) => ({
-  type: UPDATE_SUBMISSION_FLAG,
-  flag,
-});
-
 export const UPDATE_ANSWER_SHOWN_FLAG = 'UPDATE_ANSWER_SHOWN_FLAG';
 export const actionUpdateAnswerShownFlag = (flag) => ({
   type: UPDATE_ANSWER_SHOWN_FLAG,
+  flag,
+});
+
+export const UPDATE_TRANSLATION_SHOWN_FLAG = 'UPDATE_TRANSLATION_SHOWN_FLAG';
+export const actionUpdateTranslationShownFlag = (flag) => ({
+  type: UPDATE_TRANSLATION_SHOWN_FLAG,
   flag,
 });

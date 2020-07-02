@@ -10,29 +10,30 @@ import {
   LEARNED_WORD,
 } from '../../sagas/constants';
 import {
-  actionUpdateSubmissionFlag,
   actionUpdateWordCorrectFlag,
   actionUpdateAnswerShownFlag,
 } from '../../reducers/learnCard/learnCardActions';
 import { actionAddAnswerAccuracy } from '../../reducers/learnSettings/learnSettingsActions';
 import { buttonParams } from './constants';
-import { learnCardSettingsSelector } from '../../reducers/learnSettings/learnSettingsReducer';
 import { learnCardParametersSelector } from '../../reducers/learnCard/learnCardReducer';
 import { actionAddRepeatingWord } from '../../reducers/learnCards/learnCardsActions';
+import { submitWordFunction } from '../../utilities/learnCard/submitWordFunction';
 import './LearnCardButtonsContainer.scss';
 
-export const LearnCardButtonsContainer = ({ learnCard, isWordCorrect }) => {
-  const {
-    isShowAnswerBtnOn,
-    isDeleteBtnOn,
-    isMarkDifficultyBtnsOn,
-  } = useSelector(learnCardSettingsSelector);
-  const { currentLearnCardIndex } = useSelector(learnCardParametersSelector);
+export const LearnCardButtonsContainer = ({
+  learnCard,
+  learnCardSettings,
+  isWordCorrect,
+}) => {
+  const { enteredWord, currentLearnCardIndex } = useSelector(
+    learnCardParametersSelector,
+  );
   const dispatch = useDispatch();
 
   const handleCheckButtonClick = () => {
-    dispatch(actionUpdateSubmissionFlag(true));
+    submitWordFunction(enteredWord, learnCard, learnCardSettings);
   };
+
   const handleShowAnswerButtonClick = () => {
     dispatch(actionUpdateAnswerShownFlag(true));
     dispatch(actionUpdateWordCorrectFlag(true));
@@ -41,6 +42,7 @@ export const LearnCardButtonsContainer = ({ learnCard, isWordCorrect }) => {
     );
     dispatch(actionAddAnswerAccuracy(true));
   };
+
   const handleDeleteButtonClick = () => {
     dispatch(
       actionMarkWord({ wordId: learnCard._id, difficulty: DELETED_WORD }),
@@ -50,12 +52,15 @@ export const LearnCardButtonsContainer = ({ learnCard, isWordCorrect }) => {
   const handleMarkAsHardButtonClick = () => {
     dispatch(actionMarkWord({ wordId: learnCard._id, difficulty: HARD_WORD }));
   };
+
   const handleMarkAsGoodButtonClick = () => {
     dispatch(actionMarkWord({ wordId: learnCard._id, difficulty: GOOD_WORD }));
   };
+
   const handleMarkAsEasyButtonClick = () => {
     dispatch(actionMarkWord({ wordId: learnCard._id, difficulty: EASY_WORD }));
   };
+
   const handleLearnAgainButtonClick = () => {
     dispatch(actionAddRepeatingWord(currentLearnCardIndex));
   };
@@ -68,14 +73,14 @@ export const LearnCardButtonsContainer = ({ learnCard, isWordCorrect }) => {
           buttonText={buttonParams.check.text}
           extraClasses={buttonParams.check.classes}
         />
-        {isShowAnswerBtnOn && (
+        {learnCardSettings.isShowAnswerBtnOn && (
           <UniversalButton
             onClickHandler={handleShowAnswerButtonClick}
             buttonText={buttonParams.showAnswer.text}
             extraClasses={buttonParams.showAnswer.classes}
           />
         )}
-        {isDeleteBtnOn && (
+        {learnCardSettings.isDeleteBtnOn && (
           <UniversalButton
             onClickHandler={handleDeleteButtonClick}
             buttonText={buttonParams.delete.text}
@@ -83,7 +88,7 @@ export const LearnCardButtonsContainer = ({ learnCard, isWordCorrect }) => {
           />
         )}
       </div>
-      {isMarkDifficultyBtnsOn && isWordCorrect && (
+      {learnCardSettings.isMarkDifficultyBtnsOn && isWordCorrect && (
         <div className="learn-card-buttons__mark-buttons">
           <UniversalButton
             onClickHandler={handleMarkAsHardButtonClick}
