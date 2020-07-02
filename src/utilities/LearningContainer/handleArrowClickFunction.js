@@ -7,8 +7,8 @@ import {
 } from '../../reducers/learnSettings/learnSettingsActions';
 import { actionSetIsStatisticModalShown } from '../../reducers/appState/appStateActions';
 import { setShortStatistic } from './setShortStatistic';
-import { setDefaultCardProperties } from './setDefaultCardProperties';
-import { setDefaultCardSetProperties } from './setDefaultCardSetProperties';
+import { resetCardProperties } from './resetCardProperties';
+import { resetCardSetProperties } from './resetCardSetProperties';
 import { actionUpdateLearnedWordsStatistic } from '../../reducers/statisticReducer/statisticActions';
 import { getDateStringByDate } from '../../utilities/getDateStringByDate';
 
@@ -33,21 +33,28 @@ export function handleArrowClickFunction(
       store.dispatch(
         actionUpdateLastCorrectWordIndex(lastCorrectWordIndex + 1),
       );
+      // add learned word to statistic
       const wordDate = getDateStringByDate(new Date());
       store.dispatch(actionUpdateLearnedWordsStatistic(wordDate));
     }
 
     if (currentLearnCardIndex === learnCardsLength - 1) {
+      // set short statistic and show statistic modal
       setShortStatistic(wordsPerDay, cardsPerDay, answersAccuracy);
       store.dispatch(actionSetIsStatisticModalShown(true));
-      setDefaultCardSetProperties();
-      store.dispatch(actionUpdatePrevPageGroupWordNumber());
+
+      // reset card set properties
+      resetCardSetProperties();
+
+      // set finish date and card page
       const setDate = getDateStringByDate(new Date());
       store.dispatch(actionUpdateLastFinishedLearningDate(setDate));
+      store.dispatch(actionUpdatePrevPageGroupWordNumber());
     }
   }
   if (direction === 'previous' && currentLearnCardIndex > 0) {
     store.dispatch(actionUpdateCurrentCardIndex(currentLearnCardIndex - 1));
   }
-  setDefaultCardProperties();
+  // reset card properties
+  resetCardProperties();
 }

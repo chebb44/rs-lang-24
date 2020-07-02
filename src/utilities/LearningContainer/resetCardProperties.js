@@ -9,7 +9,7 @@ import {
   actionUpdateAnswerShownFlag,
 } from '../../reducers/learnCard/learnCardActions';
 
-export function setDefaultCardProperties() {
+export function resetCardProperties() {
   store.dispatch(actionUpdateAnswerShownFlag(false));
   store.dispatch(actionUpdateEnteredWord(''));
   store.dispatch(actionUpdateSubmissionFlag(false));

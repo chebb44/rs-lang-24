@@ -5,7 +5,7 @@ import {
   actionClearAnswerAccuracy,
 } from '../../reducers/learnSettings/learnSettingsActions';
 
-export function setDefaultCardSetProperties() {
+export function resetCardSetProperties() {
   store.dispatch(actionUpdateCurrentCardIndex(0));
   store.dispatch(actionUpdateLastCorrectWordIndex(-1));
   store.dispatch(actionClearAnswerAccuracy([]));
