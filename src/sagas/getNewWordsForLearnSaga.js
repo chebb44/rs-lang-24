@@ -31,9 +31,9 @@ export function* getNewWordsForLearn() {
     dictionaryStateStateSelector,
   );
 
-  const wordsForRepeat = yield [...learnedWords, ...hardWords].filter((word) =>
-    isNeedToRepeat({ word }),
-  );
+  let wordsForRepeat = [...learnedWords, ...hardWords];
+  if (wordsForRepeat.length > 0)
+    wordsForRepeat = wordsForRepeat.filter((word) => isNeedToRepeat({ word }));
 
   switch (learnMode) {
     case STANDARD_MODE:
