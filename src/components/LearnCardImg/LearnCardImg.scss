@@ -1,11 +1,20 @@
 @import "../../scss/vars.scss";
 @import "../../scss/mixins.scss";
 
+.learn-card__img-container {
+  margin: 0 auto;
+}
+
+.learn-card__img-container,
 .learn-card__img {
+  max-width: 300px;
+  max-height: 200px;
   width: 300px;
   height: 200px;
 
   @include  media-mobile-small {
+    max-width: 255px;
+    max-height: 170px;
     width: 255px;
     height: 170px;
   }

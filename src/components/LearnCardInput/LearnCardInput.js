@@ -35,7 +35,7 @@ export const LearnCardInput = ({
           className="form-control m-auto entered-word"
           type="text"
           style={{
-            width: `calc(4px + 13px * ${originalWord.length})`,
+            width: `calc(4px + 13.5px * ${originalWord.length})`,
           }}
           autoFocus
           value={isAnswerShown ? originalWord : enteredWord}
