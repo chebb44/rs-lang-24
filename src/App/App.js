@@ -6,6 +6,7 @@ import { currentUserSelector } from './../reducers/currentUser/currentUserReduce
 import { PageHeader } from './PageHeader';
 import { PageSideBar } from './PageSidebar';
 import { LearnPage } from '../pages/LearnPage/LearnPage';
+import { MainPage } from '../pages/MainPage/MainPage';
 import { Page404 } from '../pages/Page404/Page404';
 import { StatisticPage } from '../pages/StatisticPage/StatisticPage';
 import './App.scss';
@@ -49,9 +50,7 @@ export const App = () => {
               <Route path={routes.stats} component={StatisticPage} />
               <Route path={routes.speakIt} component={SpeakItMainPage} />
               <Route path={routes.sprint} component={SprintMain} />
-              <Route exact path={path}>
-                <h1>Main Page</h1>
-              </Route>
+              <Route exact path={routes.mainApp} component={MainPage} />
               <Route path="/">
                 <Page404 />
               </Route>
