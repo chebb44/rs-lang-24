@@ -2,7 +2,7 @@ import React from 'react';
 import './DictionaryAllWordsList.scss';
 import { capitalizeFirstLetter } from '../../pages/miniGames/SpeakIt/SpeakItHepler';
 
-const make10WordsArray = (words) => {
+const make10WordsNestedArray = (words) => {
   return words.reduce((resultArr, word, index) => {
     if (!(index % 10) || index === 0) {
       resultArr.push([]);
@@ -18,7 +18,7 @@ const DictionaryAllWordsList = ({
   buttonText,
   buttonCallback,
 }) => {
-  const dictionaryAllWordsArray = make10WordsArray(words);
+  const dictionaryAllWordsArray = make10WordsNestedArray(words);
 
   return (
     <div className="dictionary__all-words-wrapper">
@@ -61,7 +61,7 @@ const DictionaryWordsColumn = ({
             </div>
             <button
               className="btn dictionary-all-words__word-delete"
-              onClick={buttonCallback}
+              onClick={() => buttonCallback(word._id)}
             >
               {buttonText}
             </button>

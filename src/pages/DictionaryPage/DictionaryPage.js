@@ -17,9 +17,9 @@ export const DictionaryPage = () => {
   const dispatch = useDispatch();
 
   const moveToDeleted = useCallback(
-    (wordId) => () => {
+    (wordId) => {
       dispatch(actionMoveWord({ wordId, difficulty: DELETED_WORD }));
-      console.log('callback');
+      console.log(wordId);
     },
     [dispatch],
   );

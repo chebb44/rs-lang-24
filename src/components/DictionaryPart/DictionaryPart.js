@@ -25,6 +25,7 @@ export const DictionaryPart = ({
         event.currentTarget.dataset.wordid,
         words,
       );
+      console.log('click on the word');
       buttonCallback(currentCardDictionary);
       setCurrentCardDictionary(words[currentCardIndex]);
     },
@@ -38,7 +39,6 @@ export const DictionaryPart = ({
         <DictionaryCurrentCardView
           currentCard={currentCardDictionary}
           learnCardSettings={learnCardSettings}
-
         />
       )}
       <DictionaryAllWordsList
