@@ -1,6 +1,6 @@
 import React from 'react';
 import './DictionaryAllWordsList.scss';
-import { capitalizeFirstLetter } from '../../pages/miniGames/SpeakIt/SpeakItHepler';
+import DictionaryWordSingleView from './DictionaryWordSingleView';
 
 const make10WordsNestedArray = (words) => {
   return words.reduce((resultArr, word, index) => {
@@ -45,27 +45,15 @@ const DictionaryWordsColumn = ({
 }) => {
   return (
     <div className="words-container">
-      {columnWords.map((word, key) => {
+      {columnWords.map((word) => {
         return (
-          <div className="words_word-row" key={key}>
-            <div
-              className="words_word-wrapper"
-              data-wordid={word._id}
-              onClick={onWordClick}
-            >
-              <span className="dictionary-all-words__word">
-                {capitalizeFirstLetter(word.word)}
-              </span>
-              <span></span>
-              <span></span>
-            </div>
-            <button
-              className="btn dictionary-all-words__word-delete"
-              onClick={() => buttonCallback(word._id)}
-            >
-              {buttonText}
-            </button>
-          </div>
+          <DictionaryWordSingleView
+            word={word}
+            buttonCallback={buttonCallback}
+            onWordClick={onWordClick}
+            buttonText={buttonText}
+            key={word.word}
+          />
         );
       })}
     </div>

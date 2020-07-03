@@ -19,14 +19,12 @@ export const DictionaryPage = () => {
   const moveToDeleted = useCallback(
     (wordId) => {
       dispatch(actionMoveWord({ wordId, difficulty: DELETED_WORD }));
-      console.log(wordId);
     },
     [dispatch],
   );
 
   const moveToLearned = useCallback(
-    (wordId) => () => {
-      console.log('callback');
+    (wordId) => {
       dispatch(actionMoveWord({ wordId, difficulty: LEARNED_WORD }));
     },
     [dispatch],

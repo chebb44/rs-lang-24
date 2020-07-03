@@ -10,13 +10,9 @@
 .words-container {
   color: $neutral-inactive;
   width: 370px;
-  //min-height: 247px;
   border-radius: 5px;
-  //box-shadow: 3px 6px 25px rgba(118, 118, 118, .25);
-  //padding: 8px 5px;
   @media screen and (max-width: $mobile-width-big) {
     width: calc(100vw - 10px);
-    //min-height: calc((100vw - 10px) / 3 * 2);
   }
 
   .words_word-row {
@@ -32,11 +28,9 @@
       transition: .2s ease;
       width: 100%;
       height: 30px;
-      border-radius: 5px 0px 0px 5px;
+      border-radius: 5px 0 0 5px;
       align-items: center;
-      //background-color: #26de81;
-      //border: 1px black solid;
-      &:hover {
+      &:hover, &.active {
         background-color: $primary-color;
       }
     }
@@ -56,4 +50,8 @@
       margin: 0 2px 0 auto;
     }
   }
+}
+
+.dictionary__spinner {
+  margin-right: 10px;
 }

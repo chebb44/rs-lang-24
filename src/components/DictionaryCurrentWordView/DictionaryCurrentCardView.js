@@ -1,8 +1,5 @@
 import React from 'react';
 import { FILES_URL } from '../../utilities/network/networkConstants';
-import { LearnCardTranslation } from '../LearnCardTranslation/LearnCardTranslation';
-import { LearnCardTranscription } from '../LearnCardTranscription/LearnCardTranscription';
-import { DescriptionWord } from '../DescriptionWord/DescriptionWord';
 import './DictionaryCurrentCardView.scss';
 import { capitalizeFirstLetter } from '../../pages/miniGames/SpeakIt/SpeakItHepler';
 import { getPlanRepeatDate } from '../../utilities/repeatLearn/getPlanRepeatDate';
@@ -20,16 +17,17 @@ const getWordFromTaggedText = (text, tag) => {
   return [firstHalf, word, secondHalf];
 };
 
-const DictionaryCurrentCardView = ({
-  currentCard,
-  learnCardSettings,
-  statistic,
-  buttonText,
-  buttonCallback,
-}) => {
-  // console.log(currentCard.userWord);
-  const textMeaningArray = getWordFromTaggedText(currentCard.textMeaning, 'i');
-  const textExampleArray = getWordFromTaggedText(currentCard.textExample, 'b');
+const DictionaryCurrentCardView = ({ currentCard }) => {
+  const {
+    transcription,
+    textMeaningTranslate,
+    textExampleTranslate,
+    userWord,
+    textMeaning,
+    textExample,
+  } = currentCard;
+  const textMeaningArray = getWordFromTaggedText(textMeaning, 'i');
+  const textExampleArray = getWordFromTaggedText(textExample, 'b');
 
   return (
     <div className="dictionary__current-card-view">
@@ -38,8 +36,7 @@ const DictionaryCurrentCardView = ({
       </div>
       <div className="current-card-view__information">
         <p className="card-text">
-          <b>{capitalizeFirstLetter(currentCard.word)}</b>{' '}
-          {currentCard.transcription}{' '}
+          <b>{capitalizeFirstLetter(currentCard.word)}</b> {transcription}{' '}
           <b>{capitalizeFirstLetter(currentCard.wordTranslate)}</b>
         </p>
         <p className="card-meaning_title">Значение</p>
@@ -49,9 +46,7 @@ const DictionaryCurrentCardView = ({
             <b>{textMeaningArray[1]}</b>
             <span>{textMeaningArray[2]}</span>
           </p>
-          <p className="card-meaning_russian">
-            {currentCard.textMeaningTranslate}
-          </p>
+          <p className="card-meaning_russian">{textMeaningTranslate}</p>
         </div>
         <p className="card-example_title">Пример</p>
         <div className="card-example">
@@ -60,50 +55,18 @@ const DictionaryCurrentCardView = ({
             <b>{textExampleArray[1]}</b>
             <span>{textExampleArray[2]}</span>
           </p>
-          <p className="card-example_russian">
-            {currentCard.textExampleTranslate}
-          </p>
+          <p className="card-example_russian">{textExampleTranslate}</p>
         </div>
         <div className="card-statistics">
-          <span>Повторов: {currentCard.userWord.optional.sumOfRepeats}</span>
-          {' '}
+          <span>Повторов: {userWord.optional.sumOfRepeats}</span>{' '}
           <span>
             Следующий:{' '}
             {getPlanRepeatDate({
-              difficulty: currentCard.userWord.difficulty,
-              lastRepeatDate: currentCard.userWord.optional.lastRepeatDate,
+              difficulty: userWord.difficulty,
+              lastRepeatDate: userWord.optional.lastRepeatDate,
             }).toLocaleDateString()}
           </span>
         </div>
-        {/*<LearnCardTranslation*/}
-        {/*  isTranslationOn={learnCardSettings.isTranslationOn}*/}
-        {/*  translation={currentCard.wordTranslate}*/}
-        {/*  isWordSubmitted={true}*/}
-        {/*  dictionaryMode={true}*/}
-        {/*/>*/}
-        {/*<LearnCardTranscription*/}
-        {/*  transcription={currentCard.transcription}*/}
-        {/*  isTranscriptionOn={learnCardSettings.isTranscriptionOn}*/}
-        {/*/>*/}
-        {/*<DescriptionWord*/}
-        {/*  isOn={learnCardSettings.isMeaningOn}*/}
-        {/*  isTranslationOn={learnCardSettings.isTranslationOn}*/}
-        {/*  text={currentCard.textMeaning}*/}
-        {/*  textTranslation={currentCard.textMeaningTranslate}*/}
-        {/*  isWordSubmitted={true}*/}
-        {/*  isWordCorrect={true}*/}
-        {/*  tag="i"*/}
-        {/*/>*/}
-        {/*<DescriptionWord*/}
-        {/*  isOn={learnCardSettings.isExampleOn}*/}
-        {/*  isTranslationOn={learnCardSettings.isTranslationOn}*/}
-        {/*  text={currentCard.textExample}*/}
-        {/*  textTranslation={currentCard.textExampleTranslate}*/}
-        {/*  isWordSubmitted={true}*/}
-        {/*  isWordCorrect={true}*/}
-        {/*  tag="b"*/}
-        {/*/>*/}
-        {/*<WordStat stat={word.userWord} />*/}
       </div>
     </div>
   );
