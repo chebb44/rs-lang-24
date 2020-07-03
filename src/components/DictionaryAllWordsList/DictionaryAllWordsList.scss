@@ -22,8 +22,12 @@
     align-items: center;
     border-radius: 5px;
     cursor: pointer;
+    position: relative;
+
+
 
     .words_word-wrapper {
+      position: relative;
       display: flex;
       transition: .2s ease;
       width: 100%;
@@ -32,6 +36,17 @@
       align-items: center;
       &:hover, &.active {
         background-color: $primary-color;
+      }
+
+      .dictionary__spinner {
+        position: absolute;
+        right: 7px;
+        top: auto;
+        bottom: auto;
+        svg {
+          width: 25px;
+          height: 25px;
+        }
       }
     }
 

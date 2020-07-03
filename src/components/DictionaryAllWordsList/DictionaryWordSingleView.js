@@ -24,11 +24,12 @@ const DictionaryWordSingleView = ({
         data-wordid={word._id}
         onClick={onWordClick}
       >
-        <span className="dictionary-all-words__word">
+        <div className="dictionary-all-words__word">
           {capitalizeFirstLetter(word.word)}
-        </span>
+        </div>
+        {isDeleteButtonPressed && <DictionarySpinner />}
       </div>
-      {isDeleteButtonPressed && <DictionarySpinner />}
+
       <button
         className="btn dictionary-all-words__word-delete"
         onClick={buttonHandler}
