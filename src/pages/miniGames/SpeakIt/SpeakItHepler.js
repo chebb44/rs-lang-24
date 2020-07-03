@@ -62,7 +62,6 @@ export const initCardsView = (cardsArray) => {
 };
 
 export const makeUniqueObjectsArray = (array) => {
-  // let resultArray = [];
   return array.reduce((resultArray, card) => {
     if (resultArray.find((cardCopy) => cardCopy.word === card.word)) {
       return resultArray;

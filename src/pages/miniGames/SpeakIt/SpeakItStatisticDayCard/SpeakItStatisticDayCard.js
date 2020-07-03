@@ -3,7 +3,6 @@ import './SpeakItStatisticDayCard.scss';
 import { getDateByString } from '../../../../utilities/getDateStringByDate';
 
 const SpeakItStatisticDayCard = ({ dayStatistic }) => {
-  console.log(dayStatistic);
   return (
     <div className="speak-it-statistic__day-card">
       <div className="speak-it-statistic-card__title">
