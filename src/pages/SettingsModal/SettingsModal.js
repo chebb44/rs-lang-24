@@ -22,7 +22,6 @@ import {
 } from '../../reducers/learnSettings/learnSettingsActions';
 import { actionSettingsModal } from '../../reducers/appState/appStateActions';
 import { dictionaryStateStateSelector } from '../../reducers/dictionaryReducer/dictionaryReducer';
-import { actionInitCardSet } from '../../store/actionsForSaga';
 import {
   NEW_WORDS_MODE,
   REPEAT_MODE,
@@ -39,7 +38,6 @@ const SettingsModal = () => {
   const dictionaryState = useSelector(dictionaryStateStateSelector);
 
   const changeVisibleSettingsModal = useCallback(() => {
-    dispatch(actionInitCardSet());
     dispatch(actionSettingsModal(!appState.visibleSettingsModal));
   }, [dispatch, appState.visibleSettingsModal]);
 
