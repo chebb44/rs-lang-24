@@ -25,6 +25,7 @@
   }
   .current-card-view__information {
     color: $neutral-inactive;
+    position: relative;
     width: 370px;
     min-height: 247px;
     border-radius: 5px;
@@ -67,16 +68,18 @@
       border: 1px solid rgb(206, 212, 218);
       border-radius: 5px;
       padding: 5px;
-      margin-bottom: 7px;
+      margin-bottom: 17px;
       background-color: $accent-color;
       .card-example_english {
         margin-bottom: 8px;
       }
     }
     .card-statistics {
+      position: absolute;
       font-size: .8rem;
       line-height: .9rem;
-      margin-top: 10px;
+      bottom: 5px;
+      //margin-top: 10px;
     }
   }
 

@@ -27,7 +27,7 @@ const DictionaryCurrentCardView = ({
   buttonText,
   buttonCallback,
 }) => {
-  console.log(currentCard.userWord);
+  // console.log(currentCard.userWord);
   const textMeaningArray = getWordFromTaggedText(currentCard.textMeaning, 'i');
   const textExampleArray = getWordFromTaggedText(currentCard.textExample, 'b');
 

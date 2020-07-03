@@ -19,12 +19,14 @@ export const DictionaryPage = () => {
   const moveToDeleted = useCallback(
     (wordId) => () => {
       dispatch(actionMoveWord({ wordId, difficulty: DELETED_WORD }));
+      console.log('callback');
     },
     [dispatch],
   );
 
   const moveToLearned = useCallback(
     (wordId) => () => {
+      console.log('callback');
       dispatch(actionMoveWord({ wordId, difficulty: LEARNED_WORD }));
     },
     [dispatch],
@@ -63,7 +65,7 @@ export const DictionaryPage = () => {
           words={nextTrainWords}
           learnCardSettings={learnCardSettings}
           header="Для повтора на следующей тренировке"
-          buttonText="Вернуть в изученные"
+          buttonText="В изученные"
           buttonCallback={moveToLearned}
         />
       </Route>

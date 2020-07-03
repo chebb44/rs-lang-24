@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './DictionaryPart.scss';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { LearnCardImg } from '../LearnCardImg/LearnCardImg';
@@ -17,8 +17,7 @@ export const DictionaryPart = ({
   buttonText,
   buttonCallback,
 }) => {
-  const [currentCardDictionary, setCurrentCardDictionary] = useState(words[4]);
-  console.log(currentCardDictionary);
+  const [currentCardDictionary, setCurrentCardDictionary] = useState(null);
 
   const onWordClick = useCallback(
     (event) => {
@@ -26,22 +25,28 @@ export const DictionaryPart = ({
         event.currentTarget.dataset.wordid,
         words,
       );
-      // console.log(words);
+      buttonCallback(currentCardDictionary);
       setCurrentCardDictionary(words[currentCardIndex]);
     },
-    [words],
+    [buttonCallback, currentCardDictionary, words],
   );
 
   return (
     <div className="dictionary-block">
       <h3 className="mt-3 mb-3">{header}</h3>
-      <DictionaryCurrentCardView
-        currentCard={currentCardDictionary}
-        learnCardSettings={learnCardSettings}
+      {currentCardDictionary && (
+        <DictionaryCurrentCardView
+          currentCard={currentCardDictionary}
+          learnCardSettings={learnCardSettings}
+
+        />
+      )}
+      <DictionaryAllWordsList
+        onWordClick={onWordClick}
+        words={words}
         buttonText={buttonText}
         buttonCallback={buttonCallback}
       />
-      <DictionaryAllWordsList onWordClick={onWordClick} words={words} />
     </div>
   );
 };

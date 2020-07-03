@@ -12,7 +12,12 @@ const make10WordsArray = (words) => {
   }, []);
 };
 
-const DictionaryAllWordsList = ({ words, onWordClick }) => {
+const DictionaryAllWordsList = ({
+  words,
+  onWordClick,
+  buttonText,
+  buttonCallback,
+}) => {
   const dictionaryAllWordsArray = make10WordsArray(words);
 
   return (
@@ -22,6 +27,8 @@ const DictionaryAllWordsList = ({ words, onWordClick }) => {
           key={key}
           columnWords={columnWords}
           onWordClick={onWordClick}
+          buttonText={buttonText}
+          buttonCallback={buttonCallback}
         />
       ))}
     </div>
@@ -30,21 +37,33 @@ const DictionaryAllWordsList = ({ words, onWordClick }) => {
 
 export default DictionaryAllWordsList;
 
-const DictionaryWordsColumn = ({ columnWords, onWordClick }) => {
+const DictionaryWordsColumn = ({
+  columnWords,
+  onWordClick,
+  buttonText,
+  buttonCallback,
+}) => {
   return (
     <div className="words-container">
       {columnWords.map((word, key) => {
         return (
           <div className="words_word-row" key={key}>
-            <div className="words_word-wrapper" data-wordid={word._id} onClick={onWordClick}>
+            <div
+              className="words_word-wrapper"
+              data-wordid={word._id}
+              onClick={onWordClick}
+            >
               <span className="dictionary-all-words__word">
                 {capitalizeFirstLetter(word.word)}
               </span>
               <span></span>
               <span></span>
             </div>
-            <button className="btn dictionary-all-words__word-delete">
-              Удалить
+            <button
+              className="btn dictionary-all-words__word-delete"
+              onClick={buttonCallback}
+            >
+              {buttonText}
             </button>
           </div>
         );
