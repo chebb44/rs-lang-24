@@ -6,7 +6,7 @@ export const DescriptionWord = ({
   isTranslationOn,
   text,
   textTranslation,
-  isWordSubmitted,
+  isTranslationShown,
   isWordCorrect,
   tag,
 }) => {
@@ -33,7 +33,7 @@ export const DescriptionWord = ({
           ) : (
             <p className="card-text">{hidedText}</p>
           )}
-          {isTranslationOn && isWordSubmitted ? (
+          {isTranslationOn && isTranslationShown ? (
             <p className="card-text">{textTranslation}</p>
           ) : null}
         </>

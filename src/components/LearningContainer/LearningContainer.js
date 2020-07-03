@@ -69,6 +69,7 @@ export const LearningContainer = () => {
       </div>
       <LearnCardButtonsContainer
         learnCard={learnCard}
+        learnCardSettings={learnCardSettings}
         isWordCorrect={isWordCorrect}
       />
     </div>

@@ -7,10 +7,7 @@ import { LearnCardTranslation } from '../LearnCardTranslation/LearnCardTranslati
 import { LearnCardAudio } from '../LearnCardAudio/LearnCardAudio';
 import { formatLearnCardText } from '../../utilities/learnCard/formatLearnCardText';
 import { learnCardParametersSelector } from '../../reducers/learnCard/learnCardReducer';
-import {
-  actionUpdateSubmissionFlag,
-  actionUpdateCurrentAudio,
-} from '../../reducers/learnCard/learnCardActions';
+import { actionUpdateCurrentAudio } from '../../reducers/learnCard/learnCardActions';
 import './LearnCard.scss';
 import { DescriptionWord } from './../DescriptionWord/DescriptionWord';
 import { submitWordFunction } from '../../utilities/learnCard/submitWordFunction';
@@ -19,7 +16,7 @@ export const LearnCard = ({ learnCard, learnCardSettings }) => {
   const [learnCardFormatted, setLearnCardFormatted] = useState(null);
   const {
     enteredWord,
-    isWordSubmitted,
+    isTranslationShown,
     isAnswerShown,
     audiosToPlay,
     currentAudio,
@@ -35,32 +32,16 @@ export const LearnCard = ({ learnCard, learnCardSettings }) => {
 
   const handleNextAudio = () => {
     const currentAudioIndex = audiosToPlay.indexOf(currentAudio);
-    if (currentAudioIndex === audiosToPlay.length - 1) {
-      if (isWordSubmitted) {
-        dispatch(actionUpdateSubmissionFlag(false));
-      }
-    } else {
+    if (currentAudioIndex <= audiosToPlay.length - 1) {
       dispatch(actionUpdateCurrentAudio(audiosToPlay[currentAudioIndex + 1]));
     }
   };
 
   const handleWordSubmitOnEnter = (event) => {
     if (event.key === 'Enter') {
-      dispatch(actionUpdateSubmissionFlag(true));
-    }
-  };
-
-  const handleWordSubmitOnClick = () => {
-    if (isWordSubmitted) {
       submitWordFunction(enteredWord, learnCard, learnCardSettings);
-      if (!learnCardSettings.isAudioOn) {
-        setTimeout(() => {
-          dispatch(actionUpdateSubmissionFlag(false));
-        }, 6000);
-      }
     }
   };
-  useEffect(handleWordSubmitOnClick, [isWordSubmitted, dispatch]);
 
   if (!learnCardFormatted) return null;
   return (
@@ -76,7 +57,6 @@ export const LearnCard = ({ learnCard, learnCardSettings }) => {
                 />
                 <LearnCardInput
                   originalWord={learnCardFormatted.word}
-                  isWordSubmitted={isWordSubmitted}
                   isAnswerShown={isAnswerShown}
                 />
                 <LearnCardTranscription
@@ -86,14 +66,14 @@ export const LearnCard = ({ learnCard, learnCardSettings }) => {
                 <LearnCardTranslation
                   isTranslationOn={learnCardSettings.isTranslationOn}
                   translation={learnCardFormatted.wordTranslate}
-                  isWordSubmitted={isWordSubmitted}
+                  isTranslationShown={isTranslationShown}
                 />
                 <DescriptionWord
                   isOn={learnCardSettings.isExampleOn}
                   isTranslationOn={learnCardSettings.isTranslationOn}
                   text={learnCardFormatted.textExample}
                   textTranslation={learnCardFormatted.textExampleTranslate}
-                  isWordSubmitted={isWordSubmitted}
+                  isTranslationShown={isTranslationShown}
                   isWordCorrect={isWordCorrect}
                   tag="b"
                 />
@@ -102,7 +82,7 @@ export const LearnCard = ({ learnCard, learnCardSettings }) => {
                   isTranslationOn={learnCardSettings.isTranslationOn}
                   text={learnCardFormatted.textMeaning}
                   textTranslation={learnCardFormatted.textMeaningTranslate}
-                  isWordSubmitted={isWordSubmitted}
+                  isTranslationShown={isTranslationShown}
                   isWordCorrect={isWordCorrect}
                   tag="i"
                 />
