@@ -6,6 +6,8 @@ import {
   AUDIO_CALL_START_SCREEN,
   AUDIO_CALL_GAME_SCREEN,
   MAX_WORDS_FOR_GAME,
+  LEARNED_WORDS,
+  SELECTED_WORDS,
 } from '../constants';
 import { useSelector, useDispatch } from 'react-redux';
 import { dictionaryStateStateSelector } from '../../../../reducers/dictionaryReducer/dictionaryReducer';
@@ -59,12 +61,19 @@ export const AudioCallMainPage = () => {
     [dispatch],
   );
 
+  const [gameMode, setGameMode] = useState(LEARNED_WORDS);
+
+  useEffect(() => {
+    learnedWords.length >= MAX_WORDS_FOR_GAME
+      ? setGameMode(LEARNED_WORDS)
+      : setGameMode(SELECTED_WORDS);
+  }, [learnedWords.length]);
+
   useEffect(() => {
     setIsLoader(true);
     const fetchWords = async () => {
       let wordsArray = [];
-
-      learnedWords.length === MAX_WORDS_FOR_GAME
+      gameMode === LEARNED_WORDS
         ? (wordsArray = await getWordsForAudioCall(
             currentWordsPage,
             currentWordsGroup,
@@ -76,7 +85,15 @@ export const AudioCallMainPage = () => {
     };
     fetchWords();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentWordsGroup, currentWordsPage, learnedWords, level, round]);
+  }, [
+    currentWordsGroup,
+    currentWordsPage,
+    learnedWords,
+    level,
+    round,
+    gameMode,
+  ]);
+
   return (
     <div className="audio-call-main-page">
       {(() => {
@@ -94,6 +111,7 @@ export const AudioCallMainPage = () => {
                 saveGameRound={saveGameRound}
                 level={level}
                 round={round}
+                setGameMode={setGameMode}
               />
             );
           case AUDIO_CALL_GAME_SCREEN:

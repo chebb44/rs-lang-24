@@ -3,6 +3,7 @@ import './AudioCallStartScreen.scss';
 import london from '../../../../assets/img/england_PNG72.png';
 import { AudioCallStatisticToDay } from '../AudioCallStatisticToDay/AudioCallStatisticToDay';
 import { AudioCallMenuChangeLevel } from '../AudioCallMenuChangeLevel/AudioCallMenuChangeLevel';
+import { AudioCallStartGameBtn } from '../AudioCallStartGameBtn/AudioCallStartGameBtn';
 
 export const AudioCallStartScreen = function ({
   startGameHandler,
@@ -13,6 +14,7 @@ export const AudioCallStartScreen = function ({
   saveGameRound,
   level,
   round,
+  setGameMode,
 }) {
   return (
     <div className="audio-call-start-screen">
@@ -36,12 +38,10 @@ export const AudioCallStartScreen = function ({
         Чтобы начать нажмите СТАРТ
       </p>
       <div>
-        <button
-          className="btn audio-call-start-screen__button audio-call-start-screen__button_start"
-          onClick={startGameHandler}
-        >
-          Старт
-        </button>
+        <AudioCallStartGameBtn
+          startGameHandler={startGameHandler}
+          setGameMode={setGameMode}
+        />
         <button
           className="btn audio-call-start-screen__button audio-call-start-screen__button_settings"
           onClick={visibleStatistic}

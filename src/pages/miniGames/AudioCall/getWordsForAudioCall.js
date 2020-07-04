@@ -5,13 +5,14 @@ import {
   getRndIntegerPage,
   getRndIntegerDependencePage,
 } from './utilities';
+import { MAX_WORDS_FOR_GAME } from './constants';
 
 export const getWordsForAudioCall = async (pageGet, group, learnedWords) => {
   if (!learnedWords) {
     let page = getRndIntegerPage(pageGet);
     learnedWords = await getWordsByPageAndGroup({ page, group });
-    learnedWords = shuffleArray(learnedWords).slice(10);
   }
+  learnedWords = shuffleArray(learnedWords).slice(0, MAX_WORDS_FOR_GAME);
 
   let falseWords = [];
   const numberOfNeed = 100;
