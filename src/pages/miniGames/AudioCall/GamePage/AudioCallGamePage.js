@@ -12,6 +12,8 @@ import { AudioCallEndGameStatisticModal } from '../AudioCallEndGameStatisticModa
 import { useDispatch } from 'react-redux';
 import { actionAudioCallSendGameResult } from '../../../../reducers/miniGamesStats/miniGamesStatsActions';
 import { getDateStringByDate } from '../utilities';
+import { actionMarkWord } from '../../../../store/actionsForSaga';
+import { NEXT_TRAIN_WORD } from '../../../../sagas/constants';
 
 export const AudioCallGamePage = ({ redirectToStartScreen, wordsForGame }) => {
   const [wordNumber, setWordNumber] = useState(0);
@@ -36,6 +38,17 @@ export const AudioCallGamePage = ({ redirectToStartScreen, wordsForGame }) => {
       }),
     );
   }, [dispatch, trueAnswerStatistic.length]);
+
+  const markWordsToNextTrain = useCallback(() => {
+    falseAnswerStatistic.map((word) => {
+      return dispatch(
+        actionMarkWord({
+          wordId: word._id || word.id,
+          difficulty: NEXT_TRAIN_WORD,
+        }),
+      );
+    });
+  }, [dispatch, falseAnswerStatistic]);
 
   const success = new Audio();
   success.src = successSrc;
@@ -134,6 +147,7 @@ export const AudioCallGamePage = ({ redirectToStartScreen, wordsForGame }) => {
         falseAnswerStatistic={falseAnswerStatistic}
         redirectToStartScreen={redirectToStartScreen}
         saveStatistic={saveStatistic}
+        markWordsToNextTrain={markWordsToNextTrain}
       />
     </div>
   ) : (

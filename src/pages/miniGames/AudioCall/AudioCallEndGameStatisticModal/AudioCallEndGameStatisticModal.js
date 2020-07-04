@@ -7,10 +7,12 @@ export const AudioCallEndGameStatisticModal = ({
   falseAnswerStatistic,
   redirectToStartScreen,
   saveStatistic,
+  markWordsToNextTrain,
 }) => {
   useEffect(() => {
     saveStatistic();
-  }, [saveStatistic, trueAnswerStatistic]);
+    markWordsToNextTrain();
+  }, [markWordsToNextTrain, saveStatistic, trueAnswerStatistic]);
   return (
     <div className="modal-overlay">
       <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable settings-modal">
