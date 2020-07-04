@@ -1,37 +1,36 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { WordContainer } from '../SavannaWordContainer/wordContainer';
 export const SavannaAnswers = ({
   currentCards,
   blockSize,
   answerIndex,
   blockIndex,
-  trueOrFalse,
-  setTrueOrFalse,
+  setCurrentAnswer,
 }) => {
   let wordArray = [];
   for (let i = 0; i < blockSize; i++) {
     if (Math.random() > 1 / 2) {
       wordArray.unshift(
         <WordContainer
+          key={Math.random()}
           currentCards={currentCards}
           blockSize={blockSize}
           blockIndex={blockIndex}
           cardIndex={i}
           answerIndex={answerIndex}
-          trueOrFalse={trueOrFalse}
-          setTrueOrFalse={setTrueOrFalse}
+          setCurrentAnswer={setCurrentAnswer}
         />,
       );
     } else {
       wordArray.push(
         <WordContainer
+          key={Math.random()}
           currentCards={currentCards}
           blockSize={blockSize}
           blockIndex={blockIndex}
           cardIndex={i}
           answerIndex={answerIndex}
-          trueOrFalse={trueOrFalse}
-          setTrueOrFalse={setTrueOrFalse}
+          setCurrentAnswer={setCurrentAnswer}
         />,
       );
     }

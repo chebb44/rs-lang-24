@@ -5,8 +5,7 @@ export const WordContainer = ({
   blockIndex,
   cardIndex,
   answerIndex,
-  trueOrFalse,
-  setTrueOrFalse,
+  setCurrentAnswer,
 }) => {
   const isAnswer =
     blockIndex * blockSize + answerIndex === blockSize * blockIndex + cardIndex;
@@ -17,13 +16,12 @@ export const WordContainer = ({
         type="button"
         className="btn btn-outline-light answer"
         onClick={(event) => {
-          let lastAswer = document.getElementsByClassName(
-            'btn btn-warning answer',
-          )[0];
+          let lastAswer = document.getElementById('active');
           if (lastAswer) {
             lastAswer.className = 'btn btn-outline-light answer';
           }
-          setTrueOrFalse(true);
+          setCurrentAnswer(true);
+          event.target.id = 'active';
           event.target.className = 'btn btn-warning answer';
         }}
       >
@@ -37,13 +35,12 @@ export const WordContainer = ({
         type="button"
         className="btn btn-outline-light answer"
         onClick={(event) => {
-          let lastAswer = document.getElementsByClassName(
-            'btn btn-warning answer',
-          )[0];
+          let lastAswer = document.getElementById('active');
           if (lastAswer) {
             lastAswer.className = 'btn btn-outline-light answer';
           }
-          setTrueOrFalse(false);
+          setCurrentAnswer(false);
+          event.target.id = 'active';
           event.target.className = 'btn btn-warning answer';
         }}
       >

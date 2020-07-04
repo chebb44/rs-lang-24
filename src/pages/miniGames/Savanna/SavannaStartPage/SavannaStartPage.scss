@@ -1,3 +1,14 @@
+  .play-page__flipping-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .play-page__flipping-container form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
   .start-page{
     display: flex;
     flex-direction: column;
@@ -6,9 +17,13 @@
     height: 100%;
   }
   .btn-rslang{
+    max-width: 100px;
     margin: 30px;
     color: #204b62bf;
     background: #FFD6BA
+  }
+  form label{
+    width: 280px;
   }
   .color-rslang{
     color: #204b62bf;
