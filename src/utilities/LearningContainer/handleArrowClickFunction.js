@@ -1,33 +1,23 @@
 import { store } from '../../store/store';
-import {
-  actionUpdateCurrentCardIndex,
-  actionUpdateEnteredWord,
-  actionUpdateSubmissionFlag,
-  actionUpdateWordCorrectFlag,
-  actionUpdateCheckDisplaying,
-  actionUpdateAudiosToPlay,
-  actionUpdateCurrentAudio,
-  actionUpdateAnswerShownFlag,
-} from '../../reducers/learnCard/learnCardActions';
-import {
-  actionUpdateLastCorrectWordIndex,
-  actionClearAnswerAccuracy,
-} from '../../reducers/learnSettings/learnSettingsActions';
+import { actionUpdateCurrentCardIndex } from '../../reducers/learnCard/learnCardActions';
+import { actionUpdateLastCorrectWordIndex } from '../../reducers/learnSettings/learnSettingsActions';
 import {
   actionUpdatePrevPageGroupWordNumber,
   actionUpdateLastFinishedLearningDate,
 } from '../../reducers/learnSettings/learnSettingsActions';
 import { actionSetIsStatisticModalShown } from '../../reducers/appState/appStateActions';
-import { calculateCorrectAnswersStatistic } from '../../utilities/learnCard/calculateCorrectAnswersStatistic';
-import {
-  actionSetCorrectAnswersPercent,
-  actionSetLongestCorrectAnswerSeries,
-} from '../../reducers/statisticReducer/statisticActions';
+import { setShortStatistic } from './setShortStatistic';
+import { resetCardProperties } from './resetCardProperties';
+import { resetCardSetProperties } from './resetCardSetProperties';
+import { actionUpdateLearnedWordsStatistic } from '../../reducers/statisticReducer/statisticActions';
+import { getDateStringByDate } from '../../utilities/getDateStringByDate';
 
 export function handleArrowClickFunction(
   direction,
   isWordCorrect,
   currentLearnCardIndex,
+  wordsPerDay,
+  cardsPerDay,
   lastCorrectWordIndex,
   learnCardsLength,
   answersAccuracy,
@@ -38,35 +28,33 @@ export function handleArrowClickFunction(
     currentLearnCardIndex <= learnCardsLength - 1
   ) {
     store.dispatch(actionUpdateCurrentCardIndex(currentLearnCardIndex + 1));
-    if (isWordCorrect)
+
+    if (isWordCorrect) {
       store.dispatch(
         actionUpdateLastCorrectWordIndex(lastCorrectWordIndex + 1),
       );
+      // add learned word to statistic
+      const wordDate = getDateStringByDate(new Date());
+      store.dispatch(actionUpdateLearnedWordsStatistic(wordDate));
+    }
+
     if (currentLearnCardIndex === learnCardsLength - 1) {
-      const [
-        correctAnswersPercent,
-        longestCorrectAnswersSeries,
-      ] = calculateCorrectAnswersStatistic(answersAccuracy);
-      store.dispatch(actionSetCorrectAnswersPercent(correctAnswersPercent));
-      store.dispatch(
-        actionSetLongestCorrectAnswerSeries(longestCorrectAnswersSeries),
-      );
-      store.dispatch(actionUpdateLastCorrectWordIndex(-1));
-      store.dispatch(actionClearAnswerAccuracy([]));
-      store.dispatch(actionUpdatePrevPageGroupWordNumber());
+      // set short statistic and show statistic modal
+      setShortStatistic(wordsPerDay, cardsPerDay, answersAccuracy);
       store.dispatch(actionSetIsStatisticModalShown(true));
-      store.dispatch(actionUpdateCurrentCardIndex(0));
-      store.dispatch(actionUpdateLastFinishedLearningDate(new Date()));
+
+      // reset card set properties
+      resetCardSetProperties();
+
+      // set finish date and card page
+      const setDate = getDateStringByDate(new Date());
+      store.dispatch(actionUpdateLastFinishedLearningDate(setDate));
+      store.dispatch(actionUpdatePrevPageGroupWordNumber());
     }
   }
   if (direction === 'previous' && currentLearnCardIndex > 0) {
     store.dispatch(actionUpdateCurrentCardIndex(currentLearnCardIndex - 1));
   }
-  store.dispatch(actionUpdateAnswerShownFlag(false));
-  store.dispatch(actionUpdateEnteredWord(''));
-  store.dispatch(actionUpdateSubmissionFlag(false));
-  store.dispatch(actionUpdateWordCorrectFlag(false));
-  store.dispatch(actionUpdateCheckDisplaying(false));
-  store.dispatch(actionUpdateAudiosToPlay([]));
-  store.dispatch(actionUpdateCurrentAudio(null));
+  // reset card properties
+  resetCardProperties();
 }

@@ -1,0 +1,37 @@
+@import "src/scss/vars";
+@import "src/scss/mixins";
+
+.speak-it-statistic__wrapper {
+
+  .speak-it-statistic__window {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    min-height: 100%;
+    //background: $default-color;
+    //border-radius: 5px;
+
+    .speak-it-statistic_title {
+      margin-top: 25px;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    .speak-it-statistic_cards {
+      margin-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn_speak-it-statistic {
+      @include std_button;
+      min-width: 120px;
+      min-height: 45px;
+      background-color: $accent-color;
+      margin-top: 15px;
+    }
+  }
+}
+

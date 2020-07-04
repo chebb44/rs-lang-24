@@ -15,7 +15,12 @@ export const SpeakItEnterScreen = function ({ setSpeakItScreen }) {
       <li>
         <ul>
           <p className="enter-screen__description">
-            Для тренировки нажмите на слово чтобы услышать его произношение
+            Мини-игра для тренировки правильного произношения английских слов
+          </p>
+        </ul>
+        <ul>
+          <p className="enter-screen__description">
+            В режиме тренировки нажмите на слово, будет показан перевод
           </p>
         </ul>
         <ul>
@@ -26,7 +31,7 @@ export const SpeakItEnterScreen = function ({ setSpeakItScreen }) {
         </ul>
         <ul>
           <p className="enter-screen__description">
-            Выберете количество слов и нажмите СТАРТ
+            Для начала миниигры нажмите СТАРТ
           </p>
         </ul>
       </li>

@@ -6,7 +6,7 @@ import london from './../../assets/img/england_PNG723.png';
 
 export const Page404 = () => {
   return (
-    <div className="container page">
+    <div className="page">
       <div className="page-wrapper">
         <div className="page-wrapper__text">
           <h4>Эта страница не существует :(</h4>

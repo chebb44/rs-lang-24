@@ -1,9 +1,9 @@
 import { SET_LEARN_CARDS, ADD_LEARN_CARDS } from './learnCardsActions';
-import { UPDATE_LEARNED_WORDS_AMOUNT } from './learnCardsActions';
+import { ADD_REPEATING_WORD } from './learnCardsActions';
+import { getRandomInteger } from '../../utilities/getRandomInteger';
 
 const defaultData = {
   cards: [],
-  learnedWordsAmount: 0,
 };
 
 export const learnCardsSelector = (state) => state.learnCards.cards;
@@ -24,10 +24,17 @@ export const learnCards = (state = defaultData, action) => {
         ...state,
         cards: newStateCards,
       };
-    case UPDATE_LEARNED_WORDS_AMOUNT:
+    case ADD_REPEATING_WORD:
+      const wordIndex = action.payload;
+      const currentCard = state.cards[wordIndex];
+      const randomIndex = getRandomInteger(wordIndex, state.cards.length);
       return {
         ...state,
-        learnedWordsAmount: action.amount,
+        cards: [
+          ...state.cards.slice(0, randomIndex),
+          currentCard,
+          ...state.cards.slice(randomIndex),
+        ],
       };
     default:
       return state;

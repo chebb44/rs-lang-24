@@ -16,10 +16,9 @@
   background-color: #fff;
   transition: .3s;
 
-  @media screen and (max-width: $mobile-width-big ) {
+  @media screen and (max-width: $mobile-width-big) {
     min-width: calc(100vw / 2 - 10px);
     min-height: calc((100vw / 2) / 20 * 7);
-    //margin-top: 10px;
     margin-bottom: 3px;
     margin-top: 0;
 

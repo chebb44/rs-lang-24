@@ -23,15 +23,11 @@ import recognition, {
   stopVoxRecognition,
 } from '../../../../utilities/speachRecognition';
 import SpeakItModalWindow from '../SpeakItModalWindow/SpeakItModalWindow';
-import { miniGamesStatsSelector } from '../../../../reducers/miniGamesStats/miniGamesStatsReducer';
 import { actionSpeakItSendGameResult } from '../../../../reducers/miniGamesStats/miniGamesStatsActions';
+import { getDateStringByDate } from '../../../../utilities/getDateStringByDate';
 
-export const SpeakItGameScreen = function () {
+export const SpeakItGameScreen = function ({ onClickStatsButton }) {
   const dispatch = useDispatch();
-  const {
-    miniGames: { speakIt: gameStat },
-  } = useSelector(miniGamesStatsSelector);
-  console.log(gameStat);
   const dictionary = useSelector(dictionaryStateStateSelector);
   const learnedWords = [
     ...dictionary.learnedWords,
@@ -50,6 +46,7 @@ export const SpeakItGameScreen = function () {
         );
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [isUnsupportedBrowser, setIsUnsupportedBrowser] = useState(false);
   const [trainCards, setTrainCards] = useState(
     cardsForCurrentGame.slice(0, 10),
   );
@@ -62,7 +59,7 @@ export const SpeakItGameScreen = function () {
     (result) => {
       dispatch(
         actionSpeakItSendGameResult({
-          dates: new Date().toLocaleDateString(),
+          dates: getDateStringByDate(new Date()),
           results: result,
         }),
       );
@@ -74,7 +71,7 @@ export const SpeakItGameScreen = function () {
     sendDataToStatistic(calculateAnswers(trainCards));
     setTimeout(() => setModalOpen(true), 1000);
     setIsGameStarted(false);
-    stopVoxRecognition();
+    recognition && stopVoxRecognition();
   }, [sendDataToStatistic, trainCards]);
 
   const setNewCard = useCallback(() => {
@@ -114,7 +111,7 @@ export const SpeakItGameScreen = function () {
   );
 
   const startVoiceRecognition = useCallback(() => {
-    startVoxRecognition();
+    recognition && startVoxRecognition();
     recognition.onresult = (event) => {
       const recognised = getRecognisedWordsArrayFromEvent(event);
       onNewWordRecognise(recognised);
@@ -130,12 +127,14 @@ export const SpeakItGameScreen = function () {
   }, [setNewCard, startVoiceRecognition, trainCards]);
 
   const onClickSpeakButton = useCallback(() => {
-    initNewGame();
-  }, [initNewGame]);
+    window.scrollTo(0, 0);
+    !recognition && setIsUnsupportedBrowser(true);
+    !isGameStarted && recognition && initNewGame();
+  }, [initNewGame, isGameStarted]);
 
   const onClickResetButton = useCallback(() => {
     setIsGameStarted(false);
-    stopVoxRecognition();
+    recognition && stopVoxRecognition();
     initCardsView(trainCards);
     setCurrentCardState(INIT_CARD);
   }, [trainCards]);
@@ -143,6 +142,7 @@ export const SpeakItGameScreen = function () {
   const onCloseModal = useCallback(() => {
     setModalOpen(false);
     initCardsView(trainCards);
+    setCurrentCardState(INIT_CARD);
   }, [trainCards]);
 
   const onClickCard = useCallback(
@@ -159,9 +159,14 @@ export const SpeakItGameScreen = function () {
     [isGameStarted, trainCards],
   );
 
+  const onCloseModalError = useCallback(() => {
+    setIsUnsupportedBrowser(false);
+    initCardsView(trainCards);
+    setCurrentCardState(INIT_CARD);
+  }, [trainCards]);
+
   return (
     <div className="speak-it__game-screen">
-      {/*<div className="game-score" />*/}
       <CentralScreen currentCard={currentCardState} gameMode={isGameStarted} />
       <div className="cards">
         {trainCards.map((card, idx) => (
@@ -171,13 +176,17 @@ export const SpeakItGameScreen = function () {
       <Buttons
         onClickSpeakButton={onClickSpeakButton}
         onClickResetButton={onClickResetButton}
-        onClickResultsButton={sendDataToStatistic}
+        onClickStatsButton={onClickStatsButton}
       />
       {modalOpen && (
         <SpeakItModalWindow
           answers={calculateAnswers(trainCards)}
           onCloseModal={onCloseModal}
+          endGame={true}
         />
+      )}
+      {isUnsupportedBrowser && (
+        <SpeakItModalWindow onCloseModal={onCloseModalError} />
       )}
     </div>
   );

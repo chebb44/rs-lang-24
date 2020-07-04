@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
-import { Switch, Route, useRouteMatch, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { DictionaryPage } from './../pages/DictionaryPage/DictionaryPage';
 import { useSelector, useDispatch } from 'react-redux';
 import { currentUserSelector } from './../reducers/currentUser/currentUserReducer';
 import { PageHeader } from './PageHeader';
 import { PageSideBar } from './PageSidebar';
 import { LearnPage } from '../pages/LearnPage/LearnPage';
+import { MainPage } from '../pages/MainPage/MainPage';
 import { Page404 } from '../pages/Page404/Page404';
 import { StatisticPage } from '../pages/StatisticPage/StatisticPage';
 import './App.scss';
@@ -20,7 +21,7 @@ import { actionToggleSideBar } from '../reducers/appState/appStateActions';
 import { SprintMain } from './../pages/miniGames/Sprint/containers/SprintMain/SprintMain';
 
 export const App = () => {
-  let { path } = useRouteMatch();
+  //let { path } = useRouteMatch();
   const { token } = useSelector(currentUserSelector);
   const { isSideBarShow, initDone } = useSelector(appStateSelector);
   const dispatch = useDispatch();
@@ -51,9 +52,7 @@ export const App = () => {
               <Route path={routes.speakIt} component={SpeakItMainPage} />
               <Route path={routes.savanna} component={SavannaPage} />
               <Route path={routes.sprint} component={SprintMain} />
-              <Route exact path={path}>
-                <h1>Main Page</h1>
-              </Route>
+              <Route exact path={routes.mainApp} component={MainPage} />
               <Route path="/">
                 <Page404 />
               </Route>

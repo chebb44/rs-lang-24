@@ -1,11 +1,23 @@
-const SpeechRecognition =
-  window.SpeechRecognition || window.webkitSpeechRecognition;
-const recognition = new SpeechRecognition();
+const initSpeechRecognition = () => {
+  let SpeechRecognition = window.SpeechRecognition;
+  // window.speechRecognition || window.webkitSpeechRecognition;
+  if (!window.SpeechRecognition) {
+    if (!window.webkitSpeechRecognition) {
+      return;
+    }
+    SpeechRecognition = window.webkitSpeechRecognition;
+  }
 
-recognition.continuous = false;
-recognition.lang = 'en-US';
-recognition.interimResults = false;
-recognition.maxAlternatives = 3;
+  const recognition = new SpeechRecognition();
+
+  recognition.continuous = false;
+  recognition.lang = 'en-US';
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 3;
+  return recognition;
+};
+
+const recognition = initSpeechRecognition();
 
 export default recognition;
 
