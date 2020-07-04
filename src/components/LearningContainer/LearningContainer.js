@@ -2,7 +2,10 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { learnCardsSelector } from '../../reducers/learnCards/learnCardsReducer';
 import { LearnCardButtonsContainer } from '../../components/LearnCardButtonsContainer/LearnCardButtonsContainer';
-import { learnCardSettingsSelector } from '../../reducers/learnSettings/learnSettingsReducer';
+import {
+  learnCardSettingsSelector,
+  learnSettingsSelector,
+} from '../../reducers/learnSettings/learnSettingsReducer';
 import { LearnCard } from '../../components/LearnCard/LearnCard';
 import { LearnCardArrow } from '../../components/LearnCardArrow/LearnCardArrow';
 import './LearningContainer.scss';
@@ -15,6 +18,7 @@ import { handleArrowClickFunction } from '../../utilities/LearningContainer/hand
 export const LearningContainer = () => {
   const learnCards = useSelector(learnCardsSelector);
   const learnCardSettings = useSelector(learnCardSettingsSelector);
+  const { wordsPerDay } = useSelector(learnSettingsSelector);
   const { isWordCorrect, currentLearnCardIndex } = useSelector(
     learnCardParametersSelector,
   );
@@ -32,6 +36,8 @@ export const LearningContainer = () => {
       direction,
       isWordCorrect,
       currentLearnCardIndex,
+      wordsPerDay,
+      learnCardSettings.cardsPerDay,
       learnCardSettings.lastCorrectWordIndex,
       learnCards.length,
       learnCardSettings.answersAccuracy,
@@ -63,6 +69,7 @@ export const LearningContainer = () => {
       </div>
       <LearnCardButtonsContainer
         learnCard={learnCard}
+        learnCardSettings={learnCardSettings}
         isWordCorrect={isWordCorrect}
       />
     </div>

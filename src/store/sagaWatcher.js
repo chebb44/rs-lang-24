@@ -88,6 +88,15 @@ const actionsForSendStatisticToBackend = [
   SPRINT_SEND_GAME_RESULT,
   AUDIO_CALL_SEND_GAME_RESULT,
 ];
+
+const actionsForInitWordsForLearn = [
+  INIT_CARD_SET,
+  UPDATE_PREV_PAGE_GROUP_WORD_NUMBER,
+  SET_WORDS_PER_DAY,
+  SET_CARDS_PER_DAY,
+  SET_LEARN_MODE,
+];
+
 export function* sagaWatcher() {
   yield takeLatest(SIGN_UP_USER, signUpWorker);
   yield takeLatest(SIGN_IN_USER, signInWorker);
@@ -95,7 +104,7 @@ export function* sagaWatcher() {
 
   yield takeLatest(INIT_APP, initAppWorker);
 
-  yield takeLatest(INIT_CARD_SET, initWordsForLearnWorker);
+  yield takeLatest(actionsForInitWordsForLearn, initWordsForLearnWorker);
 
   yield takeLatest(
     actionsForSenSettingsToBackendWorker,

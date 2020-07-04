@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { createCheckedWordMarkup } from '../../utilities/learnCard/createCheckedWordMarkup';
 import { learnCardParametersSelector } from '../../reducers/learnCard/learnCardReducer';
@@ -8,21 +8,11 @@ import {
 } from '../../reducers/learnCard/learnCardActions';
 import './LearnCardInput.scss';
 
-export const LearnCardInput = ({
-  originalWord,
-  isWordSubmitted,
-  isAnswerShown,
-}) => {
+export const LearnCardInput = ({ originalWord, isAnswerShown }) => {
   const { enteredWord, isCheckDisplayed } = useSelector(
     learnCardParametersSelector,
   );
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (isWordSubmitted) {
-      dispatch(actionUpdateCheckDisplaying(true));
-    }
-  }, [isWordSubmitted, dispatch]);
 
   const removeCheckDisplaying = () => {
     dispatch(actionUpdateCheckDisplaying(false));
@@ -35,7 +25,7 @@ export const LearnCardInput = ({
           className="form-control m-auto entered-word"
           type="text"
           style={{
-            width: `calc(4px + 13px * ${originalWord.length})`,
+            width: `calc(4px + 13.5px * ${originalWord.length})`,
           }}
           autoFocus
           value={isAnswerShown ? originalWord : enteredWord}

@@ -163,7 +163,6 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
       };
     case ADD_ANSWER_ACCURACY:
       const array = state.learnCardSettings.answersAccuracy;
-      console.log(array, action.payload);
       return {
         ...state,
         learnCardSettings: {
@@ -172,7 +171,6 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
         },
       };
     case CLEAR_ANSWER_ACCURACY:
-      console.log('nnnn');
       return {
         ...state,
         learnCardSettings: {

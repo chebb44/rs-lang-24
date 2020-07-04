@@ -1,13 +1,13 @@
 import React from 'react';
 import '../Spinner.scss';
 
-export const Spin = () => {
+export const Spin = ({ width = '100px', height = '100px' }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xlinkHref="http://www.w3.org/1999/xlink"
-      width="100px"
-      height="100px"
+      width={width}
+      height={height}
       viewBox="0 0 100 100"
       preserveAspectRatio="xMidYMid"
       className="spin"

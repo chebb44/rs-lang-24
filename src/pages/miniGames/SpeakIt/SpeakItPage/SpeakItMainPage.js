@@ -15,10 +15,9 @@ export const SpeakItMainPage = function () {
   const statArray = [];
   for (const key in gameStat) {
     if (gameStat.hasOwnProperty(key)) {
-      statArray.push({ date: +key, data: gameStat[key] });
+      statArray.push({ date: key, data: gameStat[key] });
     }
   }
-  // console.log(statArray);
   return (
     <div>
       {speakItScreen === 'gamePage' && !showStatistic ? (

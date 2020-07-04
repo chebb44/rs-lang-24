@@ -5,8 +5,10 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  height: 92px;
 
   @include  media-mobile-big {
+    height: 185px;
     flex-direction: row;
   }
 }

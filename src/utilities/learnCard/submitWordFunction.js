@@ -4,6 +4,8 @@ import {
   actionUpdateWordCorrectFlag,
   actionUpdateAudiosToPlay,
   actionUpdateCurrentAudio,
+  actionUpdateTranslationShownFlag,
+  actionUpdateCheckDisplaying,
 } from '../../reducers/learnCard/learnCardActions';
 import { actionAddAnswerAccuracy } from '../../reducers/learnSettings/learnSettingsActions';
 import { actionMarkWord } from '../../store/actionsForSaga';
@@ -23,6 +25,8 @@ export const submitWordFunction = (
   } else {
     store.dispatch(actionAddAnswerAccuracy(false));
   }
+  store.dispatch(actionUpdateCheckDisplaying(true));
+  store.dispatch(actionUpdateTranslationShownFlag(true));
   const audiosToPlay = obtainAudiosToPlay(learnCard, learnCardSettings);
   store.dispatch(actionUpdateAudiosToPlay(audiosToPlay));
   store.dispatch(actionUpdateCurrentAudio(audiosToPlay[0]));
