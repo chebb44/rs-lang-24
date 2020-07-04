@@ -51,6 +51,10 @@ import {
   SPRINT_SEND_GAME_RESULT,
   AUDIO_CALL_SEND_GAME_RESULT,
 } from './../reducers/miniGamesStats/miniGamesStatsActions';
+import {
+  AUDIO_CALL_SAVE_GAME_LEVEL,
+  AUDIO_CALL_SAVE_GAME_ROUND,
+} from '../reducers/miniGamesDifficulty/miniGamesDifficultyActions';
 const actionsForSenSettingsToBackendWorker = [
   SET_LEARN_MODE,
   SET_WORDS_PER_DAY,
@@ -69,6 +73,8 @@ const actionsForSenSettingsToBackendWorker = [
   ADD_ANSWER_ACCURACY,
   CLEAR_ANSWER_ACCURACY,
   UPDATE_LAST_FINISHED_LEARNING_DATE,
+  AUDIO_CALL_SAVE_GAME_LEVEL,
+  AUDIO_CALL_SAVE_GAME_ROUND,
 ];
 
 const actionsForSendStatisticToBackend = [

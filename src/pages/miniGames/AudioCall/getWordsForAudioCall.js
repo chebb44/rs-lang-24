@@ -1,35 +1,34 @@
 import { getWordsByPageAndGroup } from '../../../utilities/network/wordsAPI';
-import { shuffleArray, getArrayRandElement } from './utilities';
+import {
+  shuffleArray,
+  getArrayRandElement,
+  getRndIntegerPage,
+  getRndIntegerDependencePage,
+} from './utilities';
 
-export const getWordsForAudioCall = async (group, page) => {
-  let newWordsFromApi = await getWordsByPageAndGroup({ page, group });
+export const getWordsForAudioCall = async (pageGet, group, learnedWords) => {
+  if (!learnedWords) {
+    let page = getRndIntegerPage(pageGet);
+    learnedWords = await getWordsByPageAndGroup({ page, group });
+    learnedWords = shuffleArray(learnedWords).slice(10);
+  }
 
-  newWordsFromApi = shuffleArray(newWordsFromApi).slice(10);
-  return getFalseWordsForAudioCall(page + 1, group, newWordsFromApi);
-};
-
-export const getFalseWordsForAudioCall = async (page, group, wordsForGame) => {
   let falseWords = [];
   const numberOfNeed = 100;
-
+  let page = getRndIntegerDependencePage(pageGet);
   let newFalseWordsFromApi = await getWordsByPageAndGroup({ page, group });
   for (let i = 0; i < numberOfNeed; i++) {
     if (newFalseWordsFromApi.length === 0) {
-      if (group < 29) {
-        page += 1;
-      } else {
-        group += 1;
-        page = 0;
-      }
+      page += 1;
       newFalseWordsFromApi = await getWordsByPageAndGroup({ page, group });
     }
     falseWords.push(newFalseWordsFromApi.shift());
   }
   falseWords = shuffleArray(falseWords);
 
-  wordsForGame = wordsForGame.map((item) =>
+  learnedWords = learnedWords.map((item) =>
     new Array(item).concat(getArrayRandElement(falseWords)),
   );
 
-  return wordsForGame;
+  return learnedWords;
 };

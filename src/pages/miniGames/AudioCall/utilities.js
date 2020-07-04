@@ -19,3 +19,39 @@ export function getArrayRandElement(array) {
   }
   return arrRes;
 }
+
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+export function getRndIntegerDependencePage(page) {
+  if (page < 4) {
+    return 0;
+  } else if (page >= 4 && page < 9) {
+    return 4;
+  } else if (page >= 9 && page < 14) {
+    return 9;
+  } else if (page >= 14 && page < 19) {
+    return 14;
+  } else if (page >= 19 && page < 24) {
+    return 19;
+  } else if (page >= 24) {
+    return 24;
+  }
+}
+
+export function getRndIntegerPage(page) {
+  if (page < 4) {
+    return getRndInteger(0, 3);
+  } else if (page >= 4 && page < 9) {
+    return getRndInteger(4, 8);
+  } else if (page >= 9 && page < 14) {
+    return getRndInteger(9, 13);
+  } else if (page >= 14 && page < 19) {
+    return getRndInteger(14, 18);
+  } else if (page >= 19 && page < 24) {
+    return getRndInteger(19, 23);
+  } else if (page >= 24) {
+    return getRndInteger(24, 29);
+  }
+}

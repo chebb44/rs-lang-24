@@ -13,9 +13,13 @@ import { useDispatch } from 'react-redux';
 import { actionAudioCallSendGameResult } from '../../../../reducers/miniGamesStats/miniGamesStatsActions';
 import { getBeginDayTimeStamp } from '../../../../utilities/getBeginDayTimeStamp';
 
-//TODO: difficulty level
+//TODO: app description
 
-export const AudioCallGamePage = ({ redirectToStartScreen, wordsForGame }) => {
+export const AudioCallGamePage = ({
+  redirectToStartScreen,
+  wordsForGame,
+  wordsGroup,
+}) => {
   const [wordNumber, setWordNumber] = useState(0);
   const [trueAnswerStatistic, setTrueAnswerStatistic] = useState([]);
   const [falseAnswerStatistic, setFalseAnswerStatistic] = useState([]);
