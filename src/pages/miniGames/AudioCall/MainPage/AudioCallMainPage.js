@@ -119,8 +119,6 @@ export const AudioCallMainPage = () => {
               <AudioCallGamePage
                 redirectToStartScreen={redirectToStartScreen}
                 wordsForGame={wordsForGame}
-                level={level}
-                round={round}
               />
             ) : (
               <Spinner />

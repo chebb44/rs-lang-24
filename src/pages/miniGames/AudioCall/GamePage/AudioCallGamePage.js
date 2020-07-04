@@ -11,15 +11,9 @@ import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { AudioCallEndGameStatisticModal } from '../AudioCallEndGameStatisticModal/AudioCallEndGameStatisticModal';
 import { useDispatch } from 'react-redux';
 import { actionAudioCallSendGameResult } from '../../../../reducers/miniGamesStats/miniGamesStatsActions';
-import { getBeginDayTimeStamp } from '../../../../utilities/getBeginDayTimeStamp';
+import { getDateStringByDate } from '../utilities';
 
-//TODO: app description
-
-export const AudioCallGamePage = ({
-  redirectToStartScreen,
-  wordsForGame,
-  wordsGroup,
-}) => {
+export const AudioCallGamePage = ({ redirectToStartScreen, wordsForGame }) => {
   const [wordNumber, setWordNumber] = useState(0);
   const [trueAnswerStatistic, setTrueAnswerStatistic] = useState([]);
   const [falseAnswerStatistic, setFalseAnswerStatistic] = useState([]);
@@ -37,7 +31,7 @@ export const AudioCallGamePage = ({
 
     dispatch(
       actionAudioCallSendGameResult({
-        audioCallDate: getBeginDayTimeStamp(new Date()),
+        audioCallDate: getDateStringByDate(new Date()),
         audioCallResult: score,
       }),
     );
