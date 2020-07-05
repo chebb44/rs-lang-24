@@ -1,0 +1,20 @@
+@import "src/scss/vars";
+@import "src/scss/mixins";
+
+.audio-call-start-game-btn {
+  margin: 5px 10px;
+  @include std_button;
+  min-width: 180px;
+  min-height: 60px;
+  &_start {
+    min-width: 150px;
+    margin: 5px 0 5px 10px;
+    background-color: $primary-color;
+  }
+  &_toggle {
+    margin: 5px 10px 5px 0;
+    width: 30px;
+    min-height: 60px;
+    background-color: $primary-darker-color;
+  }
+}

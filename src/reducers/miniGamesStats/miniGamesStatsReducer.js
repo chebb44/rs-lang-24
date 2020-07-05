@@ -2,11 +2,13 @@ import {
   SPRINT_SEND_GAME_RESULT,
   SET_ALL_MINI_GAMES_STATS,
   SPEAK_IT_SEND_GAME_RESULT,
+  AUDIO_CALL_SEND_GAME_RESULT,
 } from './miniGamesStatsActions';
 const defaultData = {
   miniGames: {
     sprint: {},
     speakIt: {},
+    audioCall: {},
   },
 };
 
@@ -47,6 +49,27 @@ export const miniGamesStats = (state = defaultData, action) => {
           speakIt: {
             ...state.miniGames.speakIt,
             [dates]: speakItDayStat,
+          },
+        },
+      };
+    case AUDIO_CALL_SEND_GAME_RESULT:
+      const { audioCallDate, audioCallResult } = action.payload;
+      let audioCallDayStat = [];
+      if (audioCallDate in state.miniGames.audioCall) {
+        audioCallDayStat = [
+          ...state.miniGames.audioCall[audioCallDate],
+          audioCallResult,
+        ];
+      } else {
+        audioCallDayStat = [audioCallResult];
+      }
+      return {
+        ...state,
+        miniGames: {
+          ...state.miniGames,
+          audioCall: {
+            ...state.miniGames.audioCall,
+            [audioCallDate]: audioCallDayStat,
           },
         },
       };

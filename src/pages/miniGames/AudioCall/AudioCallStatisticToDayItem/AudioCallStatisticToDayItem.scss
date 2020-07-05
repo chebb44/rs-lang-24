@@ -1,0 +1,8 @@
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+
+.audio-call-statistic-to-day__item {
+  cursor: pointer;
+  padding: 3px;
+  color: $neutral-inactive;
+}
