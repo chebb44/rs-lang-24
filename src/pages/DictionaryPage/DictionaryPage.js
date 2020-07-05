@@ -63,7 +63,7 @@ export const DictionaryPage = () => {
           words={nextTrainWords}
           learnCardSettings={learnCardSettings}
           header="Для повтора на следующей тренировке"
-          buttonText="В изученные"
+          buttonText="Удалить"
           buttonCallback={moveToLearned}
         />
       </Route>
