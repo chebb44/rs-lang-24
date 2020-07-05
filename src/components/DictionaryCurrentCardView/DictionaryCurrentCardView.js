@@ -59,13 +59,16 @@ const DictionaryCurrentCardView = ({ currentCard }) => {
         </div>
         <div className="card-statistics">
           <span>Повторов: {userWord.optional.sumOfRepeats}</span>{' '}
-          <span>
-            Следующий:{' '}
-            {getPlanRepeatDate({
-              difficulty: userWord.difficulty,
-              lastRepeatDate: userWord.optional.lastRepeatDate,
-            }).toLocaleDateString()}
-          </span>
+          {(userWord.difficulty === 'LEARNED_WORD' ||
+            userWord.difficulty === 'HARD_WORD') && (
+            <span>
+              Следующий:{' '}
+              {getPlanRepeatDate({
+                difficulty: userWord.difficulty,
+                lastRepeatDate: userWord.optional.lastRepeatDate,
+              }).toLocaleDateString()}
+            </span>
+          )}
         </div>
       </div>
     </div>

@@ -33,7 +33,8 @@
     padding: 8px 5px;
     @media screen and (max-width: $mobile-width-big ) {
       width: calc(100vw - 10px);
-      min-height: calc((100vw - 10px) / 3 * 2);
+      //min-height: calc((100vw - 10px) / 3 * 2);
+      min-height: 20px;
     }
 
     .card-text {

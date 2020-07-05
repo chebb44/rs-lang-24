@@ -6,7 +6,6 @@ import { SidebarItemLinks } from '../SidebarItemLinks/SidebarItemLinks';
 
 export const SideBarItem = ({ item, hideSidebar }) => {
   const { head, headLink, items } = item;
-  // console.log(head, headLink, items);
   return (
     <li className="sidebar-parts">
       {headLink ? (

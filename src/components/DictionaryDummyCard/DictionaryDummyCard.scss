@@ -1,3 +1,20 @@
+@import "src/scss/vars";
+
+.dummy-card__information {
+  display: flex;
+  color: $neutral-inactive;
+  position: relative;
+  width: 370px;
+  min-height: 247px;
+  border-radius: 5px;
+  box-shadow: 3px 6px 25px rgba(118, 118, 118, .25);
+  padding: 8px 5px;
+  @media screen and (max-width: $mobile-width-big ) {
+    width: calc(100vw - 10px);
+    min-height: 20px;
+  }
+}
+
 .dummy-card__text {
-  margin-top: 100px;
+  margin: auto;
 }

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import './DictionaryPart.scss';
-import DictionaryCurrentCardView from '../DictionaryCurrentWordView/DictionaryCurrentCardView';
+import DictionaryCurrentCardView from '../DictionaryCurrentCardView/DictionaryCurrentCardView';
 import DictionaryAllWordsList from '../DictionaryAllWordsList/DictionaryAllWordsList';
 import {
   searchCardIndexInArray,
@@ -79,7 +79,7 @@ export const DictionaryPart = ({
 
   return (
     <div className="dictionary-block">
-      <h3 className="mt-3 mb-3">{header}</h3>
+      <h3 className="mt-2 mb-2">{header}</h3>
       {currentCardDictionary ? (
         <DictionaryCurrentCardView currentCard={currentCardDictionary} />
       ) : (
