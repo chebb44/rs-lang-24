@@ -1,0 +1,28 @@
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+
+.quiz-question-title {
+  margin-top: 5px;
+  // margin-left: 20px;
+  color: $default-color;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 40px;
+  max-width: 400px;
+  word-wrap: break-word;
+  overflow: hidden;
+  visibility: hidden;
+  transition: .2s ease-in;
+  -webkit-transition: .2s ease-in;
+  -moz-transition: .2s ease-in;
+  -ms-transition: .2s ease-in;
+  -o-transition: .2s ease-in;
+  &_visible {
+    visibility: visible;
+    transition: .2s ease-in;
+    -webkit-transition: .2s ease-in;
+    -moz-transition: .2s ease-in;
+    -ms-transition: .2s ease-in;
+    -o-transition: .2s ease-in;
+  }
+}

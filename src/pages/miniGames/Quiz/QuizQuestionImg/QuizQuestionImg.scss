@@ -1,0 +1,19 @@
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+
+.quiz-question-image {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  width: 25vw;
+  //max-height: 200px;
+  //min-height: 160px;
+  border: 1px solid $neutral-inactive;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}

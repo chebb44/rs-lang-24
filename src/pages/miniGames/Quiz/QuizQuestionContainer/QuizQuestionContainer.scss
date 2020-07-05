@@ -1,0 +1,17 @@
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+
+.quiz-question-container {
+  position: relative;
+  margin-top: 60px;
+  // max-width: 200px;
+  // min-width: 160px;
+  // width: 20vw;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .quiz-question-container {
+    margin-top: 40px;
+  }
+}

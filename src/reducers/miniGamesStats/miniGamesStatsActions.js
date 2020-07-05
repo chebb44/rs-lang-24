@@ -19,6 +19,12 @@ export const actionAudioCallSendGameResult = ({
   payload: { audioCallDate, audioCallResult },
 });
 
+export const QUIZ_SEND_GAME_RESULT = 'QUIZ_SEND_GAME_RESULT';
+export const actionQuizSendGameResult = ({ quizDate, quizResult }) => ({
+  type: QUIZ_SEND_GAME_RESULT,
+  payload: { quizDate, quizResult },
+});
+
 export const SET_ALL_MINI_GAMES_STATS = 'SET_ALL_MINI_GAMES_STATS';
 export const actionSetAllMiniGamesStats = ({ miniGames }) => ({
   type: SET_ALL_MINI_GAMES_STATS,

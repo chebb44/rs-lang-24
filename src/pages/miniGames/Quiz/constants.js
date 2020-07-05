@@ -1,0 +1,8 @@
+export const QUIZ_START_SCREEN = 'QUIZ_START_SCREEN';
+export const QUIZ_GAME_SCREEN = 'QUIZ_GAME_SCREEN';
+
+export const SHOW_TRUE = 'SHOW_TRUE';
+export const MAX_WORDS_FOR_GAME = 2;
+
+export const LEARNED_WORDS = 'LEARNED_WORDS';
+export const SELECTED_WORDS = 'SELECTED_WORDS';

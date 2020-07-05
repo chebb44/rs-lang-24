@@ -3,6 +3,7 @@ import {
   SET_ALL_MINI_GAMES_STATS,
   SPEAK_IT_SEND_GAME_RESULT,
   AUDIO_CALL_SEND_GAME_RESULT,
+  QUIZ_SEND_GAME_RESULT,
 } from './miniGamesStatsActions';
 const defaultData = {
   miniGames: {
@@ -70,6 +71,24 @@ export const miniGamesStats = (state = defaultData, action) => {
           audioCall: {
             ...state.miniGames.audioCall,
             [audioCallDate]: audioCallDayStat,
+          },
+        },
+      };
+    case QUIZ_SEND_GAME_RESULT:
+      const { quizDate, quizResult } = action.payload;
+      let quizDayStat = [];
+      if (quizDate in state.miniGames.quiz) {
+        quizDayStat = [...state.miniGames.quiz[quizDate], quizResult];
+      } else {
+        quizDayStat = [quizResult];
+      }
+      return {
+        ...state,
+        miniGames: {
+          ...state.miniGames,
+          quiz: {
+            ...state.miniGames.quiz,
+            [quizDate]: quizDayStat,
           },
         },
       };
