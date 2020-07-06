@@ -1,4 +1,5 @@
 .sprint-cards-field {
+  background-color: white;
   width: 70%;
   height: 70%;
   min-height: 260px;
@@ -13,4 +14,27 @@
   @media screen and (max-width: 500px) {
     width: 90%;
   }
+}
+.words-animation-container{
+  width: 100%;
+  position: relative;
+  height: 30%;
+  overflow: hidden;
+}
+
+.sprint-fade-enter,
+.sprint-fade-appear {
+  opacity: 0;
+}
+.sprint-fade-enter-active,
+.sprint-fade-appear-active {
+  opacity: 1;
+  transition: opacity 400ms;
+}
+.sprint-fade-exit {
+  opacity: 1;
+}
+.sprint-fade-exit-active {
+  opacity: 0;
+  transition: opacity 400ms;
 }
