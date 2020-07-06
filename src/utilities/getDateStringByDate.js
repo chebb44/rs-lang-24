@@ -8,6 +8,9 @@ export const getDateStringByDate = (date) => {
 };
 
 export const getDateByString = (string) => {
-  const [year, month, day] = string.split(',');
-  return new Date(year, month, day);
+  if (string) {
+    const [year, month, day] = string.split(',');
+    return new Date(year, month, day);
+  }
+  return null;
 };
