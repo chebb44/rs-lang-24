@@ -17,17 +17,19 @@ import { actionAddAnswerAccuracy } from '../../reducers/learnSettings/learnSetti
 import { buttonParams } from './constants';
 import { learnCardParametersSelector } from '../../reducers/learnCard/learnCardReducer';
 import { actionAddRepeatingWord } from '../../reducers/learnCards/learnCardsActions';
+import { learnSettingsSelector } from '../../reducers/learnSettings/learnSettingsReducer';
 import { submitWordFunction } from '../../utilities/learnCard/submitWordFunction';
+import { learnCardsSelector } from '../../reducers/learnCards/learnCardsReducer';
+import { changeWordCard } from '../../utilities/LearningContainer/changeWordCard';
 import './LearnCardButtonsContainer.scss';
 
-export const LearnCardButtonsContainer = ({
-  learnCard,
-  learnCardSettings,
-  isWordCorrect,
-}) => {
-  const { enteredWord, currentLearnCardIndex } = useSelector(
+export const LearnCardButtonsContainer = () => {
+  const learnCards = useSelector(learnCardsSelector);
+  const { enteredWord, currentLearnCardIndex, isWordCorrect } = useSelector(
     learnCardParametersSelector,
   );
+  const { wordsPerDay, learnCardSettings } = useSelector(learnSettingsSelector);
+  const learnCard = learnCards[currentLearnCardIndex];
   const dispatch = useDispatch();
 
   const handleCheckButtonClick = () => {
@@ -51,18 +53,35 @@ export const LearnCardButtonsContainer = ({
 
   const handleMarkAsHardButtonClick = () => {
     dispatch(actionMarkWord({ wordId: learnCard._id, difficulty: HARD_WORD }));
+    handleNextCard();
   };
 
   const handleMarkAsGoodButtonClick = () => {
     dispatch(actionMarkWord({ wordId: learnCard._id, difficulty: GOOD_WORD }));
+    handleNextCard();
   };
 
   const handleMarkAsEasyButtonClick = () => {
     dispatch(actionMarkWord({ wordId: learnCard._id, difficulty: EASY_WORD }));
+    handleNextCard();
   };
 
   const handleLearnAgainButtonClick = () => {
     dispatch(actionAddRepeatingWord(currentLearnCardIndex));
+    handleNextCard();
+  };
+
+  const handleNextCard = () => {
+    changeWordCard(
+      'next',
+      isWordCorrect,
+      currentLearnCardIndex,
+      wordsPerDay,
+      learnCardSettings.cardsPerDay,
+      learnCardSettings.lastCorrectWordIndex,
+      learnCards.length,
+      learnCardSettings.answersAccuracy,
+    );
   };
 
   return (

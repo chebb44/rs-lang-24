@@ -13,7 +13,7 @@ import { learnCardParametersSelector } from '../../reducers/learnCard/learnCardR
 import { ProgressBar } from './../../components/ProgressBar/ProgressBar';
 import ControlButtons from '../../pages/ControlButtons/ControlButtons';
 import { appStateSelector } from '../../reducers/appState/appStateReducer';
-import { handleArrowClickFunction } from '../../utilities/LearningContainer/handleArrowClickFunction';
+import { changeWordCard } from '../../utilities/LearningContainer/changeWordCard';
 
 export const LearningContainer = () => {
   const learnCards = useSelector(learnCardsSelector);
@@ -32,7 +32,7 @@ export const LearningContainer = () => {
   };
 
   const handleArrowClick = (direction) => {
-    handleArrowClickFunction(
+    changeWordCard(
       direction,
       isWordCorrect,
       currentLearnCardIndex,
@@ -67,11 +67,7 @@ export const LearningContainer = () => {
           isWordCorrect={isWordCorrect}
         />
       </div>
-      <LearnCardButtonsContainer
-        learnCard={learnCard}
-        learnCardSettings={learnCardSettings}
-        isWordCorrect={isWordCorrect}
-      />
+      <LearnCardButtonsContainer />
     </div>
   );
 };
