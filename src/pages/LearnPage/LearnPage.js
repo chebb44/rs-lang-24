@@ -6,16 +6,15 @@ import { MaxCardsModal } from '../MaxCardsModal/MaxCardsModal';
 import SettingsModal from '../../pages/SettingsModal/SettingsModal';
 import { learnCardSettingsSelector } from '../../reducers/learnSettings/learnSettingsReducer';
 import { actionSetIsMaxCardsModalShown } from '../../reducers/appState/appStateActions';
-import { getDateByString } from '../../utilities/getDateStringByDate';
+import { parseLastFinishedLearningDate } from '../../utilities/learnPage/parseLastFinishedLearningDate';
 import './LearnPage.scss';
 import london from './../../assets/img/england_PNG72.png';
 
 export const LearnPage = () => {
   const { lastFinishedLearningDate } = useSelector(learnCardSettingsSelector);
-  const lastLearningDate = getDateByString(lastFinishedLearningDate).getDate();
-  const lastLearningMonth = getDateByString(
+  const [lastLearningDate, lastLearningMonth] = parseLastFinishedLearningDate(
     lastFinishedLearningDate,
-  ).getMonth();
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {

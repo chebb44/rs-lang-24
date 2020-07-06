@@ -61,14 +61,17 @@ const ControlButtons = () => {
     {
       icon: iconSettings,
       func: changeVisibleSettingsModal,
+      title: 'Настройки',
     },
     {
       icon: iconAutoAudio,
       func: changeAutoAudioPlay,
+      title: 'Аудио',
     },
     {
       icon: iconTranslate,
       func: changeAutoTranslate,
+      title: 'Перевод',
     },
   ];
 
