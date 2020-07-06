@@ -6,23 +6,26 @@ export const WordContainer = ({
   cardIndex,
   answerIndex,
   setCurrentAnswer,
+  isTarget,
+  setTargetWord,
 }) => {
   const isAnswer =
     blockIndex * blockSize + answerIndex === blockSize * blockIndex + cardIndex;
+  var className = "";
+  if (isTarget) {
+    className = "btn btn-warning answer";
+  } else {
+    className = "btn btn-outline-light answer";
+  }
   if (isAnswer) {
     return (
       <button
         key={currentCards[blockSize * blockIndex + cardIndex].word}
         type="button"
-        className="btn btn-outline-light answer"
-        onClick={(event) => {
-          let lastAswer = document.getElementById('active');
-          if (lastAswer) {
-            lastAswer.className = 'btn btn-outline-light answer';
-          }
+        className={className}
+        onClick={() => {
           setCurrentAnswer(true);
-          event.target.id = 'active';
-          event.target.className = 'btn btn-warning answer';
+          setTargetWord(cardIndex);
         }}
       >
         {currentCards[blockSize * blockIndex + cardIndex].word}
@@ -33,15 +36,10 @@ export const WordContainer = ({
       <button
         key={currentCards[blockSize * blockIndex + cardIndex].word}
         type="button"
-        className="btn btn-outline-light answer"
-        onClick={(event) => {
-          let lastAswer = document.getElementById('active');
-          if (lastAswer) {
-            lastAswer.className = 'btn btn-outline-light answer';
-          }
+        className={className}
+        onClick={() => {
           setCurrentAnswer(false);
-          event.target.id = 'active';
-          event.target.className = 'btn btn-warning answer';
+          setTargetWord(cardIndex);
         }}
       >
         {currentCards[blockSize * blockIndex + cardIndex].word}

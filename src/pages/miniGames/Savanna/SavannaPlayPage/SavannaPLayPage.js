@@ -18,24 +18,32 @@ export const SavannaPlay = ({ difficulty }) => {
   };
   const blockSize = difficulty;
   const learnCards = useSelector(learnCardsSelector);
-  const currentCards = mixCards(learnCards);
+  const [currentCards, setCurrentCards] = useState(mixCards(learnCards));
   const [blockIndex, setBlockIndex] = useState(0);
-  const answerIndex = parseInt(getRandom() * blockSize);
+  const [answerIndex, setAnswerIndex] = useState(parseInt(getRandom() * blockSize));
   const [secondHandDeg, setSecondHandDeg] = useState(90);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [currentAnswer, setCurrentAnswer] = useState(false);
+  const [targetWord, setTargetWord] = useState(null)
   const questionNumber = parseInt(currentCards.length / blockSize);
   useEffect(() => {
+    console.log(currentAnswer)
     if (currentAnswer) {
       setCorrectAnswers(plusAnswer(correctAnswers));
     }
     setSecondHandDeg(turnover(secondHandDeg));
-  }, [blockIndex]);
+    setAnswerIndex(parseInt(getRandom() * blockSize));
+    setCurrentAnswer(false);
+    setTargetWord(null);
+    document.location.href="#playside";
+  }, // eslint-disable-next-line react-hooks/exhaustive-deps
+   [blockIndex]);
   if (currentCards.length < (blockIndex + 1) * blockSize) {
     return (
       <SavannaStatistic
         answerNumber={correctAnswers}
         questionNumber={questionNumber}
+        setCurrentCards={setCurrentCards}
       />
     );
   }
@@ -44,6 +52,7 @@ export const SavannaPlay = ({ difficulty }) => {
   }, 3000);
   return [
     <img key="big_ben_upper" src={big_ben_upper} alt="big Ben" />,
+    <div key="playside" id="playside"></div>,
     <div key="play_ground" className="game-container">
       <p className="question">
         {currentCards[blockIndex * blockSize + answerIndex].wordTranslate}
@@ -64,6 +73,8 @@ export const SavannaPlay = ({ difficulty }) => {
           answerIndex={answerIndex}
           blockIndex={blockIndex}
           setCurrentAnswer={setCurrentAnswer}
+          targetWord={targetWord}
+          setTargetWord={setTargetWord}
         />
       </div>
     </div>,
