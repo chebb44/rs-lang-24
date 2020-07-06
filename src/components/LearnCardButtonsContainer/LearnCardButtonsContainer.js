@@ -12,6 +12,7 @@ import {
 import {
   actionUpdateWordCorrectFlag,
   actionUpdateAnswerShownFlag,
+  actionUpdateTranslationShownFlag,
 } from '../../reducers/learnCard/learnCardActions';
 import { actionAddAnswerAccuracy } from '../../reducers/learnSettings/learnSettingsActions';
 import { buttonParams } from './constants';
@@ -36,8 +37,22 @@ export const LearnCardButtonsContainer = () => {
     submitWordFunction(enteredWord, learnCard, learnCardSettings);
   };
 
+  const handleNextCard = () => {
+    changeWordCard(
+      'next',
+      isWordCorrect,
+      currentLearnCardIndex,
+      wordsPerDay,
+      learnCardSettings.cardsPerDay,
+      learnCardSettings.lastCorrectWordIndex,
+      learnCards.length,
+      learnCardSettings.answersAccuracy,
+    );
+  };
+
   const handleShowAnswerButtonClick = () => {
     dispatch(actionUpdateAnswerShownFlag(true));
+    dispatch(actionUpdateTranslationShownFlag(true));
     dispatch(actionUpdateWordCorrectFlag(true));
     dispatch(
       actionMarkWord({ wordId: learnCard._id, difficulty: LEARNED_WORD }),
@@ -69,19 +84,6 @@ export const LearnCardButtonsContainer = () => {
   const handleLearnAgainButtonClick = () => {
     dispatch(actionAddRepeatingWord(currentLearnCardIndex));
     handleNextCard();
-  };
-
-  const handleNextCard = () => {
-    changeWordCard(
-      'next',
-      isWordCorrect,
-      currentLearnCardIndex,
-      wordsPerDay,
-      learnCardSettings.cardsPerDay,
-      learnCardSettings.lastCorrectWordIndex,
-      learnCards.length,
-      learnCardSettings.answersAccuracy,
-    );
   };
 
   return (
