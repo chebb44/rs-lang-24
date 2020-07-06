@@ -30,6 +30,7 @@ export function changeWordCard(
     store.dispatch(actionUpdateCurrentCardIndex(currentLearnCardIndex + 1));
 
     if (isWordCorrect) {
+      localStorage.lastCorrectWordIndex = lastCorrectWordIndex + 1;
       store.dispatch(
         actionUpdateLastCorrectWordIndex(lastCorrectWordIndex + 1),
       );

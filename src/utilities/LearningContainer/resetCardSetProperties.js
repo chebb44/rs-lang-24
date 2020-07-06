@@ -7,6 +7,7 @@ import {
 
 export function resetCardSetProperties() {
   store.dispatch(actionUpdateCurrentCardIndex(0));
+  localStorage.lastCorrectWordIndex = -1;
   store.dispatch(actionUpdateLastCorrectWordIndex(-1));
   store.dispatch(actionClearAnswerAccuracy([]));
 }

@@ -10,7 +10,8 @@ import {
 } from './learnCardActions';
 
 const defaultData = {
-  currentLearnCardIndex: 0,
+  currentLearnCardIndex:
+    JSON.parse(localStorage.getItem('lastCorrectWordIndex')) + 1 || 0,
   enteredWord: '',
   isWordCorrect: false,
   isTranslationShown: false,
