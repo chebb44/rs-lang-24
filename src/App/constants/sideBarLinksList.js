@@ -12,6 +12,7 @@ export const sideBarLinksList = [
       { name: 'Sprint', link: routes.sprint },
       { name: 'Speak It', link: routes.speakIt },
       { name: 'Саванна', link: routes.savanna },
+      { name: 'Аудиовызов', link: routes.audioCall },
     ],
   },
   {
