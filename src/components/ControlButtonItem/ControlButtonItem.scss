@@ -34,3 +34,31 @@
     -o-transition: .1s ease-in;
   }
 }
+
+[data-title] {
+  position: relative;
+
+  &:after {
+    content: attr(data-title);
+    position: absolute;
+    display: inline-block;
+    font-size: 12px;
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    left: 10px;
+    top: 40px;
+    padding: 4px;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 100;
+    transition: all 0.1s ease;
+  }
+
+  &:hover::after {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+
