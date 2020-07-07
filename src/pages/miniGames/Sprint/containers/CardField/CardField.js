@@ -92,6 +92,7 @@ export const CardField = ({
             appear={true}
             timeout={400}
             classNames="word"
+            unmountOnExit={true}
           >
             <GameWord card={cards[currentNumber]} />
           </CSSTransition>
