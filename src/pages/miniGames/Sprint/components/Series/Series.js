@@ -6,7 +6,7 @@ export const Series = ({ number }) => {
     <div className="sprint-series">
       <div className="sprint-series-stars">
         {number > 0
-          ? Array(Math.min(number, 4))
+          ? Array(Math.min(number, 5))
               .fill('')
               .map((item, index) => {
                 return (
@@ -22,7 +22,7 @@ export const Series = ({ number }) => {
                 );
               })
           : null}
-        {Array(5 - Math.min(number, 4))
+        {Array(5 - Math.min(number, 5))
           .fill('')
           .map((item, index) => {
             return (
