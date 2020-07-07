@@ -10,6 +10,12 @@ export const actionSpeakItSendGameResult = ({ dates, results }) => ({
   payload: { dates, results },
 });
 
+export const SAVANNA_GET_GAME_RESULT = 'SAVANNA_GET_GAME_RESULT';
+export const actionSavannaSendGameResult = ({ SavannaDate, SavannaResults }) => ({
+  type: SAVANNA_GET_GAME_RESULT,
+  payload: { SavannaDate, SavannaResults },
+});
+
 export const SET_ALL_MINI_GAMES_STATS = 'SET_ALL_MINI_GAMES_STATS';
 export const actionSetAllMiniGamesStats = ({ miniGames }) => ({
   type: SET_ALL_MINI_GAMES_STATS,
