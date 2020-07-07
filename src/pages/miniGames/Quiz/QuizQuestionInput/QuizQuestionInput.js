@@ -1,7 +1,12 @@
 import React from 'react';
 import './QuizQuestionInput.scss';
 
-export const QuizQuestionInput = ({ word, setInputValue, getTrueAnswer }) => {
+export const QuizQuestionInput = ({
+  word,
+  setInputValue,
+  getTrueAnswer,
+  inputValue,
+}) => {
   const handleChange = (event) => {
     setInputValue(event.target.value);
   };
@@ -19,7 +24,8 @@ export const QuizQuestionInput = ({ word, setInputValue, getTrueAnswer }) => {
           width: `calc(6px + 12px * ${word.length})`,
         }}
         autoFocus
-        onChange={(event) => handleChange}
+        onChange={handleChange}
+        value={inputValue}
       />
     </form>
   );

@@ -18,6 +18,7 @@ export const QuizGamePage = ({ redirectToStartScreen, wordsForGame }) => {
   const [trueAnswerStatistic, setTrueAnswerStatistic] = useState([]);
   const [falseAnswerStatistic, setFalseAnswerStatistic] = useState([]);
   const [enterBtnClass, setEnterBtnClass] = useState('quiz-enter-btn');
+  const [inputValue, setInputValue] = useState('');
 
   const dispatch = useDispatch();
 
@@ -74,9 +75,7 @@ export const QuizGamePage = ({ redirectToStartScreen, wordsForGame }) => {
     }
   };
 
-  const [inputValue, setInputValue] = useState('');
   const getTrueAnswer = () => {};
-  console.log(wordsForGame);
 
   return wordNumber === MAX_WORDS_FOR_GAME ? (
     <div className="quiz-game-page">
@@ -109,6 +108,7 @@ export const QuizGamePage = ({ redirectToStartScreen, wordsForGame }) => {
               word={wordsForGame[wordNumber]}
               setInputValue={setInputValue}
               getTrueAnswer={getTrueAnswer}
+              inputValue={inputValue}
             />
             <QuizEnterBtn func={clickEnterBtn} enterBtnClass={enterBtnClass} />
           </div>
@@ -117,5 +117,3 @@ export const QuizGamePage = ({ redirectToStartScreen, wordsForGame }) => {
     </div>
   );
 };
-
-//TODO: refactor enter btn

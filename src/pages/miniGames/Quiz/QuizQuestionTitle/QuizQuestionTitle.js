@@ -7,6 +7,7 @@ export const QuizQuestionTitle = ({
   textMeaning,
   setInputValue,
   getTrueAnswer,
+  inputValue,
 }) => {
   const regexpAll = new RegExp(`<i>(\\w+)<\\/i>`);
   const regexpTags = new RegExp(`<i>|<\\/i>`, 'g');
@@ -33,6 +34,7 @@ export const QuizQuestionTitle = ({
           word={word}
           setInputValue={setInputValue}
           getTrueAnswer={getTrueAnswer}
+          inputValue={inputValue}
         />
       </span>
 
