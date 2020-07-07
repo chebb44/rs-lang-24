@@ -7,9 +7,13 @@
   margin: 4px 4px 10px;
   color: $neutral-inactive;
   cursor: pointer;
-  filter: grayscale(50%);
+  filter: grayscale(5%);
   opacity: .95;
   transition: all .2s;
+  @media screen and (max-width: $mobile-width-big){
+    filter: grayscale(5%);
+    opacity: 1;
+  }
   &:hover {
     filter: grayscale(0);
     opacity: 1;
