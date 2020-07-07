@@ -48,7 +48,7 @@ export const AudioCallStartGameBtn = ({ startGameHandler, setGameMode }) => {
         aria-labelledby="dropdownMenuButton"
       >
         {learnedWords.length >= MAX_WORDS_FOR_GAME ? (
-          <button className="dropdown-item" onClick={handleChangeLearnedWords} >
+          <button className="dropdown-item" onClick={handleChangeLearnedWords}>
             Изученные слова
           </button>
         ) : (

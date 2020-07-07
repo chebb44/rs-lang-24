@@ -7,6 +7,7 @@ import {
   setActiveCardInArray,
 } from '../../pages/miniGames/SpeakIt/SpeakItHepler';
 import DictionaryDummyCard from '../DictionaryDummyCard/DictionaryDummyCard';
+import { CSSTransition } from 'react-transition-group';
 
 export const DictionaryPart = ({
   words,
@@ -78,19 +79,27 @@ export const DictionaryPart = ({
   );
 
   return (
-    <div className="dictionary-block">
-      <h3 className="mt-2 mb-2">{header}</h3>
-      {currentCardDictionary ? (
-        <DictionaryCurrentCardView currentCard={currentCardDictionary} />
-      ) : (
-        <DictionaryDummyCard message={dummyMessage} />
-      )}
-      <DictionaryAllWordsList
-        onWordClick={onWordClick}
-        words={wordsDictionary}
-        buttonText={buttonText}
-        buttonCallback={buttonCallback}
-      />
-    </div>
+    <CSSTransition
+      in={true}
+      appear={true}
+      classNames="sprint-fade"
+      timeout={400}
+      unmountOnExit={true}
+    >
+      <div className="dictionary-block">
+        <h3 className="mt-2 mb-2">{header}</h3>
+        {currentCardDictionary ? (
+          <DictionaryCurrentCardView currentCard={currentCardDictionary} />
+        ) : (
+          <DictionaryDummyCard message={dummyMessage} />
+        )}
+        <DictionaryAllWordsList
+          onWordClick={onWordClick}
+          words={wordsDictionary}
+          buttonText={buttonText}
+          buttonCallback={buttonCallback}
+        />
+      </div>
+    </CSSTransition>
   );
 };

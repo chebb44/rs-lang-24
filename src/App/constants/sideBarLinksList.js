@@ -9,8 +9,8 @@ export const sideBarLinksList = [
     head: 'Мини игры',
     headLink: null,
     items: [
-      { name: 'Sprint', link: routes.sprint },
-      { name: 'Speak It', link: routes.speakIt },
+      { name: 'Спринт', link: routes.sprint },
+      { name: 'Cпик Ит', link: routes.speakIt },
       { name: 'Саванна', link: routes.savanna },
       { name: 'Аудиовызов', link: routes.audioCall },
       { name: 'Квиз', link: routes.quiz },
