@@ -1,0 +1,16 @@
+.why-us__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 310px;
+  width: 300px;
+  margin: 20px 50px;
+}
+
+.why-us__img,
+.why-us__img-container {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 10px;
+}
+
