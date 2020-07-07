@@ -18,7 +18,11 @@ const AboutTeamMemberView = ({ member }) => {
         </p>
         <p className="about-team-member-view__role">{role}</p>
         <div className="about-team-member-view__github-wrapper">
-          <GitHubIcon width={'15px'} color={'rgba(0, 0, 0, 0.61)'} />
+          <GitHubIcon
+            width={'15px'}
+            height={'15px'}
+            color={'rgba(0, 0, 0, 0.61)'}
+          />
           <p className="member-role__github-title">{github}</p>
         </div>
       </a>
