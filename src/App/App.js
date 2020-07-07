@@ -19,6 +19,7 @@ import { SpeakItMainPage } from '../pages/miniGames/SpeakIt/SpeakItPage/SpeakItM
 import { actionToggleSideBar } from '../reducers/appState/appStateActions';
 import { SprintMain } from './../pages/miniGames/Sprint/containers/SprintMain/SprintMain';
 import { AudioCallMainPage } from '../pages/miniGames/AudioCall/MainPage/AudioCallMainPage';
+import { AboutTeamPage } from '../pages/AboutTeamPage/AboutTeamPage';
 
 export const App = () => {
   //let { path } = useRouteMatch();
@@ -53,6 +54,7 @@ export const App = () => {
               <Route path={routes.sprint} component={SprintMain} />
               <Route path={routes.audioCall} component={AudioCallMainPage} />
               <Route exact path={routes.mainApp} component={MainPage} />
+              <Route exact path={routes.aboutTeam} component={AboutTeamPage} />
               <Route path="/">
                 <Page404 />
               </Route>
