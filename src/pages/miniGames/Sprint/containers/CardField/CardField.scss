@@ -1,5 +1,7 @@
+@import 'src/scss/vars';
+
 .sprint-cards-field {
-  background-color: white;
+  background-color: $default-color;
   width: 70%;
   height: 70%;
   min-height: 260px;
@@ -11,6 +13,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  max-width: 380px;
   @media screen and (max-width: 500px) {
     width: 90%;
   }
