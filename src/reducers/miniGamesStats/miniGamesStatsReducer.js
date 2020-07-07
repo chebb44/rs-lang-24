@@ -10,6 +10,7 @@ const defaultData = {
     sprint: {},
     speakIt: {},
     audioCall: {},
+    quiz: {},
   },
 };
 

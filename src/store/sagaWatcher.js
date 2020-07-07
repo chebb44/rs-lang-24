@@ -50,10 +50,13 @@ import {
   SPEAK_IT_SEND_GAME_RESULT,
   SPRINT_SEND_GAME_RESULT,
   AUDIO_CALL_SEND_GAME_RESULT,
+  QUIZ_SEND_GAME_RESULT,
 } from './../reducers/miniGamesStats/miniGamesStatsActions';
 import {
   AUDIO_CALL_SAVE_GAME_LEVEL,
   AUDIO_CALL_SAVE_GAME_ROUND,
+  QUIZ_SAVE_GAME_LEVEL,
+  QUIZ_SAVE_GAME_ROUND,
 } from '../reducers/miniGamesDifficulty/miniGamesDifficultyActions';
 const actionsForSenSettingsToBackendWorker = [
   SET_LEARN_MODE,
@@ -75,6 +78,8 @@ const actionsForSenSettingsToBackendWorker = [
   UPDATE_LAST_FINISHED_LEARNING_DATE,
   AUDIO_CALL_SAVE_GAME_LEVEL,
   AUDIO_CALL_SAVE_GAME_ROUND,
+  QUIZ_SAVE_GAME_LEVEL,
+  QUIZ_SAVE_GAME_ROUND,
 ];
 
 const actionsForSendStatisticToBackend = [
@@ -87,6 +92,7 @@ const actionsForSendStatisticToBackend = [
   SET_LONGEST_CORRECT_ANSWER_SERIES,
   SPRINT_SEND_GAME_RESULT,
   AUDIO_CALL_SEND_GAME_RESULT,
+  QUIZ_SEND_GAME_RESULT,
 ];
 
 const actionsForInitWordsForLearn = [
