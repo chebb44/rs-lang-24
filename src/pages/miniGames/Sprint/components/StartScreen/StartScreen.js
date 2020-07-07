@@ -2,7 +2,11 @@ import React from 'react';
 import './StartScreen.scss';
 import { UniversalButton } from '../../../../../components/UniversalButton/UniversalButton';
 import { CSSTransition } from 'react-transition-group';
-export const StartScreen = ({ startClickHandler, redirectToStatistic }) => {
+export const StartScreen = ({
+  startClickHandler,
+  redirectToStatistic,
+  isStartButtonActive,
+}) => {
   return (
     <CSSTransition
       in={true}
@@ -30,11 +34,19 @@ export const StartScreen = ({ startClickHandler, redirectToStatistic }) => {
           при ошибке за угаданное слово снова начисляется только 10 баллов.
         </p>
         <div>
-          <UniversalButton
-            onClickHandler={startClickHandler}
-            buttonText="Начать игру"
-            extraClasses="m-1"
-          />
+          {isStartButtonActive ? (
+            <UniversalButton
+              onClickHandler={startClickHandler}
+              buttonText="Начать игру"
+              extraClasses="m-1"
+            />
+          ) : (
+            <UniversalButton
+              onClickHandler={startClickHandler}
+              buttonText="Игра недоступна"
+              extraClasses="m-1 sprint-start-disable"
+            />
+          )}
           <UniversalButton
             onClickHandler={redirectToStatistic}
             buttonText="Статистика"
