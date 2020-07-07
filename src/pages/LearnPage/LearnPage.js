@@ -9,6 +9,7 @@ import { actionSetIsMaxCardsModalShown } from '../../reducers/appState/appStateA
 import { parseLastFinishedLearningDate } from '../../utilities/learnPage/parseLastFinishedLearningDate';
 import './LearnPage.scss';
 import london from './../../assets/img/england_PNG72.png';
+import { CSSTransition } from 'react-transition-group';
 
 export const LearnPage = () => {
   const { lastFinishedLearningDate } = useSelector(learnCardSettingsSelector);
@@ -30,12 +31,20 @@ export const LearnPage = () => {
   }, [lastFinishedLearningDate, lastLearningDate, lastLearningMonth, dispatch]);
 
   return (
-    <div className="learn-page">
-      <SettingsModal />
-      <LearningContainer />
-      <StatisticModal />
-      <MaxCardsModal />
-      <img className="learn-page__london-image" src={london} alt="london" />
-    </div>
+    <CSSTransition
+      in={true}
+      appear={true}
+      classNames="sprint-fade"
+      timeout={400}
+      unmountOnExit={true}
+    >
+      <div className="learn-page">
+        <SettingsModal />
+        <LearningContainer />
+        <StatisticModal />
+        <MaxCardsModal />
+        <img className="learn-page__london-image" src={london} alt="london" />
+      </div>
+    </CSSTransition>
   );
 };

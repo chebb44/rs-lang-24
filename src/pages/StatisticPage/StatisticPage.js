@@ -9,6 +9,7 @@ import { learnIcon } from './assets/learnIcon';
 // import { listenIcon } from './assets/listenIcon';
 import { speackIcon } from './assets/speackIcon';
 import { writeIcon } from './assets/writeIcon';
+import { CSSTransition } from 'react-transition-group';
 
 export const StatisticPage = () => {
   const { shortStatistic } = useSelector(statisticStateSelector);
@@ -36,5 +37,15 @@ export const StatisticPage = () => {
     },
   ];
 
-  return <StatisticPageView statisticItemList={statisticItemList} />;
+  return (
+    <CSSTransition
+      in={true}
+      appear={true}
+      classNames="sprint-fade"
+      timeout={400}
+      unmountOnExit={true}
+    >
+      <StatisticPageView statisticItemList={statisticItemList} />
+    </CSSTransition>
+  );
 };
