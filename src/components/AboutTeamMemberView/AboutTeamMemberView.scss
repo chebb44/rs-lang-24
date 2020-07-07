@@ -7,13 +7,20 @@
   margin: 4px 4px 10px;
   color: $neutral-inactive;
   cursor: pointer;
-  filter: grayscale(30%);
-  opacity: .8;
+  filter: grayscale(50%);
+  opacity: .95;
   transition: all .2s;
   &:hover {
     filter: grayscale(0);
     opacity: 1;
   }
+
+  a {
+    background-color: transparent;
+    color: $neutral-inactive;
+    text-decoration: none;
+  }
+
 
   img {
     border-radius: 50%;

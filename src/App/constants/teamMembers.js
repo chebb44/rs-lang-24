@@ -4,7 +4,7 @@ export const teamMembers = [
     firstName: 'Екатерина',
     lastName: 'Сацура',
     role: 'Mentor',
-    photo: '/aboutUs/baryshev.jpg',
+    photo: '/aboutUs/satsura.jpg',
     github: 'ksatsura',
   },
   {
