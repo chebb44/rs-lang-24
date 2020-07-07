@@ -11,22 +11,22 @@ export const SavannaStart = ({ setSavannaPage, setDifficulty }) => {
     );
   };
   return (
-    <div className="start-page">
+    <div className="Savanna_start-page">
       <Figure />
-      <div className="play-page__flipping-container">
-        <h1 className="color-rslang">Savanna</h1>
-        <p className="color-rslang">
+      <div className="Savanna_play-page__flipping-container">
+        <h1 className="Savanna_color-rslang">Savanna</h1>
+        <p className="Savanna_color-rslang">
           приготовьтесь выбирать перевод слова из нескольких вариантов на время
         </p>
         <form>
           <button
             type="submit"
-            className="btn btn-lg btn-rslang"
+            className="btn btn-lg Savanna_btn-rslang"
             onClick={openPlayGround}
           >
             СТАРТ
           </button>
-          <label className="color-rslang" htmlFor="formControlRange">
+          <label className="Savanna_color-rslang" htmlFor="formControlRange">
             <input
               min="0"
               max="4"
@@ -39,7 +39,7 @@ export const SavannaStart = ({ setSavannaPage, setDifficulty }) => {
           </label>
         </form>
       </div>
-      <img className="footer_image" src={london} alt="london" />
+      <img className="Savanna_footer_image" src={london} alt="london" />
     </div>
   );
 };
