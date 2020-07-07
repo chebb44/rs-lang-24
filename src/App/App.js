@@ -6,6 +6,7 @@ import { currentUserSelector } from './../reducers/currentUser/currentUserReduce
 import { PageHeader } from './PageHeader';
 import { PageSideBar } from './PageSidebar';
 import { LearnPage } from '../pages/LearnPage/LearnPage';
+import { PromoPage } from '../pages/PromoPage/PromoPage';
 import { MainPage } from '../pages/MainPage/MainPage';
 import { Page404 } from '../pages/Page404/Page404';
 import { StatisticPage } from '../pages/StatisticPage/StatisticPage';
@@ -52,6 +53,7 @@ export const App = () => {
               <Route path={routes.speakIt} component={SpeakItMainPage} />
               <Route path={routes.sprint} component={SprintMain} />
               <Route path={routes.audioCall} component={AudioCallMainPage} />
+              <Route path={routes.promo} component={PromoPage} />
               <Route exact path={routes.mainApp} component={MainPage} />
               <Route path="/">
                 <Page404 />

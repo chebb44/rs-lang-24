@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import './PromoView.scss';
-import arrow from './assets/arrow-straight.png';
+import './PromoPageView.scss';
+import arrow from './assets/arrow.png';
+import london from './../../assets/img/england_PNG72.png';
 import { whyUsItems } from './constants';
 import { WhyUsItem } from '../WhyUsItem/WhyUsItem';
 
-export const PromoView = function () {
+export const PromoPageView = function () {
   const visibility = {
     expanded: 'expanded',
     collapsed: 'collapsed',
@@ -22,7 +23,7 @@ export const PromoView = function () {
   };
 
   return (
-    <div className="promo">
+    <div className="promo-page">
       <div className="promo__wrapper">
         <div className="why-us">
           <h2 className="heading">Почему RS Lang?</h2>
@@ -104,6 +105,7 @@ export const PromoView = function () {
           </div>
         </div>
       </div>
+      <img className="promo-page__london-image" src={london} alt="london" />
     </div>
   );
 };
