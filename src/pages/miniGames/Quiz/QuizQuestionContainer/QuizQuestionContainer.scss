@@ -4,14 +4,19 @@
 .quiz-question-container {
   position: relative;
   margin-top: 60px;
-  // max-width: 200px;
-  // min-width: 160px;
-  // width: 20vw;
+  width: 42vw;
   text-align: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: $tablet-width-big) {
+  .quiz-question-container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: $tablet-width-small) {
   .quiz-question-container {
     margin-top: 40px;
   }
 }
+

@@ -8,13 +8,13 @@
   padding: 0;
   width: 100px;
   height: 35px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid $neutral-disabled;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
-  color: $default-color;
+  color: $neutral-inactive;
   font-weight: 400;
   font-size: 16px;
   opacity: 0.9;
@@ -33,18 +33,20 @@
   }
   &:hover {
     background-color: rgba(255, 255, 255, 0.4);
+    background-color: $accent-color;
+    color: $neutral-active;
     .quiz-enter-btn__arrow-right {
       left: 35px;
-      transition: .1s ease-in;
-      -webkit-transition: .1s ease-in;
-      -moz-transition: .1s ease-in;
-      -ms-transition: .1s ease-in;
-      -o-transition: .1s ease-in;
+      transition: .2s ease-in;
+      -webkit-transition: .2s ease-in;
+      -moz-transition: .2s ease-in;
+      -ms-transition: .2s ease-in;
+      -o-transition: .2s ease-in;
     }
   }
   &_next {
     border: none;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: $primary-darker-color;
     .quiz-enter-btn__text {
       display: none;
     }
@@ -53,11 +55,15 @@
       position: absolute;
       top: 2px;
       left: 33px;
-      transition: .1s ease-in;
-      -webkit-transition: .1s ease-in;
-      -moz-transition: .1s ease-in;
-      -ms-transition: .1s ease-in;
-      -o-transition: .1s ease-in;
+      transition: .2s ease-in;
+      -webkit-transition: .2s ease-in;
+      -moz-transition: .2s ease-in;
+      -ms-transition: .2s ease-in;
+      -o-transition: .2s ease-in;
+    }
+    &:hover {
+      background-color: $primary-darker-color;
+      border: 1px solid $default-color;
     }
   }
 }

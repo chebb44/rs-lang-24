@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import './QuizGamePage.scss';
 import { QuizProgressBar } from '../QuizProgressBar/QuizProgressBar';
-import { QuizQuestionContainer } from '../QuizQuestionContainer/QuizQuestionContainer';
 import { QuizEnterBtn } from '../QuizEnterBtn/QuizEnterBtn';
 import { QuizExitBtn } from '../QuizExitBtn/QuizExitBtn';
 import { SHOW_TRUE, MAX_WORDS_FOR_GAME } from '../constants';
@@ -12,15 +11,14 @@ import { actionQuizSendGameResult } from '../../../../reducers/miniGamesStats/mi
 import { getDateStringByDate } from '../utilities';
 import { actionMarkWord } from '../../../../store/actionsForSaga';
 import { NEXT_TRAIN_WORD } from '../../../../sagas/constants';
+import { QuizQuestionContainer } from '../QuizQuestionContainer/QuizQuestionContainer';
 
 export const QuizGamePage = ({ redirectToStartScreen, wordsForGame }) => {
   const [wordNumber, setWordNumber] = useState(0);
   const [trueAnswerStatistic, setTrueAnswerStatistic] = useState([]);
   const [falseAnswerStatistic, setFalseAnswerStatistic] = useState([]);
   const [enterBtnClass, setEnterBtnClass] = useState('quiz-enter-btn');
-  const [questionTitleClass, setQuestionTitleClass] = useState(
-    'quiz-question-title quiz-question-title_visible',
-  );
+
   const dispatch = useDispatch();
 
   const saveStatistic = useCallback(() => {
@@ -45,10 +43,6 @@ export const QuizGamePage = ({ redirectToStartScreen, wordsForGame }) => {
     });
   }, [dispatch, falseAnswerStatistic]);
 
-  const getTrueAnswer = () => {
-    let trueWord;
-  };
-
   const setNextGameWord = () => {
     removeClasses();
     if (wordNumber === MAX_WORDS_FOR_GAME) {
@@ -62,12 +56,10 @@ export const QuizGamePage = ({ redirectToStartScreen, wordsForGame }) => {
   };
 
   const successAddClasses = (item, SHOW_TRUE) => {
-    setQuestionTitleClass('quiz-question-title quiz-question-title_visible');
     setEnterBtnClass('quiz-enter-btn quiz-enter-btn_next');
   };
 
   const removeClasses = () => {
-    setQuestionTitleClass('quiz-question-title');
     setEnterBtnClass('quiz-enter-btn');
   };
 
@@ -81,6 +73,10 @@ export const QuizGamePage = ({ redirectToStartScreen, wordsForGame }) => {
       successAddClasses(event.target);
     }
   };
+
+  const [inputValue, setInputValue] = useState('');
+  const getTrueAnswer = () => {};
+  console.log(wordsForGame);
 
   return wordNumber === MAX_WORDS_FOR_GAME ? (
     <div className="quiz-game-page">
@@ -100,7 +96,7 @@ export const QuizGamePage = ({ redirectToStartScreen, wordsForGame }) => {
         <CSSTransition
           key={wordNumber}
           appear
-          timeout={800}
+          timeout={600}
           classNames={{
             enter: 'slide-enter',
             enterActive: 'slide-enter-active',
@@ -110,8 +106,9 @@ export const QuizGamePage = ({ redirectToStartScreen, wordsForGame }) => {
         >
           <div className="quiz-game-page__container">
             <QuizQuestionContainer
-              wordsForGame={wordsForGame[wordNumber]}
-              questionTitleClass={questionTitleClass}
+              word={wordsForGame[wordNumber]}
+              setInputValue={setInputValue}
+              getTrueAnswer={getTrueAnswer}
             />
             <QuizEnterBtn func={clickEnterBtn} enterBtnClass={enterBtnClass} />
           </div>
@@ -120,3 +117,5 @@ export const QuizGamePage = ({ redirectToStartScreen, wordsForGame }) => {
     </div>
   );
 };
+
+//TODO: refactor enter btn

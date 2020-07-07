@@ -2,16 +2,22 @@ import React from 'react';
 import './QuizQuestionContainer.scss';
 import { QuizQuestionImg } from '../QuizQuestionImg/QuizQuestionImg';
 import { QuizQuestionTitle } from '../QuizQuestionTitle/QuizQuestionTitle';
+import { QuizHelpBtnsContainer } from '../QuizHelpBtnsContainer/QuizHelpBtnsContainer';
 
-export const QuizQuestionContainer = ({ wordsForGame, questionTitleClass }) => {
-  const { image, textMeaning, wordTranslate } = wordsForGame;
+export const QuizQuestionContainer = ({
+  word,
+  setInputValue,
+  getTrueAnswer,
+}) => {
+  const { image, textMeaning } = word;
   return (
     <div className="quiz-question-container">
       <QuizQuestionImg image={image} />
+      <QuizHelpBtnsContainer word={word} />
       <QuizQuestionTitle
-        word={textMeaning}
-        wordTranslate={wordTranslate}
-        questionTitleClass={questionTitleClass}
+        textMeaning={textMeaning}
+        setInputValue={setInputValue}
+        getTrueAnswer={getTrueAnswer}
       />
     </div>
   );

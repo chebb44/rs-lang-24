@@ -25,7 +25,7 @@ export const QuizStartGameBtn = ({ startGameHandler, setGameMode }) => {
   const { learnedWords } = useSelector(dictionaryStateStateSelector);
 
   return (
-    <div className="btn-group">
+    <div className="btn-group dropup">
       <button
         type="button"
         className="btn quiz-start-game-btn quiz-start-game-btn_start"

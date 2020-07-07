@@ -5,8 +5,7 @@ export const QuizExitBtn = ({ func }) => {
   return (
     <button
       type="button"
-      className="quiz-exit-btn"
-      data-dismiss="modal"
+      className="close quiz-exit-btn"
       aria-label="Close"
       onClick={func}
     >

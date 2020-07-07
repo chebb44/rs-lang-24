@@ -4,10 +4,7 @@
 .quiz-question-image {
   position: relative;
   margin: 0 auto;
-  width: 100%;
-  width: 25vw;
-  //max-height: 200px;
-  //min-height: 160px;
+  width: 77%;
   border: 1px solid $neutral-inactive;
   box-shadow: $box-shadow;
   overflow: hidden;
@@ -16,4 +13,10 @@
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
+}
+
+@media screen and (max-width: $mobile-width-small) {
+  .quiz-question-image {
+    width: 70%;
+  }
 }

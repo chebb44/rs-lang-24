@@ -1,0 +1,23 @@
+@import "src/scss/vars";
+@import "src/scss/mixins";
+
+.quiz-question-word {
+  position: absolute;
+  display: inline-flex;
+  left: 3px;
+}
+
+.quiz-question_star {
+  &__item {
+    position: relative;
+    width: 12px;
+    height: 12px;
+    svg {
+      display: block;
+      top: 0px;
+      left: 0;
+      width: 13px;
+      height: 12px;
+    }
+  }
+}
