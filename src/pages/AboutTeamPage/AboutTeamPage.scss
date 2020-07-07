@@ -1,5 +1,29 @@
+@import "src/scss/vars";
+
 .about-team__wrapper {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  color: $neutral-inactive;
+  width: 100%;
+  max-width: 768px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  @media screen and (max-width: $mobile-width-big){
+    padding-left: 10px;
+    padding-right: 10px;
+  }
   .about-team__title {
     margin-top: 10px;
+  }
+
+  .about-team__members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }

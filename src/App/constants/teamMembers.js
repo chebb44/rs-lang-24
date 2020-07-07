@@ -4,7 +4,7 @@ export const teamMembers = [
     firstName: 'Екатерина',
     lastName: 'Сацура',
     role: 'Mentor',
-    photo: '/aboutUs/satsura.jpg',
+    photo: '/aboutUs/baryshev.jpg',
     github: 'ksatsura',
   },
   {
@@ -25,19 +25,19 @@ export const teamMembers = [
   },
   {
     id: 4,
-    firstName: 'Владимир',
-    lastName: 'Луговцов',
-    role: 'Front-end developer',
-    photo: '/aboutUs/lugovczov.jpg',
-    github: 'lugovczov',
-  },
-  {
-    id: 5,
     firstName: 'Игорь',
     lastName: 'Буренко',
     role: 'Front-end developer',
     photo: '/aboutUs/burenko.jpg',
     github: 'igorburenko',
+  },
+  {
+    id: 5,
+    firstName: 'Владимир',
+    lastName: 'Луговцов',
+    role: 'Front-end developer',
+    photo: '/aboutUs/lugovczov.jpg',
+    github: 'lugovczov',
   },
   {
     id: 6,
