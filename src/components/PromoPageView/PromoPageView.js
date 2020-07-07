@@ -5,11 +5,12 @@ import london from './../../assets/img/england_PNG72.png';
 import { whyUsItems } from './constants';
 import { WhyUsItem } from '../WhyUsItem/WhyUsItem';
 
-export const PromoPageView = function () {
+export const PromoPageView = () => {
   const visibility = {
     expanded: 'expanded',
     collapsed: 'collapsed',
   };
+
   const [addInfoVisibility, setAddInfoVisibility] = useState(
     visibility.collapsed,
   );
