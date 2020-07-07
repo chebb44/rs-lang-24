@@ -59,6 +59,7 @@ export const SprintMain = () => {
     );
     setCurrentScreen(SPRINT_END_SCREEN);
   }, [dispatch, score]);
+  const isStartButtonActive = cards.length >= 5;
   return (
     <div className="sprint-main-wrapper">
       {(() => {
@@ -68,6 +69,7 @@ export const SprintMain = () => {
               <StartScreen
                 startClickHandler={startGameHandler}
                 redirectToStatistic={redirectToStatistic}
+                isStartButtonActive={isStartButtonActive}
               />
             );
           case SPRINT_GAME_SCREEN:
@@ -87,6 +89,7 @@ export const SprintMain = () => {
               <StartScreen
                 startClickHandler={startGameHandler}
                 redirectToStatistic={redirectToStatistic}
+                isStartButtonActive={isStartButtonActive}
               />
             );
           case SPRINT_END_SCREEN:

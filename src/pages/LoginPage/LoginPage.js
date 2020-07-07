@@ -9,7 +9,7 @@ import { LoginForm } from './../../components/LoginForm/LoginForm';
 import { appStateSelector } from './../../reducers/appState/appStateReducer';
 import { useHistory } from 'react-router-dom';
 import { LoginIntroInfo } from '../../components/LoginIntroInfo/LoginIntroInfo';
-import { PromoView } from '../../components/PromoView/PromoView';
+import { PromoPageView } from '../../components/PromoPageView/PromoPageView';
 import './LoginPage.scss';
 import { LogoView } from '../../components/LogoView/LogoView';
 import london from './../../assets/img/england_PNG723.png';
@@ -34,7 +34,7 @@ export const LoginPage = function () {
   );
 
   return (
-    <>
+    <div className="login-page">
       <Alert message={alertMessage} />
       <div className="container login-screen">
         <div className="login-page__wrapper">
@@ -45,8 +45,8 @@ export const LoginPage = function () {
           <LoginForm onSignUp={signUpHandler} onSignIn={signInHandler} />
           <img className={'london-image'} src={london} alt="london" />
         </div>
-        <PromoView />
       </div>
-    </>
+      <PromoPageView />
+    </div>
   );
 };
