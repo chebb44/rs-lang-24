@@ -1,0 +1,59 @@
+@import "src/scss/vars";
+
+.about-team-member-view__wrapper {
+  display: flex;
+  flex-direction: column;
+  min-width: 140px;
+  margin: 4px 4px 10px;
+  color: $neutral-inactive;
+  cursor: pointer;
+  filter: grayscale(50%);
+  opacity: .95;
+  transition: all .2s;
+  &:hover {
+    filter: grayscale(0);
+    opacity: 1;
+  }
+
+  a {
+    background-color: transparent;
+    color: $neutral-inactive;
+    text-decoration: none;
+  }
+
+
+  img {
+    border-radius: 50%;
+    width: 110px;
+    height: 110px;
+    border: 1px solid $accent-color;
+    margin: 0 auto;
+
+  }
+
+  .about-team-member-view__name {
+    font-size: .9rem;
+    @media screen and (max-width: $mobile-width-big){
+      font-size: .8rem;
+    }
+  }
+
+  .about-team-member-view__role {
+    font-size: .8rem;
+    @media screen and (max-width: $mobile-width-big){
+      font-size: .7rem;
+    }
+  }
+
+  .about-team-member-view__github-wrapper {
+    display: flex;
+    justify-content: center;
+
+    .member-role__github-title {
+      margin-left: 4px;
+      font-size: .7rem;
+
+    }
+  }
+
+}

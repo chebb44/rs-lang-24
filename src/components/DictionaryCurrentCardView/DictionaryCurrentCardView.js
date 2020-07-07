@@ -28,7 +28,6 @@ const DictionaryCurrentCardView = ({ currentCard }) => {
   } = currentCard;
   const textMeaningArray = getWordFromTaggedText(textMeaning, 'i');
   const textExampleArray = getWordFromTaggedText(textExample, 'b');
-  console.log(userWord.difficulty);
   return (
     <div className="dictionary__current-card-view">
       <div className="current-card-view__picture">
