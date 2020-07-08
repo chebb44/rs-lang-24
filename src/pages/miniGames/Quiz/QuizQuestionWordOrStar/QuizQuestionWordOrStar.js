@@ -6,7 +6,6 @@ export const QuizQuestionWordOrStar = ({ word }) => {
   const stars = word.split('').map((el, index) => {
     return (el = <QuizStarSvg key={index} />);
   });
-  // console.log(stars);
 
   return (
     <div className="quiz-question-word">

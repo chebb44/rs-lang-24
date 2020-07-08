@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import musicSvg from './assets/music.svg';
 import textSvg from './assets/text.svg';
 import translateSvg from './assets/translate.svg';
@@ -10,11 +10,14 @@ export const QuizHelpBtnsContainer = ({
   gameWord,
   setInputValue,
   setClassWordTranslate,
+  playWordSoundValue,
+  setPlayWordSoundValue,
+  showTranslateWordValue,
+  setShowTranslateWordValue,
+  showFirstLetterValue,
+  setShowFirstLetterValue,
 }) => {
   const { word, audio } = gameWord;
-  const [playWordSoundValue, setPlayWordSoundValue] = useState(true);
-  const [showTranslateWordValue, setShowTranslateWordValue] = useState(true);
-  const [showFirstLetterValue, setShowFirstLetterValue] = useState(true);
 
   const playWordSound = () => {
     const audioPlay = new Audio();

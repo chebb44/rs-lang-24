@@ -6,8 +6,9 @@ import { QuizQuestionInput } from '../QuizQuestionInput/QuizQuestionInput';
 export const QuizQuestionTitle = ({
   textMeaning,
   setInputValue,
-  getTrueAnswer,
   inputValue,
+  inputWordClass,
+  checkTrueWordClick,
 }) => {
   const regexpAll = new RegExp(`<i>(\\w+)<\\/i>`);
   const regexpTags = new RegExp(`<i>|<\\/i>`, 'g');
@@ -18,7 +19,6 @@ export const QuizQuestionTitle = ({
   const hidedText = textMeaning.replace(regexpTags, '').replace(word, wordMask);
   const firstHalf = textMeaning.slice(0, index);
   const secondHalf = hidedText.slice(index + word.length);
-  console.log('word', word);
 
   return (
     <div className="quiz-question-title" id="questionWord">
@@ -33,8 +33,9 @@ export const QuizQuestionTitle = ({
         <QuizQuestionInput
           word={word}
           setInputValue={setInputValue}
-          getTrueAnswer={getTrueAnswer}
           inputValue={inputValue}
+          inputWordClass={inputWordClass}
+          checkTrueWordClick={checkTrueWordClick}
         />
       </div>
       <div className="quiz-question-title__text">{secondHalf}</div>

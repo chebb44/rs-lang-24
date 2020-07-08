@@ -3,7 +3,7 @@ import './QuizGamePage.scss';
 import { QuizProgressBar } from '../QuizProgressBar/QuizProgressBar';
 import { QuizEnterBtn } from '../QuizEnterBtn/QuizEnterBtn';
 import { QuizExitBtn } from '../QuizExitBtn/QuizExitBtn';
-import { SHOW_TRUE, MAX_WORDS_FOR_GAME } from '../constants';
+import { MAX_WORDS_FOR_GAME, SHOW_TRUE } from '../constants';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { QuizEndGameStatisticModal } from '../QuizEndGameStatisticModal/QuizEndGameStatisticModal';
 import { useDispatch } from 'react-redux';
@@ -12,6 +12,8 @@ import { getDateStringByDate } from '../utilities';
 import { actionMarkWord } from '../../../../store/actionsForSaga';
 import { NEXT_TRAIN_WORD } from '../../../../sagas/constants';
 import { QuizQuestionContainer } from '../QuizQuestionContainer/QuizQuestionContainer';
+import successSrc from '../../../../assets/audio/success.mp3';
+import errorSrc from '../../../../assets/audio/error.mp3';
 
 export const QuizGamePage = ({ redirectToStartScreen, wordsForGame }) => {
   const [wordNumber, setWordNumber] = useState(0);
@@ -19,8 +21,18 @@ export const QuizGamePage = ({ redirectToStartScreen, wordsForGame }) => {
   const [falseAnswerStatistic, setFalseAnswerStatistic] = useState([]);
   const [enterBtnClass, setEnterBtnClass] = useState('quiz-enter-btn');
   const [inputValue, setInputValue] = useState('');
+  const [playWordSoundValue, setPlayWordSoundValue] = useState(true);
+  const [showTranslateWordValue, setShowTranslateWordValue] = useState(true);
+  const [showFirstLetterValue, setShowFirstLetterValue] = useState(true);
+  const [inputWordClass, setInputWordClass] = useState(
+    'form-control m-auto quiz-question-input__entered-word',
+  );
 
   const dispatch = useDispatch();
+  const success = new Audio();
+  success.src = successSrc;
+  const error = new Audio();
+  error.src = errorSrc;
 
   const saveStatistic = useCallback(() => {
     let score = trueAnswerStatistic.length;
@@ -32,7 +44,6 @@ export const QuizGamePage = ({ redirectToStartScreen, wordsForGame }) => {
       }),
     );
   }, [dispatch, trueAnswerStatistic.length]);
-
   const markWordsToNextTrain = useCallback(() => {
     falseAnswerStatistic.map((word) => {
       return dispatch(
@@ -45,37 +56,55 @@ export const QuizGamePage = ({ redirectToStartScreen, wordsForGame }) => {
   }, [dispatch, falseAnswerStatistic]);
 
   const setNextGameWord = () => {
-    removeClasses();
     if (wordNumber === MAX_WORDS_FOR_GAME) {
       return null;
     }
     setWordNumber(wordNumber + 1);
+    setInputValue('');
+    removeClasses();
   };
 
   const clickEnterBtn = (event) => {
     event.target.innerText ? getTrueAnswer() : setNextGameWord();
   };
 
-  const successAddClasses = (item, SHOW_TRUE) => {
+  const successAddClasses = (SHOW_TRUE) => {
     setEnterBtnClass('quiz-enter-btn quiz-enter-btn_next');
+    return !SHOW_TRUE
+      ? setInputWordClass(
+          'form-control m-auto quiz-question-input__entered-word quiz-question-input__entered-word_success',
+        )
+      : null;
   };
 
   const removeClasses = () => {
     setEnterBtnClass('quiz-enter-btn');
+    setInputWordClass('form-control m-auto quiz-question-input__entered-word');
   };
 
-  const checkTrueWordClick = (event) => {
-    const questionWord = document.getElementById('questionWord');
-
-    if (event.target.value !== questionWord.title) {
-      event.target.classList.add('quiz-answer-btn_false');
-    }
-    if (event.target.value === questionWord.title) {
-      successAddClasses(event.target);
+  const checkTrueWordClick = () => {
+    if (
+      wordsForGame[wordNumber].word.toLowerCase() === inputValue.toLowerCase()
+    ) {
+      success.play();
+      successAddClasses();
+      setTrueAnswerStatistic([
+        ...trueAnswerStatistic,
+        wordsForGame[wordNumber],
+      ]);
+    } else {
+      error.play();
     }
   };
 
-  const getTrueAnswer = () => {};
+  const getTrueAnswer = () => {
+    setInputValue(wordsForGame[wordNumber].word);
+    successAddClasses(SHOW_TRUE);
+    setFalseAnswerStatistic([
+      ...falseAnswerStatistic,
+      wordsForGame[wordNumber],
+    ]);
+  };
 
   return wordNumber === MAX_WORDS_FOR_GAME ? (
     <div className="quiz-game-page">
@@ -109,6 +138,14 @@ export const QuizGamePage = ({ redirectToStartScreen, wordsForGame }) => {
               setInputValue={setInputValue}
               getTrueAnswer={getTrueAnswer}
               inputValue={inputValue}
+              inputWordClass={inputWordClass}
+              checkTrueWordClick={checkTrueWordClick}
+              playWordSoundValue={playWordSoundValue}
+              setPlayWordSoundValue={setPlayWordSoundValue}
+              showTranslateWordValue={showTranslateWordValue}
+              setShowTranslateWordValue={setShowTranslateWordValue}
+              showFirstLetterValue={showFirstLetterValue}
+              setShowFirstLetterValue={setShowFirstLetterValue}
             />
             <QuizEnterBtn func={clickEnterBtn} enterBtnClass={enterBtnClass} />
           </div>

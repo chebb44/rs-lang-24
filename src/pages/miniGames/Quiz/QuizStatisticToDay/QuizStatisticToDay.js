@@ -33,10 +33,7 @@ export const QuizStatisticToDay = ({
             {statArray.length > 0 ? (
               statArray.map((statArray, index) => {
                 return (
-                  <QuizStatisticToDayItem
-                    dayStat={statArray}
-                    key={index}
-                  />
+                  <QuizStatisticToDayItem dayStat={statArray} key={index} />
                 );
               })
             ) : (

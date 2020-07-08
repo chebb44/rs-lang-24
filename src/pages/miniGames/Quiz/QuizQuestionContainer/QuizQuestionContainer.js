@@ -7,14 +7,20 @@ import { QuizHelpBtnsContainer } from '../QuizHelpBtnsContainer/QuizHelpBtnsCont
 export const QuizQuestionContainer = ({
   word,
   setInputValue,
-  getTrueAnswer,
   inputValue,
+  inputWordClass,
+  checkTrueWordClick,
+  playWordSoundValue,
+  setPlayWordSoundValue,
+  showTranslateWordValue,
+  setShowTranslateWordValue,
+  showFirstLetterValue,
+  setShowFirstLetterValue,
 }) => {
   const { image, textMeaning, wordTranslate } = word;
   const [classWordTranslate, setClassWordTranslate] = useState(
     'quiz-question-container__word-translation',
   );
-  console.log(word);
 
   return (
     <div className="quiz-question-container">
@@ -24,12 +30,19 @@ export const QuizQuestionContainer = ({
         gameWord={word}
         setInputValue={setInputValue}
         setClassWordTranslate={setClassWordTranslate}
+        playWordSoundValue={playWordSoundValue}
+        setPlayWordSoundValue={setPlayWordSoundValue}
+        showTranslateWordValue={showTranslateWordValue}
+        setShowTranslateWordValue={setShowTranslateWordValue}
+        showFirstLetterValue={showFirstLetterValue}
+        setShowFirstLetterValue={setShowFirstLetterValue}
       />
       <QuizQuestionTitle
         textMeaning={textMeaning}
         setInputValue={setInputValue}
-        getTrueAnswer={getTrueAnswer}
         inputValue={inputValue}
+        inputWordClass={inputWordClass}
+        checkTrueWordClick={checkTrueWordClick}
       />
     </div>
   );

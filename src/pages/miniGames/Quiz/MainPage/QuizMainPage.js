@@ -27,7 +27,7 @@ export const QuizMainPage = () => {
   const { currentWordsGroup, currentWordsPage } = useSelector(
     learnCardSettingsSelector,
   );
-  const [currentScreen, setCurrentScreen] = useState(QUIZ_GAME_SCREEN); // start
+  const [currentScreen, setCurrentScreen] = useState(QUIZ_START_SCREEN);
   const [visibleStatisticGame, setVisibleStatisticGame] = useState(false);
   const [isLoader, setIsLoader] = useState(false);
 
@@ -90,8 +90,6 @@ export const QuizMainPage = () => {
     round,
     gameMode,
   ]);
-
-  // console.log('wordsForGame', wordsForGame);
 
   return (
     <div className="quiz-main-page">

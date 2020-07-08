@@ -21,9 +21,7 @@ export const QuizEndGameStatisticModalItem = ({ item }) => {
       >
         <AudioStatisticItemSvg />
       </button>
-      <span className="quiz-end-game-statistic-modal-item__word">
-        {word}
-      </span>
+      <span className="quiz-end-game-statistic-modal-item__word">{word}</span>
       &nbsp;{'—'}&nbsp;
       <span className="quiz-end-game-statistic-modal-item__translate">
         {wordTranslate}
