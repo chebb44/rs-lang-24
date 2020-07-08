@@ -9,7 +9,7 @@ export const ResultBlock = ({ gameStat }) => {
     resultBlock.unshift(
       <div key={Math.random()} className="SavannaStatisticContainer">
         <div className="SavannaResultBlock">{`${date.getDate()}.${
-          date.getMonth() + 1
+          date.getMonth() + 2
         }.${date.getFullYear()}`}</div>
         <div className="SavannaGameResultsBlock">
           <GameResultsBlock gameResultsArray={games_array} />
