@@ -1,0 +1,55 @@
+.game-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    border: 2px solid #330505;
+    width: 300px;
+    border-radius: 5px;
+}
+.clock{
+    display: flex;
+    align-items: center;
+    border: 1px solid #330505;
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+}
+.start-timer{
+    transform: rotate(-270deg);
+}
+.end-timer{
+    transform: rotate(90deg);
+}
+.arrow{
+    transition: 3s linear;
+    width: 100%;
+}
+.arrow :nth-child(1){
+    background-color: #330505;
+    width: 50%;
+    border: 0.2px solid #330505
+}
+.arrow :nth-child(2){
+    width: 50%;
+}
+.answers{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.answer{
+    color: #330505;
+    border-color: #330505;
+    margin: 10px;
+}
+.question{
+    padding: 5px 10px;
+    background: #FFD6BA;
+    border-radius: 5px;
+    margin: 10px;
+    color: #330505;
+    cursor: default;
+} 

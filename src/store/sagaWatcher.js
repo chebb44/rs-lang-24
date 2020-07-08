@@ -50,6 +50,7 @@ import {
   SPEAK_IT_SEND_GAME_RESULT,
   SPRINT_SEND_GAME_RESULT,
   AUDIO_CALL_SEND_GAME_RESULT,
+  SAVANNA_GET_GAME_RESULT,
 } from './../reducers/miniGamesStats/miniGamesStatsActions';
 import {
   AUDIO_CALL_SAVE_GAME_LEVEL,
@@ -88,22 +89,15 @@ const actionsForSendStatisticToBackend = [
   SET_LONGEST_CORRECT_ANSWER_SERIES,
   SPRINT_SEND_GAME_RESULT,
   AUDIO_CALL_SEND_GAME_RESULT,
+  SAVANNA_GET_GAME_RESULT,
 ];
 
 const actionsForResetLearnProperties = [
   SET_LEARN_MODE,
   SET_WORDS_PER_DAY,
   SET_CARDS_PER_DAY,
-];
 
-const actionsForInitWordsForLearn = [
-  INIT_CARD_SET,
-  UPDATE_PREV_PAGE_GROUP_WORD_NUMBER,
-  SET_WORDS_PER_DAY,
-  SET_CARDS_PER_DAY,
-  SET_LEARN_MODE,
 ];
-
 export function* sagaWatcher() {
   yield takeLatest(SIGN_UP_USER, signUpWorker);
   yield takeLatest(SIGN_IN_USER, signInWorker);
@@ -111,7 +105,7 @@ export function* sagaWatcher() {
 
   yield takeLatest(INIT_APP, initAppWorker);
 
-  yield takeLatest(actionsForInitWordsForLearn, initWordsForLearnWorker);
+  yield takeLatest(INIT_CARD_SET, initWordsForLearnWorker);
 
   yield takeLatest(
     actionsForSenSettingsToBackendWorker,

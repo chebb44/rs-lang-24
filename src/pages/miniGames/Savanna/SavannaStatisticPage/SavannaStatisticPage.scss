@@ -1,0 +1,18 @@
+.SavannaResultsBlock{
+    border: 2px solid #FFD6BA;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.SavannaResultBlock{
+    display: flex;
+    flex-direction: column;
+}
+.SavannaStatisticContainer{
+    margin: 5px;
+    width: 150px;
+}
+.Statistic-page h3{
+    margin-top: 40px;
+}
