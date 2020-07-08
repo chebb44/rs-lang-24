@@ -32,7 +32,11 @@ export const QuizStartScreen = function ({
       </svg>
       <h1 className="quiz-start-screen__title">КВИЗ</h1>
       <p className="quiz-start-screen__description">
-        Угадайте загаданное слово.
+        Напишите заданное слово.
+        <br /> Можно воспользоваться 3-мя подсказками:
+        <br /> 1. Воспроизвести слово.
+        <br /> 2. Показать перевод слова.
+        <br /> 3. Показать первую букву.
       </p>
       <p className="quiz-start-screen__description">
         По умолчанию используются изученные слова.

@@ -126,10 +126,10 @@ export const QuizGamePage = ({ redirectToStartScreen, wordsForGame }) => {
           appear
           timeout={600}
           classNames={{
-            enter: 'slide-enter',
-            enterActive: 'slide-enter-active',
-            exit: 'slide-exit',
-            exitActive: 'slide-exit-active',
+            enter: 'my-node-enter',
+            enterActive: 'my-node-enter-active',
+            exit: 'my-node-exit',
+            exitActive: 'my-node-exit-active',
           }}
         >
           <div className="quiz-game-page__container">
