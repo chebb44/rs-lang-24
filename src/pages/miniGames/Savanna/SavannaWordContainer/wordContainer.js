@@ -11,11 +11,11 @@ export const WordContainer = ({
 }) => {
   const isAnswer =
     blockIndex * blockSize + answerIndex === blockSize * blockIndex + cardIndex;
-  var className = "";
+  var className = '';
   if (isTarget) {
-    className = "btn btn-warning answer";
+    className = 'btn btn-warning answer';
   } else {
-    className = "btn btn-outline-light answer";
+    className = 'btn btn-outline-light answer';
   }
   if (isAnswer) {
     return (

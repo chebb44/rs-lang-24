@@ -21,14 +21,16 @@ export const SavannaPlay = ({ difficulty }) => {
   };
   const blockSize = difficulty;
   const learnCards = useSelector(learnCardsSelector);
-  const [isSended, setIsSended] = useState(false)
+  const [isSended, setIsSended] = useState(false);
   const [currentCards, setCurrentCards] = useState(mixCards(learnCards));
   const [blockIndex, setBlockIndex] = useState(0);
-  const [answerIndex, setAnswerIndex] = useState(parseInt(getRandom() * blockSize));
+  const [answerIndex, setAnswerIndex] = useState(
+    parseInt(getRandom() * blockSize),
+  );
   const [secondHandDeg, setSecondHandDeg] = useState(90);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [currentAnswer, setCurrentAnswer] = useState(false);
-  const [targetWord, setTargetWord] = useState(null)
+  const [targetWord, setTargetWord] = useState(null);
   const questionNumber = parseInt(currentCards.length / blockSize);
   const dispatch = useDispatch();
   const sendDataToStatistic = useCallback(
@@ -36,28 +38,31 @@ export const SavannaPlay = ({ difficulty }) => {
       dispatch(
         actionSavannaSendGameResult({
           SavannaDate: getBeginDayTimeStamp(new Date()),
-          SavannaResults: `${result.answerNumber}/${result.questionNumber}`,
+          SavannaResults: `${parseInt(
+            (result.answerNumber / result.questionNumber) * 100,
+          )}%`,
         }),
       );
       setIsSended(null);
     },
-    [dispatch,],
+    [dispatch],
   );
   const {
     miniGames: { savanna: gameStat },
   } = useSelector(miniGamesStatsSelector);
-  useEffect(() => {
-    if (currentAnswer) {
-      setCorrectAnswers(plusAnswer(correctAnswers));
-    }
-    setSecondHandDeg(turnover(secondHandDeg));
-    setAnswerIndex(parseInt(getRandom() * blockSize));
-    setCurrentAnswer(false);
-    setTargetWord(null);
-    document.location.href="#playside";
-    console.log('render')
-  }, // eslint-disable-next-line react-hooks/exhaustive-deps
-   [blockIndex]);
+  useEffect(
+    () => {
+      if (currentAnswer) {
+        setCorrectAnswers(plusAnswer(correctAnswers));
+      }
+      setSecondHandDeg(turnover(secondHandDeg));
+      setAnswerIndex(parseInt(getRandom() * blockSize));
+      setCurrentAnswer(false);
+      setTargetWord(null);
+      document.location.href = '#playside';
+    }, // eslint-disable-next-line react-hooks/exhaustive-deps
+    [blockIndex],
+  );
   const timer = setTimeout(() => {
     setBlockIndex(plusAnswer(blockIndex));
   }, 3000);
@@ -71,6 +76,7 @@ export const SavannaPlay = ({ difficulty }) => {
         sendDataToStatistic={sendDataToStatistic}
         isSended={isSended}
         setIsSended={setIsSended}
+        setCurrentCards={setCurrentCards}
       />
     );
   }
