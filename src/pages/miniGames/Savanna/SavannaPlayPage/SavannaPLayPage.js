@@ -7,7 +7,7 @@ import './SavannaPlayPage.scss';
 import { SavannaAnswers } from '../SavannaAnswersWord/SavannaAnswersPage';
 import big_ben_upper from '../SavannaAssets/png/big_ben_upper.png';
 import big_ben_down from '../SavannaAssets/png/big_ben_down.png';
-import { getBeginDayTimeStamp } from '../../../../utilities/getDateStringByDate';
+import { getDateStringByDate } from '../../../../utilities/getDateStringByDate';
 import { actionSavannaSendGameResult } from '../../../../reducers/miniGamesStats/miniGamesStatsActions';
 import { miniGamesStatsSelector } from '../../../../reducers/miniGamesStats/miniGamesStatsReducer';
 export const SavannaPlay = ({ difficulty }) => {
@@ -37,7 +37,7 @@ export const SavannaPlay = ({ difficulty }) => {
     (result) => {
       dispatch(
         actionSavannaSendGameResult({
-          SavannaDate: getBeginDayTimeStamp(new Date()),
+          SavannaDate: getDateStringByDate(new Date()),
           SavannaResults: parseInt(
             (result.answerNumber / result.questionNumber) * 100,
           ),

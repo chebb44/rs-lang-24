@@ -3,7 +3,7 @@ import { GameResultsBlock } from './SavannaGameResultsBlock';
 export const ResultBlock = ({ gameStat }) => {
   let resultBlock = [];
   for (let day of Object.keys(gameStat)) {
-    let date = new Date(parseInt(day));
+    let date = new Date(day);
     let games_array = [];
     games_array.push(gameStat[day]);
     resultBlock.unshift(
