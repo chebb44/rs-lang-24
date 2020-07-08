@@ -9,6 +9,7 @@ import {
   CLEAR_LEARNED_WORDS_FOR_STATISTIC,
   RESET_ALL_LEARN_STATISTIC,
 } from './statisticActions';
+import { getDateStringByDate } from '../../utilities/getDateStringByDate';
 
 const defaultSettings = {
   shortStatistic: {
@@ -70,18 +71,12 @@ export const statisticState = (state = defaultSettings, action) => {
         },
       };
     case UPDATE_LEARNED_WORDS_FOR_STATISTIC:
-      const date = action.payload;
-      let statValue = 0;
-      if (date in state.learnedWordsForStatistic) {
-        statValue = state.learnedWordsForStatistic[date] + 1;
-      } else {
-        statValue = 1;
-      }
+      const wordDate = getDateStringByDate(new Date());
       return {
         ...state,
         learnedWordsForStatistic: {
           ...state.learnedWordsForStatistic,
-          [date]: statValue,
+          [wordDate]: action.payload,
         },
       };
     case CLEAR_LEARNED_WORDS_FOR_STATISTIC:

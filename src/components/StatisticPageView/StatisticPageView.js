@@ -16,9 +16,6 @@ export const StatisticPageView = ({ statisticItemList }) => {
           ))}
         </div>
       </div>
-      {/*  <div className="statistic-full">
-        <h5 className="statistic-today__title">За всё время</h5>
-      </div> */}
       <img
         className="statistic-today__london-image"
         src={london}

@@ -9,8 +9,8 @@ import { actionSetIsStatisticModalShown } from '../../reducers/appState/appState
 import { setShortStatistic } from './setShortStatistic';
 import { resetCardProperties } from './resetCardProperties';
 import { resetCardSetProperties } from './resetCardSetProperties';
-import { actionUpdateLearnedWordsStatistic } from '../../reducers/statisticReducer/statisticActions';
 import { getDateStringByDate } from '../getDateStringByDate';
+import { actionUpdateLearnedWordsStatistic } from '../../reducers/statisticReducer/statisticActions';
 
 export function changeWordCard(
   direction,
@@ -33,9 +33,6 @@ export function changeWordCard(
       store.dispatch(
         actionUpdateLastCorrectWordIndex(lastCorrectWordIndex + 1),
       );
-      // add learned word to statistic
-      const wordDate = getDateStringByDate(new Date());
-      store.dispatch(actionUpdateLearnedWordsStatistic(wordDate));
     }
 
     if (currentLearnCardIndex === learnCardsLength - 1) {
@@ -45,6 +42,9 @@ export function changeWordCard(
 
       // reset card set properties
       resetCardSetProperties();
+
+      // add learned word to statistic
+      store.dispatch(actionUpdateLearnedWordsStatistic(wordsPerDay));
 
       // set finish date and card page
       const setDate = getDateStringByDate(new Date());

@@ -6,25 +6,14 @@ import {
   actionUpdateTranslationShownFlag,
 } from '../../reducers/learnCard/learnCardActions';
 import { actionMarkWord } from '../../store/actionsForSaga';
-import { changeAnswersAccuracy } from './changeAnswersAccuracy';
+import { actionAddAnswerAccuracy } from '../../reducers/learnSettings/learnSettingsActions';
 
-export const showWordAnswer = (
-  learnCard,
-  learnedWords,
-  hardWords,
-  deletedWords,
-) => {
-  store.dispatch(actionUpdateAnswerShownFlag(true));
-  store.dispatch(actionUpdateTranslationShownFlag(true));
-  store.dispatch(actionUpdateWordCorrectFlag(true));
+export const showWordAnswer = (learnCard) => {
   store.dispatch(
     actionMarkWord({ wordId: learnCard._id, difficulty: LEARNED_WORD }),
   );
-  changeAnswersAccuracy(
-    true,
-    learnCard.word,
-    learnedWords,
-    hardWords,
-    deletedWords,
-  );
+  store.dispatch(actionUpdateAnswerShownFlag(true));
+  store.dispatch(actionUpdateTranslationShownFlag(true));
+  store.dispatch(actionUpdateWordCorrectFlag(true));
+  store.dispatch(actionAddAnswerAccuracy(true));
 };

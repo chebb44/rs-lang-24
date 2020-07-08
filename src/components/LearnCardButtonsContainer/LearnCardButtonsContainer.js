@@ -15,7 +15,6 @@ import { learnSettingsSelector } from '../../reducers/learnSettings/learnSetting
 import { submitWordFunction } from '../../utilities/learnCard/submitWordFunction';
 import { learnCardsSelector } from '../../reducers/learnCards/learnCardsReducer';
 import { changeWordCard } from '../../utilities/LearningContainer/changeWordCard';
-import { dictionaryStateStateSelector } from '../../reducers/dictionaryReducer/dictionaryReducer';
 import { showWordAnswer } from '../../utilities/learnCard/showWordAnswer';
 import './LearnCardButtonsContainer.scss';
 
@@ -25,21 +24,11 @@ export const LearnCardButtonsContainer = () => {
     learnCardParametersSelector,
   );
   const { wordsPerDay, learnCardSettings } = useSelector(learnSettingsSelector);
-  const { learnedWords, hardWords, deletedWords } = useSelector(
-    dictionaryStateStateSelector,
-  );
   const learnCard = learnCards[currentLearnCardIndex];
   const dispatch = useDispatch();
 
   const handleCheckButtonClick = () => {
-    submitWordFunction(
-      enteredWord,
-      learnCard,
-      learnCardSettings,
-      learnedWords,
-      hardWords,
-      deletedWords,
-    );
+    submitWordFunction(enteredWord, learnCard, learnCardSettings);
   };
 
   const handleNextCard = () => {
@@ -56,7 +45,7 @@ export const LearnCardButtonsContainer = () => {
   };
 
   const handleShowAnswerButtonClick = () => {
-    showWordAnswer(learnCard, learnedWords, hardWords, deletedWords);
+    showWordAnswer(learnCard);
   };
 
   const handleDeleteButtonClick = () => {

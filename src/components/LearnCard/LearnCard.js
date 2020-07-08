@@ -7,15 +7,10 @@ import { LearnCardTranslation } from '../LearnCardTranslation/LearnCardTranslati
 import { LearnCardAudio } from '../LearnCardAudio/LearnCardAudio';
 import { formatLearnCardText } from '../../utilities/learnCard/formatLearnCardText';
 import { learnCardParametersSelector } from '../../reducers/learnCard/learnCardReducer';
-import {
-  actionUpdateCurrentAudio,
-  actionUpdateCurrentCardIndex,
-} from '../../reducers/learnCard/learnCardActions';
+import { actionUpdateCurrentAudio } from '../../reducers/learnCard/learnCardActions';
 import './LearnCard.scss';
 import { DescriptionWord } from './../DescriptionWord/DescriptionWord';
 import { submitWordFunction } from '../../utilities/learnCard/submitWordFunction';
-import { dictionaryStateStateSelector } from '../../reducers/dictionaryReducer/dictionaryReducer';
-import { learnCardSettingsSelector } from '../../reducers/learnSettings/learnSettingsReducer';
 
 export const LearnCard = ({ learnCard, learnCardSettings }) => {
   const [learnCardFormatted, setLearnCardFormatted] = useState(null);
@@ -27,15 +22,7 @@ export const LearnCard = ({ learnCard, learnCardSettings }) => {
     currentAudio,
     isWordCorrect,
   } = useSelector(learnCardParametersSelector);
-  const { lastCorrectWordIndex } = useSelector(learnCardSettingsSelector);
-  const { learnedWords, hardWords, deletedWords } = useSelector(
-    dictionaryStateStateSelector,
-  );
   const dispatch = useDispatch();
-
-  /* useEffect(() => {
-    dispatch(actionUpdateCurrentCardIndex(lastCorrectWordIndex));
-  }, []); */
 
   useEffect(() => {
     if (learnCard) {
@@ -52,14 +39,7 @@ export const LearnCard = ({ learnCard, learnCardSettings }) => {
 
   const handleWordSubmitOnEnter = (event) => {
     if (event.key === 'Enter') {
-      submitWordFunction(
-        enteredWord,
-        learnCard,
-        learnCardSettings,
-        learnedWords,
-        hardWords,
-        deletedWords,
-      );
+      submitWordFunction(enteredWord, learnCard, learnCardSettings);
     }
   };
 

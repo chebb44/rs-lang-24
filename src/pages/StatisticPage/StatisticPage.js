@@ -26,7 +26,7 @@ export const StatisticPage = () => {
       icon: learnIcon,
     },
     {
-      text: 'Правильные ответы:',
+      text: 'Правильные ответы по новым словам:',
       value: `${shortStatistic.correctAnswersPercent}%`,
       icon: speackIcon,
     },

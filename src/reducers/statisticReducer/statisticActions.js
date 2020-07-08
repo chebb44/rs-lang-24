@@ -42,9 +42,9 @@ export const actionSetLongestCorrectAnswerSeries = (series) => ({
 
 export const UPDATE_LEARNED_WORDS_FOR_STATISTIC =
   'UPDATE_LEARNED_WORDS_FOR_STATISTIC';
-export const actionUpdateLearnedWordsStatistic = (date) => ({
+export const actionUpdateLearnedWordsStatistic = (wordsNumber) => ({
   type: UPDATE_LEARNED_WORDS_FOR_STATISTIC,
-  payload: date,
+  payload: wordsNumber,
 });
 
 export const CLEAR_LEARNED_WORDS_FOR_STATISTIC =
