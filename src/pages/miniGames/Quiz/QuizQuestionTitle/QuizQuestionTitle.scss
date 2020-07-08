@@ -20,9 +20,12 @@
   -o-transition: .2s ease-in;
   user-select: none;
   &__word {
-    position: absolute;
+    position: relative;
+    display: inline-block;
     height: 35px;
-    top: 4px;
+  }
+  &__text {
+    display: inline;
   }
 }
 
@@ -31,7 +34,7 @@
     font-size: 22px;
     line-height: 30px;
     &__word {
-      top: -1px;
+      height: 35px;
     }
   }
 }

@@ -22,8 +22,8 @@ export const QuizQuestionTitle = ({
 
   return (
     <div className="quiz-question-title" id="questionWord">
-      <span style={{ top: '0' }}>{firstHalf}</span>
-      <span
+      <div className="quiz-question-title__text">{firstHalf}</div>
+      <div
         className="quiz-question-title__word"
         style={{
           width: `calc(7px + 12px * ${word.length})`,
@@ -36,15 +36,8 @@ export const QuizQuestionTitle = ({
           getTrueAnswer={getTrueAnswer}
           inputValue={inputValue}
         />
-      </span>
-
-      <span
-        style={{
-          marginLeft: `calc(12px + 12px * ${word.length})`,
-        }}
-      >
-        {secondHalf}
-      </span>
+      </div>
+      <div className="quiz-question-title__text">{secondHalf}</div>
     </div>
   );
 };
