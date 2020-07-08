@@ -33,9 +33,9 @@ export const LearnCard = ({ learnCard, learnCardSettings }) => {
   );
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  /* useEffect(() => {
     dispatch(actionUpdateCurrentCardIndex(lastCorrectWordIndex));
-  }, []);
+  }, []); */
 
   useEffect(() => {
     if (learnCard) {
