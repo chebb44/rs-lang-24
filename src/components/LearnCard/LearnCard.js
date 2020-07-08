@@ -11,6 +11,7 @@ import { actionUpdateCurrentAudio } from '../../reducers/learnCard/learnCardActi
 import './LearnCard.scss';
 import { DescriptionWord } from './../DescriptionWord/DescriptionWord';
 import { submitWordFunction } from '../../utilities/learnCard/submitWordFunction';
+import { dictionaryStateStateSelector } from '../../reducers/dictionaryReducer/dictionaryReducer';
 
 export const LearnCard = ({ learnCard, learnCardSettings }) => {
   const [learnCardFormatted, setLearnCardFormatted] = useState(null);
@@ -22,6 +23,9 @@ export const LearnCard = ({ learnCard, learnCardSettings }) => {
     currentAudio,
     isWordCorrect,
   } = useSelector(learnCardParametersSelector);
+  const { learnedWords, hardWords, deletedWords } = useSelector(
+    dictionaryStateStateSelector,
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -39,7 +43,14 @@ export const LearnCard = ({ learnCard, learnCardSettings }) => {
 
   const handleWordSubmitOnEnter = (event) => {
     if (event.key === 'Enter') {
-      submitWordFunction(enteredWord, learnCard, learnCardSettings);
+      submitWordFunction(
+        enteredWord,
+        learnCard,
+        learnCardSettings,
+        learnedWords,
+        hardWords,
+        deletedWords,
+      );
     }
   };
 
