@@ -112,11 +112,7 @@ export function* sagaWatcher() {
 
   yield takeLatest(INIT_APP, initAppWorker);
 
-   yield takeLatest(
-    actionsForInitWordsForLearn,
-    INIT_CARD_SET,
-    initWordsForLearnWorker
-  );
+  yield takeLatest(INIT_CARD_SET, initWordsForLearnWorker);
 
   yield takeLatest(
     actionsForSenSettingsToBackendWorker,
