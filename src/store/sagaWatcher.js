@@ -111,8 +111,8 @@ export function* sagaWatcher() {
   yield takeEvery(LOG_OUT_USER, logOutWorker);
 
   yield takeLatest(INIT_APP, initAppWorker);
-
-  yield takeLatest(INIT_CARD_SET, initWordsForLearnWorker);
+  
+  yield takeLatest(actionsForInitWordsForLearn, initWordsForLearnWorker);
 
   yield takeLatest(
     actionsForSenSettingsToBackendWorker,
