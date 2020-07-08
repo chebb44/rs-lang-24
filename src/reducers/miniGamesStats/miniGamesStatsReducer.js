@@ -56,7 +56,10 @@ export const miniGamesStats = (state = defaultData, action) => {
       const { SavannaDate, SavannaResults } = action.payload;
       let savannaDayStat = [];
       if (SavannaDate in state.miniGames.savanna) {
-        savannaDayStat = [...state.miniGames.savanna[SavannaDate], SavannaResults];
+        savannaDayStat = [
+          ...state.miniGames.savanna[SavannaDate],
+          SavannaResults,
+        ];
       } else {
         savannaDayStat = [SavannaResults];
       }
