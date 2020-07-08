@@ -79,17 +79,9 @@ const actionsForSendStatisticToBackend = [
   SET_CORRECT_ANSWERS_PERCENT,
   SET_NEW_WORDS_AMOUNT,
   SET_LONGEST_CORRECT_ANSWER_SERIES,
+  SPRINT_SEND_GAME_RESULT,
   SAVANNA_GET_GAME_RESULT,
 ];
-
-const actionsForInitWordsForLearn = [
-  INIT_CARD_SET,
-  UPDATE_PREV_PAGE_GROUP_WORD_NUMBER,
-  SET_WORDS_PER_DAY,
-  SET_CARDS_PER_DAY,
-  SET_LEARN_MODE,
-];
-
 export function* sagaWatcher() {
   yield takeLatest(SIGN_UP_USER, signUpWorker);
   yield takeLatest(SIGN_IN_USER, signInWorker);
@@ -97,7 +89,7 @@ export function* sagaWatcher() {
 
   yield takeLatest(INIT_APP, initAppWorker);
 
-  yield takeLatest(actionsForInitWordsForLearn, initWordsForLearnWorker);
+  yield takeLatest(INIT_CARD_SET, initWordsForLearnWorker);
 
   yield takeLatest(
     actionsForSenSettingsToBackendWorker,
