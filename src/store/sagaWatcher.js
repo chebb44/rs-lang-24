@@ -58,6 +58,7 @@ import {
   QUIZ_SAVE_GAME_LEVEL,
   QUIZ_SAVE_GAME_ROUND,
 } from '../reducers/miniGamesDifficulty/miniGamesDifficultyActions';
+import { resetLearningProperties } from '../sagas/resetLearningProperties';
 const actionsForSenSettingsToBackendWorker = [
   SET_LEARN_MODE,
   SET_WORDS_PER_DAY,
@@ -95,6 +96,12 @@ const actionsForSendStatisticToBackend = [
   QUIZ_SEND_GAME_RESULT,
 ];
 
+const actionsForResetLearnProperties = [
+  SET_LEARN_MODE,
+  SET_WORDS_PER_DAY,
+  SET_CARDS_PER_DAY,
+];
+
 const actionsForInitWordsForLearn = [
   INIT_CARD_SET,
   UPDATE_PREV_PAGE_GROUP_WORD_NUMBER,
@@ -121,6 +128,8 @@ export function* sagaWatcher() {
     actionsForSendStatisticToBackend,
     sendStatisticToBackendWorker,
   );
+
+  yield takeLatest(actionsForResetLearnProperties, resetLearningProperties);
 
   yield takeEvery(MARK_WORD, markWordsWorker);
   yield takeEvery(MOVE_WORD, moveWordsWorker);

@@ -30,3 +30,8 @@ export const actionSetAllMiniGamesStats = ({ miniGames }) => ({
   type: SET_ALL_MINI_GAMES_STATS,
   payload: { miniGames },
 });
+
+export const RESET_ALL_MINI_GAMES_STATS = 'RESET_ALL_MINI_GAMES_STATS';
+export const actionResetAllMiniGamesStats = () => ({
+  type: RESET_ALL_MINI_GAMES_STATS,
+});

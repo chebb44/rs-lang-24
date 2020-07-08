@@ -21,14 +21,16 @@ import {
   ADD_ANSWER_ACCURACY,
   CLEAR_ANSWER_ACCURACY,
   UPDATE_LAST_FINISHED_LEARNING_DATE,
+  RESET_LEARN_SETTINGS,
 } from './learnSettingsActions';
 
 export const learnSettingsSelector = (state) => state.learnSettings;
 export const learnCardSettingsSelector = (state) =>
   state.learnSettings.learnCardSettings;
-
 export const learnSettings = (state = defaultLearnSettings, action) => {
   switch (action.type) {
+    case RESET_LEARN_SETTINGS:
+      return defaultLearnSettings;
     case SET_WORDS_PER_DAY:
       return {
         ...state,

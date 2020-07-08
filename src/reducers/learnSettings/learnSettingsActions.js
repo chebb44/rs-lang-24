@@ -10,6 +10,11 @@ export const actionSetCardsPerDay = (cardsNumber) => ({
   payload: cardsNumber,
 });
 
+export const RESET_LEARN_SETTINGS = 'RESET_LEARN_SETTINGS';
+export const actionResetLearnSetting = () => ({
+  type: RESET_LEARN_SETTINGS,
+});
+
 export const SET_LEARN_SETTINGS = 'SET_LEARN_SETTINGS';
 export const actionSetLearnSetting = (settings) => ({
   type: SET_LEARN_SETTINGS,

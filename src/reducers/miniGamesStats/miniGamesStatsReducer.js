@@ -4,6 +4,7 @@ import {
   SPEAK_IT_SEND_GAME_RESULT,
   AUDIO_CALL_SEND_GAME_RESULT,
   QUIZ_SEND_GAME_RESULT,
+  RESET_ALL_MINI_GAMES_STATS,
 } from './miniGamesStatsActions';
 const defaultData = {
   miniGames: {
@@ -18,6 +19,8 @@ export const miniGamesStatsSelector = (state) => state.miniGamesStats;
 
 export const miniGamesStats = (state = defaultData, action) => {
   switch (action.type) {
+    case RESET_ALL_MINI_GAMES_STATS:
+      return defaultData;
     case SPRINT_SEND_GAME_RESULT:
       const { date, result } = action.payload;
       let dayStat = [];

@@ -1,0 +1,49 @@
+@import "src/scss/vars";
+
+.about-team__wrapper {
+  color: $neutral-inactive;
+  width: 100vw;
+  height: calc(100vh - 90px);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-width: 768px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  @media screen and (max-width: $mobile-width-big){
+    padding-left: 10px;
+    padding-right: 10px;
+    min-height: calc(100vh - 30px);
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .about-team__title {
+    padding-top: 10px;
+  }
+
+  .about-team__members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .about-team__footer-image {
+    position: absolute;
+    bottom: 0;
+    left:50%;
+    transform:translate(-50%);
+    width: 100%;
+    z-index: -3;
+    opacity: .15;
+    max-height: 200px;
+    max-width: 600px;
+  }
+
+}
