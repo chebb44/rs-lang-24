@@ -8,6 +8,7 @@ import { SPRINT_SHOW_RESULT_DELAY } from '../../constants';
 import { useDispatch } from 'react-redux';
 import { actionMarkWord } from '../../../../../store/actionsForSaga';
 import { NEXT_TRAIN_WORD } from './../../../../../sagas/constants';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 export const CardField = ({
   cards,
@@ -76,11 +77,28 @@ export const CardField = ({
     };
   }, [timeoutId]);
   return (
-    <div className="sprint-cards-field">
-      <GameNotification text={notificationText} />
-      <Series number={series} />
-      <GameWord card={cards[currentNumber]} />
-      <GameButtons clickHandler={buttonsHandler} />
-    </div>
+    <CSSTransition
+      in={true}
+      appear={true}
+      classNames={'sprint-fade'}
+      timeout={400}
+    >
+      <div className="sprint-cards-field">
+        <GameNotification text={notificationText} />
+        <Series number={series} />
+        <TransitionGroup className="words-animation-container">
+          <CSSTransition
+            key={currentNumber}
+            appear={true}
+            timeout={400}
+            classNames="word"
+            unmountOnExit={true}
+          >
+            <GameWord card={cards[currentNumber]} />
+          </CSSTransition>
+        </TransitionGroup>
+        <GameButtons clickHandler={buttonsHandler} />
+      </div>
+    </CSSTransition>
   );
 };

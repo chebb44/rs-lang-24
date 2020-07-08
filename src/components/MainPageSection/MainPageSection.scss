@@ -62,36 +62,36 @@
   line-height: 35px;
 }
 
-svg {
+.main-page__svg {
   position: absolute;
   width: 120px;
   height: 120px;
   z-index: 1;
   fill: #ffd6bae8;
-}
 
-.svg-1 {
-  bottom: -20px;
-  left: 50px;
-  transform: scale(2);
-}
-.svg-2 {
-  top: 20px;
-  left: 30px;
-  transform: scale(2);
-}
-.svg-3 {
-  top: 50px;
-  left: 150px;
-  transform: scale(2);
-}
-.svg-4 {
-  top: 120px;
-  right: 90px;
-  transform: scale(2);
-}
-.svg-5 {
-  top: 0px;
-  right: 10px;
-  transform: scale(2);
+  &_1 {
+    bottom: -20px;
+    left: 50px;
+    transform: scale(2);
+  }
+  &_2 {
+    top: 20px;
+    left: 30px;
+    transform: scale(2);
+  }
+  &_3 {
+    top: 50px;
+    left: 150px;
+    transform: scale(2);
+  }
+  &_4 {
+    top: 120px;
+    right: 90px;
+    transform: scale(2);
+  }
+  &_5 {
+    top: 0px;
+    right: 10px;
+    transform: scale(2);
+  }
 }

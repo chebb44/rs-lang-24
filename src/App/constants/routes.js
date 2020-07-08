@@ -13,4 +13,5 @@ export const routes = {
   speakIt: '/app/speakit',
   savanna: '/app/savanna',
   sprint: '/app/sprint',
+  audioCall: '/app/audioCall',
 };

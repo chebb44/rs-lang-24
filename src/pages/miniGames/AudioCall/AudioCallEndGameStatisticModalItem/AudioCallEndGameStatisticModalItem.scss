@@ -1,0 +1,43 @@
+@import "src/scss/vars";
+@import "src/scss/mixins";
+
+.audio-call-end-game-statistic-modal-item {
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin: 3px;
+  line-height: 13px;
+  &__word {
+    font-weight: 600;
+    margin-right: 5px;
+  }
+  &__translate {
+    opacity: .8;
+    margin-left: 5px;
+  }
+  &__audio {
+    position: relative;
+    width: 17px;
+    margin-right: 10px;
+    padding: 0;
+    border: none;
+    background: none;
+    border-radius: 50%;
+    overflow: hidden;
+    height: 17px;
+    svg {
+      opacity: .8;
+      position: absolute;
+      top: -5px;
+      left: -6px;
+      width: 27px;
+    }
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.03);
+      -webkit-transform: scale(1.03);
+      -moz-transform: scale(1.03);
+      -ms-transform: scale(1.03);
+      -o-transform: scale(1.03);
+    }
+  }
+}

@@ -6,6 +6,7 @@ import { currentUserSelector } from './../reducers/currentUser/currentUserReduce
 import { PageHeader } from './PageHeader';
 import { PageSideBar } from './PageSidebar';
 import { LearnPage } from '../pages/LearnPage/LearnPage';
+import { PromoPage } from '../pages/PromoPage/PromoPage';
 import { MainPage } from '../pages/MainPage/MainPage';
 import { Page404 } from '../pages/Page404/Page404';
 import { StatisticPage } from '../pages/StatisticPage/StatisticPage';
@@ -19,6 +20,8 @@ import { SpeakItMainPage } from '../pages/miniGames/SpeakIt/SpeakItPage/SpeakItM
 import { SavannaPage } from '../pages/miniGames/Savanna/SavannaPage/SavannaPage';
 import { actionToggleSideBar } from '../reducers/appState/appStateActions';
 import { SprintMain } from './../pages/miniGames/Sprint/containers/SprintMain/SprintMain';
+import { AudioCallMainPage } from '../pages/miniGames/AudioCall/MainPage/AudioCallMainPage';
+import { AboutTeamPage } from '../pages/AboutTeamPage/AboutTeamPage';
 
 export const App = () => {
   //let { path } = useRouteMatch();
@@ -52,7 +55,10 @@ export const App = () => {
               <Route path={routes.speakIt} component={SpeakItMainPage} />
               <Route path={routes.savanna} component={SavannaPage} />
               <Route path={routes.sprint} component={SprintMain} />
+              <Route path={routes.audioCall} component={AudioCallMainPage} />
+              <Route path={routes.promo} component={PromoPage} />
               <Route exact path={routes.mainApp} component={MainPage} />
+              <Route exact path={routes.aboutTeam} component={AboutTeamPage} />
               <Route path="/">
                 <Page404 />
               </Route>

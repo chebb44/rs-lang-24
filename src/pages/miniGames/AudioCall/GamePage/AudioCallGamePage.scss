@@ -1,0 +1,61 @@
+@import "src/scss/vars";
+@import "src/scss/mixins";
+
+.audio-call-game-page {
+  min-height: calc(100vh - 80px);
+  width: 100vw;
+  background-blend-mode: multiply;
+  background: url('./assets/bgAudioCall.jpg') repeat ;
+  background-color: rgba(0, 0, 0, .72);
+  background-size: 110px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 0;
+  &:before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, rgba(210,150,252,1) 21%, rgba(222,201,255,1) 44%, rgba(210,192,255,1) 65%);
+    background-size: 110px;
+    opacity: .6;
+  }
+  &__container {
+    position: relative;
+    margin: 0 auto;
+    text-align: -webkit-center;
+  }
+  @media screen and (max-width: $mobile-width-big ) {
+    min-height: calc(100vh - 40px);
+  }
+}
+
+
+.slide-enter {
+  transform: translateX(100%);
+}
+.slide-enter-active {
+  transform: translateX(0%);
+  transition: transform 600ms ease-in-out;
+  -webkit-transition: transform 600ms ease-in-out;
+  -moz-transition: transform 600ms ease-in-out;
+  -ms-transition: transform 600ms ease-in-out;
+  -o-transition: transform 600ms ease-in-out;
+}
+.slide-exit {
+  transform: translateX(0%);
+}
+.slide-exit-active {
+  transform: translateX(-100%);
+  transition: transform 600ms ease-in-out;
+  -webkit-transition: transform 600ms ease-in-out;
+  -moz-transition: transform 600ms ease-in-out;
+  -ms-transition: transform 600ms ease-in-out;
+  -o-transition: transform 600ms ease-in-out;
+}

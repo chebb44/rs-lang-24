@@ -10,9 +10,9 @@ import { setShortStatistic } from './setShortStatistic';
 import { resetCardProperties } from './resetCardProperties';
 import { resetCardSetProperties } from './resetCardSetProperties';
 import { actionUpdateLearnedWordsStatistic } from '../../reducers/statisticReducer/statisticActions';
-import { getDateStringByDate } from '../../utilities/getDateStringByDate';
+import { getDateStringByDate } from '../getDateStringByDate';
 
-export function handleArrowClickFunction(
+export function changeWordCard(
   direction,
   isWordCorrect,
   currentLearnCardIndex,
