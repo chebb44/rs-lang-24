@@ -7,6 +7,7 @@ import {
   SET_ALL_LEARN_STATISTIC,
   UPDATE_LEARNED_WORDS_FOR_STATISTIC,
   CLEAR_LEARNED_WORDS_FOR_STATISTIC,
+  RESET_ALL_LEARN_STATISTIC,
 } from './statisticActions';
 
 const defaultSettings = {
@@ -24,6 +25,8 @@ export const statisticStateSelector = (state) => state.statisticState;
 
 export const statisticState = (state = defaultSettings, action) => {
   switch (action.type) {
+    case RESET_ALL_LEARN_STATISTIC:
+      return defaultSettings;
     case SET_LEARNED_WORDS:
       return {
         ...state,
