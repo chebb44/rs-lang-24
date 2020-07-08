@@ -57,7 +57,7 @@ export const App = () => {
               <Route path={routes.audioCall} component={AudioCallMainPage} />
               <Route path={routes.promo} component={PromoPage} />
               <Route exact path={routes.mainApp} component={MainPage} />
-              <Route exact path={routes.quiz} component={QuizMainPage} />
+              <Route path={routes.quiz} component={QuizMainPage} />
               <Route exact path={routes.aboutTeam} component={AboutTeamPage} />
               <Route path="/">
                 <Page404 />
