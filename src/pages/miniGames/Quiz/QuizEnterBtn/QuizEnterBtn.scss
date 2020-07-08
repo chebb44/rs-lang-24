@@ -1,0 +1,69 @@
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+
+.quiz-enter-btn {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0;
+  width: 100px;
+  height: 35px;
+  border: 1px solid $neutral-disabled;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  color: $neutral-inactive;
+  font-weight: 400;
+  font-size: 16px;
+  opacity: 0.9;
+  background: none;
+  line-height: 23px;
+  overflow: hidden;
+  &__text {
+    position: absolute;
+    top: 3px;
+    left: 16px;
+    opacity: 0.8;
+    font-size: 18px;
+  }
+  &__arrow-right {
+    display: none;
+  }
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    background-color: $accent-color;
+    color: $neutral-active;
+    .quiz-enter-btn__arrow-right {
+      left: 35px;
+      transition: .2s ease-in;
+      -webkit-transition: .2s ease-in;
+      -moz-transition: .2s ease-in;
+      -ms-transition: .2s ease-in;
+      -o-transition: .2s ease-in;
+    }
+  }
+  &_next {
+    border: none;
+    background-color: $primary-darker-color;
+    .quiz-enter-btn__text {
+      display: none;
+    }
+    .quiz-enter-btn__arrow-right {
+      display: block;
+      position: absolute;
+      top: 2px;
+      left: 33px;
+      transition: .2s ease-in;
+      -webkit-transition: .2s ease-in;
+      -moz-transition: .2s ease-in;
+      -ms-transition: .2s ease-in;
+      -o-transition: .2s ease-in;
+    }
+    &:hover {
+      background-color: $primary-darker-color;
+      border: 1px solid $default-color;
+    }
+  }
+}

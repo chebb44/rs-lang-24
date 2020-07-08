@@ -13,6 +13,7 @@ export const sideBarLinksList = [
       { name: 'Cпик Ит', link: routes.speakIt },
       { name: 'Саванна', link: routes.savanna },
       { name: 'Аудиовызов', link: routes.audioCall },
+      { name: 'Квиз', link: routes.quiz },
     ],
   },
   {

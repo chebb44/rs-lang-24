@@ -1,0 +1,32 @@
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+
+.quiz-question-container {
+  position: relative;
+  margin-top: 60px;
+  width: 42vw;
+  text-align: center;
+  &__word-translation {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    visibility: hidden;
+    &_visible {
+      visibility: visible;
+}
+  }
+}
+
+@media screen and (max-width: $tablet-width-big) {
+  .quiz-question-container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: $tablet-width-small) {
+  .quiz-question-container {
+    margin-top: 40px;
+  }
+}

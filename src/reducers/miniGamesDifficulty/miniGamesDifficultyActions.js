@@ -10,6 +10,18 @@ export const actionAudioCallSaveGameRound = (round) => ({
   payload: round,
 });
 
+export const QUIZ_SAVE_GAME_LEVEL = 'QUIZ_SAVE_GAME_LEVEL';
+export const actionQuizSaveGameLevel = (level) => ({
+  type: QUIZ_SAVE_GAME_LEVEL,
+  payload: level,
+});
+
+export const QUIZ_SAVE_GAME_ROUND = 'QUIZ_SAVE_GAME_ROUND';
+export const actionQuizSaveGameRound = (round) => ({
+  type: QUIZ_SAVE_GAME_ROUND,
+  payload: round,
+});
+
 export const SET_ALL_MINI_GAMES_DIFFICULTY = 'SET_ALL_MINI_GAMES_DIFFICULTY';
 export const actionSetAllMiniGamesDifficulty = ({ miniGamesDifficulty }) => ({
   type: SET_ALL_MINI_GAMES_DIFFICULTY,

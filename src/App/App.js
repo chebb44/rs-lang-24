@@ -20,6 +20,7 @@ import { SpeakItMainPage } from '../pages/miniGames/SpeakIt/SpeakItPage/SpeakItM
 import { actionToggleSideBar } from '../reducers/appState/appStateActions';
 import { SprintMain } from './../pages/miniGames/Sprint/containers/SprintMain/SprintMain';
 import { AudioCallMainPage } from '../pages/miniGames/AudioCall/MainPage/AudioCallMainPage';
+import { QuizMainPage } from '../pages/miniGames/Quiz/MainPage/QuizMainPage';
 import { AboutTeamPage } from '../pages/AboutTeamPage/AboutTeamPage';
 
 export const App = () => {
@@ -56,6 +57,7 @@ export const App = () => {
               <Route path={routes.audioCall} component={AudioCallMainPage} />
               <Route path={routes.promo} component={PromoPage} />
               <Route exact path={routes.mainApp} component={MainPage} />
+              <Route path={routes.quiz} component={QuizMainPage} />
               <Route exact path={routes.aboutTeam} component={AboutTeamPage} />
               <Route path="/">
                 <Page404 />
