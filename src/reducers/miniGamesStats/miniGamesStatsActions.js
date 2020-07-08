@@ -19,8 +19,22 @@ export const actionSavannaSendGameResult = ({
   payload: { SavannaDate, SavannaResults },
 });
 
+export const AUDIO_CALL_SEND_GAME_RESULT = 'AUDIO_CALL_SEND_GAME_RESULT';
+export const actionAudioCallSendGameResult = ({
+  audioCallDate,
+  audioCallResult,
+}) => ({
+  type: AUDIO_CALL_SEND_GAME_RESULT,
+  payload: { audioCallDate, audioCallResult },
+});
+
 export const SET_ALL_MINI_GAMES_STATS = 'SET_ALL_MINI_GAMES_STATS';
 export const actionSetAllMiniGamesStats = ({ miniGames }) => ({
   type: SET_ALL_MINI_GAMES_STATS,
   payload: { miniGames },
+});
+
+export const RESET_ALL_MINI_GAMES_STATS = 'RESET_ALL_MINI_GAMES_STATS';
+export const actionResetAllMiniGamesStats = () => ({
+  type: RESET_ALL_MINI_GAMES_STATS,
 });
