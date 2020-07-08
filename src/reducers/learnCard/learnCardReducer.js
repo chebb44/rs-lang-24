@@ -7,6 +7,8 @@ import {
   UPDATE_CURRENT_AUDIO,
   UPDATE_ANSWER_SHOWN_FLAG,
   UPDATE_TRANSLATION_SHOWN_FLAG,
+  RESET_LEARN_CARD,
+  RESET_NEW_LEARN_CARD,
 } from './learnCardActions';
 
 const defaultData = {
@@ -63,6 +65,16 @@ export const learnCard = (state = defaultData, action) => {
       return {
         ...state,
         isTranslationShown: action.flag,
+      };
+    case RESET_LEARN_CARD:
+      return {
+        ...state,
+        ...action.payload,
+      };
+    case RESET_NEW_LEARN_CARD:
+      return {
+        ...state,
+        ...action.payload,
       };
     default:
       return state;
