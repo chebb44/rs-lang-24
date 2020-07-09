@@ -76,8 +76,8 @@ export const LearningContainer = () => {
           direction={flippingCardDirections.next}
           onArrowClick={handleArrowClick}
           currentCardIndex={currentLearnCardIndex}
-          learnCardsLength={learnCards.length}
           isWordCorrect={isWordCorrect}
+          lastCorrectWordIndex={learnCardSettings.lastCorrectWordIndex}
         />
       </div>
       <LearnCardButtonsContainer />

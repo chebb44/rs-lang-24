@@ -52,6 +52,7 @@ export const LearnCardButtonsContainer = () => {
     dispatch(
       actionMarkWord({ wordId: learnCard._id, difficulty: DELETED_WORD }),
     );
+    handleNextCard();
   };
 
   const handleMarkAsHardButtonClick = () => {
