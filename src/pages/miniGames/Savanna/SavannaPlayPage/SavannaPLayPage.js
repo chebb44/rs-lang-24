@@ -66,7 +66,7 @@ export const SavannaPlay = ({ difficulty }) => {
   const timer = setTimeout(() => {
     setBlockIndex(plusAnswer(blockIndex));
   }, 3000);
-  if (currentCards.length < (blockIndex + 1) * blockSize) {
+  if (currentCards.length < (blockIndex + 1) * blockSize || blockIndex === 10 ) {
     clearTimeout(timer);
     return (
       <SavannaStatistic
