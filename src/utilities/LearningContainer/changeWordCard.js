@@ -10,7 +10,7 @@ import {
 } from '../../reducers/learnSettings/learnSettingsActions';
 import { actionSetIsStatisticModalShown } from '../../reducers/appState/appStateActions';
 import { setShortStatistic } from './setShortStatistic';
-import { actionUpdateLearnedWordsStatistic } from '../../reducers/statisticReducer/statisticActions';
+import { actionUpdateLearnedWords } from '../../reducers/statisticReducer/statisticActions';
 
 export function changeWordCard(
   direction,
@@ -41,7 +41,7 @@ export function changeWordCard(
       // set short and long statistic and show statistic modal
       setShortStatistic(wordsPerDay, cardsPerDay, answersAccuracy);
       store.dispatch(actionSetIsStatisticModalShown(true));
-      store.dispatch(actionUpdateLearnedWordsStatistic(wordsPerDay));
+      store.dispatch(actionUpdateLearnedWords(wordsPerDay));
 
       // reset card and card set properties
       store.dispatch(actionUpdateCurrentCardIndex(0));
