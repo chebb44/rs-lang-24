@@ -2,6 +2,8 @@ import {
   AUDIO_CALL_SAVE_GAME_ROUND,
   AUDIO_CALL_SAVE_GAME_LEVEL,
   SET_ALL_MINI_GAMES_DIFFICULTY,
+  QUIZ_SAVE_GAME_ROUND,
+  QUIZ_SAVE_GAME_LEVEL,
 } from './miniGamesDifficultyActions';
 const defaultData = {
   sprint: {
@@ -13,6 +15,10 @@ const defaultData = {
     round: 0,
   },
   audioCall: {
+    level: 0,
+    round: 0,
+  },
+  quiz: {
     level: 0,
     round: 0,
   },
@@ -35,6 +41,22 @@ export const miniGamesDifficulty = (state = defaultData, action) => {
         ...state,
         audioCall: {
           ...state.audioCall,
+          round: action.payload,
+        },
+      };
+    case QUIZ_SAVE_GAME_LEVEL:
+      return {
+        ...state,
+        quiz: {
+          ...state.quiz,
+          level: action.payload,
+        },
+      };
+    case QUIZ_SAVE_GAME_ROUND:
+      return {
+        ...state,
+        quiz: {
+          ...state.quiz,
           round: action.payload,
         },
       };

@@ -14,4 +14,5 @@ export const routes = {
   savanna: '/app/savanna',
   sprint: '/app/sprint',
   audioCall: '/app/audioCall',
+  quiz: '/app/quiz',
 };

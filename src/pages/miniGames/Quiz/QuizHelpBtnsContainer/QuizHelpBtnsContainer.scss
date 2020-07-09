@@ -1,0 +1,17 @@
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+
+.quiz-help-btns-container {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+@media screen and (max-width: $mobile-width-small) {
+  .quiz-help-btns-container {
+    right: 8px;
+  }
+}
