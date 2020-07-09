@@ -96,22 +96,23 @@ const actionsForResetLearnProperties = [
   SET_LEARN_MODE,
   SET_WORDS_PER_DAY,
   SET_CARDS_PER_DAY,
+];
 
+const actionsForInitWordsForLearn = [
+  INIT_CARD_SET,
+  UPDATE_PREV_PAGE_GROUP_WORD_NUMBER,
+  SET_WORDS_PER_DAY,
+  SET_CARDS_PER_DAY,
+  SET_LEARN_MODE,
 ];
-const actionsForInitWordsForLearn = [	
-  INIT_CARD_SET,	
-  UPDATE_PREV_PAGE_GROUP_WORD_NUMBER,	
-  SET_WORDS_PER_DAY,	
-  SET_CARDS_PER_DAY,	
-  SET_LEARN_MODE,	
-];
+
 export function* sagaWatcher() {
   yield takeLatest(SIGN_UP_USER, signUpWorker);
   yield takeLatest(SIGN_IN_USER, signInWorker);
   yield takeEvery(LOG_OUT_USER, logOutWorker);
 
   yield takeLatest(INIT_APP, initAppWorker);
-  
+
   yield takeLatest(actionsForInitWordsForLearn, initWordsForLearnWorker);
 
   yield takeLatest(
