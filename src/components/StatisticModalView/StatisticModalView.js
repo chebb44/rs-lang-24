@@ -27,7 +27,8 @@ export const StatisticModalView = ({ statistic, hideStatisticModal }) => {
             Завершенный карточки&nbsp;<span>{cardsAmount}</span>
           </p>
           <p className="border-bottom d-flex justify-content-between mb-3">
-            Правильные ответы&nbsp;<span>{correctAnswersPercent}%</span>
+            Правильные ответы&nbsp;
+            <span>{correctAnswersPercent}%</span>
           </p>
           <p className="border-bottom d-flex justify-content-between mb-3">
             Самая длинная серия ответов&nbsp;

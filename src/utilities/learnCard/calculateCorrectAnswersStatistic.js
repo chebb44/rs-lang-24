@@ -12,7 +12,7 @@ export function calculateCorrectAnswersStatistic(answersAccuracyArray) {
       correctAnswersSeries = 0;
     }
   });
-  console.log(answersAccuracyArray, correctSeriesArray);
+
   const longestCorrectAnswersSeries = Math.max(...correctSeriesArray);
   const correctAnswersPercent = Math.round(
     (correctAnswersAmount / answersAccuracyArray.length) * 100,

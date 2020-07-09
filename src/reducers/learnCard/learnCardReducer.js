@@ -7,6 +7,10 @@ import {
   UPDATE_CURRENT_AUDIO,
   UPDATE_ANSWER_SHOWN_FLAG,
   UPDATE_TRANSLATION_SHOWN_FLAG,
+  RESET_LEARN_CARD,
+  RESET_NEXT_PREV_LEARN_CARD,
+  SET_PROPERTIES_FOR_SUBMITTED_CARD,
+  SET_PROPERTIES_FOR_CARD_WITH_SHOWN_ANSWER,
 } from './learnCardActions';
 
 const defaultData = {
@@ -63,6 +67,46 @@ export const learnCard = (state = defaultData, action) => {
       return {
         ...state,
         isTranslationShown: action.flag,
+      };
+    case RESET_LEARN_CARD:
+      return {
+        ...state,
+        currentLearnCardIndex: 0,
+        enteredWord: '',
+        isWordCorrect: false,
+        isTranslationShown: false,
+        isCheckDisplayed: false,
+        isAnswerShown: false,
+        audiosToPlay: [],
+        currentAudio: null,
+      };
+    case RESET_NEXT_PREV_LEARN_CARD:
+      return {
+        ...state,
+        enteredWord: '',
+        isWordCorrect: false,
+        isTranslationShown: false,
+        isCheckDisplayed: false,
+        isAnswerShown: false,
+        audiosToPlay: [],
+        currentAudio: null,
+      };
+    case SET_PROPERTIES_FOR_SUBMITTED_CARD:
+      const { correctFlag, audios } = action.payload;
+      return {
+        ...state,
+        isWordCorrect: correctFlag,
+        isTranslationShown: true,
+        isCheckDisplayed: true,
+        audiosToPlay: audios,
+        currentAudio: audios[0],
+      };
+    case SET_PROPERTIES_FOR_CARD_WITH_SHOWN_ANSWER:
+      return {
+        ...state,
+        isAnswerShown: true,
+        isTranslationShown: true,
+        isWordCorrect: true,
       };
     default:
       return state;
