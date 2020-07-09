@@ -65,3 +65,9 @@ export const actionSetPropertiesForSubmittedCard = ({
   type: SET_PROPERTIES_FOR_SUBMITTED_CARD,
   payload: { correctFlag, audios },
 });
+
+export const SET_PROPERTIES_FOR_CARD_WITH_SHOWN_ANSWER =
+  'SET_PROPERTIES_FOR_CARD_WITH_SHOWN_ANSWER';
+export const actionSetPropertiesForCardWithShownAnswer = () => ({
+  type: SET_PROPERTIES_FOR_CARD_WITH_SHOWN_ANSWER,
+});

@@ -1,13 +1,6 @@
 import { store } from '../../store/store';
 import { obtainAudiosToPlay } from '../../utilities/learnCard/obtainAudiosToPlay';
-import {
-  actionUpdateWordCorrectFlag,
-  actionUpdateAudiosToPlay,
-  actionUpdateCurrentAudio,
-  actionUpdateTranslationShownFlag,
-  actionUpdateCheckDisplaying,
-  actionSetPropertiesForSubmittedCard,
-} from '../../reducers/learnCard/learnCardActions';
+import { actionSetPropertiesForSubmittedCard } from '../../reducers/learnCard/learnCardActions';
 import { actionAddAnswerAccuracy } from '../../reducers/learnSettings/learnSettingsActions';
 import { actionMarkWord } from '../../store/actionsForSaga';
 import { LEARNED_WORD } from '../../sagas/constants';

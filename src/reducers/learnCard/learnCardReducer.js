@@ -10,6 +10,7 @@ import {
   RESET_LEARN_CARD,
   RESET_NEXT_PREV_LEARN_CARD,
   SET_PROPERTIES_FOR_SUBMITTED_CARD,
+  SET_PROPERTIES_FOR_CARD_WITH_SHOWN_ANSWER,
 } from './learnCardActions';
 
 const defaultData = {
@@ -99,6 +100,13 @@ export const learnCard = (state = defaultData, action) => {
         isCheckDisplayed: true,
         audiosToPlay: audios,
         currentAudio: audios[0],
+      };
+    case SET_PROPERTIES_FOR_CARD_WITH_SHOWN_ANSWER:
+      return {
+        ...state,
+        isAnswerShown: true,
+        isTranslationShown: true,
+        isWordCorrect: true,
       };
     default:
       return state;
