@@ -55,3 +55,13 @@ export const RESET_NEXT_PREV_LEARN_CARD = 'RESET_NEXT_PREV_LEARN_CARD';
 export const actionResetNextPrevLearnCard = () => ({
   type: RESET_NEXT_PREV_LEARN_CARD,
 });
+
+export const SET_PROPERTIES_FOR_SUBMITTED_CARD =
+  'SET_PROPERTIES_FOR_SUBMITTED_CARD';
+export const actionSetPropertiesForSubmittedCard = ({
+  correctFlag,
+  audios,
+}) => ({
+  type: SET_PROPERTIES_FOR_SUBMITTED_CARD,
+  payload: { correctFlag, audios },
+});
