@@ -117,3 +117,8 @@ export const actionSetMarkDifficultyBtns = (btn) => ({
   type: SET_SHOW_MARK_DIFFICULTY_BTNS,
   payload: btn,
 });
+
+export const RESET_LEARN_SET = 'RESET_LEARN_SET';
+export const actionResetLearnSet = () => ({
+  type: RESET_LEARN_SET,
+});

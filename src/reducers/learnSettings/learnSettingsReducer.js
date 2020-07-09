@@ -11,6 +11,7 @@ import {
   SET_SHOW_ANSWER_BTN,
   SET_DELETE_BTN,
   SET_SHOW_MARK_DIFFICULTY_BTNS,
+  RESET_LEARN_SET,
 } from './learnSettingsActions';
 import {
   SET_WORDS_PER_DAY,
@@ -186,6 +187,15 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
         learnCardSettings: {
           ...state.learnCardSettings,
           lastFinishedLearningDate: action.payload,
+        },
+      };
+    case RESET_LEARN_SET:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          lastCorrectWordIndex: -1,
+          answersAccuracy: [],
         },
       };
     default:

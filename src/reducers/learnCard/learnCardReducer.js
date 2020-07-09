@@ -69,7 +69,14 @@ export const learnCard = (state = defaultData, action) => {
     case RESET_LEARN_CARD:
       return {
         ...state,
-        ...action.payload,
+        currentLearnCardIndex: 0,
+        enteredWord: '',
+        isWordCorrect: false,
+        isTranslationShown: false,
+        isCheckDisplayed: false,
+        isAnswerShown: false,
+        audiosToPlay: [],
+        currentAudio: null,
       };
     case RESET_NEW_LEARN_CARD:
       return {

@@ -18,7 +18,7 @@ export const LearnPage = () => {
   );
   const dispatch = useDispatch();
 
-  /* useEffect(() => {
+  useEffect(() => {
     if (
       lastFinishedLearningDate &&
       lastLearningDate === new Date().getDate() &&
@@ -28,7 +28,7 @@ export const LearnPage = () => {
     } else {
       dispatch(actionSetIsMaxCardsModalShown(false));
     }
-  }, [lastFinishedLearningDate, lastLearningDate, lastLearningMonth, dispatch]); */
+  }, [lastFinishedLearningDate, lastLearningDate, lastLearningMonth, dispatch]);
 
   return (
     <CSSTransition

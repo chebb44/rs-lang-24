@@ -49,16 +49,6 @@ export const actionUpdateTranslationShownFlag = (flag) => ({
 export const RESET_LEARN_CARD = 'RESET_LEARN_CARD';
 export const actionResetLearnCard = () => ({
   type: RESET_LEARN_CARD,
-  payload: {
-    currentLearnCardIndex: 0,
-    enteredWord: '',
-    isWordCorrect: false,
-    isTranslationShown: false,
-    isCheckDisplayed: false,
-    isAnswerShown: false,
-    audiosToPlay: [],
-    currentAudio: null,
-  },
 });
 
 export const RESET_NEW_LEARN_CARD = 'RESET_NEW_LEARN_CARD';
