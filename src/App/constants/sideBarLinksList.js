@@ -14,6 +14,7 @@ export const sideBarLinksList = [
       { name: 'Саванна', link: routes.savanna },
       { name: 'Аудиовызов', link: routes.audioCall },
       { name: 'Квиз', link: routes.quiz },
+      { name: 'Пазл', link: routes.englishPuzzle },
     ],
   },
   {

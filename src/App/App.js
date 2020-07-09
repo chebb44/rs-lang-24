@@ -22,6 +22,7 @@ import { SprintMain } from './../pages/miniGames/Sprint/containers/SprintMain/Sp
 import { AudioCallMainPage } from '../pages/miniGames/AudioCall/MainPage/AudioCallMainPage';
 import { QuizMainPage } from '../pages/miniGames/Quiz/MainPage/QuizMainPage';
 import { AboutTeamPage } from '../pages/AboutTeamPage/AboutTeamPage';
+import { EnglishPuzzleMainPage } from '../pages/miniGames/EnglishPuzzle/MainPage/EnglishPuzzleMainPage';
 
 export const App = () => {
   //let { path } = useRouteMatch();
@@ -59,6 +60,10 @@ export const App = () => {
               <Route exact path={routes.mainApp} component={MainPage} />
               <Route path={routes.quiz} component={QuizMainPage} />
               <Route exact path={routes.aboutTeam} component={AboutTeamPage} />
+              <Route
+                path={routes.englishPuzzle}
+                component={EnglishPuzzleMainPage}
+              />
               <Route path="/">
                 <Page404 />
               </Route>

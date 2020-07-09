@@ -4,6 +4,8 @@ import {
   SET_ALL_MINI_GAMES_DIFFICULTY,
   QUIZ_SAVE_GAME_ROUND,
   QUIZ_SAVE_GAME_LEVEL,
+  ENGLISH_PUZZLE_SAVE_GAME_LEVEL,
+  ENGLISH_PUZZLE_SAVE_GAME_ROUND,
 } from './miniGamesDifficultyActions';
 const defaultData = {
   sprint: {
@@ -19,6 +21,10 @@ const defaultData = {
     round: 0,
   },
   quiz: {
+    level: 0,
+    round: 0,
+  },
+  englishPuzzle: {
     level: 0,
     round: 0,
   },
@@ -57,6 +63,22 @@ export const miniGamesDifficulty = (state = defaultData, action) => {
         ...state,
         quiz: {
           ...state.quiz,
+          round: action.payload,
+        },
+      };
+    case ENGLISH_PUZZLE_SAVE_GAME_LEVEL:
+      return {
+        ...state,
+        englishPuzzle: {
+          ...state.englishPuzzle,
+          level: action.payload,
+        },
+      };
+    case ENGLISH_PUZZLE_SAVE_GAME_ROUND:
+      return {
+        ...state,
+        englishPuzzle: {
+          ...state.englishPuzzle,
           round: action.payload,
         },
       };
