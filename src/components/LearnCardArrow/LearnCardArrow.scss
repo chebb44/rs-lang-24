@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: center;
   margin: 0 -10px;
+  margin-top: 200px;
 
   @include  media-tablet-small {
     width: 40px;
@@ -16,10 +17,12 @@
 
   @include  media-mobile-big {
     margin: 0 -17px;
+    margin-top: 200px;
   }
 
   @include  media-mobile-small {
     margin: 0 -20px;
+    margin-top: 170px;
   }
 }
 
