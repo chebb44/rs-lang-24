@@ -8,7 +8,7 @@ import {
   UPDATE_ANSWER_SHOWN_FLAG,
   UPDATE_TRANSLATION_SHOWN_FLAG,
   RESET_LEARN_CARD,
-  RESET_NEW_LEARN_CARD,
+  RESET_NEXT_PREV_LEARN_CARD,
 } from './learnCardActions';
 
 const defaultData = {
@@ -78,10 +78,16 @@ export const learnCard = (state = defaultData, action) => {
         audiosToPlay: [],
         currentAudio: null,
       };
-    case RESET_NEW_LEARN_CARD:
+    case RESET_NEXT_PREV_LEARN_CARD:
       return {
         ...state,
-        ...action.payload,
+        enteredWord: '',
+        isWordCorrect: false,
+        isTranslationShown: false,
+        isCheckDisplayed: false,
+        isAnswerShown: false,
+        audiosToPlay: [],
+        currentAudio: null,
       };
     default:
       return state;

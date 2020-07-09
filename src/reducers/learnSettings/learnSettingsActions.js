@@ -122,3 +122,8 @@ export const RESET_LEARN_SET = 'RESET_LEARN_SET';
 export const actionResetLearnSet = () => ({
   type: RESET_LEARN_SET,
 });
+
+export const RESET_FINISHED_LEARN_SET = 'RESET_FINISHED_LEARN_SET';
+export const actionResetFinishedLearnSet = () => ({
+  type: RESET_FINISHED_LEARN_SET,
+});

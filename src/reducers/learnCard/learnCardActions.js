@@ -51,16 +51,7 @@ export const actionResetLearnCard = () => ({
   type: RESET_LEARN_CARD,
 });
 
-export const RESET_NEW_LEARN_CARD = 'RESET_NEW_LEARN_CARD';
-export const actionResetNewLearnCard = () => ({
-  type: RESET_NEW_LEARN_CARD,
-  payload: {
-    enteredWord: '',
-    isWordCorrect: false,
-    isTranslationShown: false,
-    isCheckDisplayed: false,
-    isAnswerShown: false,
-    audiosToPlay: [],
-    currentAudio: null,
-  },
+export const RESET_NEXT_PREV_LEARN_CARD = 'RESET_NEXT_PREV_LEARN_CARD';
+export const actionResetNextPrevLearnCard = () => ({
+  type: RESET_NEXT_PREV_LEARN_CARD,
 });
