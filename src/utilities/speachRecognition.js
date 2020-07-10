@@ -23,14 +23,14 @@ export default recognition;
 
 export const startVoxRecognition = () => {
   recognition.start();
-  recognition.onstart = () => console.log('Listening!');
+  // recognition.onstart = () => console.log('Listening!');
   recognition.onend = () => {
-    console.log('...continue listening...');
+    // console.log('...continue listening...');
     recognition.start();
   };
 };
 
 export const stopVoxRecognition = () => {
   recognition.stop();
-  recognition.onend = () => console.log('Stopped listening per click');
+  // recognition.onend = () => console.log('Stopped listening per click');
 };
