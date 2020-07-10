@@ -1,15 +1,18 @@
-  .Savanna_play-page__flipping-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .Savanna_play-page__flipping-container form{
+.Savanna_play-page__flipping-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Savanna-app{
+  .Savanna_play-page__flipping-container form {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
   }
-  .Savanna_start-page{
+
+  .Savanna_start-page {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,18 +20,22 @@
     height: 100%;
     position: relative;
   }
-  .Savanna_btn-rslang{
+
+  .Savanna_btn-rslang {
     max-width: 100px;
     margin: 30px;
     color: #204b62bf;
     background: #FFD6BA
   }
-  .Savanna_start-page form label{
+
+  .Savanna_start-page form label {
     width: 280px;
   }
-  .Savanna_color-rslang{
+
+  .Savanna_color-rslang {
     color: #204b62bf;
   }
+
   .Savanna_start-page svg {
     position: absolute;
     top: 90px;
@@ -39,6 +46,7 @@
     fill: #FFD6BA;
     transform: scale(1.7, 1.5) translate(85px, -133px);
   }
+
   .Savanna_footer_image {
     position: absolute;
     bottom: 0;
@@ -50,3 +58,4 @@
     max-height: 200px;
     max-width: 600px;
   }
+}
