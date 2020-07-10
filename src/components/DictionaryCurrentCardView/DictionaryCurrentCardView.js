@@ -31,7 +31,6 @@ const DictionaryCurrentCardView = ({ currentCard }) => {
     textMeaning,
     textExample,
   } = currentCard;
-  console.log(currentCard.userWord.difficulty);
   const textMeaningArray = getWordFromTaggedText(textMeaning, 'i');
   const textExampleArray = getWordFromTaggedText(textExample, 'b');
   return (
@@ -74,8 +73,9 @@ const DictionaryCurrentCardView = ({ currentCard }) => {
 
           {userWord.difficulty !== 'DELETED_WORD' &&
             userWord.difficulty !== 'NEXT_TRAIN_WORD' && (
-              <span>{' | '}
-                След. {' '}
+              <span>
+                {' | '}
+                След.{' '}
                 {getPlanRepeatDate({
                   difficulty: userWord.difficulty,
                   lastRepeatDate: userWord.optional.lastRepeatDate,
