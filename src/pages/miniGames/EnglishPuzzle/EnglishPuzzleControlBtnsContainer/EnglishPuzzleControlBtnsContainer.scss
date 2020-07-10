@@ -1,0 +1,14 @@
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+
+.english-puzzle-control-btns-container {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media screen and (max-width: $mobile-width-small) {
+  .english-puzzle-control-btns-container {
+    // right: 8px;
+  }
+}
