@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './EnglishPuzzleQuestionContainer.scss';
-import { EnglishPuzzleHelpBtnsContainer } from '../EnglishPuzzleHelpBtnsContainer/EnglishPuzzleHelpBtnsContainer';
+import { EnglishPuzzleControlBtnsContainer } from '../EnglishPuzzleControlBtnsContainer/EnglishPuzzleControlBtnsContainer';
 
 export const EnglishPuzzleQuestionContainer = ({
   word,
@@ -18,8 +18,7 @@ export const EnglishPuzzleQuestionContainer = ({
 
   return (
     <div className="englishPuzzle-question-container">
-      <span className={classWordTranslate}>{wordTranslate}</span>
-      <EnglishPuzzleHelpBtnsContainer
+      <EnglishPuzzleControlBtnsContainer
         gameWord={word}
         setClassWordTranslate={setClassWordTranslate}
         playWordSoundValue={playWordSoundValue}
@@ -29,6 +28,8 @@ export const EnglishPuzzleQuestionContainer = ({
         showFirstLetterValue={showFirstLetterValue}
         setShowFirstLetterValue={setShowFirstLetterValue}
       />
+      {/*  */}
+      <span className={classWordTranslate}>{wordTranslate}</span>
     </div>
   );
 };

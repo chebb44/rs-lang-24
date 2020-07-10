@@ -1,0 +1,27 @@
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+
+.english-puzzle-text-item {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin: 1px;
+  background-color: $primary-color;
+  height: 38px;
+
+  &__word {
+    width: 100%;
+    background-color: $default-color;
+    padding: 5px;
+    margin: 1px;
+    &_true {
+      border-bottom: 4px solid $success-color;
+    }
+    &_false {
+      border-bottom: 4px solid $danger-color;
+    }
+    &_visible {
+      visibility: hidden;
+    }
+  }
+}

@@ -1,13 +1,13 @@
 @import 'src/scss/vars';
 @import 'src/scss/mixins';
 
-.englishPuzzle-question-container {
+.english-puzzle-question-container {
   position: relative;
   margin-top: 60px;
-  width: 42vw;
+  max-width: 800px;
   text-align: center;
   &__word-translation {
-    position: absolute;
+    position: relative;
     top: -25px;
     left: 0;
     right: 0;
@@ -15,18 +15,18 @@
     visibility: hidden;
     &_visible {
       visibility: visible;
-}
+    }
   }
 }
 
 @media screen and (max-width: $tablet-width-big) {
-  .englishPuzzle-question-container {
+  .english-puzzle-question-container {
     width: 100%;
   }
 }
 
 @media screen and (max-width: $tablet-width-small) {
-  .englishPuzzle-question-container {
+  .english-puzzle-question-container {
     margin-top: 40px;
   }
 }

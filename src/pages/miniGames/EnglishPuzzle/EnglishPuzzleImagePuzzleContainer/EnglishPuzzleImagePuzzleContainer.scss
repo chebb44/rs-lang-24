@@ -1,0 +1,15 @@
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+
+.english-puzzle-image-puzzle-container {
+  &__answer {
+    max-width: 800px;
+    max-height: 400px;
+    background-color: $default-color;
+    border: 1px solid $neutral-disabled;
+  }
+  &__question {
+    margin-top: 15px;
+    background-color: $primary-color;
+  }
+}

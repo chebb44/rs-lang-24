@@ -14,6 +14,7 @@ import { NEXT_TRAIN_WORD } from '../../../../sagas/constants';
 import { EnglishPuzzleQuestionContainer } from '../EnglishPuzzleQuestionContainer/EnglishPuzzleQuestionContainer';
 import successSrc from '../../../../assets/audio/success.mp3';
 import errorSrc from '../../../../assets/audio/error.mp3';
+import { EnglishPuzzleImagePuzzleContainer } from '../EnglishPuzzleImagePuzzleContainer/EnglishPuzzleImagePuzzleContainer';
 
 export const EnglishPuzzleGamePage = ({
   redirectToStartScreen,
@@ -25,7 +26,7 @@ export const EnglishPuzzleGamePage = ({
   const [enterBtnClass, setEnterBtnClass] = useState('englishPuzzle-enter-btn');
   const [playWordSoundValue, setPlayWordSoundValue] = useState(true);
   const [showTranslateWordValue, setShowTranslateWordValue] = useState(true);
-  const [showFirstLetterValue, setShowFirstLetterValue] = useState(true); // other helps
+  const [showFirstLetterValue, setShowFirstLetterValue] = useState(true); // other controls
 
   const dispatch = useDispatch();
   const success = new Audio();
@@ -98,7 +99,7 @@ export const EnglishPuzzleGamePage = ({
     <div className="englishPuzzle-game-page">
       <EnglishPuzzleProgressBar current={wordNumber} all={MAX_WORDS_FOR_GAME} />
       <EnglishPuzzleExitBtn func={redirectToStartScreen} />
-      <SwitchTransition>
+      {/* <SwitchTransition>
         <CSSTransition
           key={wordNumber}
           appear
@@ -109,26 +110,31 @@ export const EnglishPuzzleGamePage = ({
             exit: 'my-node-exit',
             exitActive: 'my-node-exit-active',
           }}
-        >
-          <div className="englishPuzzle-game-page__container">
-            <EnglishPuzzleQuestionContainer
-              word={wordsForGame[wordNumber]}
-              getTrueAnswer={getTrueAnswer}
-              checkTrueWordClick={checkTrueWordClick}
-              playWordSoundValue={playWordSoundValue}
-              setPlayWordSoundValue={setPlayWordSoundValue}
-              showTranslateWordValue={showTranslateWordValue}
-              setShowTranslateWordValue={setShowTranslateWordValue}
-              showFirstLetterValue={showFirstLetterValue}
-              setShowFirstLetterValue={setShowFirstLetterValue}
-            />
-            <EnglishPuzzleEnterBtn
-              func={clickEnterBtn}
-              enterBtnClass={enterBtnClass}
-            />
-          </div>
-        </CSSTransition>
-      </SwitchTransition>
+        > */}
+      <div className="englishPuzzle-game-page__container">
+        <EnglishPuzzleQuestionContainer
+          word={wordsForGame[wordNumber]}
+          getTrueAnswer={getTrueAnswer}
+          checkTrueWordClick={checkTrueWordClick}
+          playWordSoundValue={playWordSoundValue}
+          setPlayWordSoundValue={setPlayWordSoundValue}
+          showTranslateWordValue={showTranslateWordValue}
+          setShowTranslateWordValue={setShowTranslateWordValue}
+          showFirstLetterValue={showFirstLetterValue}
+          setShowFirstLetterValue={setShowFirstLetterValue}
+        />
+        <EnglishPuzzleImagePuzzleContainer
+          wordNumber={wordNumber}
+          wordsForGame={wordsForGame}
+          currentWord={wordsForGame[wordNumber]}
+        />
+        <EnglishPuzzleEnterBtn
+          func={clickEnterBtn}
+          enterBtnClass={enterBtnClass}
+        />
+      </div>
+      {/* </CSSTransition>
+      </SwitchTransition> */}
     </div>
   );
 };
