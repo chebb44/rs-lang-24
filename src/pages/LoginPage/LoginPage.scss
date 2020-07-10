@@ -19,15 +19,20 @@
     position: relative;
 
     .arrow-icon__wrapper {
+      display: flex;
+      justify-content: center;
       position: absolute;
-      bottom: 10px;
+      bottom: 20px;
       left: 50%;
+      width: 45px;
+      height: 65px;
+      cursor: pointer;
     }
 
     .login-page__arrow-icon {
       opacity: .8;
-      transform: translate(-50%);
-      cursor: pointer;
+      margin-top: auto;
+      transform: translateX(-50%);
     }
 
     .login-page__logo {
@@ -43,7 +48,7 @@
       right: auto;
       width: 100%;
       z-index: -3;
-      opacity: .2;
+      opacity: .1;
       max-height: 200px;
       max-width: 600px;
     }

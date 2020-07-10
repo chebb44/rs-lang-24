@@ -40,11 +40,11 @@ export const LoginPage = function () {
       <Alert message={alertMessage} />
       <div className="container login-screen">
         <div className="login-page__wrapper">
-          <div className="animate__animated animate__bounce animate__slow animate__delay-3s arrow-icon__wrapper animate__infinite">
-            <div
-              className="login-page__arrow-icon"
-              onClick={() => window.scrollBy(0, window.innerHeight)}
-            >
+          <div
+            className="animate__animated animate__bounce animate__slow animate__delay-3s arrow-icon__wrapper animate__infinite"
+            onClick={() => window.scrollBy(0, window.innerHeight)}
+          >
+            <div className="login-page__arrow-icon">
               <ArrowIcon />
             </div>
           </div>
