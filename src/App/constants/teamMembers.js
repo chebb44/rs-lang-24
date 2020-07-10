@@ -19,7 +19,7 @@ export const teamMembers = [
     id: 3,
     firstName: 'Вероника',
     lastName: 'Мартинович',
-    role: 'Main Page, Statistic',
+    role: 'Learning, Statistic',
     photo: '/aboutUs/martinovich.jpg',
     github: 'veronika-martinovich',
   },
