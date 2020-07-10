@@ -1,5 +1,5 @@
 .learning-container {
-  height: 100%;
+  min-height: 700px;
   width: 100%;
   padding-top: 20px;
   display: flex;
@@ -11,5 +11,5 @@
 .learning-container__flipping-container {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
 }

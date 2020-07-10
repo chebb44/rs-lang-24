@@ -40,16 +40,8 @@ export const actionSetLongestCorrectAnswerSeries = (series) => ({
   payload: series,
 });
 
-export const UPDATE_LEARNED_WORDS_FOR_STATISTIC =
-  'UPDATE_LEARNED_WORDS_FOR_STATISTIC';
-export const actionUpdateLearnedWordsStatistic = (date) => ({
-  type: UPDATE_LEARNED_WORDS_FOR_STATISTIC,
-  payload: date,
-});
-
-export const CLEAR_LEARNED_WORDS_FOR_STATISTIC =
-  'CLEAR_LEARNED_WORDS_FOR_STATISTIC';
-export const actionClearLearnedWordsStatistic = (date) => ({
-  type: CLEAR_LEARNED_WORDS_FOR_STATISTIC,
-  payload: date,
+export const UPDATE_LEARNED_WORDS = 'UPDATE_LEARNED_WORDS';
+export const actionUpdateLearnedWords = (wordsNumber) => ({
+  type: UPDATE_LEARNED_WORDS,
+  payload: wordsNumber,
 });

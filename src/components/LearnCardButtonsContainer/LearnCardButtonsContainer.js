@@ -7,14 +7,7 @@ import {
   GOOD_WORD,
   EASY_WORD,
   DELETED_WORD,
-  LEARNED_WORD,
 } from '../../sagas/constants';
-import {
-  actionUpdateWordCorrectFlag,
-  actionUpdateAnswerShownFlag,
-  actionUpdateTranslationShownFlag,
-} from '../../reducers/learnCard/learnCardActions';
-import { actionAddAnswerAccuracy } from '../../reducers/learnSettings/learnSettingsActions';
 import { buttonParams } from './constants';
 import { learnCardParametersSelector } from '../../reducers/learnCard/learnCardReducer';
 import { actionAddRepeatingWord } from '../../reducers/learnCards/learnCardsActions';
@@ -22,6 +15,7 @@ import { learnSettingsSelector } from '../../reducers/learnSettings/learnSetting
 import { submitWordFunction } from '../../utilities/learnCard/submitWordFunction';
 import { learnCardsSelector } from '../../reducers/learnCards/learnCardsReducer';
 import { changeWordCard } from '../../utilities/LearningContainer/changeWordCard';
+import { showWordAnswer } from '../../utilities/learnCard/showWordAnswer';
 import './LearnCardButtonsContainer.scss';
 
 export const LearnCardButtonsContainer = () => {
@@ -51,19 +45,14 @@ export const LearnCardButtonsContainer = () => {
   };
 
   const handleShowAnswerButtonClick = () => {
-    dispatch(actionUpdateAnswerShownFlag(true));
-    dispatch(actionUpdateTranslationShownFlag(true));
-    dispatch(actionUpdateWordCorrectFlag(true));
-    dispatch(
-      actionMarkWord({ wordId: learnCard._id, difficulty: LEARNED_WORD }),
-    );
-    dispatch(actionAddAnswerAccuracy(true));
+    showWordAnswer(learnCard);
   };
 
   const handleDeleteButtonClick = () => {
     dispatch(
       actionMarkWord({ wordId: learnCard._id, difficulty: DELETED_WORD }),
     );
+    handleNextCard();
   };
 
   const handleMarkAsHardButtonClick = () => {

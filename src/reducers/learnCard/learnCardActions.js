@@ -45,3 +45,29 @@ export const actionUpdateTranslationShownFlag = (flag) => ({
   type: UPDATE_TRANSLATION_SHOWN_FLAG,
   flag,
 });
+
+export const RESET_LEARN_CARD = 'RESET_LEARN_CARD';
+export const actionResetLearnCard = () => ({
+  type: RESET_LEARN_CARD,
+});
+
+export const RESET_NEXT_PREV_LEARN_CARD = 'RESET_NEXT_PREV_LEARN_CARD';
+export const actionResetNextPrevLearnCard = () => ({
+  type: RESET_NEXT_PREV_LEARN_CARD,
+});
+
+export const SET_PROPERTIES_FOR_SUBMITTED_CARD =
+  'SET_PROPERTIES_FOR_SUBMITTED_CARD';
+export const actionSetPropertiesForSubmittedCard = ({
+  correctFlag,
+  audios,
+}) => ({
+  type: SET_PROPERTIES_FOR_SUBMITTED_CARD,
+  payload: { correctFlag, audios },
+});
+
+export const SET_PROPERTIES_FOR_CARD_WITH_SHOWN_ANSWER =
+  'SET_PROPERTIES_FOR_CARD_WITH_SHOWN_ANSWER';
+export const actionSetPropertiesForCardWithShownAnswer = () => ({
+  type: SET_PROPERTIES_FOR_CARD_WITH_SHOWN_ANSWER,
+});

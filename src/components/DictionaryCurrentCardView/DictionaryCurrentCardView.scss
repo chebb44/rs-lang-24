@@ -25,6 +25,9 @@
   }
   .current-card-view__information {
     color: $neutral-inactive;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     position: relative;
     width: 370px;
     min-height: 247px;
@@ -33,12 +36,11 @@
     padding: 8px 5px;
     @media screen and (max-width: $mobile-width-big ) {
       width: calc(100vw - 10px);
-      //min-height: calc((100vw - 10px) / 3 * 2);
       min-height: 20px;
     }
 
     .card-text {
-      margin-bottom: 3px;
+
     }
 
     .card-meaning_title, .card-example_title{
@@ -69,18 +71,26 @@
       border: 1px solid rgb(206, 212, 218);
       border-radius: 5px;
       padding: 5px;
-      margin-bottom: 17px;
+      //margin-bottom: 17px;
       background-color: $accent-color;
       .card-example_english {
         margin-bottom: 8px;
       }
     }
+
+    .card-difficulty {
+      text-align: left;
+      margin-top: auto;
+      font-size: .8rem;
+      line-height: .6rem;
+      //margin-bottom: 2px;
+    }
     .card-statistics {
-      position: absolute;
+      margin-top: 3px;
+      text-align: left;
       font-size: .8rem;
       line-height: .9rem;
-      bottom: 5px;
-      //margin-top: 10px;
+      margin-bottom: 5px;
     }
   }
 

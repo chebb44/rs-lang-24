@@ -1,11 +1,12 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { learnCardsSelector } from '../../reducers/learnCards/learnCardsReducer';
 import { LearnCardButtonsContainer } from '../../components/LearnCardButtonsContainer/LearnCardButtonsContainer';
 import {
   learnCardSettingsSelector,
   learnSettingsSelector,
 } from '../../reducers/learnSettings/learnSettingsReducer';
+import { actionUpdateCurrentCardIndex } from '../../reducers/learnCard/learnCardActions';
 import { LearnCard } from '../../components/LearnCard/LearnCard';
 import { LearnCardArrow } from '../../components/LearnCardArrow/LearnCardArrow';
 import './LearningContainer.scss';
@@ -30,6 +31,18 @@ export const LearningContainer = () => {
     next: 'next',
     previous: 'previous',
   };
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (learnCardSettings.lastCorrectWordIndex > -1) {
+      dispatch(
+        actionUpdateCurrentCardIndex(
+          learnCardSettings.lastCorrectWordIndex + 1,
+        ),
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleArrowClick = (direction) => {
     changeWordCard(
@@ -63,8 +76,8 @@ export const LearningContainer = () => {
           direction={flippingCardDirections.next}
           onArrowClick={handleArrowClick}
           currentCardIndex={currentLearnCardIndex}
-          learnCardsLength={learnCards.length}
           isWordCorrect={isWordCorrect}
+          lastCorrectWordIndex={learnCardSettings.lastCorrectWordIndex}
         />
       </div>
       <LearnCardButtonsContainer />
