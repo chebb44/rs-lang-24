@@ -34,8 +34,11 @@
     font-size: 40px;
     letter-spacing: 15px;
     margin-bottom: 20px;
-    margin-top: 18vh;
+    margin-top: 53px;
     font-weight: 400;
+    @media screen and (max-width: $tablet-width-small ) {
+      margin-top: 110px;
+    }
   }
 
   &__description {
