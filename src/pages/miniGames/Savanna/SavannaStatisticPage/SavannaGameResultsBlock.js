@@ -6,7 +6,7 @@ export const GameResultsBlock = ({ gameResultsArray }) => {
     let games = [];
     for (let k = 0; k < gameResults.length; k++) {
       games.push(
-        <div key={Math.random()}>{`${k}. ${gameResults[k]}% правильно`}</div>,
+        <div key={Math.random()}>{`${k+1}. ${gameResults[k]}% правильно`}</div>,
       );
     }
     gameResultsBlock.push(
