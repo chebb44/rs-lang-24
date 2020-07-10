@@ -19,15 +19,20 @@
     position: relative;
 
     .arrow-icon__wrapper {
+      display: flex;
+      justify-content: center;
+
       position: absolute;
-      bottom: 10px;
-      left: 50%;
+      bottom: 60px;
+      right: 0;
+      width: 45px;
+      height: 65px;
+      cursor: pointer;
     }
 
     .login-page__arrow-icon {
       opacity: .8;
-      transform: translate(-50%);
-      cursor: pointer;
+      margin-top: auto;
     }
 
     .login-page__logo {

@@ -37,8 +37,8 @@ export const GitHubIcon = ({ width, height, color }) => {
 };
 
 export const ArrowIcon = ({
-  width = '34',
-  height = '34',
+  width = '45',
+  height = '45',
   color = '#526e6c',
 }) => {
   return (
