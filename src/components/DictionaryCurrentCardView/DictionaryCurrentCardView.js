@@ -3,6 +3,7 @@ import { FILES_URL } from '../../utilities/network/networkConstants';
 import './DictionaryCurrentCardView.scss';
 import { capitalizeFirstLetter } from '../../pages/miniGames/SpeakIt/SpeakItHepler';
 import { getPlanRepeatDate } from '../../utilities/repeatLearn/getPlanRepeatDate';
+import { WORDS_DIFFICULTY } from '../../sagas/constants';
 
 const getWordFromTaggedText = (text, tag) => {
   const regexpAll = new RegExp(`<${tag}>(\\w+)<\\/${tag}>`);
@@ -17,6 +18,10 @@ const getWordFromTaggedText = (text, tag) => {
   return [firstHalf, word, secondHalf];
 };
 
+const getWordLastUseDate = (lastRepeatDate) => {
+  return new Date(Date.parse(lastRepeatDate)).toLocaleDateString();
+};
+
 const DictionaryCurrentCardView = ({ currentCard }) => {
   const {
     transcription,
@@ -26,6 +31,7 @@ const DictionaryCurrentCardView = ({ currentCard }) => {
     textMeaning,
     textExample,
   } = currentCard;
+  console.log(currentCard.userWord.difficulty);
   const textMeaningArray = getWordFromTaggedText(textMeaning, 'i');
   const textExampleArray = getWordFromTaggedText(textExample, 'b');
   return (
@@ -38,7 +44,7 @@ const DictionaryCurrentCardView = ({ currentCard }) => {
           <b>{capitalizeFirstLetter(currentCard.word)}</b> {transcription}{' '}
           <b>{capitalizeFirstLetter(currentCard.wordTranslate)}</b>
         </p>
-        <p className="card-meaning_title">Значение</p>
+        {/*<p className="card-meaning_title">Значение</p>*/}
         <div className="card-meaning">
           <p className="card-meaning_english">
             <span>{textMeaningArray[0]}</span>
@@ -56,12 +62,20 @@ const DictionaryCurrentCardView = ({ currentCard }) => {
           </p>
           <p className="card-example_russian">{textExampleTranslate}</p>
         </div>
+        <div className="card-difficulty">
+          Сложность: {WORDS_DIFFICULTY[currentCard.userWord.difficulty]}
+        </div>
         <div className="card-statistics">
-          <span>Повторов: {userWord.optional.sumOfRepeats}</span>{' '}
+          <span>Повторов: {userWord.optional.sumOfRepeats}</span>
+          <span>
+            {' | '}Последний:{' '}
+            {getWordLastUseDate(userWord.optional.lastRepeatDate)}
+          </span>
+
           {userWord.difficulty !== 'DELETED_WORD' &&
             userWord.difficulty !== 'NEXT_TRAIN_WORD' && (
-              <span>
-                Следующий:{' '}
+              <span>{' | '}
+                След. {' '}
                 {getPlanRepeatDate({
                   difficulty: userWord.difficulty,
                   lastRepeatDate: userWord.optional.lastRepeatDate,
