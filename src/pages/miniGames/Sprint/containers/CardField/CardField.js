@@ -10,6 +10,7 @@ import { actionMarkWord } from '../../../../../store/actionsForSaga';
 import { NEXT_TRAIN_WORD } from './../../../../../sagas/constants';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
+
 export const CardField = ({
   cards,
   score,

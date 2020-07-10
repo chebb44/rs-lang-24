@@ -18,6 +18,18 @@
     align-items: center;
     position: relative;
 
+    .arrow-icon__wrapper {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+    }
+
+    .login-page__arrow-icon {
+      opacity: .8;
+      transform: translate(-50%);
+      cursor: pointer;
+    }
+
     .login-page__logo {
       position: absolute;
       top: 40px;
@@ -31,9 +43,10 @@
       right: auto;
       width: 100%;
       z-index: -3;
-      opacity: .5;
+      opacity: .2;
       max-height: 200px;
       max-width: 600px;
     }
+
   }
 }

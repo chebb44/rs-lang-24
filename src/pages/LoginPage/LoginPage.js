@@ -13,6 +13,8 @@ import { PromoPageView } from '../../components/PromoPageView/PromoPageView';
 import './LoginPage.scss';
 import { LogoView } from '../../components/LogoView/LogoView';
 import london from './../../assets/img/england_PNG723.png';
+import { ArrowIcon } from '../../components/SvgImages/SvgImages';
+import 'animate.css';
 
 export const LoginPage = function () {
   const { alertMessage } = useSelector(appStateSelector);
@@ -38,6 +40,14 @@ export const LoginPage = function () {
       <Alert message={alertMessage} />
       <div className="container login-screen">
         <div className="login-page__wrapper">
+          <div className="animate__animated animate__bounce animate__slow animate__delay-3s arrow-icon__wrapper animate__infinite">
+            <div
+              className="login-page__arrow-icon"
+              onClick={() => window.scrollBy(0, window.innerHeight)}
+            >
+              <ArrowIcon />
+            </div>
+          </div>
           <div className="login-page__logo">
             <LogoView />
           </div>
