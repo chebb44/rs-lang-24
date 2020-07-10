@@ -23,7 +23,9 @@ export const EnglishPuzzleGamePage = ({
   const [wordNumber, setWordNumber] = useState(0);
   const [trueAnswerStatistic, setTrueAnswerStatistic] = useState([]);
   const [falseAnswerStatistic, setFalseAnswerStatistic] = useState([]);
-  const [enterBtnClass, setEnterBtnClass] = useState('englishPuzzle-enter-btn');
+  const [enterBtnClass, setEnterBtnClass] = useState(
+    'english-puzzle-enter-btn',
+  );
   const [playWordSoundValue, setPlayWordSoundValue] = useState(true);
   const [showTranslateWordValue, setShowTranslateWordValue] = useState(true);
   const [showFirstLetterValue, setShowFirstLetterValue] = useState(true); // other controls
@@ -68,11 +70,11 @@ export const EnglishPuzzleGamePage = ({
   };
 
   const successAddClasses = (SHOW_TRUE) => {
-    setEnterBtnClass('englishPuzzle-enter-btn englishPuzzle-enter-btn_next');
+    setEnterBtnClass('english-puzzle-enter-btn english-puzzle-enter-btn_next');
   };
 
   const removeClasses = () => {
-    setEnterBtnClass('englishPuzzle-enter-btn');
+    setEnterBtnClass('english-puzzle-enter-btn');
   };
 
   const checkTrueWordClick = () => {};
@@ -86,7 +88,7 @@ export const EnglishPuzzleGamePage = ({
   };
 
   return wordNumber === MAX_WORDS_FOR_GAME ? (
-    <div className="englishPuzzle-game-page">
+    <div className="english-puzzle-game-page">
       <EnglishPuzzleEndGameStatisticModal
         trueAnswerStatistic={trueAnswerStatistic}
         falseAnswerStatistic={falseAnswerStatistic}
@@ -96,7 +98,7 @@ export const EnglishPuzzleGamePage = ({
       />
     </div>
   ) : (
-    <div className="englishPuzzle-game-page">
+    <div className="english-puzzle-game-page">
       <EnglishPuzzleProgressBar current={wordNumber} all={MAX_WORDS_FOR_GAME} />
       <EnglishPuzzleExitBtn func={redirectToStartScreen} />
       {/* <SwitchTransition>
@@ -111,7 +113,7 @@ export const EnglishPuzzleGamePage = ({
             exitActive: 'my-node-exit-active',
           }}
         > */}
-      <div className="englishPuzzle-game-page__container">
+      <div className="english-puzzle-game-page__container">
         <EnglishPuzzleQuestionContainer
           word={wordsForGame[wordNumber]}
           getTrueAnswer={getTrueAnswer}

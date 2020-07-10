@@ -13,11 +13,11 @@ export const EnglishPuzzleQuestionContainer = ({
 }) => {
   const { wordTranslate } = word;
   const [classWordTranslate, setClassWordTranslate] = useState(
-    'englishPuzzle-question-container__word-translation',
+    'english-puzzle-question-container__word-translation',
   );
 
   return (
-    <div className="englishPuzzle-question-container">
+    <div className="english-puzzle-question-container">
       <EnglishPuzzleControlBtnsContainer
         gameWord={word}
         setClassWordTranslate={setClassWordTranslate}

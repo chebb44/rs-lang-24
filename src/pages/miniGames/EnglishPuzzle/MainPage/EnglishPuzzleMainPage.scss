@@ -1,7 +1,7 @@
 @import "src/scss/vars";
 @import "src/scss/mixins";
 
-.englishPuzzle-main-page {
+.english-puzzle-main-page {
   width: 100vw;
   height: calc(100vh - 80px);
   @media screen and (max-width: $mobile-width-big ) {

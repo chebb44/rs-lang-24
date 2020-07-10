@@ -5,7 +5,7 @@ export const EnglishPuzzleExitBtn = ({ func }) => {
   return (
     <button
       type="button"
-      className="close englishPuzzle-exit-btn"
+      className="close english-puzzle-exit-btn"
       aria-label="Close"
       onClick={func}
     >

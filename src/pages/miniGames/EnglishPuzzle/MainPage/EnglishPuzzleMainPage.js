@@ -97,7 +97,7 @@ export const EnglishPuzzleMainPage = () => {
   ]);
 
   return (
-    <div className="englishPuzzle-main-page">
+    <div className="english-puzzle-main-page">
       {(() => {
         switch (currentScreen) {
           case ENGLISH_PUZZLE_START_SCREEN:

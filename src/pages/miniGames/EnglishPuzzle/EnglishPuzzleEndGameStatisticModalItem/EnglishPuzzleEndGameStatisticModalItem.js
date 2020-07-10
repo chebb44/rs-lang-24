@@ -13,17 +13,19 @@ export const EnglishPuzzleEndGameStatisticModalItem = ({ item }) => {
   };
 
   return (
-    <div className="englishPuzzle-end-game-statistic-modal-item">
+    <div className="english-puzzle-end-game-statistic-modal-item">
       <button
-        className="englishPuzzle-end-game-statistic-modal-item__audio"
+        className="english-puzzle-end-game-statistic-modal-item__audio"
         onClick={playAudioClickHandler}
         id="audioIcon"
       >
         <AudioStatisticItemSvg />
       </button>
-      <span className="englishPuzzle-end-game-statistic-modal-item__word">{word}</span>
+      <span className="english-puzzle-end-game-statistic-modal-item__word">
+        {word}
+      </span>
       &nbsp;{'—'}&nbsp;
-      <span className="englishPuzzle-end-game-statistic-modal-item__translate">
+      <span className="english-puzzle-end-game-statistic-modal-item__translate">
         {wordTranslate}
       </span>
     </div>

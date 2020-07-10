@@ -17,7 +17,7 @@ export const EnglishPuzzleStartScreen = function ({
   setGameMode,
 }) {
   return (
-    <div className="englishPuzzle-start-screen">
+    <div className="english-puzzle-start-screen">
       <EnglishPuzzleMenuChangeLevel
         saveGameLevel={saveGameLevel}
         saveGameRound={saveGameRound}
@@ -30,11 +30,11 @@ export const EnglishPuzzleStartScreen = function ({
           transform="translate(100 100)"
         />
       </svg>
-      <h1 className="englishPuzzle-start-screen__title">Пазл</h1>
-      <p className="englishPuzzle-start-screen__description">
+      <h1 className="english-puzzle-start-screen__title">Пазл</h1>
+      <p className="english-puzzle-start-screen__description">
         Составьте предложение после
       </p>
-      <p className="englishPuzzle-start-screen__description">
+      <p className="english-puzzle-start-screen__description">
         По умолчанию используются изученные слова.
         <br /> Также Вы можете выбрать коллекцию слов для изучения.
         <br /> Слова разделены на 36 частей в зависимости от сложности. Выберите
@@ -42,7 +42,7 @@ export const EnglishPuzzleStartScreen = function ({
         "Выбранная сложность".
         <br /> Если режим "Изученные слова" недоступен, то изучите больше слов.
       </p>
-      <p className="englishPuzzle-start-screen__description">
+      <p className="english-puzzle-start-screen__description">
         Чтобы начать нажмите СТАРТ
       </p>
       <div>
@@ -51,14 +51,14 @@ export const EnglishPuzzleStartScreen = function ({
           setGameMode={setGameMode}
         />
         <button
-          className="btn englishPuzzle-start-screen__button englishPuzzle-start-screen__button_settings"
+          className="btn english-puzzle-start-screen__button english-puzzle-start-screen__button_settings"
           onClick={visibleStatistic}
         >
           Статистика
         </button>
       </div>
       <img
-        className="englishPuzzle-start-screen__footer_image"
+        className="english-puzzle-start-screen__footer_image"
         src={london}
         alt="london"
       />

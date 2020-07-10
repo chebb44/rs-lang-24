@@ -15,8 +15,8 @@ export const EnglishPuzzleMenuChangeLevel = ({
   };
 
   return (
-    <div className="englishPuzzle-menu-change-difficulty">
-      <div className="englishPuzzle-menu-change-difficulty__level m-1">
+    <div className="english-puzzle-menu-change-difficulty">
+      <div className="english-puzzle-menu-change-difficulty__level m-1">
         <label htmlFor="sel1">Уровень</label>
         <select
           className="form-control"
@@ -33,7 +33,7 @@ export const EnglishPuzzleMenuChangeLevel = ({
         </select>
       </div>
 
-      <div className="englishPuzzle-menu-change-difficulty__round m-1">
+      <div className="english-puzzle-menu-change-difficulty__round m-1">
         <label htmlFor="sel1">Раунд</label>
         <select
           className="form-control"

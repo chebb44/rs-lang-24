@@ -9,8 +9,8 @@ export const EnglishPuzzleEnterBtn = ({ func, enterBtnClass }) => {
 
   return (
     <button type="button" className={enterBtnClass} onClick={handleClick}>
-      <span className="englishPuzzle-enter-btn__text">не знаю</span>
-      <span className="englishPuzzle-enter-btn__arrow-right">
+      <span className="english-puzzle-enter-btn__text">не знаю</span>
+      <span className="english-puzzle-enter-btn__arrow-right">
         <ArrowRightSvg />
       </span>
     </button>

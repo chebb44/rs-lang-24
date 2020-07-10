@@ -18,19 +18,19 @@ export const EnglishPuzzleEndGameStatisticModal = ({
       <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable settings-modal">
         <div className="modal-content modal-content_englishPuzzle">
           <div className="modal-body">
-            <h6 className="text-left englishPuzzle-end-game-statistic-modal-title mb-2">
+            <h6 className="text-left english-puzzle-end-game-statistic-modal-title mb-2">
               Ошибок
-              <span className="englishPuzzle-end-game-statistic-modal-title__value englishPuzzle-end-game-statistic-modal-title__value_false">
+              <span className="english-puzzle-end-game-statistic-modal-title__value english-puzzle-end-game-statistic-modal-title__value_false">
                 {falseAnswerStatistic.length}
               </span>
             </h6>
             {falseAnswerStatistic.map((item, index) => (
               <EnglishPuzzleEndGameStatisticModalItem item={item} key={index} />
             ))}
-            <hr className="englishPuzzle-end-game-statistic-modal-title__horizontal-line"></hr>
-            <h6 className="text-left englishPuzzle-end-game-statistic-modal-title mb-2">
+            <hr className="english-puzzle-end-game-statistic-modal-title__horizontal-line"></hr>
+            <h6 className="text-left english-puzzle-end-game-statistic-modal-title mb-2">
               Знаю
-              <span className="englishPuzzle-end-game-statistic-modal-title__value englishPuzzle-end-game-statistic-modal-title__value_true">
+              <span className="english-puzzle-end-game-statistic-modal-title__value english-puzzle-end-game-statistic-modal-title__value_true">
                 {trueAnswerStatistic.length}
               </span>
             </h6>
@@ -39,7 +39,7 @@ export const EnglishPuzzleEndGameStatisticModal = ({
             ))}
           </div>
           <button
-            className="btn englishPuzzle-end-game-statistic-modal__button"
+            className="btn english-puzzle-end-game-statistic-modal__button"
             onClick={redirectToStartScreen}
           >
             На главную

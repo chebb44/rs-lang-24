@@ -16,7 +16,7 @@ export const EnglishPuzzleStatisticToDay = ({
   return visibleStatisticGame ? (
     <div className="modal-overlay">
       <div className="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-        <div className="modal-content englishPuzzle-modal-statistic">
+        <div className="modal-content english-puzzle-modal-statistic">
           <div className="modal-header">
             <h5 className="text-left mb-0">Cтатистика:</h5>
             <button
@@ -33,7 +33,10 @@ export const EnglishPuzzleStatisticToDay = ({
             {statArray.length > 0 ? (
               statArray.map((statArray, index) => {
                 return (
-                  <EnglishPuzzleStatisticToDayItem dayStat={statArray} key={index} />
+                  <EnglishPuzzleStatisticToDayItem
+                    dayStat={statArray}
+                    key={index}
+                  />
                 );
               })
             ) : (
