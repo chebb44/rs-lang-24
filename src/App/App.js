@@ -17,6 +17,7 @@ import { actionInitApp } from '../store/actionsForSaga';
 import { CSSTransition } from 'react-transition-group';
 import { Spinner } from '../components/Spinner/Spinner';
 import { SpeakItMainPage } from '../pages/miniGames/SpeakIt/SpeakItPage/SpeakItMainPage';
+import { SavannaPage } from '../pages/miniGames/Savanna/SavannaPage/SavannaPage';
 import { actionToggleSideBar } from '../reducers/appState/appStateActions';
 import { SprintMain } from './../pages/miniGames/Sprint/containers/SprintMain/SprintMain';
 import { AudioCallMainPage } from '../pages/miniGames/AudioCall/MainPage/AudioCallMainPage';
@@ -53,6 +54,7 @@ export const App = () => {
               <Route path={routes.dictionary} component={DictionaryPage} />
               <Route path={routes.stats} component={StatisticPage} />
               <Route path={routes.speakIt} component={SpeakItMainPage} />
+              <Route path={routes.savanna} component={SavannaPage} />
               <Route path={routes.sprint} component={SprintMain} />
               <Route path={routes.audioCall} component={AudioCallMainPage} />
               <Route path={routes.promo} component={PromoPage} />

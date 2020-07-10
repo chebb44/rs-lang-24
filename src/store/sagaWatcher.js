@@ -51,6 +51,7 @@ import {
   SPEAK_IT_SEND_GAME_RESULT,
   SPRINT_SEND_GAME_RESULT,
   AUDIO_CALL_SEND_GAME_RESULT,
+  SAVANNA_GET_GAME_RESULT,
   QUIZ_SEND_GAME_RESULT,
 } from './../reducers/miniGamesStats/miniGamesStatsActions';
 import {
@@ -95,6 +96,7 @@ const actionsForSendStatisticToBackend = [
   UPDATE_LEARNED_WORDS,
   SPRINT_SEND_GAME_RESULT,
   AUDIO_CALL_SEND_GAME_RESULT,
+  SAVANNA_GET_GAME_RESULT,
   QUIZ_SEND_GAME_RESULT,
 ];
 

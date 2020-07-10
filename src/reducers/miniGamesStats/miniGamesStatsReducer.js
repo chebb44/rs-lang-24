@@ -5,12 +5,14 @@ import {
   AUDIO_CALL_SEND_GAME_RESULT,
   QUIZ_SEND_GAME_RESULT,
   RESET_ALL_MINI_GAMES_STATS,
+  SAVANNA_GET_GAME_RESULT,
 } from './miniGamesStatsActions';
 const defaultData = {
   miniGames: {
     sprint: {},
     speakIt: {},
     audioCall: {},
+    savanna: {},
     quiz: {},
   },
 };
@@ -75,6 +77,27 @@ export const miniGamesStats = (state = defaultData, action) => {
           audioCall: {
             ...state.miniGames.audioCall,
             [audioCallDate]: audioCallDayStat,
+          },
+        },
+      };
+    case SAVANNA_GET_GAME_RESULT:
+      const { SavannaDate, SavannaResults } = action.payload;
+      let savannaDayStat = [];
+      if (SavannaDate in state.miniGames.savanna) {
+        savannaDayStat = [
+          ...state.miniGames.savanna[SavannaDate],
+          SavannaResults,
+        ];
+      } else {
+        savannaDayStat = [SavannaResults];
+      }
+      return {
+        ...state,
+        miniGames: {
+          ...state.miniGames,
+          savanna: {
+            ...state.miniGames.savanna,
+            [SavannaDate]: savannaDayStat,
           },
         },
       };
