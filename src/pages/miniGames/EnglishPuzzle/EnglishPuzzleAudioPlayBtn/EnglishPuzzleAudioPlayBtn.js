@@ -1,23 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import volumeSvg from './assets/volume.svg';
 import speakerSvg from './assets/speaker.svg';
 import { FILES_URL } from '../../../../utilities/network/networkConstants';
-import { EnglishPuzzleControlBtnItem } from '../EnglishPuzzleControlBtnItem/EnglishPuzzleControlBtnItem';
 
-export const EnglishPuzzleAudioPlayBtn = ({ gameWord }) => {
+export const EnglishPuzzleAudioPlayBtn = ({ gameWord, disabled }) => {
   const { audioMeaning } = gameWord;
+  const [isAudioPlay, setIsAudioPlay] = useState(false);
+
+  const audioPlay = new Audio();
+  audioPlay.src = `${FILES_URL}${audioMeaning}`;
 
   const playTextMeaningSound = () => {
-    const audioPlay = new Audio();
-    audioPlay.src = `${FILES_URL}${audioMeaning}`;
+    setIsAudioPlay(!isAudioPlay);
     audioPlay.play();
+    audioPlay.onended = () => setIsAudioPlay(false);
   };
 
-  const playAudioBtnData = {
-    title: 'Автовоспроизведение',
-    icon: volumeSvg,
-    func: playTextMeaningSound,
-  };
-
-  return <EnglishPuzzleControlBtnItem data={playAudioBtnData} />;
+  return disabled ? (
+    isAudioPlay ? (
+      <button
+        className="english-puzzle-control-btn__item"
+        onClick={playTextMeaningSound}
+        title="Прослушать"
+        disabled
+      >
+        <img src={speakerSvg} alt="button-control" />
+      </button>
+    ) : (
+      <button
+        className="english-puzzle-control-btn__item"
+        onClick={playTextMeaningSound}
+        title="Прослушать"
+      >
+        <img src={volumeSvg} alt="button-control" />
+      </button>
+    )
+  ) : (
+    <button
+      className="english-puzzle-control-btn__item english-puzzle-control-btn__item_hide"
+      onClick={playTextMeaningSound}
+      title="Прослушать"
+    >
+      <img src={volumeSvg} alt="button-control" />
+    </button>
+  );
 };

@@ -5,33 +5,39 @@ import { EnglishPuzzleAudioPlayBtn } from '../EnglishPuzzleAudioPlayBtn/EnglishP
 
 export const EnglishPuzzleQuestionContainer = ({
   word,
-  playWordSoundValue,
-  setPlayWordSoundValue,
-  showTranslateWordValue,
-  setShowTranslateWordValue,
-  showFirstLetterValue,
-  setShowFirstLetterValue,
+  autoPlayWordSound,
+  setAutoPlayWordSound,
+  showTranslateWord,
+  setShowTranslateWord,
+  playWordSound,
+  setPlayWordSound,
+  showBackground,
+  setShowBackground,
 }) => {
-  const { wordTranslate } = word;
-  const [classWordTranslate, setClassWordTranslate] = useState(
-    'english-puzzle-question-container__word-translation',
-  );
+  const { textMeaningTranslate } = word;
 
   return (
     <div className="english-puzzle-question-container">
       <EnglishPuzzleControlBtnsContainer
-        gameWord={word}
-        setClassWordTranslate={setClassWordTranslate}
-        playWordSoundValue={playWordSoundValue}
-        setPlayWordSoundValue={setPlayWordSoundValue}
-        showTranslateWordValue={showTranslateWordValue}
-        setShowTranslateWordValue={setShowTranslateWordValue}
-        showFirstLetterValue={showFirstLetterValue}
-        setShowFirstLetterValue={setShowFirstLetterValue}
+        autoPlayWordSound={autoPlayWordSound}
+        setAutoPlayWordSound={setAutoPlayWordSound}
+        showTranslateWord={showTranslateWord}
+        setShowTranslateWord={setShowTranslateWord}
+        playWordSound={playWordSound}
+        setPlayWordSound={setPlayWordSound}
+        showBackground={showBackground}
+        setShowBackground={setShowBackground}
       />
-      <EnglishPuzzleAudioPlayBtn gameWord={word} />
-      {/*  */}
-      <p className={classWordTranslate}>{wordTranslate}</p>
+      <EnglishPuzzleAudioPlayBtn gameWord={word} disabled={playWordSound} />
+      {showTranslateWord ? (
+        <p className="english-puzzle-question-container__word-translation english-puzzle-question-container__word-translation_visible">
+          {textMeaningTranslate}
+        </p>
+      ) : (
+        <p className="english-puzzle-question-container__word-translation">
+          {textMeaningTranslate}
+        </p>
+      )}
     </div>
   );
 };

@@ -10,6 +10,8 @@
     position: relative;
     margin: 0 auto;
     visibility: hidden;
+    width: 90%;
+    color: $default-color;
     &_visible {
       visibility: visible;
     }

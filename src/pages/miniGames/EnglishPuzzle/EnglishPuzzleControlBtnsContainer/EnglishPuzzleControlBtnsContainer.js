@@ -7,55 +7,53 @@ import { EnglishPuzzleControlBtnItem } from '../EnglishPuzzleControlBtnItem/Engl
 import './EnglishPuzzleControlBtnsContainer.scss';
 
 export const EnglishPuzzleControlBtnsContainer = ({
-  gameWord,
-  setInputValue,
-  setClassWordTranslate,
-  playWordSoundValue,
-  setPlayWordSoundValue,
-  showTranslateWordValue,
-  setShowTranslateWordValue,
-  showFirstLetterValue,
-  setShowFirstLetterValue,
+  autoPlayWordSound,
+  setAutoPlayWordSound,
+  showTranslateWord,
+  setShowTranslateWord,
+  playWordSound,
+  setPlayWordSound,
+  showBackground,
+  setShowBackground,
 }) => {
-  const { word } = gameWord;
-
-  const showTranslateWord = () => {
-    setClassWordTranslate(
-      'english-puzzle-question-container__word-translation english-puzzle-question-container__word-translation_visible',
-    );
-    setShowTranslateWordValue(!showTranslateWordValue);
+  const autoPlay = () => {
+    setAutoPlayWordSound(!autoPlayWordSound);
   };
-
-  const showFirstLetter = () => {
-    setInputValue(word[0]);
-    setShowFirstLetterValue(!showFirstLetterValue);
+  const translateWord = () => {
+    setShowTranslateWord(!showTranslateWord);
+  };
+  const showIconPlayAudio = () => {
+    setPlayWordSound(!playWordSound);
+  };
+  const showBg = () => {
+    setShowBackground(!showBackground);
   };
 
   const btnControlList = [
     {
       title: 'Автовоспроизведение',
       icon: musicSvg,
-      func: showTranslateWord,
-      disabled: playWordSoundValue,
+      func: autoPlay,
+      disabled: autoPlayWordSound,
     },
 
     {
       title: 'Перевод',
       icon: translateSvg,
-      func: showTranslateWord,
-      disabled: showTranslateWordValue,
+      func: translateWord,
+      disabled: showTranslateWord,
     },
     {
       title: 'Произношение',
       icon: volumeSvg,
-      func: showFirstLetter,
-      disabled: showFirstLetterValue,
+      func: showIconPlayAudio,
+      disabled: playWordSound,
     },
     {
       title: 'Фоновый рисунок',
       icon: photoSvg,
-      func: showFirstLetter,
-      disabled: showFirstLetterValue,
+      func: showBg,
+      disabled: showBackground,
     },
   ];
 

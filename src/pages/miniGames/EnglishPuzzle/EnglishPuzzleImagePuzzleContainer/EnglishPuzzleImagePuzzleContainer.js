@@ -62,7 +62,7 @@ export const EnglishPuzzleImagePuzzleContainer = ({
         })}
       </div>
       <div className="english-puzzle-image-puzzle-container__question">
-        <EnglishPuzzleTextItem item={currentWord} shuffle={true} />
+        <EnglishPuzzleTextItem item={currentWord} shuffled={true} />
       </div>
     </div>
   );

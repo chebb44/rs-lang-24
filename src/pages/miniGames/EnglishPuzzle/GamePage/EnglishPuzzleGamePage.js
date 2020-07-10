@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import './EnglishPuzzleGamePage.scss';
 import { EnglishPuzzleProgressBar } from '../EnglishPuzzleProgressBar/EnglishPuzzleProgressBar';
 import { EnglishPuzzleEnterBtn } from '../EnglishPuzzleEnterBtn/EnglishPuzzleEnterBtn';
@@ -8,7 +8,7 @@ import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { EnglishPuzzleEndGameStatisticModal } from '../EnglishPuzzleEndGameStatisticModal/EnglishPuzzleEndGameStatisticModal';
 import { useDispatch } from 'react-redux';
 import { actionEnglishPuzzleSendGameResult } from '../../../../reducers/miniGamesStats/miniGamesStatsActions';
-import { getDateStringByDate } from '../utilities';
+import { getDateStringByDate, shuffleArray } from '../utilities';
 import { actionMarkWord } from '../../../../store/actionsForSaga';
 import { NEXT_TRAIN_WORD } from '../../../../sagas/constants';
 import { EnglishPuzzleQuestionContainer } from '../EnglishPuzzleQuestionContainer/EnglishPuzzleQuestionContainer';
@@ -21,14 +21,16 @@ export const EnglishPuzzleGamePage = ({
   wordsForGame,
 }) => {
   const [wordNumber, setWordNumber] = useState(0);
+  const [currentWord, setCurrentWord] = useState(false);
   const [trueAnswerStatistic, setTrueAnswerStatistic] = useState([]);
   const [falseAnswerStatistic, setFalseAnswerStatistic] = useState([]);
   const [enterBtnClass, setEnterBtnClass] = useState(
     'english-puzzle-enter-btn',
   );
-  const [playWordSoundValue, setPlayWordSoundValue] = useState(true);
-  const [showTranslateWordValue, setShowTranslateWordValue] = useState(true);
-  const [showFirstLetterValue, setShowFirstLetterValue] = useState(true); // other controls
+  const [autoPlayWordSound, setAutoPlayWordSound] = useState(true);
+  const [showTranslateWord, setShowTranslateWord] = useState(true);
+  const [playWordSound, setPlayWordSound] = useState(true);
+  const [showBackground, setShowBackground] = useState(true);
 
   const dispatch = useDispatch();
   const success = new Audio();
@@ -87,6 +89,18 @@ export const EnglishPuzzleGamePage = ({
     ]);
   };
 
+  useEffect(
+    () => {
+      const { textMeaning } = wordsForGame[wordNumber];
+      const regexpTags = new RegExp(`<i>|<\\/i>`, 'g');
+      let textArray = textMeaning.replace(regexpTags, '').split(' ');
+      const word = shuffleArray(textArray);
+      setCurrentWord(word);
+    },
+    [wordNumber, wordsForGame],
+    wordNumber,
+  );
+
   return wordNumber === MAX_WORDS_FOR_GAME ? (
     <div className="english-puzzle-game-page">
       <EnglishPuzzleEndGameStatisticModal
@@ -118,17 +132,19 @@ export const EnglishPuzzleGamePage = ({
           word={wordsForGame[wordNumber]}
           getTrueAnswer={getTrueAnswer}
           checkTrueWordClick={checkTrueWordClick}
-          playWordSoundValue={playWordSoundValue}
-          setPlayWordSoundValue={setPlayWordSoundValue}
-          showTranslateWordValue={showTranslateWordValue}
-          setShowTranslateWordValue={setShowTranslateWordValue}
-          showFirstLetterValue={showFirstLetterValue}
-          setShowFirstLetterValue={setShowFirstLetterValue}
+          autoPlayWordSound={autoPlayWordSound}
+          setAutoPlayWordSound={setAutoPlayWordSound}
+          showTranslateWord={showTranslateWord}
+          setShowTranslateWord={setShowTranslateWord}
+          playWordSound={playWordSound}
+          setPlayWordSound={setPlayWordSound}
+          showBackground={showBackground}
+          setShowBackground={setShowBackground}
         />
         <EnglishPuzzleImagePuzzleContainer
           wordNumber={wordNumber}
           wordsForGame={wordsForGame}
-          currentWord={wordsForGame[wordNumber]}
+          currentWord={currentWord}
         />
         <EnglishPuzzleEnterBtn
           func={clickEnterBtn}
