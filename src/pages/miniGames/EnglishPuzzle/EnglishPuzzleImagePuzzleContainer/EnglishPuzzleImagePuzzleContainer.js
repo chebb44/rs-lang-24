@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './EnglishPuzzleImagePuzzleContainer.scss';
-import { EnglishPuzzleTextItem } from '../EnglishPuzzleTextItem/EnglishPuzzleTextItem';
+import { reorder, move } from '../utilities';
+import { EnglishPuzzleImagePuzzleContainerView } from '../EnglishPuzzleImagePuzzleContainerView/EnglishPuzzleImagePuzzleContainerView';
 
 export const EnglishPuzzleImagePuzzleContainer = ({
   wordNumber,
@@ -40,30 +41,76 @@ export const EnglishPuzzleImagePuzzleContainer = ({
     },
   ];
 
-  // if true show map item
-  // const check
+  const [state, setState] = useState({
+    items: [],
+    selected: [],
+  });
+
+  useEffect(
+    () => {
+      const wordQuestion = currentWord.map((el, index) => {
+        return {
+          id: `card-${index}`,
+          content: el,
+        };
+      });
+      setState({
+        items: wordQuestion,
+        selected: [],
+      });
+    },
+    [currentWord],
+    wordsForGame,
+    currentWord,
+  );
+
+  const id2List = {
+    droppable: 'items',
+    droppable2: 'selected',
+  };
+
+  const getList = (id) => state[id2List[id]];
+
+  const onDragEnd = (result) => {
+    const { source, destination } = result;
+
+    if (!destination) {
+      return;
+    }
+    if (source.droppableId === destination.droppableId) {
+      const itemsReorder = reorder(
+        getList(source.droppableId),
+        source.index,
+        destination.index,
+      );
+
+      let stateReorder = { items: itemsReorder, selected: state.selected };
+
+      if (source.droppableId === 'droppable2') {
+        stateReorder = { items: state.items, selected: itemsReorder };
+      }
+      setState(stateReorder);
+    } else {
+      const result = move(
+        getList(source.droppableId),
+        getList(destination.droppableId),
+        source,
+        destination,
+      );
+
+      setState({
+        items: result.droppable,
+        selected: result.droppable2,
+      });
+    }
+  };
 
   return (
-    <div>
-      <div className="english-puzzle-image-puzzle-container__answer">
-        {textItemList.map((item, index) => {
-          if (index > wordNumber) {
-            return null;
-          } else if (index === wordNumber) {
-            return (
-              <EnglishPuzzleTextItem
-                item={item}
-                key={index}
-                classes={'english-puzzle-text-item__word_visible'}
-              />
-            );
-          }
-          return <EnglishPuzzleTextItem item={item} key={index} classes={''} />;
-        })}
-      </div>
-      <div className="english-puzzle-image-puzzle-container__question">
-        <EnglishPuzzleTextItem item={currentWord} shuffled={true} />
-      </div>
-    </div>
+    <EnglishPuzzleImagePuzzleContainerView
+      onDragEnd={onDragEnd}
+      textItemList={textItemList}
+      wordNumber={wordNumber}
+      state={state}
+    />
   );
 };

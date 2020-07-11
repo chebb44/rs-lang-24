@@ -3,14 +3,15 @@
 
 .english-puzzle-text-item {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   position: relative;
   margin: 1px;
   background-color: $primary-color;
   height: 38px;
-
+  overflow: hidden;
+  user-select: none;
   &__word {
-    width: 100%;
+    // width: 100%;
     background-color: $default-color;
     padding: 5px;
     margin: 1px;
