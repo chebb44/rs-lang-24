@@ -35,7 +35,6 @@ export const getRecognisedWordsArrayFromEvent = (event) => {
   recognisedVars = recognisedVars
     .filter((val) => val)
     .map((val) => val.toLowerCase());
-  console.log(recognisedVars);
   return recognisedVars;
 };
 

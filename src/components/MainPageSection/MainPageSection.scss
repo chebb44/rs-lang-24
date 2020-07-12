@@ -39,6 +39,7 @@
   cursor: pointer;
   overflow: hidden;
   transition: 0.3s ease;
+  z-index: -2;
 
   &:hover {
     transform: scale(1.05);
@@ -57,7 +58,6 @@
 
 .main-page__section-title {
   color: $neutral-inactive;
-  z-index: 2;
   font-weight: 600;
   line-height: 35px;
 }
@@ -66,7 +66,7 @@
   position: absolute;
   width: 120px;
   height: 120px;
-  z-index: 1;
+  z-index: -1;
   fill: #ffd6bae8;
 
   &_1 {

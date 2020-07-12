@@ -22,7 +22,7 @@ export const WORDS_DIFFICULTY = {
   LEARNED_WORD: 'не указана',
   NEXT_TRAIN_WORD: 'не указана',
   HARD_WORD: 'сложное',
-  GOOD_WORD: 'хорошее',
+  GOOD_WORD: 'среднее',
   EASY_WORD: 'легкое',
   DELETED_WORD: 'не указана',
 };

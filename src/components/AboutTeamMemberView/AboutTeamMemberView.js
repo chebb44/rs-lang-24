@@ -3,7 +3,6 @@ import './AboutTeamMemberView.scss';
 import { GitHubIcon } from '../SvgImages/SvgImages';
 
 const AboutTeamMemberView = ({ member }) => {
-  console.log();
   const { firstName, lastName, role, photo, github } = member;
   return (
     <li className="about-team-member-view__wrapper">

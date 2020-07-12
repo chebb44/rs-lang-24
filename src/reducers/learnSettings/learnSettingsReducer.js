@@ -1,4 +1,5 @@
 import { defaultLearnSettings } from './../../store/defaultAppSettings';
+import { getDateStringByDate } from '../../utilities/getDateStringByDate';
 import {
   SET_PAGE_GROUP_WORD_NUMBER,
   SET_LEARN_MODE,
@@ -11,6 +12,7 @@ import {
   SET_SHOW_ANSWER_BTN,
   SET_DELETE_BTN,
   SET_SHOW_MARK_DIFFICULTY_BTNS,
+  RESET_LEARN_SET,
 } from './learnSettingsActions';
 import {
   SET_WORDS_PER_DAY,
@@ -22,6 +24,7 @@ import {
   CLEAR_ANSWER_ACCURACY,
   UPDATE_LAST_FINISHED_LEARNING_DATE,
   RESET_LEARN_SETTINGS,
+  RESET_FINISHED_LEARN_SET,
 } from './learnSettingsActions';
 
 export const learnSettingsSelector = (state) => state.learnSettings;
@@ -186,6 +189,26 @@ export const learnSettings = (state = defaultLearnSettings, action) => {
         learnCardSettings: {
           ...state.learnCardSettings,
           lastFinishedLearningDate: action.payload,
+        },
+      };
+    case RESET_LEARN_SET:
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          lastCorrectWordIndex: -1,
+          answersAccuracy: [],
+        },
+      };
+    case RESET_FINISHED_LEARN_SET:
+      const setDate = getDateStringByDate(new Date());
+      return {
+        ...state,
+        learnCardSettings: {
+          ...state.learnCardSettings,
+          lastCorrectWordIndex: -1,
+          answersAccuracy: [],
+          lastFinishedLearningDate: setDate,
         },
       };
     default:

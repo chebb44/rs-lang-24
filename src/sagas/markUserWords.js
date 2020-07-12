@@ -54,9 +54,6 @@ export function* markWordsWorker(action) {
       };
     }
     yield updateUserWord({ userId, token, wordId, data });
-    console.log('word mark updated');
-  } else {
-    console.log('word mark create successfully');
   }
   yield initDictionarySaga();
 }

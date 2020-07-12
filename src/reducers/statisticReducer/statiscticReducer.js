@@ -5,10 +5,10 @@ import {
   SET_NEW_WORDS_AMOUNT,
   SET_LONGEST_CORRECT_ANSWER_SERIES,
   SET_ALL_LEARN_STATISTIC,
-  UPDATE_LEARNED_WORDS_FOR_STATISTIC,
-  CLEAR_LEARNED_WORDS_FOR_STATISTIC,
+  UPDATE_LEARNED_WORDS,
   RESET_ALL_LEARN_STATISTIC,
 } from './statisticActions';
+import { getDateStringByDate } from '../../utilities/getDateStringByDate';
 
 const defaultSettings = {
   shortStatistic: {
@@ -17,8 +17,7 @@ const defaultSettings = {
     newWordsAmount: 0,
     longestCorrectAnswersSeries: 0,
   },
-  learnedWords: 0,
-  learnedWordsForStatistic: {},
+  learnedWords: {},
 };
 
 export const statisticStateSelector = (state) => state.statisticState;
@@ -69,31 +68,13 @@ export const statisticState = (state = defaultSettings, action) => {
           longestCorrectAnswersSeries: action.payload,
         },
       };
-    case UPDATE_LEARNED_WORDS_FOR_STATISTIC:
-      const date = action.payload;
-      let statValue = 0;
-      if (date in state.learnedWordsForStatistic) {
-        statValue = state.learnedWordsForStatistic[date] + 1;
-      } else {
-        statValue = 1;
-      }
+    case UPDATE_LEARNED_WORDS:
+      const wordDate = getDateStringByDate(new Date());
       return {
         ...state,
-        learnedWordsForStatistic: {
-          ...state.learnedWordsForStatistic,
-          [date]: statValue,
-        },
-      };
-    case CLEAR_LEARNED_WORDS_FOR_STATISTIC:
-      const currentDate = action.payload;
-      let newLearnedWordsForStatistic = { ...state.learnedWordsForStatistic };
-      if (currentDate in newLearnedWordsForStatistic) {
-        delete newLearnedWordsForStatistic[currentDate];
-      }
-      return {
-        ...state,
-        learnedWordsForStatistic: {
-          ...newLearnedWordsForStatistic,
+        learnedWords: {
+          ...state.learnedWords,
+          [wordDate]: action.payload,
         },
       };
     default:
