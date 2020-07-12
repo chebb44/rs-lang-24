@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './AudioCallStartGameBtn.scss';
+import './EnglishPuzzleStartGameBtn.scss';
 import {
   LEARNED_WORDS,
   SELECTED_WORDS,
@@ -8,7 +8,10 @@ import {
 import { useSelector } from 'react-redux';
 import { dictionaryStateStateSelector } from '../../../../reducers/dictionaryReducer/dictionaryReducer';
 
-export const AudioCallStartGameBtn = ({ startGameHandler, setGameMode }) => {
+export const EnglishPuzzleStartGameBtn = ({
+  startGameHandler,
+  setGameMode,
+}) => {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
 
   const handleClick = () => {
@@ -28,14 +31,14 @@ export const AudioCallStartGameBtn = ({ startGameHandler, setGameMode }) => {
     <div className="btn-group dropup">
       <button
         type="button"
-        className="btn audio-call-start-game-btn audio-call-start-game-btn_start"
+        className="btn english-puzzle-start-game-btn english-puzzle-start-game-btn_start"
         onClick={startGameHandler}
       >
         Старт
       </button>
       <button
         type="button"
-        className="btn dropdown-toggle dropdown-toggle-split audio-call-start-game-btn_toggle"
+        className="btn dropdown-toggle dropdown-toggle-split english-puzzle-start-game-btn_toggle"
         data-toggle="dropdown"
         aria-haspopup="true"
         id="dropdownMenuButton"

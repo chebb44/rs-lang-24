@@ -34,6 +34,16 @@ export const actionQuizSendGameResult = ({ quizDate, quizResult }) => ({
   payload: { quizDate, quizResult },
 });
 
+export const ENGLISH_PUZZLE_SEND_GAME_RESULT =
+  'ENGLISH_PUZZLE_SEND_GAME_RESULT';
+export const actionEnglishPuzzleSendGameResult = ({
+  englishPuzzleDate,
+  englishPuzzleResult,
+}) => ({
+  type: ENGLISH_PUZZLE_SEND_GAME_RESULT,
+  payload: { englishPuzzleDate, englishPuzzleResult },
+});
+
 export const SET_ALL_MINI_GAMES_STATS = 'SET_ALL_MINI_GAMES_STATS';
 export const actionSetAllMiniGamesStats = ({ miniGames }) => ({
   type: SET_ALL_MINI_GAMES_STATS,

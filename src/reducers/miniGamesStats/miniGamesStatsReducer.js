@@ -4,6 +4,7 @@ import {
   SPEAK_IT_SEND_GAME_RESULT,
   AUDIO_CALL_SEND_GAME_RESULT,
   QUIZ_SEND_GAME_RESULT,
+  ENGLISH_PUZZLE_SEND_GAME_RESULT,
   RESET_ALL_MINI_GAMES_STATS,
   SAVANNA_GET_GAME_RESULT,
 } from './miniGamesStatsActions';
@@ -14,6 +15,7 @@ const defaultData = {
     audioCall: {},
     savanna: {},
     quiz: {},
+    englishPuzzle: {},
   },
 };
 
@@ -116,6 +118,27 @@ export const miniGamesStats = (state = defaultData, action) => {
           quiz: {
             ...state.miniGames.quiz,
             [quizDate]: quizDayStat,
+          },
+        },
+      };
+    case ENGLISH_PUZZLE_SEND_GAME_RESULT:
+      const { englishPuzzleDate, englishPuzzleResult } = action.payload;
+      let englishPuzzleDayStat = [];
+      if (englishPuzzleDate in state.miniGames.englishPuzzle) {
+        englishPuzzleDayStat = [
+          ...state.miniGames.englishPuzzle[englishPuzzleDate],
+          englishPuzzleResult,
+        ];
+      } else {
+        englishPuzzleDayStat = [englishPuzzleResult];
+      }
+      return {
+        ...state,
+        miniGames: {
+          ...state.miniGames,
+          englishPuzzle: {
+            ...state.miniGames.englishPuzzle,
+            [englishPuzzleDate]: englishPuzzleDayStat,
           },
         },
       };

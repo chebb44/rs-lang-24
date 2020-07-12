@@ -53,12 +53,15 @@ import {
   AUDIO_CALL_SEND_GAME_RESULT,
   SAVANNA_GET_GAME_RESULT,
   QUIZ_SEND_GAME_RESULT,
+  ENGLISH_PUZZLE_SEND_GAME_RESULT,
 } from './../reducers/miniGamesStats/miniGamesStatsActions';
 import {
   AUDIO_CALL_SAVE_GAME_LEVEL,
   AUDIO_CALL_SAVE_GAME_ROUND,
   QUIZ_SAVE_GAME_LEVEL,
   QUIZ_SAVE_GAME_ROUND,
+  ENGLISH_PUZZLE_SAVE_GAME_ROUND,
+  ENGLISH_PUZZLE_SAVE_GAME_LEVEL,
 } from '../reducers/miniGamesDifficulty/miniGamesDifficultyActions';
 import { resetLearningProperties } from '../sagas/resetLearningProperties';
 const actionsForSenSettingsToBackendWorker = [
@@ -83,6 +86,8 @@ const actionsForSenSettingsToBackendWorker = [
   AUDIO_CALL_SAVE_GAME_ROUND,
   QUIZ_SAVE_GAME_LEVEL,
   QUIZ_SAVE_GAME_ROUND,
+  ENGLISH_PUZZLE_SAVE_GAME_LEVEL,
+  ENGLISH_PUZZLE_SAVE_GAME_ROUND,
 ];
 
 const actionsForSendStatisticToBackend = [
@@ -98,6 +103,8 @@ const actionsForSendStatisticToBackend = [
   AUDIO_CALL_SEND_GAME_RESULT,
   SAVANNA_GET_GAME_RESULT,
   QUIZ_SEND_GAME_RESULT,
+  QUIZ_SEND_GAME_RESULT,
+  ENGLISH_PUZZLE_SEND_GAME_RESULT,
 ];
 
 const actionsForResetLearnProperties = [

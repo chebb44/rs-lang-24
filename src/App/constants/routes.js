@@ -15,4 +15,5 @@ export const routes = {
   sprint: '/app/sprint',
   audioCall: '/app/audioCall',
   quiz: '/app/quiz',
+  englishPuzzle: '/app/englishPuzzle',
 };
