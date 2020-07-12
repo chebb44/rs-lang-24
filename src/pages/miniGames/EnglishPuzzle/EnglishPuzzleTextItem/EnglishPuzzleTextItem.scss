@@ -10,8 +10,11 @@
   height: 38px;
   overflow: hidden;
   user-select: none;
+  -webkit-align-items: stretch;
+  align-items: stretch;
   &__word {
-    // width: 100%;
+    flex-grow: 1;
+    max-width: 25%;
     background-color: $default-color;
     padding: 5px;
     margin: 1px;

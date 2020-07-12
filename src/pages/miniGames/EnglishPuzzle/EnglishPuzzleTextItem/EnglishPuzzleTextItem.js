@@ -13,7 +13,14 @@ export const EnglishPuzzleTextItem = ({ item }) => {
     <div className="english-puzzle-text-item">
       {textArray.map((item, index) => {
         return (
-          <div className="english-puzzle-text-item__word" key={index}>
+          <div
+            className="english-puzzle-text-item__word"
+            style={{
+              flexGrow: item.length,
+              flexBasis: 0,
+            }}
+            key={index}
+          >
             {item}
           </div>
         );
