@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './LoginForm.scss';
 
 export const LoginForm = function ({ onSignIn, onSignUp }) {
-  const [inputEmail, setInputEmail] = useState('85222qqhello@user.com');
-  const [inputPass, setInputPass] = useState('Gfhjkm_123');
+  const [inputEmail, setInputEmail] = useState('');
+  const [inputPass, setInputPass] = useState('');
 
   return (
     <div className="container sign-up-screen">
