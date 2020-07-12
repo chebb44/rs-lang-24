@@ -24,10 +24,7 @@ export function drawLine(
   for (let n = 0; n < data.length; n++) {
     const point = data[n];
     totalLearnedWords += point[1];
-    console.log(
-      totalLearnedWords * scaleX,
-      (totalLearnedWords / totalWords) * 100 * scaleY,
-    );
+
     // draw segment
     context.lineTo(
       totalLearnedWords * scaleX,

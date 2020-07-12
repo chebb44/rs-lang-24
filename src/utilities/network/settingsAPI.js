@@ -13,7 +13,6 @@ export const getUserSettings = async ({ userId, token }) => {
     });
     if (rawResponse.status === 401) return TOKEN_OUTDATED;
     if (rawResponse.ok) return await rawResponse.json();
-    console.log('Failed get settings for this user');
   } catch (error) {
     console.log('Failed get settings for this user', error);
     return null;

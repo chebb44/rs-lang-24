@@ -105,7 +105,6 @@ export const SpeakItGameScreen = function ({ onClickStatsButton }) {
         setTrainCards(setWrongCardInArrayByIdx(currentCardIdx, trainCards));
       }
       gameHandler(gameCardsArray.current);
-      console.log(isGuessTheWord);
     },
     [gameHandler, trainCards],
   );

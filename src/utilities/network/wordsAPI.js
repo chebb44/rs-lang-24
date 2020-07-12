@@ -39,11 +39,9 @@ export const createUserWord = async ({ userId, wordId, data, token }) => {
       },
     );
     if (rawResponse.status === 417) {
-      console.log(`Error: Word exist! id: ${wordId}`);
       return WORD_EXIST;
     }
     if (rawResponse.status === 200) {
-      console.log('Word create successfully', wordId);
       return WORD_CREATED_SUCCESSFULLY;
     }
   } catch (error) {
@@ -51,15 +49,6 @@ export const createUserWord = async ({ userId, wordId, data, token }) => {
     return null;
   }
 };
-
-// createUserWord({
-//   userId: '5ec993df4ca9d600178740ae',
-//   wordId: '5e9f5ee35eb9e72bc21af716',
-//   data: {
-//     difficulty: 'weak',
-//     optional: { testFieldString: 'test', testFieldBoolean: true },
-//   },
-// });
 
 export const updateUserWord = async ({ userId, wordId, data, token }) => {
   try {
@@ -98,7 +87,6 @@ export const deleteUserWord = async ({ userId, wordId, token }) => {
       },
     );
     if (rawResponse.ok) {
-      console.log('deleteUserWord -> wordId', wordId);
       return true;
     }
   } catch (error) {
@@ -141,7 +129,6 @@ export const getUserWordById = async ({ userId, wordId, token }) => {
       },
     );
     const content = await rawResponse.json();
-    console.log('getUserWordById -> content', content);
     return content;
   } catch (error) {
     console.log('getUserWordById -> error', error);
@@ -184,29 +171,9 @@ export const getAllAggregateUserWords = async ({ userId, token }) => {
       },
     );
     const content = await rawResponse.json();
-    console.log('getAllAggregateUserWords -> content', content);
     return content;
   } catch (error) {
     console.log('getAllAggregateUserWords -> error', error);
     return null;
   }
 };
-
-// ${BACKEND_URL}/words?page=2&group=0
-// {
-//   "id": "5e9f5ee35eb9e72bc21af4c8",
-//   "group": 0,
-//   "page": 2,
-//   "word": "alien",
-//   "image": "files/03_0041.jpg",
-//   "audio": "files/03_0041.mp3",
-//   "audioMeaning": "files/03_0041_meaning.mp3",
-//   "audioExample": "files/03_0041_example.mp3",
-//   "textMeaning": "An <i>alien</i> is a creature from a different world.",
-//   "textExample": "The <b>alien</b> came in peace.",
-//   "transcription": "[éiljən]",
-//   "textExampleTranslate": "пришелец пришел с миром",
-//   "textMeaningTranslate": "Инопланетянин - это существо из другого мира",
-//   "wordTranslate": "инопланетянин",
-//   "wordsPerExampleSentence": 5
-// },

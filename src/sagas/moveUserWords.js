@@ -24,7 +24,6 @@ export function* moveWordsWorker(action) {
   };
 
   yield updateUserWord({ userId, token, wordId, data });
-  console.log('word move successfully');
 
   yield initDictionarySaga();
 }

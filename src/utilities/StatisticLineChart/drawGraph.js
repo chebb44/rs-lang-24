@@ -18,7 +18,6 @@ export function drawGraph(canvas, context, learnedWords) {
   const unitsPerTickX = 600;
   const unitsPerTickY = 20;
   const data = Object.entries(learnedWords);
-  console.log(data);
 
   // context default properties
   context.strokeStyle = strokeColor;
