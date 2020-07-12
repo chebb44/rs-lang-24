@@ -12,6 +12,9 @@
   user-select: none;
   -webkit-align-items: stretch;
   align-items: stretch;
+  &_pointer {
+    pointer-events: none;
+  }
   &__word {
     flex-grow: 1;
     max-width: 25%;

@@ -4,13 +4,16 @@ import { FILES_URL } from '../../../../utilities/network/networkConstants';
 import { AudioStatisticItemSvg } from './assets/AudioStatisticItemSvg';
 
 export const EnglishPuzzleEndGameStatisticModalItem = ({ item }) => {
-  const { word, audio, wordTranslate } = item;
+  const { audioMeaning, textMeaning, textMeaningTranslate } = item;
 
   const playAudioClickHandler = () => {
     const audioWord = new Audio();
-    audioWord.src = `${FILES_URL}${audio}`;
+    audioWord.src = `${FILES_URL}${audioMeaning}`;
     audioWord.play();
   };
+
+  const regexpTags = new RegExp(`<i>|<\\/i>`, 'g');
+  let textWithoutTags = textMeaning.replace(regexpTags, '');
 
   return (
     <div className="english-puzzle-end-game-statistic-modal-item">
@@ -22,11 +25,11 @@ export const EnglishPuzzleEndGameStatisticModalItem = ({ item }) => {
         <AudioStatisticItemSvg />
       </button>
       <span className="english-puzzle-end-game-statistic-modal-item__word">
-        {word}
+        {textWithoutTags}
       </span>
       &nbsp;{'—'}&nbsp;
       <span className="english-puzzle-end-game-statistic-modal-item__translate">
-        {wordTranslate}
+        {textMeaningTranslate}
       </span>
     </div>
   );

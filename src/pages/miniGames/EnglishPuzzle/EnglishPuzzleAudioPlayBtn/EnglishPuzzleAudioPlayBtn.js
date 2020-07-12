@@ -19,7 +19,7 @@ export const EnglishPuzzleAudioPlayBtn = ({ gameWord, disabled }) => {
   return disabled ? (
     isAudioPlay ? (
       <button
-        className="english-puzzle-control-btn__item"
+        className="english-puzzle-control-btn__item english-puzzle-control-btn__item_audio"
         onClick={playTextMeaningSound}
         title="Прослушать"
         disabled
@@ -28,7 +28,7 @@ export const EnglishPuzzleAudioPlayBtn = ({ gameWord, disabled }) => {
       </button>
     ) : (
       <button
-        className="english-puzzle-control-btn__item"
+        className="english-puzzle-control-btn__item english-puzzle-control-btn__item_audio"
         onClick={playTextMeaningSound}
         title="Прослушать"
       >
@@ -37,7 +37,7 @@ export const EnglishPuzzleAudioPlayBtn = ({ gameWord, disabled }) => {
     )
   ) : (
     <button
-      className="english-puzzle-control-btn__item english-puzzle-control-btn__item_hide"
+      className="english-puzzle-control-btn__item english-puzzle-control-btn__item_audio english-puzzle-control-btn__item_hide"
       onClick={playTextMeaningSound}
       title="Прослушать"
     >

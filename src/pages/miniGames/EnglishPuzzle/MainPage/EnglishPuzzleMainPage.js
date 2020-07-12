@@ -31,7 +31,7 @@ export const EnglishPuzzleMainPage = () => {
     learnCardSettingsSelector,
   );
   const [currentScreen, setCurrentScreen] = useState(
-    ENGLISH_PUZZLE_GAME_SCREEN,
+    ENGLISH_PUZZLE_START_SCREEN,
   );
   const [visibleStatisticGame, setVisibleStatisticGame] = useState(false);
   const [isLoader, setIsLoader] = useState(false);

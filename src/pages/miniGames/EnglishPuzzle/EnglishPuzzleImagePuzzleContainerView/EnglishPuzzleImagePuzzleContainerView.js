@@ -26,6 +26,7 @@ export const EnglishPuzzleImagePuzzleContainerView = ({
                   <div
                     ref={provided.innerRef}
                     className="english-puzzle-text-item"
+                    id="checkedArea"
                   >
                     {state.selected.map((item, index) => (
                       <EnglishPuzzleDragCard
@@ -47,7 +48,11 @@ export const EnglishPuzzleImagePuzzleContainerView = ({
         {state.items ? (
           <Droppable droppableId="droppable" direction="horizontal">
             {(provided, snapshot) => (
-              <div ref={provided.innerRef} className="english-puzzle-text-item">
+              <div
+                ref={provided.innerRef}
+                className="english-puzzle-text-item"
+                id="questionArea"
+              >
                 {state.items.map((item, index) => (
                   <EnglishPuzzleDragCard
                     item={item}

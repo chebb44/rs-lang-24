@@ -6,7 +6,8 @@ import { EnglishPuzzleImagePuzzleContainerView } from '../EnglishPuzzleImagePuzz
 export const EnglishPuzzleImagePuzzleContainer = ({
   wordNumber,
   wordsForGame,
-  currentWord,
+  currentWordShuffled,
+  setSelectedWords,
 }) => {
   const textItemList = [
     {
@@ -48,7 +49,7 @@ export const EnglishPuzzleImagePuzzleContainer = ({
 
   useEffect(
     () => {
-      const wordQuestion = currentWord.map((el, index) => {
+      const wordQuestion = currentWordShuffled.map((el, index) => {
         return {
           id: `card-${index}`,
           content: el,
@@ -59,9 +60,9 @@ export const EnglishPuzzleImagePuzzleContainer = ({
         selected: [],
       });
     },
-    [currentWord],
+    [currentWordShuffled],
     wordsForGame,
-    currentWord,
+    currentWordShuffled,
   );
 
   const id2List = {
@@ -88,6 +89,7 @@ export const EnglishPuzzleImagePuzzleContainer = ({
 
       if (source.droppableId === 'droppable2') {
         stateReorder = { items: state.items, selected: itemsReorder };
+        setSelectedWords(itemsReorder);
       }
       setState(stateReorder);
     } else {
@@ -102,13 +104,19 @@ export const EnglishPuzzleImagePuzzleContainer = ({
         items: result.droppable,
         selected: result.droppable2,
       });
+      setSelectedWords(result.droppable2);
     }
   };
+
+  // if (state.selected) {
+  //   setSelectedWords(state.selected);
+  // }
 
   return (
     <EnglishPuzzleImagePuzzleContainerView
       onDragEnd={onDragEnd}
       textItemList={textItemList}
+      wordsForGame={wordsForGame}
       wordNumber={wordNumber}
       state={state}
     />

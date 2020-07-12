@@ -2,9 +2,9 @@
 @import "src/scss/mixins";
 
 .english-puzzle-end-game-statistic-modal-item {
-  display: inline-flex;
-  flex-wrap: wrap;
-  margin: 3px;
+  display: block;
+  text-align: left;
+  margin: 10px;
   line-height: 13px;
   &__word {
     font-weight: 600;

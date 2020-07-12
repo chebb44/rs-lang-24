@@ -35,7 +35,7 @@
     -o-transition: .1s ease-in;
     box-shadow: $box-shadow;
     opacity: .95;
-}
+  }
   &_disabled {
     opacity: .5;
     &:hover {
@@ -44,5 +44,8 @@
   }
   &_hide {
     visibility: hidden;
+  }
+  &_audio {
+    margin: 15px;
   }
 }
