@@ -1,0 +1,64 @@
+@import 'src/scss/vars';
+
+//.app-sidebar__wrapper {
+//  width: 240px;
+//  height: calc(100vh - 80px);
+//}
+
+.app-sidebar {
+  z-index: 10;
+  user-select: none;
+  box-sizing: border-box;
+  width: 220px;
+  height: calc(100vh - 82px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: $default-color;
+  color: $neutral-inactive;
+  overflow: auto;
+  box-shadow: 0px 8px 7px 2px rgba(85, 91, 110, 0.2);
+  -webkit-box-shadow: 0px 8px 7px 2px rgba(85, 91, 110, 0.2);
+  -moz-box-shadow: 0px 8px 7px 2px rgba(85, 91, 110, 0.2);
+  border: 1px solid rgb(206, 212, 218);
+  @media screen and (max-width: $mobile-width-big ) {
+    height: calc(100vh - 40px);
+  }
+
+  &::-webkit-scrollbar { /* chrome based */
+    width: 0px;  /* ширина scrollbar'a */
+    background: transparent;  /* опционально */
+  }
+}
+.sidebar-link-list {
+  padding: 5px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 22px;
+  margin-bottom: 0;
+}
+
+/* enter */
+.slide-left-enter {
+  left: -220px;
+  z-index: 1;
+}
+.slide-left-enter.slide-left-enter-active {
+  left: 0px;
+  transition: all 300ms ease-out;
+}
+
+/* exit */
+.slide-left-exit {
+  left: 0;
+}
+.slide-left-exit.slide-left-exit-active {
+  left: -220px;
+  transition: all 300ms ease-out;
+}
+.slide-left-exit-done {
+  left: -220px;
+}

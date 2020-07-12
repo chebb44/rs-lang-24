@@ -1,0 +1,19 @@
+.translation__block {
+  svg {
+    position: absolute;
+    top: auto;
+    left: 10px;
+    transition: .4s;
+    width: 36px;
+    height: 36px;
+
+    @media screen and (max-width: 410px) {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  .central-screen__translation {
+    font-size: 1.4rem;
+  }
+}

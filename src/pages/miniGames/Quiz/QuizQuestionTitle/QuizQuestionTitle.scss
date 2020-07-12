@@ -1,0 +1,40 @@
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+
+.quiz-question-title {
+  position: relative;
+  margin: 10px auto 0 auto;
+  padding-top: 9px;
+  width: 73%;
+  color: $neutral-inactive;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 40px;
+  max-width: 400px;
+  word-wrap: break-word;
+  overflow: hidden;
+  transition: .2s ease-in;
+  -webkit-transition: .2s ease-in;
+  -moz-transition: .2s ease-in;
+  -ms-transition: .2s ease-in;
+  -o-transition: .2s ease-in;
+  user-select: none;
+  &__word {
+    position: relative;
+    display: inline-block;
+    height: 35px;
+  }
+  &__text {
+    display: inline;
+  }
+}
+
+@media screen and (max-width: $tablet-width-big) {
+  .quiz-question-title {
+    font-size: 22px;
+    line-height: 30px;
+    &__word {
+      height: 35px;
+    }
+  }
+}

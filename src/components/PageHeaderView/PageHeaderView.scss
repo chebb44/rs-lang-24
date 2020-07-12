@@ -1,0 +1,67 @@
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+.app-header {
+  a {
+    text-decoration: none;
+  }
+}
+.header-logo {
+  font-family: Montserrat, sans-serif;
+  font-weight: 100;
+  color: $dark-color;
+  letter-spacing: -2px;
+  margin: auto;
+  font-size: 2rem;
+  @media screen and (max-width: 767px) {
+    font-size: 1.3rem;
+  }
+  @media screen and (max-width: $mobile-width-big ) {
+    font-size: 1.1rem;
+    line-height: 1rem;
+  }
+}
+.button__log-out {
+  @include std_button;
+  background-color: $accent-color;
+
+  @media screen and (max-width: $mobile-width-big) {
+    width: 60px;
+    height: 30px;
+    padding: 0;
+    font-size: .9rem;
+  }
+}
+
+.app-header {
+  height: 80px;
+  user-select: none;
+  background-color: $default-color;
+  color: $neutral-inactive;
+  -webkit-box-shadow: 0px 0px 3px 2px rgba(85, 91, 110, 0.2);
+  -moz-box-shadow: 0px 0px 3px 2px rgba(85, 91, 110, 0.2);
+  box-shadow: 0px 0px 3px 2px rgba(85, 91, 110, 0.2);
+  @media screen and (max-width: $mobile-width-big ) {
+    height: 40px;
+  }
+}
+
+.app-burger {
+  margin-right: 10px;
+  //transition-duration: .3s;
+  background: url(./assets/open-menu.svg) center;
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  z-index: 11;
+  cursor: pointer;
+  transition: .4s cubic-bezier(.74,.01,.57,2);
+  @media screen and (max-width: $mobile-width-big ) {
+    width: 22px;
+    height: 22px;
+  }
+}
+.rotate-burger {
+  transform: rotate(90deg);
+  //transition-duration: .3s;
+  transition: .4s cubic-bezier(.74,.01,.57,2);
+}

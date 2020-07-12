@@ -1,0 +1,27 @@
+.sprint-word {
+  position: absolute;
+  width: 100%;
+}
+
+.word-appear {
+  opacity: 0;
+}
+.word-appear-active {
+  opacity: 1;
+  transition: opacity 1000ms;
+}
+
+.word-enter{
+  left: -100%;
+}
+.word-enter-active{
+  left: 0;
+  transition: all 400ms;
+}
+.word-exit {
+  left: 0;
+}
+.word-exit-active {
+  left: 100%;
+  transition: all 400ms;
+}

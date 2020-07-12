@@ -1,0 +1,57 @@
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.login-screen {
+  display: flex;
+  flex-direction: column;
+
+
+
+  .login-page__wrapper {
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .arrow-icon__wrapper {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      width: 45px;
+      height: 65px;
+      cursor: pointer;
+    }
+
+    .login-page__arrow-icon {
+      opacity: .8;
+      margin-top: auto;
+      transform: translateX(-50%);
+    }
+
+    .login-page__logo {
+      position: absolute;
+      top: 40px;
+      left: 20px;
+    }
+
+    .london-image {
+      position: absolute;
+      bottom: 0;
+      left: auto;
+      right: auto;
+      width: 100%;
+      z-index: -3;
+      opacity: .1;
+      max-height: 200px;
+      max-width: 600px;
+    }
+
+  }
+}

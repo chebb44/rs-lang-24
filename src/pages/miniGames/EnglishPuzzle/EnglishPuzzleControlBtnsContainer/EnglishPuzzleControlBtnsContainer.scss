@@ -1,0 +1,8 @@
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+
+.english-puzzle-control-btns-container {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}

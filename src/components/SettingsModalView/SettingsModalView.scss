@@ -1,0 +1,40 @@
+@import "src/scss/vars";
+@import "src/scss/mixins";
+
+.modal-overlay {
+  position: absolute;
+  left: 0;
+  top: 0px;
+  width: 100%;
+  height: 100vh;
+  background-color: $neutral-disabled-dark;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper_width {
+  max-width: 310px;
+}
+
+.modal-content_settings {
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  box-shadow: $box-shadow;
+}
+
+.custom-control-input:checked~.custom-control-label::before{
+  background-color: $accent-dark-color;
+  border-color: $accent-dark-color;
+  color: $accent-dark-color;
+  box-shadow: none;
+}
+
+.btn-modal_close {
+  margin-left: auto;
+  margin-right: 15px;
+}

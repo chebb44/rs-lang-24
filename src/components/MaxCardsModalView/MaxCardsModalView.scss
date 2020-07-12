@@ -1,0 +1,8 @@
+@import "src/scss/vars";
+@import "src/scss/mixins";
+
+.button_settings {
+  @include std_button;
+  margin: 0 auto;
+  background-color: $accent-color ;
+}

@@ -1,0 +1,31 @@
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+
+.english-puzzle-question-container {
+  position: relative;
+  margin-top: 60px;
+  max-width: 800px;
+  text-align: center;
+  &__word-translation {
+    position: relative;
+    margin: 0 auto;
+    visibility: hidden;
+    width: 90%;
+    color: $default-color;
+    &_visible {
+      visibility: visible;
+    }
+  }
+}
+
+@media screen and (max-width: $tablet-width-big) {
+  .english-puzzle-question-container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: $tablet-width-small) {
+  .english-puzzle-question-container {
+    margin-top: 40px;
+  }
+}

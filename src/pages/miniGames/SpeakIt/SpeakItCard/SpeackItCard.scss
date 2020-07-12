@@ -1,0 +1,90 @@
+@import "src/scss/vars";
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1.4;
+  min-width: 200px;
+  min-height: 70px;
+  margin: 7px 5px;
+  border: 1px solid rgb(206, 212, 218);
+  border-radius: 5px;
+  background-color: #fff;
+  transition: .3s;
+
+  @media screen and (max-width: $mobile-width-big) {
+    min-width: calc(100vw / 2 - 10px);
+    min-height: calc((100vw / 2) / 20 * 7);
+    margin-bottom: 3px;
+    margin-top: 0;
+
+  }
+
+  &:hover {
+    background-color: $primary-color;
+  }
+  &.active {
+    background-color: $accent-color;
+    color: $neutral-inactive;
+  }
+  &.wrong {
+    background-color: $danger-color;
+    color: $neutral-disabled;
+  }
+  &.right {
+    background-color: $primary-color;
+    color: $neutral-disabled;
+  }
+}
+
+.card__audio-icon {
+  position: absolute;
+  top: calc(50% - 17px);
+  left: 10px;
+  width: 34px;
+  height: 34px;
+
+  @media screen and (max-width: $mobile-width-big ) {
+    top: calc(50% - 12px);
+  }
+
+  svg {
+    width: 34px;
+    height: 34px;
+
+    @media screen and (max-width: $mobile-width-big ) {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.card__word {
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 25px;
+
+  @media screen and (max-width: $mobile-width-big ) {
+    font-size: 18px;
+  }
+  @media screen and (max-width: $mobile-width-small ) {
+    font-size: 15px;
+  }
+}
+
+.card__transcription {
+  font-size: 16px;
+  font-weight: 100;
+  padding-left: 25px;
+
+  @media screen and (max-width: $mobile-width-big ) {
+    font-size: 15px;
+  }
+  @media screen and (max-width: $mobile-width-small ) {
+    font-size: 13px;
+  }
+}

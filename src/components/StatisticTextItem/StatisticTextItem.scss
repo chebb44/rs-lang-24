@@ -1,0 +1,23 @@
+@import "src/scss/vars";
+
+.statistic-item-wrapper {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  width: 305px;
+  color: $neutral-active;
+  background-color: $primary-color;
+}
+
+.statistic-item {
+  display: flex;
+  justify-content: space-between;
+  &__icon{
+    position: relative;
+    width: 30px;
+  }
+}
+
+p {
+  margin: 0;
+}

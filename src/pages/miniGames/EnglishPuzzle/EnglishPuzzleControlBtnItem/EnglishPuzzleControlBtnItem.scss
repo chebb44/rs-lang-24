@@ -1,0 +1,51 @@
+@import 'src/scss/vars';
+
+.english-puzzle-control-btn__item {
+  margin: 2px;
+  padding: 3px;
+  position: relative;
+  border: none;
+  background: $default-color;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  overflow: hidden;
+  transition: .1s ease-in;
+  -webkit-transition: .1s ease-in;
+  -moz-transition: .1s ease-in;
+  -ms-transition: .1s ease-in;
+  -o-transition: .1s ease-in;
+  opacity: .85;
+  img {
+    width: 25px;
+    height: 25px;
+  }
+  &:hover {
+    transform: scale(1.03);
+    -webkit-transform: scale(1.03);
+    -moz-transform: scale(1.03);
+    -ms-transform: scale(1.03);
+    -o-transform: scale(1.03);
+    transition: .1s ease-in;
+    -webkit-transition: .1s ease-in;
+    -moz-transition: .1s ease-in;
+    -ms-transition: .1s ease-in;
+    -o-transition: .1s ease-in;
+    box-shadow: $box-shadow;
+    opacity: .95;
+  }
+  &_disabled {
+    opacity: .5;
+    &:hover {
+      opacity: .85;
+    }
+  }
+  &_hide {
+    visibility: hidden;
+  }
+  &_audio {
+    margin: 15px;
+  }
+}

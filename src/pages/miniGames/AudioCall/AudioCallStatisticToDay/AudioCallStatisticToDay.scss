@@ -1,0 +1,12 @@
+@import "src/scss/vars";
+@import "src/scss/mixins";
+
+.audio-call-modal-statistic {
+  color: $neutral-active;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  box-shadow: $box-shadow;
+}

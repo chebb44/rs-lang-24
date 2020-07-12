@@ -1,0 +1,23 @@
+@import "../../scss/vars.scss";
+@import "../../scss/mixins.scss";
+
+.learn-card {
+  box-shadow: $box-shadow;
+  width: 450px;
+  &:hover {
+    background-color: #ffffff !important;
+    cursor: default !important;
+  }
+
+  @include  media-tablet-small {
+    width: 370px;
+  }
+
+  @include  media-mobile-big {
+    width: 310px;
+  }
+
+  @include  media-mobile-small {
+    width: 265px;
+  }
+}

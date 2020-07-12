@@ -1,0 +1,33 @@
+@mixin std_button {
+  color: $neutral-inactive;
+  transition: .3s ease;
+
+  &:hover {
+    color: $neutral-active;
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
+
+}
+
+@mixin media-laptop {
+  @media (max-width: $laptop-width) { @content; }
+}
+
+@mixin media-tablet-big {
+  @media (max-width: $tablet-width-big) { @content; }
+}
+
+@mixin media-tablet-small {
+  @media (max-width: $tablet-width-small) { @content; }
+}
+
+@mixin media-mobile-big {
+  @media (max-width: $mobile-width-big) { @content; }
+}
+
+@mixin media-mobile-small {
+  @media (max-width: $mobile-width-small) { @content; }
+}

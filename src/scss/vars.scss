@@ -1,0 +1,30 @@
+// Main color scheme
+$default-color           : #FAF9F9;
+$default-color-light     : #fffaf7b2;
+$primary-color           : #BEE3DB;
+$primary-darker-color    : #89B0AE;
+$dark-color              : #555B6E;
+$accent-color            : #FFD6BA;
+$accent-dark-color       : #ffb685;
+
+// Alerts Color
+$success-color           : #26de81;
+$danger-color            : #fc5c65;
+$warning-color           : #fed330;
+
+// Text Color
+$neutral-active          : rgba(0, 0, 0, 0.87);
+$neutral-inactive        : rgba(0, 0, 0, 0.61);
+$neutral-disabled-dark   : rgba(0,0,0, 0.5);
+$neutral-disabled        : rgba(0, 0, 0, 0.25);
+
+// Box shadow
+$box-shadow              : 0px 0px 6px rgba(61, 59, 59, 0.075);
+
+// Media breakpoints
+$laptop-width            : 1288px;
+$tablet-width-big        : 1020px;
+$tablet-width-small      : 768px;
+$mobile-width-big        : 480px;
+$mobile-width-small      : 375px;
+

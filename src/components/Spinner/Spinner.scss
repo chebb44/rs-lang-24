@@ -1,0 +1,24 @@
+.spinner {
+  width: 100%;
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spin {
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: none;
+}
+
+.london-image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: -3;
+  opacity: .7;
+}

@@ -1,0 +1,61 @@
+@import "src/scss/vars";
+@import "src/scss/mixins";
+
+.quiz-game-page {
+  min-height: calc(100vh - 80px);
+  width: 100vw;
+  min-width: 310px;
+  background-blend-mode: multiply;
+  background: linear-gradient(0deg, rgba(38,188,212,0.3) 15%, rgba(93,255,214,0.25) 83%);
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 0;
+  &:before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-blend-mode: multiply;
+    background: url('./assets/quizBgWhite.jpg') no-repeat;
+    background-size: cover;
+    object-fit: cover;
+    opacity: .18;
+  }
+  &__container {
+    position: relative;
+    margin: 0 auto;
+    text-align: -webkit-center;
+  }
+  @media screen and (max-width: $mobile-width-big ) {
+    min-height: calc(100vh - 40px);
+  }
+}
+
+.my-node-enter {
+  opacity: 0;
+}
+.my-node-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+  -webkit-transition: opacity 300ms;
+  -moz-transition: opacity 300ms;
+  -ms-transition: opacity 300ms;
+  -o-transition: opacity 300ms;
+}
+.my-node-exit {
+  opacity: 1;
+}
+.my-node-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+  -webkit-transition: opacity 300ms;
+  -moz-transition: opacity 300ms;
+  -ms-transition: opacity 300ms;
+  -o-transition: opacity 300ms;
+}

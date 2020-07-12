@@ -1,0 +1,15 @@
+@import "../../scss/vars.scss";
+@import "../../scss/mixins.scss";
+
+.button_universal {
+  @include std_button;
+  background-color: $primary-color;
+}
+
+.card-button_action {
+  background-color: $primary-color;
+}
+
+.card-button_mark {
+  background-color: $accent-color;
+}

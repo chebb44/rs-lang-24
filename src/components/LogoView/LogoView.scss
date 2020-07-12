@@ -1,0 +1,41 @@
+@import "src/scss/vars";
+
+.logo {
+  position: relative;
+  display: flex;
+  //@media screen and (max-width: 767px) {
+  //
+  //}
+
+
+  h2 {
+    font-family: Montserrat, sans-serif;
+    font-weight: 100;
+    color: $dark-color;
+    letter-spacing: -2px;
+    margin: auto;
+    font-size: 2rem;
+    @media screen and (max-width: 767px) {
+      font-size: 1.3rem;
+    }
+  }
+
+  .image {
+    display: flex;
+    width: 55px;
+    height: 45px;
+    @media screen and (max-width: 767px) {
+      width: 40px;
+      height: 30px;
+    }
+    z-index: -1;
+    border-radius: 50%;
+    background-image:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.58) 0%, rgba(16, 16, 16, 0.31) 100%),
+      url("../../assets/img/flag-logo1.png");
+    background-position: center;
+    background-size: cover;
+    opacity: 0.9;
+    margin-right: 5px;
+  }
+}

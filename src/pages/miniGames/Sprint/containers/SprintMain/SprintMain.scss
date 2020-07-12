@@ -1,0 +1,29 @@
+@import 'src/scss/vars';
+@import 'src/scss/mixins';
+
+.sprint-main-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $neutral-active;
+  background-image: url('../../../../../assets/img/england_PNG722.png');
+  background-size: 100% auto;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+.sprint-content-wrapper {
+  color: $neutral-active;
+  position: relative;
+  width: 60%;
+  height: 60%;
+  min-height: 380px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media screen and (max-width: 500px) {
+    width: 90%;
+  }
+}

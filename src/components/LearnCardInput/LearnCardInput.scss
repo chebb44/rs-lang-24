@@ -1,0 +1,50 @@
+@import '../../scss/vars.scss';
+
+.entered-word,
+.checked-word {
+  height: 30px;
+  padding: 2px;
+  padding-bottom: 4px;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-radius: 0;
+  font-size: 24px;
+  text-align: center;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.error-letter {
+  animation: change-color-error 2s forwards;
+}
+
+.success-letter {
+  animation: change-color-success 2s forwards;
+}
+
+@keyframes change-color-error {
+  0% {
+    color: $danger-color;
+  }
+  90% {
+    color: $danger-color;
+  }
+  100% {
+    color: $neutral-disabled;
+  }
+}
+
+@keyframes change-color-success {
+  0% {
+    color: $success-color;
+  }
+  90% {
+    color: $success-color;
+  }
+  100% {
+    color: $neutral-disabled;
+  }
+}

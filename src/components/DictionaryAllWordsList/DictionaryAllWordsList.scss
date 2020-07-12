@@ -1,0 +1,72 @@
+@import "src/scss/vars";
+
+.dictionary__all-words-wrapper {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.words-container {
+  color: $neutral-inactive;
+  width: 370px;
+  border-radius: 5px;
+  @media screen and (max-width: $mobile-width-big) {
+    width: calc(100vw - 10px);
+  }
+
+  .words_word-row {
+    display: flex;
+    width: 100%;
+    height: 32px;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+
+
+
+    .words_word-wrapper {
+      position: relative;
+      display: flex;
+      transition: .2s ease;
+      width: 100%;
+      height: 30px;
+      border-radius: 5px 0 0 5px;
+      align-items: center;
+      &:hover, &.active {
+        background-color: $primary-color;
+      }
+
+      .dictionary__spinner {
+        position: absolute;
+        right: 7px;
+        top: auto;
+        bottom: auto;
+        svg {
+          width: 25px;
+          height: 25px;
+        }
+      }
+    }
+
+    .dictionary-all-words__word {
+      margin-left: 10px;
+    }
+
+
+    .dictionary-all-words__word-delete {
+      background-color: $accent-color;
+      color: $neutral-inactive;
+      height: 30px;
+      border-radius: 0px 5px 5px 0px;
+      //justify-self: right;
+      line-height: 10px;
+      margin: 0 2px 0 auto;
+    }
+  }
+}
+
+.dictionary__spinner {
+  margin-right: 10px;
+}
