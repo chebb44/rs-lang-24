@@ -7,4 +7,5 @@ export const sections = [
   { title: 'Мини-игра Саванна', path: routes.savanna, svgClass: 3 },
   { title: 'Мини-игра Спик Ит', path: routes.speakIt, svgClass: 4 },
   { title: 'Мини-игра Спринт', path: routes.sprint, svgClass: 5 },
+  { title: 'Мини-игра Пазл', path: routes.englishPuzzle, svgClass: 3 },
 ];
