@@ -32,7 +32,13 @@ export const EnglishPuzzleStartScreen = function ({
       </svg>
       <h1 className="english-puzzle-start-screen__title">Пазл</h1>
       <p className="english-puzzle-start-screen__description">
-        Составьте предложение после
+        Составьте предложение из предложенных слов.
+      </p>
+      <p className="english-puzzle-start-screen__description">
+        Вы можете включить автовоспроизведение
+        <br /> загаданного предложения.
+        <br /> Также есть подсказки: повторное воспроизведение, перевод
+        загаданного предложения.
       </p>
       <p className="english-puzzle-start-screen__description">
         По умолчанию используются изученные слова.

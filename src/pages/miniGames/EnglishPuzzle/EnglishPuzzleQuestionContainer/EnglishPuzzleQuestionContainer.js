@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './EnglishPuzzleQuestionContainer.scss';
 import { EnglishPuzzleControlBtnsContainer } from '../EnglishPuzzleControlBtnsContainer/EnglishPuzzleControlBtnsContainer';
 import { EnglishPuzzleAudioPlayBtn } from '../EnglishPuzzleAudioPlayBtn/EnglishPuzzleAudioPlayBtn';

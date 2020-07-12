@@ -108,10 +108,6 @@ export const EnglishPuzzleImagePuzzleContainer = ({
     }
   };
 
-  // if (state.selected) {
-  //   setSelectedWords(state.selected);
-  // }
-
   return (
     <EnglishPuzzleImagePuzzleContainerView
       onDragEnd={onDragEnd}
