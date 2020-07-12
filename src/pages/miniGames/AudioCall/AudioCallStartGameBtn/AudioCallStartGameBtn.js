@@ -25,7 +25,7 @@ export const AudioCallStartGameBtn = ({ startGameHandler, setGameMode }) => {
   const { learnedWords } = useSelector(dictionaryStateStateSelector);
 
   return (
-    <div className="btn-group">
+    <div className="btn-group dropup">
       <button
         type="button"
         className="btn audio-call-start-game-btn audio-call-start-game-btn_start"
