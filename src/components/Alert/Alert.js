@@ -1,5 +1,5 @@
 import React from 'react';
-import './Alert.css';
+import './Alert.scss';
 
 export const Alert = (props) => {
   if (props?.message?.length) {
