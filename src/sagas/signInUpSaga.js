@@ -13,11 +13,15 @@ import { routes } from './../App/constants/routes';
 export function* signUpWorker(action) {
   const userRegResponse = yield call(createUser, action.payload);
   if (userRegResponse.success) {
-    yield put(actionSetAlertMessage('Registration successful, please SignIn'));
+    yield put(
+      actionSetAlertMessage(
+        'Регистрация прошла успешно, пожалуйста, войдите в систему.',
+      ),
+    );
     yield delay(3000);
     yield put(actionSetAlertMessage(''));
   } else {
-    yield showPopUpNotification(userRegResponse.payload);
+    yield showPopUpNotification('Пожалуйста, проверьте логин и пароль.');
   }
 }
 
@@ -34,7 +38,7 @@ export function* signInWorker(action) {
     yield put(actionSetUserLoginData({ email, password }));
     yield action.history.push(routes.mainApp); /// redirecting to main page
   } else {
-    yield showPopUpNotification(userSignInResponse.payload);
+    yield showPopUpNotification('Пожалуйста, проверьте логин и пароль.');
   }
 }
 
