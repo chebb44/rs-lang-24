@@ -44,7 +44,7 @@ export const PromoPageView = () => {
         </div>
         <div className="promo__wrapper">
           <div className="interval-repeating">
-            <h2 className="heading">Методика интревального повторения</h2>
+            <h2 className="heading">Методика интервального повторения</h2>
             <p className="interval-repeating__heading">
               Позволяет выучить большой объем информации за короткое время.
             </p>
