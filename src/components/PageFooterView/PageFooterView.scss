@@ -1,0 +1,26 @@
+@import '../../scss/vars.scss';
+
+.footer {
+  height: 80px;
+  width: 100%;
+  background-color: $accent-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.github {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 90px;
+}
+
+.github__link {
+  text-decoration: none !important;
+  color: $neutral-active;
+  &:hover {
+    color: $neutral-active;
+  }
+}
